@@ -1,0 +1,43 @@
+@startuml 
+title TDTelecommande
+
+class Cheminee{
+
+}
+
+class Telecommande{
+
+    
+}
+
+interface Peripherique{
+
+}
+
+class AdapteurCheminee{
+
+}
+
+class Lampe{
+
+}
+
+class Hifi{
+
+}
+
+class Television{
+
+}
+
+Peripherique <|.. Lampe
+Peripherique <|.. Television
+Peripherique <|.. Hifi
+Peripherique <|.. AdapteurCheminee
+
+Telecommande "1" -> "0..*" Peripherique : - perifs
+
+AdapteurCheminee "1" -> "0..1" Cheminee : - cheminee
+
+
+@enduml
