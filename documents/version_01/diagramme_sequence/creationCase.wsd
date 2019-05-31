@@ -1,0 +1,16 @@
+@startuml 
+title Création de l'Aventurier
+participant CaseVide << (C,#ADD1B2) >>
+participant Mur << (C,#ADD1B2) >>
+
+
+main -> CaseVide : CaseVide()
+activate CaseVide
+CaseVide --> main 
+deactivate CaseVide
+main -> Mur : Mur()
+activate Mur
+Mur --> main
+deactivate Mur
+
+@enduml

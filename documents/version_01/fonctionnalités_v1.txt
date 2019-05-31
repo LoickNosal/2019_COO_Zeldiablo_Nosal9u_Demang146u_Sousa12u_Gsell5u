@@ -12,7 +12,7 @@
 	Création d'un aventurier (dérive de Entité) qui possède des points des vie
 	Tests :
 		valeurs initiales de l'aventurier
-	- responsable : sousa12u
+	- responsable : sousa12u gsell5u
 
 - fonctionnalités 3 : [Création des cases vides et des murs (classe case, caseVide et Mur]
 	Les cases peuvent soit être vides ou soit des murs.

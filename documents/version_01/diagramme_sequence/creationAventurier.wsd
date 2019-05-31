@@ -1,0 +1,11 @@
+@startuml 
+title Création de l'Aventurier
+participant Aventurier << (C,#ADD1B2) >>
+create Aventurier
+main -> Aventurier : Aventurier()
+Activate Aventurier
+Aventurier --> main
+deactivate Aventurier
+
+
+@enduml
