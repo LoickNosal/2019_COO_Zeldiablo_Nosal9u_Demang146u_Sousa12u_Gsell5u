@@ -1,43 +1,42 @@
 @startuml 
-title TDTelecommande
+title Zeldiablo
 
-class Cheminee{
 
-}
-
-class Telecommande{
-
-    
-}
-
-interface Peripherique{
+class Jeu {
 
 }
 
-class AdapteurCheminee{
+class Labyrinthe {
 
 }
 
-class Lampe{
+abstract Case {
 
 }
 
-class Hifi{
+class Vide {
 
 }
 
-class Television{
+class Mur {
 
 }
 
-Peripherique <|.. Lampe
-Peripherique <|.. Television
-Peripherique <|.. Hifi
-Peripherique <|.. AdapteurCheminee
+abstract Entite {
 
-Telecommande "1" -> "0..*" Peripherique : - perifs
+}
 
-AdapteurCheminee "1" -> "0..1" Cheminee : - cheminee
+class Aventurier {
 
+}
+
+Jeu "1" --> "1" Labyrinthe : -labyrinthe
+Labyrinthe "1" --> "0..*" Case : -cases
+Jeu "1" --> "0..*" Aventurier : -aventurier
+Aventurier "1" --> "1" Labyrinthe : -labyrinthe
+
+Vide <|.. Case
+Mur <|.. Case
+Aventurier <|.. Entite
 
 @enduml
