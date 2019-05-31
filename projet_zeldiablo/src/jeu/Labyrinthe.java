@@ -1,7 +1,5 @@
 package jeu;
 
-import src.jeu.Case;
-
 public class Labyrinthe {
 
     private static final int TAILLE_MIN = 5;

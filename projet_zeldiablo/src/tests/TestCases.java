@@ -1,11 +1,10 @@
-package src.tests;
+package tests;
+
+import jeu.CaseVide;
+import org.junit.Test;
+import jeu.Mur;
 
 import static org.junit.Assert.*;
-
-import org.junit.Test;
-
-import src.jeu.CaseVide;
-import src.jeu.Mur;
 
 /**
  * Classe de test pour les Cases

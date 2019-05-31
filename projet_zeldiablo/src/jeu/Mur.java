@@ -1,9 +1,9 @@
-package src.jeu;
+package jeu;
 /**
  * @author Nosal Loïck
  * Classe qui modélise un mur
  */
-public class Mur extends Case{
+public class Mur extends Case {
 	
 	/**
 	 * Constructeur de base d'un Mur
