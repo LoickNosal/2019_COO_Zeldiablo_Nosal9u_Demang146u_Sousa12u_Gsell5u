@@ -1,3 +1,4 @@
+"plantuml.exportOutDir": "."
 @startuml 
 title Zeldiablo
 
@@ -35,8 +36,8 @@ Labyrinthe "1" --> "0..*" Case : -cases
 Jeu "1" --> "0..*" Aventurier : -aventurier
 Aventurier "1" --> "1" Labyrinthe : -labyrinthe
 
-Vide <|.. Case
-Mur <|.. Case
-Aventurier <|.. Entite
+Vide ..|> Case
+Mur ..|> Case
+Aventurier ..|> Entite
 
 @enduml
