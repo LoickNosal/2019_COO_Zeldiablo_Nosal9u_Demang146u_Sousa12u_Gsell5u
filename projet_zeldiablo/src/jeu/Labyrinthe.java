@@ -9,6 +9,11 @@ public class Labyrinthe {
 
     private Case[][] cases;
 
+    /**
+     * Creation d'un labyrinthe vide
+     * @param x largeur
+     * @param y hauteur
+     */
     public Labyrinthe(int x, int y) {
         if (x < TAILLE_MIN)
             x = TAILLE_MIN;
