@@ -15,7 +15,7 @@ abstract Case {
 
 }
 
-class Vide {
+class CaseVide {
 
 }
 
@@ -34,9 +34,9 @@ class Aventurier {
 Jeu "1" --> "1" Labyrinthe : -labyrinthe
 Labyrinthe "1" --> "0..*" Case : -cases
 Jeu "1" --> "0..*" Aventurier : -aventurier
-Aventurier "1" --> "1" Labyrinthe : -labyrinthe
+Labyrinthe "1" --> "1" Aventurier : -aventurier
 
-Vide ..|> Case
+CaseVide ..|> Case
 Mur ..|> Case
 Aventurier ..|> Entite
 
