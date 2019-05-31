@@ -5,6 +5,13 @@ abstract public class Entite{
     private int y;
     private String nom;
 
+    /**
+     * Le constructeur de la classe Entite
+     * @param p Les Points de Vie
+     * @param x La position X
+     * @param y La position Y
+     * @param n Son nom
+     */
     public Entite(int p, int x, int y, String n)
     {
         this.pv = p;
@@ -29,6 +36,10 @@ abstract public class Entite{
         return y;
     }
 
+    /**
+     * Fonction seDeplacer : on met les char des points cardinaux pour choisir la position dans laquelle l'Entite va avancer
+     * @param cardinaux Les points cardinaux
+     */
     public void seDeplacer(char cardinaux)
     {
         switch(cardinaux)
