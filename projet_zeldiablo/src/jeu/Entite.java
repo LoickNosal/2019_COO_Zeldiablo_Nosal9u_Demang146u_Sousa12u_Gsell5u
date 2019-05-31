@@ -14,10 +14,23 @@ abstract public class Entite{
      */
     public Entite(int p, int x, int y, String n)
     {
-        this.pv = p;
+        if(pv<= 0){
+            this.pv = 1;
+        }
+        else{
+            this.pv = p;
+        }
+
         this.x = x;
         this.y = y;
-        this.n = nom;
+
+        if(n == null || n.equals("")){
+            this.nom = "Entite";
+        }
+        else{
+            this.nom = n;
+        }
+
     }
 
     public String getNom() {
@@ -44,10 +57,10 @@ abstract public class Entite{
     {
         switch(cardinaux)
         {
-            case 'N': this.y-- break;
-            case 'E': this.x++ break;
-            case 'S': this.y++ break;
-            case 'O': this.x-- break;
+            case 'N': this.y--; break;
+            case 'E': this.x++; break;
+            case 'S': this.y++; break;
+            case 'O': this.x--; break;
         }
     }
 }
