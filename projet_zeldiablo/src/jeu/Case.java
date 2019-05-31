@@ -1,4 +1,4 @@
-package src.jeu;
+package jeu;
 /*
  * Classe abstraite qui modèle une case
  * @author Nosal Loïck
