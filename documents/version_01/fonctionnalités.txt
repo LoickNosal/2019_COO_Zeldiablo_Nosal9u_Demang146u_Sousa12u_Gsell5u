@@ -1,4 +1,0 @@
--Création d'un labyrinthe par défaut*
--Création des cases vides et des murs
--Création de l'Aventurier
-
