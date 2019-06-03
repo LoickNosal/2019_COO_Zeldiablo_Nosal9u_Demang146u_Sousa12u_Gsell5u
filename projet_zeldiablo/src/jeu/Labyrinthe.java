@@ -9,7 +9,6 @@ public class Labyrinthe {
     private final int TAILLE_MIN = 5;
     private final int TAILLE_MAX = 15;
     private Case[][] cases;
-    private Aventurier aventurier;
 
     /**
      * Creation d'un Labyrinthe par defaut
