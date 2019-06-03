@@ -32,7 +32,7 @@ public class DessinPerso implements DessinJeu{
 			sprite = null;
 		}
 
-		if(sprite != null){
+		if(sprite != null ){
 			g.drawImage(sprite, jeuEnCours.getPerso().getX(), jeuEnCours.getPerso().getY(), 61,78,null);
 		}else{
 			g.setColor(Color.red);
