@@ -15,10 +15,12 @@ public class MonstreImmobile extends Entite{
 		degat = pdegat;
 	}
 	
-	public void attaquer(Aventurier pPerso) {
+	public void attaquer(Aventurier pPerso, int dx, int dy) {
 		Aventurier perso = pPerso;
-		if(x - perso.x == 1) // A FAIRE
-		perso.subirDegat(degat);
+		int distance = (int) Math.sqrt(Math.pow(dx - x, 2) + Math.pow(dy - y, 2));
+		if(distance <= 50) {
+			perso.subirDegat(degat);
+		}
 	}
 
 	@Override

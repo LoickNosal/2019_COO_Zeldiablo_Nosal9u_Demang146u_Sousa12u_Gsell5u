@@ -65,11 +65,9 @@ public class Aventurier extends Entite {
                 case 'S': this.y+=10; break;
                 case 'O': this.x-=10; break;
             }
+    		for(MonstreImmobile monstre : mi) {
+        		monstre.attaquer(this, this.x, this.y);
+        	}
 		}
-    	
-    	for(MonstreImmobile monstre : mi) {
-    		monstre.attaquer(this);
-    	}
-    	
 	}
 }
