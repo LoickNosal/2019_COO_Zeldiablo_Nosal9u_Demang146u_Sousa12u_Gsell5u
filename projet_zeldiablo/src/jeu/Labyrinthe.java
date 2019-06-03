@@ -58,6 +58,19 @@ public class Labyrinthe {
     public boolean caseTraversable(int x, int y) {
         return cases[x][y].peutTraverser();
     }
+    
+   public boolean estSurUnObstacle(int posX,int posY) {
+	   boolean res = false;
+	   for (int i = 0; i < this.getHauteur(); i++) {
+		for (int j = 0; j < this.getLargeur(); j++) {
+			if (cases[i][j].estDedans(posX, posY) && cases[i][j].peutTraverser() == false) {
+				res = true;
+				return res;
+			}
+		}
+	}
+	   return res;
+   }
 
     public String toString() {
         String res = "";

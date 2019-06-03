@@ -29,10 +29,11 @@ public abstract class Case {
 	
 	public boolean estDedans(int x, int y) {
 		boolean res = false;
-		Rectangle r = new Rectangle(x,y,taille,taille);
+		Rectangle r = new Rectangle(posX*taille,posY*taille,taille,taille);
 		if (r.contains(x,y)) {
 			res = true;
 		}
+		
 		return res;
 	}
 	

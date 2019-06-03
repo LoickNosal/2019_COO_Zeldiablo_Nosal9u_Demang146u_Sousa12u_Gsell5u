@@ -63,7 +63,34 @@ abstract public class Entite{
      */
     public void seDeplacer(char cardinaux)
     {
-    	if (peutAvancer() == true) {
+    	int futureposX = 0;
+    	int futureposY = 0;
+    	
+    	switch(cardinaux)
+        {
+            case 'N': 
+            futureposY = this.y-10; 
+            futureposX = this.x;
+            break;
+            
+            case 'E': 
+            futureposX = this.x+10;
+            futureposY = this.y;
+            break;
+            
+            case 'S': 
+            futureposY = this.y+10;
+            futureposX = this.x;
+            break;
+            
+            case 'O': 
+            futureposX = this.x-10;
+            futureposY = this.y;
+            break;
+        }
+    	
+    	
+    	if (peutAvancer(futureposX,futureposY) == true) {
     		switch(cardinaux)
             {
                 case 'N': this.y-=10; break;
@@ -79,18 +106,11 @@ abstract public class Entite{
      * permet de detecter si le joueur entre en collision avec un obstacle
      * @return true si le joueur peut traverser
      */
-    public boolean peutAvancer() {
+    public boolean peutAvancer(int posX, int posY) {
 		boolean res = false;
-		for (int i = 0; i < this.lab.getHauteur(); i++) {
-			for (int j = 0; j < this.lab.getLargeur(); j++) {
-				if (this.x >= this.lab.getCases()[i][j].getPosX() && this.x <= this.lab.getCases()[i][j].getPosX() + 80
-						&& this.y >= this.lab.getCases()[i][j].getPosY() && this.y <= this.lab.getCases()[i][j].getPosX() + 80) {
-					if (this.lab.getCases()[i][j].peutTraverser() == true) {
-						res = true;
-					}
-				}
+			if (this.lab.estSurUnObstacle(posX,posY) == false) {
+				res = true;
 			}
-		}
 		return res;
 
     }
