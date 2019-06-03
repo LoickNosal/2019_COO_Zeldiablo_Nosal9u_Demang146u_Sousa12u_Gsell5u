@@ -14,7 +14,7 @@ public class MainPerso {
 	public static void main(String[] args) {
 		
 		// creation du jeu particulier et de son afficheur
-		Aventurier av = new Aventurier(10, 0, 0, "Aventurier");
+		Aventurier av = new Aventurier(10, 50, 50, "Aventurier");
 		JeuPerso jeu = new JeuPerso(av);
 		DessinPerso dp = new DessinPerso(jeu);
 		
