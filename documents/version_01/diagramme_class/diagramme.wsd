@@ -36,8 +36,8 @@ Labyrinthe "1" --> "0..*" Case : -cases
 Jeu "1" --> "0..*" Aventurier : -aventurier
 Labyrinthe "1" --> "1" Aventurier : -aventurier
 
-CaseVide ..|> Case
-Mur ..|> Case
-Aventurier ..|> Entite
+CaseVide --|> Case
+Mur --|> Case
+Aventurier --|> Entite
 
 @enduml
