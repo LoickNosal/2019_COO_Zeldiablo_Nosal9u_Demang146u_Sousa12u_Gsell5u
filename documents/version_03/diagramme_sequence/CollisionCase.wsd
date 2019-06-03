@@ -1,0 +1,17 @@
+@startuml
+title Collision joueur Mur
+participant Entite<< (C,#ADD1B2) >>
+participant Case<< (C,#ADD1B2) >>
+
+ -> Entite: seDeplacer() 
+activate Entite
+Entite-> Entite: peutAvancer()
+loop 
+Entite -> Case :peutTraverser()
+activate Case 
+Entite <--Case 
+deactivate Case 
+end
+ <-- Entite
+deactivate Entite
+@enduml

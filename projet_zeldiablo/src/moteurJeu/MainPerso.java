@@ -7,22 +7,23 @@ import jeu.Labyrinthe;
 
 /**
  * Main du moteur graphique
- * @author Loïck
+ * @author Loï¿½ck
  *
  */
 public class MainPerso {
-	
+
 	public static void main(String[] args) {
-		
+
 		// creation du jeu particulier et de son afficheur
-		Aventurier av = new Aventurier(10, 50, 50, "Aventurier");
+		Labyrinthe lab = new Labyrinthe(10, 10);
+		Aventurier av = new Aventurier(10, 0, 0, "Aventurier",lab);
 		JeuPerso jeu = new JeuPerso(av);
 		Labyrinthe lb = new Labyrinthe();
 		DessinPerso dp = new DessinPerso(jeu);
-		
+
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, dp);
-		
+
 		// lance la boucle de jeu qui tourne jusque la fin du jeu
 		try {
 			moteur.lancerJeu(800, 800);
@@ -30,13 +31,13 @@ public class MainPerso {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		// lorsque le jeu est fini
 		System.out.println("Fin du Jeu - appuyer sur entree");
 		Scanner sc = new Scanner(System.in);
 		sc.nextLine();
 		System.exit(1);
-		
+
 	}
 
 }

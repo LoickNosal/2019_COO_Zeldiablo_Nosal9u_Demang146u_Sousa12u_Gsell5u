@@ -1,0 +1,21 @@
+@startuml 
+title Création du Labyrinthe : invalide
+participant main
+participant Labyrinthe << (C,#ADD1B2) >>
+
+create Labyrinthe
+main -> Labyrinthe : Labyrinthe(String url)
+activate Labyrinthe
+
+Labyrinthe -> Labyrinthe : valideModele()
+activate Labyrinthe
+deactivate Labyrinthe
+
+Labyrinthe -> Labyrinthe : defaut()
+activate Labyrinthe
+deactivate Labyrinthe
+
+Labyrinthe --> main
+deactivate Labyrinthe
+
+@enduml

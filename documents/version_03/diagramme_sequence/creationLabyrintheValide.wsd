@@ -1,0 +1,34 @@
+@startuml 
+title Création du Labyrinthe : valide
+participant main
+participant Labyrinthe << (C,#ADD1B2) >>
+participant CaseVide << (C,#ADD1B2) >>
+participant Mur << (C,#ADD1B2) >>
+
+create Labyrinthe
+main -> Labyrinthe : Labyrinthe(String url)
+activate Labyrinthe
+
+Labyrinthe -> Labyrinthe : valideModele()
+activate Labyrinthe
+deactivate Labyrinthe
+
+loop cases
+alt vide
+create CaseVide
+Labyrinthe -> CaseVide : new
+activate CaseVide
+CaseVide --> Labyrinthe
+deactivate CaseVide
+else mur
+create Mur
+Labyrinthe -> Mur : new
+activate Mur
+Mur --> Labyrinthe
+deactivate Mur
+end
+end
+Labyrinthe --> main
+deactivate Labyrinthe
+
+@enduml

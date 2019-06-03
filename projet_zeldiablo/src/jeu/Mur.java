@@ -1,14 +1,14 @@
 package jeu;
 /**
- * @author Nosal Loïck
- * Classe qui modélise un mur
+ * @author Nosal LoÃ¯ck
+ * Classe qui mod2lise un mur
  */
 public class Mur extends Case {
 	
 	/**
 	 * Constructeur de base d'un Mur
-	 * @param x coordonnées x du mur
-	 * @param y coordonnées y du mur
+	 * @param x coordonnÃ©es x du mur
+	 * @param y coordonnÃ©es y du mur
 	 */
 	public Mur(int x, int y) {
 		if (x < 0) {
@@ -19,6 +19,15 @@ public class Mur extends Case {
 		}
 		this.posX = x;
 		this.posY = y;
+	}
+
+	public String toString() {
+		return "x";
+	}
+
+	@Override
+	public boolean peutTraverser() {
+		return false;
 	}
 
 }
