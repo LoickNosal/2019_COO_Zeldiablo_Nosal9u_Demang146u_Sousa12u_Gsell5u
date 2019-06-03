@@ -1,0 +1,31 @@
+@startuml 
+title Labyrinthe par defaut
+participant Labyrinthe << (C,#ADD1B2) >>
+participant CaseVide << (C,#ADD1B2) >>
+participant Mur << (C,#ADD1B2) >>
+
+activate Labyrinthe
+
+Labyrinthe -> Labyrinthe : defaut()
+activate Labyrinthe
+
+loop cases 10x10
+alt vide
+create CaseVide
+Labyrinthe -> CaseVide : new
+activate CaseVide
+CaseVide --> Labyrinthe
+deactivate CaseVide
+else mur
+create Mur
+Labyrinthe -> Mur : new
+activate Mur
+Mur --> Labyrinthe
+deactivate Mur
+end
+end
+
+deactivate Labyrinthe
+deactivate Labyrinthe
+
+@enduml
