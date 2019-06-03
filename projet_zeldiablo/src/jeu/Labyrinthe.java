@@ -83,10 +83,6 @@ public class Labyrinthe {
     public int getHauteur() {
         return cases[0].length;
     }
-    
-    public Case[][] getCases(){
-    	return this.cases;
-    }
 
     /**
      * getter
