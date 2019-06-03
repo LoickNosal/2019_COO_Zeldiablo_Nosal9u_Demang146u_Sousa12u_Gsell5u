@@ -42,11 +42,9 @@ public class DessinPerso implements DessinJeu{
 			casevide = null;
 		}
 
-		Case[][] tabcase = lab.getCases();
-
 		for(int i = 0; i < lab.getHauteur(); i++){
 			for(int j = 0; j< lab.getLargeur(); j++){
-				if(tabcase[i][j].peutTraverser()) {
+				if(lab.caseTraversable(i,j)) {
 					g.drawImage(casevide, i*80, j*80, 80,80,null);
 				}
 				else{
