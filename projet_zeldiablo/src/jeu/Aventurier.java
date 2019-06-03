@@ -8,12 +8,6 @@ import java.util.ArrayList;
  *Modelis un Aventurier
  */
 public class Aventurier extends Entite {
-	
-	/**
-     * labyrinthe dans lequel est l'aventurier
-     */
-    protected Labyrinthe lab;
-
     /**
      * Le constructeur de la classe Aventurier, qui herite du constructeur de Entite
      * @param p Les points de vie
@@ -24,7 +18,6 @@ public class Aventurier extends Entite {
     public Aventurier(int p, int x, int y, String n,Labyrinthe l)
     {
         super(p,x,y,n,l);
-        
     }
     
     @Override

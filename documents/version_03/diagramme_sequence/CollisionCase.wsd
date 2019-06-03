@@ -1,17 +1,25 @@
 @startuml
 title Collision joueur Mur
 participant Entite<< (C,#ADD1B2) >>
+participant Labyrinthe<< (C,#ADD1B2) >>
 participant Case<< (C,#ADD1B2) >>
 
- -> Entite: seDeplacer() 
+
+ -> Entite: seDeplacer('') 
 activate Entite
-Entite-> Entite: peutAvancer()
+Entite-> Entite: peutAvancer(x,y)
+Entite->Labyrinthe : estSurUnObstacle(x,y)
 loop 
-Entite -> Case :peutTraverser()
+Labyrinthe-> Case :estDedans()
 activate Case 
-Entite <--Case 
+Labyrinthe<--Case 
+deactivate Case 
+Labyrinthe-> Case :peutTraverser()
+activate Case 
+Labyrinthe<--Case 
 deactivate Case 
 end
+Entite<--Labyrinthe
  <-- Entite
 deactivate Entite
 @enduml
