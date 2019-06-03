@@ -56,6 +56,8 @@ public class Labyrinthe {
     }
 
     public boolean caseTraversable(int x, int y) {
+        if (x < 0 || x >= getLargeur() || y < 0 || y >= getHauteur())
+            return false;
         return cases[x][y].peutTraverser();
     }
 
