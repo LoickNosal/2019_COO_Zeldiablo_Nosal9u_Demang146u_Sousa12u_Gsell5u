@@ -1,16 +1,18 @@
 @startuml 
-title Création de l'Aventurier
+title Création de Case
+participant Labyrinthe << (C,#ADD1B2) >>
 participant CaseVide << (C,#ADD1B2) >>
 participant Mur << (C,#ADD1B2) >>
 
-
-main -> CaseVide : CaseVide()
+create CaseVide
+Labyrinthe -> CaseVide : CaseVide()
 activate CaseVide
-CaseVide --> main 
+CaseVide --> Labyrinthe 
 deactivate CaseVide
-main -> Mur : Mur()
+create Mur
+Labyrinthe -> Mur : Mur()
 activate Mur
-Mur --> main
+Mur --> Labyrinthe
 deactivate Mur
 
 @enduml

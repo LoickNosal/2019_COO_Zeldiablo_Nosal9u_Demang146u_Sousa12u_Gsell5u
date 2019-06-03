@@ -1,5 +1,6 @@
 @startuml 
 title Création de l'Aventurier
+participant main
 participant Aventurier << (C,#ADD1B2) >>
 create Aventurier
 main -> Aventurier : Aventurier()
