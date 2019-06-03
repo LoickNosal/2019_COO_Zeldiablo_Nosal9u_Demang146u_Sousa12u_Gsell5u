@@ -19,6 +19,7 @@ public class Labyrinthe {
      */
     public Labyrinthe() {
         defaut();
+        mi = new ArrayList<MonstreImmobile>();
     }
 
     /**
