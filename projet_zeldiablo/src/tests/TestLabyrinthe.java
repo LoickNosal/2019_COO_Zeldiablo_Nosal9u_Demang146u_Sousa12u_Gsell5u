@@ -8,20 +8,43 @@ import org.junit.Test;
 
 public class TestLabyrinthe {
 
-    public Labyrinthe l;
+    public String modeleDefaut =    "xxxxxxxxxx\n" +
+                                    "x--------x\n" +
+                                    "x--------x\n" +
+                                    "x--------x\n" +
+                                    "x--------x\n" +
+                                    "x--------x\n" +
+                                    "x--------x\n" +
+                                    "x--------x\n" +
+                                    "x--------x\n" +
+                                    "xxxxxxxxxx\n";
 
     @Before
     public void initTest() {
-        l = new Labyrinthe(10, 8);
+        //l = new Labyrinthe(10, 8);
     }
 
     /**
-     * test du constructeur normal
+     * test du constructeur defaut
      */
     @Test
-    public void testConstructeur() {
-        assertEquals(10, l.getLargeur());
-        assertEquals(8, l.getHauteur());
+    public void testConstructeurDefaut() {
+        Labyrinthe l = new Labyrinthe();
+        assertEquals(modeleDefaut, l.toString());
+    }
+
+    /**
+     * test construit un labyrinthe custom
+     */
+    @Test
+    public void testConstructeurCustom() {
+        String modele = "xxxxx\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "xxxxx\n";
+        Labyrinthe l = new Labyrinthe(modele);
+        assertEquals(modele, l.toString());
     }
 
     /**
@@ -29,8 +52,13 @@ public class TestLabyrinthe {
      */
     @Test
     public void testConstructeurLargeurMin() {
-        Labyrinthe l = new Labyrinthe(4, 10);
-        assertEquals(5, l.getLargeur());
+        String modele = "xxxx\n" +
+                        "x--x\n" +
+                        "x--x\n" +
+                        "x--x\n" +
+                        "xxxx\n";
+        Labyrinthe l = new Labyrinthe(modele);
+        assertEquals(modeleDefaut, l.toString());
     }
 
     /**
@@ -38,8 +66,13 @@ public class TestLabyrinthe {
      */
     @Test
     public void testConstructeurLargeurMax() {
-        Labyrinthe l = new Labyrinthe(16, 10);
-        assertEquals(15, l.getLargeur());
+        String modele = "xxxxxxxxxxxxxxxx\n" +
+                        "x--------------x\n" +
+                        "x--------------x\n" +
+                        "x--------------x\n" +
+                        "xxxxxxxxxxxxxxxx\n";
+        Labyrinthe l = new Labyrinthe(modele);
+        assertEquals(modeleDefaut, l.toString());
     }
 
     /**
@@ -47,8 +80,12 @@ public class TestLabyrinthe {
      */
     @Test
     public void testConstructeurHauteureurMin() {
-        Labyrinthe l = new Labyrinthe(10, 4);
-        assertEquals(5, l.getHauteur());
+        String modele = "xxxxx\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "xxxxx\n";
+        Labyrinthe l = new Labyrinthe(modele);
+        assertEquals(modeleDefaut, l.toString());
     }
 
     /**
@@ -56,7 +93,26 @@ public class TestLabyrinthe {
      */
     @Test
     public void testConstructeurHauteurMax() {
-        Labyrinthe l = new Labyrinthe(10, 16);
-        assertEquals(15, l.getHauteur());
+        String modele = "xxxxx\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "x---x\n" +
+                        "xxxxx\n";
+        Labyrinthe l = new Labyrinthe(modele);
+        assertEquals(modeleDefaut, l.toString());
     }
+
+
+
 }
