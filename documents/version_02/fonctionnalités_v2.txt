@@ -1,0 +1,15 @@
+Fonctionnalites
+
+- Fonctionnalite 1 : faire les labyrinthes customizées
+	- responsable : demang146u
+
+- Fonctionnalite 2 : gérer les collisions murs/joueur
+	- responsable : nosal9u
+
+- Fonctionnalite 3 : generation de monstre immobiles
+	- responsable : sousa12u
+
+- Fonctionnalite 4 : affichage des tiles (sprites des cases)
+	- responsable : gsell5u
+
+Realisation : 
