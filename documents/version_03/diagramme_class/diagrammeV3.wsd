@@ -8,12 +8,12 @@ interface Jeu {
 }
 
 class JeuPrincipal {
+    +lever: int
     +JeuPrincipal()
 }
 
 class JeuPerso {
-    -personnage: Aventurier
-    +JeuPerso()
+    +JeuPerso(Aventurier)
     +evoluer(Commande): void
     +etreFini(): boolean
 }
@@ -23,15 +23,15 @@ interface DessinJeu {
 }
 
 class DessinPerso {
-    -jeuEnCours
-    +DessinPerso(JeuPerso)
+    +DessinPerso(JeuPerso, Labyrinthe)
     +dessine(BuffuredImage): void
 }
 
 class Labyrinthe {
     -TAILLE_MIN: int
     -TAILLE_MAX: int
-    +Labyrinthe(int, int)
+    +Labyrinthe()
+    +Labyrinthe(String)
 }
 
 class MonstreImmobile {
@@ -72,9 +72,9 @@ class Aventurier {
     +Aventurier(int, int int, String)
 }
 
+DessinPerso "1" --> "1" Labyrinthe : -lab
 JeuPrincipal "1" --> "1" Labyrinthe : -lab
 JeuPrincipal "1" --> "1" Aventurier : -av
-JeuPrincipal "1" --> "0.." MonstreImmobile : -mi
 JeuPerso "1" --> "1" Aventurier : -personnage
 DessinPerso "1" --> "1" JeuPerso : -jeuEnCours
 Labyrinthe "1" --> "0..*" Case : -cases
