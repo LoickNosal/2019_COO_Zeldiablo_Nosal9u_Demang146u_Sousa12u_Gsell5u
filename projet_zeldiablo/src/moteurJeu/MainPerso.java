@@ -1,5 +1,6 @@
 package moteurJeu;
 
+import java.awt.*;
 import java.util.Scanner;
 
 import jeu.Aventurier;
@@ -16,7 +17,7 @@ public class MainPerso {
 
 		// creation du jeu particulier et de son afficheur
 		Labyrinthe lab = new Labyrinthe();
-		Aventurier av = new Aventurier(10, 0, 0, "Aventurier",lab);
+		Aventurier av = new Aventurier(10, 100, 100, "Aventurier",lab);
 		JeuPerso jeu = new JeuPerso(av);
 		DessinPerso dp = new DessinPerso(jeu, lab);
 
@@ -30,7 +31,6 @@ public class MainPerso {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		// lorsque le jeu est fini
 		System.out.println("Fin du Jeu - appuyer sur entree");
 		Scanner sc = new Scanner(System.in);

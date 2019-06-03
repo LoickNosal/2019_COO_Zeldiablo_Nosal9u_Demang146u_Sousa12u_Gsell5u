@@ -1,6 +1,6 @@
 package moteurJeu;
 
-import jeu.Labyrinthe;
+import jeu.*;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -42,6 +42,18 @@ public class DessinPerso implements DessinJeu{
 			casevide = null;
 		}
 
+		Case[][] tabcase = lab.getCases();
+
+		for(int i = 0; i < lab.getHauteur(); i++){
+			for(int j = 0; j< lab.getLargeur(); j++){
+				if(tabcase[i][j].peutTraverser()) {
+					g.drawImage(casevide, i*80, j*80, 80,80,null);
+				}
+				else{
+					g.drawImage(mur, i*80, j*80, 80,80,null);
+				}
+			}
+		}
 
 		g.drawImage(sprite, jeuEnCours.getPerso().getX()-46, jeuEnCours.getPerso().getY()-52, 61,78,null);
 
