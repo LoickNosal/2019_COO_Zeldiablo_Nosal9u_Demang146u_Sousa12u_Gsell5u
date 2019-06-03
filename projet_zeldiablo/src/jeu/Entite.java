@@ -59,10 +59,10 @@ abstract public class Entite{
     {
         switch(cardinaux)
         {
-            case 'N': this.y--; break;
-            case 'E': this.x++; break;
-            case 'S': this.y++; break;
-            case 'O': this.x--; break;
+            case 'N': this.y-=10; break;
+            case 'E': this.x+=10; break;
+            case 'S': this.y+=10; break;
+            case 'O': this.x-=10; break;
         }
     }
 }
