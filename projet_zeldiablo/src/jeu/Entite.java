@@ -36,7 +36,7 @@ abstract public class Entite{
         if(l != null ) {
         	this.lab = l;
         }else {
-        	this.lab = new Labyrinthe(10, 10);
+        	this.lab = new Labyrinthe();
         }
 
     }

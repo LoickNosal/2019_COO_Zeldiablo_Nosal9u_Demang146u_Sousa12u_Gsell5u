@@ -15,11 +15,10 @@ public class MainPerso {
 	public static void main(String[] args) {
 
 		// creation du jeu particulier et de son afficheur
-		Labyrinthe lab = new Labyrinthe(10, 10);
+		Labyrinthe lab = new Labyrinthe();
 		Aventurier av = new Aventurier(10, 0, 0, "Aventurier",lab);
 		JeuPerso jeu = new JeuPerso(av);
-		Labyrinthe lb = new Labyrinthe();
-		DessinPerso dp = new DessinPerso(jeu);
+		DessinPerso dp = new DessinPerso(jeu, lab);
 
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, dp);
