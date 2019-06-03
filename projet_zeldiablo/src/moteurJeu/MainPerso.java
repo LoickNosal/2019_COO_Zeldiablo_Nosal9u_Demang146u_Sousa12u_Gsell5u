@@ -18,6 +18,7 @@ public class MainPerso {
 		Labyrinthe lab = new Labyrinthe(10, 10);
 		Aventurier av = new Aventurier(10, 0, 0, "Aventurier",lab);
 		JeuPerso jeu = new JeuPerso(av);
+		Labyrinthe lb = new Labyrinthe();
 		DessinPerso dp = new DessinPerso(jeu);
 
 		// classe qui lance le moteur de jeu generique
