@@ -10,9 +10,21 @@ import moteurJeu.JeuPerso;
 public class MonstreImmobile extends Entite{
 	private int degat;
 	
-	public MonstreImmobile(int pPv, int px, int py, int pdegat, String pNom, Labyrinthe pLab) {
+	public MonstreImmobile(int pPv, int px, int py, int pDegat, String pNom, Labyrinthe pLab) {
 		super(pPv, px, py, pNom, pLab);
-		degat = pdegat;
+		
+		if(pDegat < 0) {
+			pDegat = 0;
+		}
+		degat = pDegat;
+		if(!lab.caseTraversable(px, py)) {
+			pv = -1;
+			x = -1;
+			y = -1;
+			degat = -1;
+			nom = null;
+			lab = null;
+		}
 	}
 	
 	public void attaquer(Aventurier pPerso, int dx, int dy) {
@@ -26,5 +38,9 @@ public class MonstreImmobile extends Entite{
 	@Override
 	public void seDeplacer(char cardinaux) {
 		
+	}
+	
+	public int getDegat() {
+		return degat;
 	}
 }
