@@ -3,6 +3,7 @@ package moteurJeu;
 import java.util.Scanner;
 
 import jeu.Aventurier;
+import jeu.Labyrinthe;
 
 /**
  * Main du moteur graphique
@@ -16,6 +17,7 @@ public class MainPerso {
 		// creation du jeu particulier et de son afficheur
 		Aventurier av = new Aventurier(10, 50, 50, "Aventurier");
 		JeuPerso jeu = new JeuPerso(av);
+		Labyrinthe lb = new Labyrinthe();
 		DessinPerso dp = new DessinPerso(jeu);
 		
 		// classe qui lance le moteur de jeu generique
