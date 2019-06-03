@@ -47,7 +47,7 @@ public class Labyrinthe {
      * getter
      * @return hauteur
      */
-    public int getHeuteur() {
+    public int getHauteur() {
         return cases[0].length;
     }
 
