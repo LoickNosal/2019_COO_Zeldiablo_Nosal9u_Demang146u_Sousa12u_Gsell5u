@@ -27,11 +27,14 @@ public class JeuPerso implements Jeu{
 	public void evoluer(Commande commandeUser) {
 		if (commandeUser.bas == true) {
 			this.personnage.seDeplacer('S');
-		}else if (commandeUser.droite == true) {
+		}
+		if (commandeUser.droite == true) {
 			this.personnage.seDeplacer('E');
-		}else if (commandeUser.gauche == true) {
+		}
+		if (commandeUser.gauche == true) {
 			this.personnage.seDeplacer('O');
-		}else if (commandeUser.haut == true) {
+		}
+		if (commandeUser.haut == true) {
 			this.personnage.seDeplacer('N');
 		}
 	}
