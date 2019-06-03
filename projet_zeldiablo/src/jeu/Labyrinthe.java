@@ -91,6 +91,7 @@ public class Labyrinthe {
     public Case[][] getCases() {
         return cases;
     }
+    
 
     /**
      * valide le modele
