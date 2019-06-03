@@ -23,4 +23,9 @@ public class CaseVide extends Case{
 		this.posY = y;
 	}
 
+	@Override
+	public boolean peutTraverser() {
+		return true;
+	}
+
 }
