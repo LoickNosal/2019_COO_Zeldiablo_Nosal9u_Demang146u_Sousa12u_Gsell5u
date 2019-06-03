@@ -1,3 +1,5 @@
+package jeu;
+
 abstract public class Entite{
 
     private int pv;

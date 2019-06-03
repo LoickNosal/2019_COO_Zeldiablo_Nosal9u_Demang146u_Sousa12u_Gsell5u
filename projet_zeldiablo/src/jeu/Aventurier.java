@@ -1,3 +1,5 @@
+package jeu;
+
 public class Aventurier extends Entite {
 
     /**
