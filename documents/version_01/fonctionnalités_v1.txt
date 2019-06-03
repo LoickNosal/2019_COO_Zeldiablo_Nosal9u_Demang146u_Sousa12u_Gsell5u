@@ -1,21 +1,21 @@
-* Fonctionnalités
+* Fonctionnalitï¿½s
 
-- fonctionnalités 1 : [Création d'un labyrinthe par défaut (classe Labyrinthe]
-	Création d'un labyrinthe contenant n*n Cases.
-	Critères de validation :
+- fonctionnalitï¿½s 1 : [Crï¿½ation d'un labyrinthe par dï¿½faut (classe Labyrinthe]
+	Crï¿½ation d'un labyrinthe contenant n*n Cases.
+	Critï¿½res de validation :
 		Le labyrinthe est compris entre 5*5 et 15*15 cases.
 	Tests :
 		valeurs initiales du labyrinthe
 	- responsable : demange146u
 
-- fonctionnalités 2 : [Création de l'Aventurier (classe Entité et Aventurier)]
-	Création d'un aventurier (dérive de Entité) qui possède des points des vie
+- fonctionnalitï¿½s 2 : [Crï¿½ation de l'Aventurier (classe Entitï¿½ et Aventurier)]
+	Crï¿½ation d'un aventurier (dï¿½rive de Entitï¿½) qui possï¿½de des points des vie
 	Tests :
 		valeurs initiales de l'aventurier
 	- responsable : sousa12u gsell5u
 
-- fonctionnalités 3 : [Création des cases vides et des murs (classe case, caseVide et Mur]
-	Les cases peuvent soit être vides ou soit des murs.
+- fonctionnalitï¿½s 3 : [Crï¿½ation des cases vides et des murs (classe case, caseVide et Mur]
+	Les cases peuvent soit ï¿½tre vides ou soit des murs.
 	Tests :
 		valeurs initiales d'une cases
 	- responsable : nosal9u 
