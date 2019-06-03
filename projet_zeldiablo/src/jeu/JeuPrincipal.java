@@ -1,7 +1,10 @@
 package jeu;
 
 import java.util.ArrayList;
-
+/**
+ * modelise le jeu principal
+ *
+ */
 public class JeuPrincipal {
 
     public Labyrinthe lab;

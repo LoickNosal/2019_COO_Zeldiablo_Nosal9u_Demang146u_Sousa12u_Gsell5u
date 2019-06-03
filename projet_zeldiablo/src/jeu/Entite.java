@@ -1,12 +1,34 @@
 package jeu;
 
+/**
+ * Modelise une entite (personnage, monstre)
+ *
+ */
 abstract public class Entite{
 
+	/**
+	 * point de vie de l'entite
+	 */
     protected int pv;
+    /**
+     * position x de l'entite
+     */
     protected int x;
+    /**
+     * position y de l'entite
+     */
     protected int y;
+    /**
+     * nom de l'entite
+     */
     protected String nom;
+    /**
+     * labyrinthe dans lequel est l'entite
+     */
     protected Labyrinthe lab;
+    /**
+     * indique si l'entite est vivante
+     */
     protected boolean vivant;
 
     /**
@@ -118,6 +140,10 @@ abstract public class Entite{
 
     }
     
+    /**
+     * le joueur subit des degats
+     * @param pDegat degat que l'entite prend
+     */
     public void subirDegat(int pDegat) {
     	pv -= pDegat;
     	if(pv < 0) {
@@ -126,6 +152,9 @@ abstract public class Entite{
     	mort();
     }
     
+    /**
+     * indique si le l'entite est mort
+     */
     public void mort() {
     	if(pv == 0) {
     		vivant = false;
