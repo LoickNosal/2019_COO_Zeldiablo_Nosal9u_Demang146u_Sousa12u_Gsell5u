@@ -1,0 +1,24 @@
+@startuml
+
+title Magasin
+
+
+participant "moteur:MoteurGraphique" as 0
+participant "jeup:JeuPerso" as 1
+participant "personnage:Aventurier" as 2
+
+
+
+loop foreach
+0->1 : evoluer(commande)
+activate 1
+
+1->2 : seDeplacer(charactere)
+2-->1
+
+1-->0
+deactivate 1
+
+
+
+@enduml
