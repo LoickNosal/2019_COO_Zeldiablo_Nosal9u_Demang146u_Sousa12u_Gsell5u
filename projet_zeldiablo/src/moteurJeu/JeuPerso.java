@@ -43,4 +43,8 @@ public class JeuPerso implements Jeu{
 		return false;
 	}
 
+	public Aventurier getPerso() {
+		return personnage;
+	}
+
 }
