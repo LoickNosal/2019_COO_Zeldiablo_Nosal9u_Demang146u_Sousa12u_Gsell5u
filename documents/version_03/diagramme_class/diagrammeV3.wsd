@@ -31,11 +31,8 @@ class Labyrinthe {
 }
 
 class MonstreImmobile {
-    -pv: int
-    -x: int
-    -y: int
     -degat: int
-    -nom: String
+    
     +MonstreImmobile(int, int, int, String, int)
     +attaquer(): void
 }
@@ -58,8 +55,9 @@ abstract Entite {
     -x: int
     -y: int
     -nom: String
+    -lab: Labyrinthe
 
-    +Entite(int, int, int, String)
+    +Entite(int, int, int, String, Layrinthe)
     +seDeplacer(char): void
 }
 
@@ -79,5 +77,6 @@ DessinPerso ..|> DessinJeu
 CaseVide --|> Case
 Mur --|> Case
 Aventurier --|> Entite
+MonstreImmobile --|> Entite
 
 @enduml
