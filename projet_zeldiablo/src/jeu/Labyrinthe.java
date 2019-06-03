@@ -1,5 +1,7 @@
 package jeu;
 
+import java.util.ArrayList;
+
 /**
  * @author Louis Demange
  * Modelise le labyrinthe
@@ -9,13 +11,14 @@ public class Labyrinthe {
     private final int TAILLE_MIN = 5;
     private final int TAILLE_MAX = 15;
     private Case[][] cases;
-    private Aventurier aventurier;
+    private ArrayList<MonstreImmobile> mi;
 
     /**
      * Creation d'un Labyrinthe par defaut
      */
     public Labyrinthe() {
         defaut();
+        mi = new ArrayList<MonstreImmobile>();
     }
 
     /**
@@ -48,6 +51,7 @@ public class Labyrinthe {
                 }
             }
         }
+        mi = new ArrayList<MonstreImmobile>();
     }
 
     /**
@@ -107,6 +111,10 @@ public class Labyrinthe {
     public int getHauteur() {
         return cases[0].length;
     }
+    
+    public ArrayList<MonstreImmobile> getMi() {
+		return mi;
+	}
 
     /**
      * valide le modele
