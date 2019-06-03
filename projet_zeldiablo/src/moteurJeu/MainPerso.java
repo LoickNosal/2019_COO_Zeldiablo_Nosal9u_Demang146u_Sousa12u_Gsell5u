@@ -10,7 +10,7 @@ import jeu.Labyrinthe;
 
 /**
  * Main du moteur graphique
- * @author Loï¿½ck
+ * @author Loïck
  *
  */
 public class MainPerso {

@@ -1,16 +1,16 @@
 package jeu;
 
 /**
- * @author Nosal Loïck
- * Classe qui modélise une Case Vide
+ * @author Nosal Loick
+ * Classe qui modelise une Case Vide
  */
 public class CaseVide extends Case{
 	
 	
 	/**
 	 * Constructeur de base d'une case Vide
-	 * @param x coordonnées x de la case Vide
-	 * @param y coordonnées y de la case Vide
+	 * @param x coordonnees x de la case Vide
+	 * @param y coordonnees y de la case Vide
 	 */
 	public CaseVide(int x, int y) {
 		if (x < 0) {

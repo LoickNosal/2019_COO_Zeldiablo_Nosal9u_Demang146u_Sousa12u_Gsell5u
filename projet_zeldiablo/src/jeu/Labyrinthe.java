@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * @author Louis Demange
- * Modélise le labyrinthe
+ * Modelise le labyrinthe
  */
 public class Labyrinthe {
 
@@ -65,6 +65,12 @@ public class Labyrinthe {
         return cases[x][y].peutTraverser();
     }
     
+    /**
+     * indique si les position posX,posY est sur un obstacle du labyrinthe
+     * @param posX position x a tester
+     * @param posY position y a tester 
+     * @return true si est sur un obstacle
+     */
    public boolean estSurUnObstacle(int posX,int posY) {
 	   boolean res = false;
 	   for (int i = 0; i < this.getHauteur(); i++) {
