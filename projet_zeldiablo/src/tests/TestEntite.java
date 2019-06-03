@@ -15,7 +15,7 @@ public class TestEntite {
 
     @Test
     public void testConstructeurAventurier() {
-    	Labyrinthe lab = new Labyrinthe(10, 10);
+    	Labyrinthe lab = new Labyrinthe();
         Aventurier a = new Aventurier(10, 0,0, "LOL",lab);
         assertEquals("Le constructeur doit fonctionner normalement (PV)", 10, a.getPv());
         assertEquals("Le constructeur doit fonctionner normalement (NOM)", true, a.getNom().equals("LOL"));
@@ -27,7 +27,7 @@ public class TestEntite {
 
     @Test
     public void testSeDeplacer() {
-    	Labyrinthe lab = new Labyrinthe(10, 10);
+    	Labyrinthe lab = new Labyrinthe();
         Aventurier a = new Aventurier(10, 0,0, "LOL",lab);
         a.seDeplacer('N');
         a.seDeplacer('E');
