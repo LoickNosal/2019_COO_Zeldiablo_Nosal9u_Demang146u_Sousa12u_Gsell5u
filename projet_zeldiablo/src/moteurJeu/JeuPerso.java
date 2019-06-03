@@ -29,7 +29,6 @@ public class JeuPerso implements Jeu{
 	 * des valeurs des attributs gauche,droite,haut,bas
 	 */
 	public void evoluer(Commande commandeUser) {
-		ArrayList<MonstreImmobile> monstres;
 		if (commandeUser.bas == true) {
 			this.personnage.seDeplacer('S');
 		}

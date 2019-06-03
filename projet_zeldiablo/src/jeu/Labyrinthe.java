@@ -51,6 +51,7 @@ public class Labyrinthe {
                 }
             }
         }
+        mi = new ArrayList<MonstreImmobile>();
     }
 
     /**
