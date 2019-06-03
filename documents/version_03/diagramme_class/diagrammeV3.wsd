@@ -7,6 +7,10 @@ interface Jeu {
     +etreFini(): boolean
 }
 
+class JeuPrincipal {
+    +JeuPrincipal()
+}
+
 class JeuPerso {
     -personnage: Aventurier
     +JeuPerso()
@@ -31,13 +35,10 @@ class Labyrinthe {
 }
 
 class MonstreImmobile {
-    -pv: int
-    -x: int
-    -y: int
     -degat: int
-    -nom: String
+
     +MonstreImmobile(int, int, int, String, int)
-    +attaquer(): void
+    +attaquer(JeuPerso): void
 }
 
 abstract Case {
@@ -54,30 +55,35 @@ class Mur {
 }
 
 abstract Entite {
-    -pv: int
-    -x: int
-    -y: int
-    -nom: String
+    #pv: int
+    #x: int
+    #y: int
+    #nom: String
+    #lab: Labyrinthe
+    #vivant: boolean
 
-    +Entite(int, int, int, String)
+    +Entite(int, int, int, String, Layrinthe)
     +seDeplacer(char): void
+    +subirDegat(int): void
+    +mort(): void
 }
 
 class Aventurier {
     +Aventurier(int, int int, String)
 }
 
-JeuPerso "1" --> "1" Labyrinthe : -labyrinthe
+JeuPrincipal "1" --> "1" Labyrinthe : -lab
+JeuPrincipal "1" --> "1" Aventurier : -av
+JeuPrincipal "1" --> "0.." MonstreImmobile : -mi
+JeuPerso "1" --> "1" Aventurier : -personnage
 DessinPerso "1" --> "1" JeuPerso : -jeuEnCours
 Labyrinthe "1" --> "0..*" Case : -cases
-JeuPerso "1" --> "0..*" Aventurier : -aventurier
-Labyrinthe "1" --> "1" Aventurier : -aventurier
-Labyrinthe "1" --> "0.." MonstreImmobile: -monstres
 
 JeuPerso ..|> Jeu
 DessinPerso ..|> DessinJeu
 CaseVide --|> Case
 Mur --|> Case
 Aventurier --|> Entite
+MonstreImmobile --|> Entite
 
 @enduml

@@ -1,12 +1,35 @@
 package jeu;
 
+/**
+ * Modelise une entite (personnage, monstre)
+ *
+ */
 abstract public class Entite{
 
+	/**
+	 * point de vie de l'entite
+	 */
     protected int pv;
+    /**
+     * position x de l'entite
+     */
     protected int x;
+    /**
+     * position y de l'entite
+     */
     protected int y;
+    /**
+     * nom de l'entite
+     */
     protected String nom;
+    /**
+     * labyrinthe dans lequel est l'entite
+     */
     protected Labyrinthe lab;
+    /**
+     * indique si l'entite est vivante
+     */
+    protected boolean vivant;
 
     /**
      * Le constructeur de la classe Entite
@@ -38,6 +61,8 @@ abstract public class Entite{
         }else {
         	this.lab = new Labyrinthe();
         }
+        
+        vivant = true;
 
     }
 
@@ -61,37 +86,39 @@ abstract public class Entite{
      * Fonction seDeplacer : on met les char des points cardinaux pour choisir la position dans laquelle l'Entite va avancer
      * @param cardinaux Les points cardinaux
      */
-    public void seDeplacer(char cardinaux)
-    {
-    	if (peutAvancer() == true) {
-    		switch(cardinaux)
-            {
-                case 'N': this.y-=10; break;
-                case 'E': this.x+=10; break;
-                case 'S': this.y+=10; break;
-                case 'O': this.x-=10; break;
-            }
-		}
-
-    }
+    public abstract void seDeplacer(char cardinaux);
 
     /**
      * permet de detecter si le joueur entre en collision avec un obstacle
      * @return true si le joueur peut traverser
      */
-    public boolean peutAvancer() {
+    public boolean peutAvancer(int posX, int posY) {
 		boolean res = false;
-		for (int i = 0; i < this.lab.getHauteur(); i++) {
-			for (int j = 0; j < this.lab.getLargeur(); j++) {
-				if (this.x >= this.lab.getCases()[i][j].getPosX() && this.x <= this.lab.getCases()[i][j].getPosX() + 80
-						&& this.y >= this.lab.getCases()[i][j].getPosY() && this.y <= this.lab.getCases()[i][j].getPosX() + 80) {
-					if (this.lab.getCases()[i][j].peutTraverser() == true) {
-						res = true;
-					}
-				}
+			if (this.lab.estSurUnObstacle(posX,posY) == false) {
+				res = true;
 			}
-		}
 		return res;
 
+    }
+    
+    /**
+     * le joueur subit des degats
+     * @param pDegat degat que l'entite prend
+     */
+    public void subirDegat(int pDegat) {
+    	pv -= pDegat;
+    	if(pv < 0) {
+    		pv = 0;
+    	}
+    	mort();
+    }
+    
+    /**
+     * indique si le l'entite est mort
+     */
+    public void mort() {
+    	if(pv == 0) {
+    		vivant = false;
+    	}
     }
 }

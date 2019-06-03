@@ -1,10 +1,14 @@
 package moteurJeu;
 
+import java.util.ArrayList;
+
 import jeu.Aventurier;
+import jeu.Labyrinthe;
+import jeu.MonstreImmobile;
 
 /**
- * représente le jeu Zeldiablo
- * @author Loïck
+ * represente le jeu Zeldiablo
+ * @author Loick
  *
  */
 public class JeuPerso implements Jeu{
@@ -25,6 +29,7 @@ public class JeuPerso implements Jeu{
 	 * des valeurs des attributs gauche,droite,haut,bas
 	 */
 	public void evoluer(Commande commandeUser) {
+		ArrayList<MonstreImmobile> monstres;
 		if (commandeUser.bas == true) {
 			this.personnage.seDeplacer('S');
 		}
@@ -41,7 +46,7 @@ public class JeuPerso implements Jeu{
 
 	@Override
 	/**
-	 * le jeu ne s'arrête jamais. Return false
+	 * le jeu ne s'arrï¿½te jamais. Return false
 	 */
 	public boolean etreFini() {
 		return false;

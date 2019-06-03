@@ -1,20 +1,24 @@
 package jeu;
 
+import java.util.ArrayList;
+
 /**
  * @author Louis Demange
- * Modélise le labyrinthe
+ * Modelise le labyrinthe
  */
 public class Labyrinthe {
 
     private final int TAILLE_MIN = 5;
     private final int TAILLE_MAX = 15;
     private Case[][] cases;
+    private ArrayList<MonstreImmobile> mi;
 
     /**
      * Creation d'un Labyrinthe par defaut
      */
     public Labyrinthe() {
         defaut();
+        mi = new ArrayList<MonstreImmobile>();
     }
 
     /**
@@ -60,6 +64,25 @@ public class Labyrinthe {
             return false;
         return cases[x][y].peutTraverser();
     }
+    
+    /**
+     * indique si les position posX,posY est sur un obstacle du labyrinthe
+     * @param posX position x a tester
+     * @param posY position y a tester 
+     * @return true si est sur un obstacle
+     */
+   public boolean estSurUnObstacle(int posX,int posY) {
+	   boolean res = false;
+	   for (int i = 0; i < this.getHauteur(); i++) {
+		for (int j = 0; j < this.getLargeur(); j++) {
+			if (cases[i][j].estDedans(posX, posY) && cases[i][j].peutTraverser() == false) {
+				res = true;
+				return res;
+			}
+		}
+	}
+	   return res;
+   }
 
     public String toString() {
         String res = "";
@@ -87,6 +110,10 @@ public class Labyrinthe {
     public int getHauteur() {
         return cases[0].length;
     }
+    
+    public ArrayList<MonstreImmobile> getMi() {
+		return mi;
+	}
 
     /**
      * valide le modele
