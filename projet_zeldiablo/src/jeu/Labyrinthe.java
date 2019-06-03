@@ -1,10 +1,13 @@
 package jeu;
 
+/**
+ * @author Louis Demange
+ * Modélise le labyrinthe
+ */
 public class Labyrinthe {
 
     private static final int TAILLE_MIN = 5;
     private static final int TAILLE_MAX = 5;
-
     private Case[][] cases;
 
     /**
@@ -31,4 +34,21 @@ public class Labyrinthe {
             }
         }
     }
+
+    /**
+     * getter
+     * @return largeur
+     */
+    public int getLargeur() {
+        return cases.length;
+    }
+
+    /**
+     * getter
+     * @return hauteur
+     */
+    public int getHeuteur() {
+        return cases[0].length;
+    }
+
 }

@@ -1,7 +1,5 @@
 package jeu;
 
-import src.jeu.Case;
-
 /**
  * @author Nosal Loïck
  * Classe qui modélise une Case Vide
