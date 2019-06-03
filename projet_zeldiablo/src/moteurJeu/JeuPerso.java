@@ -42,9 +42,6 @@ public class JeuPerso implements Jeu{
 		if (commandeUser.haut == true) {
 			this.personnage.seDeplacer('N');
 		}
-		for(MonstreImmobile monstre : monstres) {
-			monstre.attaquer(this);
-		}
 	}
 
 	@Override
