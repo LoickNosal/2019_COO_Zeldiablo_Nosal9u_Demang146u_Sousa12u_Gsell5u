@@ -14,8 +14,9 @@ public class JeuPerso implements Jeu{
 	 */
 	private Aventurier personnage;
 	
-	public JeuPerso() {
+	public JeuPerso(Aventurier av) {
 		super();
+		this.personnage = av;
 	}
 
 	@Override
