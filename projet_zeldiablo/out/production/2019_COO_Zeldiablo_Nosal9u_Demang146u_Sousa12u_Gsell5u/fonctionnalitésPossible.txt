@@ -1,15 +1,0 @@
--Création d'un labyrinthe par défaut
--Collision avec les Murs
--Création de l'Aventurier
--Cases déclencheur (pièges, objets ..)
--Création des cases vides et des murs
--Gestion des niveaux	
--Affichage avec des sprites
--Gestion d'un labyrinthe multi-étages
--Génération de monstres immobiles
--Déplacement aléatoire des monstres
--Monstres attirés par le héros
--Monstres au comportement intelligent
--Monstres avec intelligence variable
--Gestion d'un menu
-
