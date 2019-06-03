@@ -30,6 +30,16 @@ class Labyrinthe {
     +Labyrinthe(int, int)
 }
 
+class MonstreImmobile {
+    -pv: int
+    -x: int
+    -y: int
+    -degat: int
+    -nom: String
+    +MonstreImmobile(int, int, int, String, int)
+    +attaquer(): void
+}
+
 abstract Case {
     #posX: int
     #posY: int
@@ -62,6 +72,7 @@ DessinPerso "1" --> "1" JeuPerso : -jeuEnCours
 Labyrinthe "1" --> "0..*" Case : -cases
 JeuPerso "1" --> "0..*" Aventurier : -aventurier
 Labyrinthe "1" --> "1" Aventurier : -aventurier
+Labyrinthe "1" --> "0.." MonstreImmobile: -monstres
 
 JeuPerso ..|> Jeu
 DessinPerso ..|> DessinJeu

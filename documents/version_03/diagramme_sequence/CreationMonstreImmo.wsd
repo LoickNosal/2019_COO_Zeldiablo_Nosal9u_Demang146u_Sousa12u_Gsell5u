@@ -1,0 +1,19 @@
+@startuml 
+title Création de Monstre Immobile
+participant mainPerso << (C,#ADD1B2) >>
+participant Labyrinthe << (C,#ADD1B2) >>
+participant MonstreImmobile << (C,#ADD1B2) >>
+
+create Labyrinthe
+mainPerso -> Labyrinthe : Labyrinthe()
+Activate Labyrinthe
+loop
+create MonstreImmobile
+Labyrinthe -> MonstreImmobile : MonstreImmobile()
+activate MonstreImmobile
+MonstreImmobile --> Labyrinthe
+deactivate MonstreImmobile
+end
+Labyrinthe --> mainPerso
+deactivate Labyrinthe
+@enduml

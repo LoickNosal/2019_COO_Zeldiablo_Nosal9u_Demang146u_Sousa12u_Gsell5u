@@ -1,0 +1,16 @@
+@startuml 
+title Attaque de Monstre Immobile
+participant jeuPerso << (C,#ADD1B2) >>
+participant MonstreImmobile << (C,#ADD1B2) >>
+
+
+ -> jeuPerso : seDeplacer() 
+activate jeuPerso
+jeuPerso -> MonstreImmobile : attaquer()
+activate MonstreImmobile
+MonstreImmobile --> jeuPerso
+deactivate MonstreImmobile
+ <-- jeuPerso
+deactivate jeuPerso
+
+@enduml

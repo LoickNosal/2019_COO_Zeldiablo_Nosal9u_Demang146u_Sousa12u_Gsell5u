@@ -14,7 +14,7 @@ public class MainPerso {
 	public static void main(String[] args) {
 		
 		// creation du jeu particulier et de son afficheur
-		Aventurier av = new Aventurier(10, 0, 0, "Aventurier");
+		Aventurier av = new Aventurier(10, 50, 50, "Aventurier");
 		JeuPerso jeu = new JeuPerso(av);
 		DessinPerso dp = new DessinPerso(jeu);
 		
@@ -23,7 +23,7 @@ public class MainPerso {
 		
 		// lance la boucle de jeu qui tourne jusque la fin du jeu
 		try {
-			moteur.lancerJeu(600, 600);
+			moteur.lancerJeu(800, 800);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
