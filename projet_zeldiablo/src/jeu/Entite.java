@@ -16,7 +16,7 @@ abstract public class Entite{
      */
     public Entite(int p, int x, int y, String n)
     {
-        if(pv<= 0){
+        if(p<= 0){
             this.pv = 1;
         }
         else{
