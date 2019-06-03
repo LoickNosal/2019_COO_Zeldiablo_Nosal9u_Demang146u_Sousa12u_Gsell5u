@@ -16,5 +16,4 @@ public class JeuPrincipal {
         this.av = new Aventurier(10, 100,100, "Aventurier", this.lab);
     }
 
-
 }
