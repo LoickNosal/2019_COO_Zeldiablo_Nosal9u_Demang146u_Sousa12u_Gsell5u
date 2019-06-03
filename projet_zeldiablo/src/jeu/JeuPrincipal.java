@@ -1,7 +1,10 @@
 package jeu;
 
 import java.util.ArrayList;
-
+/**
+ * modelise le jeu principal
+ *
+ */
 public class JeuPrincipal {
 
     public Labyrinthe lab;
@@ -23,6 +26,5 @@ public class JeuPrincipal {
                 "xxxxxxxxxx\n");
         this.av = new Aventurier(10, 100,100, "Aventurier", this.lab);
     }
-
 
 }

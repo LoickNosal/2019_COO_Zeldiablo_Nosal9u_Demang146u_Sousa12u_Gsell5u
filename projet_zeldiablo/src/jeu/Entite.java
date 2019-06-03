@@ -1,12 +1,34 @@
 package jeu;
 
+/**
+ * Modelise une entite (personnage, monstre)
+ *
+ */
 abstract public class Entite{
 
+	/**
+	 * point de vie de l'entite
+	 */
     protected int pv;
+    /**
+     * position x de l'entite
+     */
     protected int x;
+    /**
+     * position y de l'entite
+     */
     protected int y;
+    /**
+     * nom de l'entite
+     */
     protected String nom;
+    /**
+     * labyrinthe dans lequel est l'entite
+     */
     protected Labyrinthe lab;
+    /**
+     * indique si l'entite est vivante
+     */
     protected boolean vivant;
 
     /**
@@ -64,46 +86,7 @@ abstract public class Entite{
      * Fonction seDeplacer : on met les char des points cardinaux pour choisir la position dans laquelle l'Entite va avancer
      * @param cardinaux Les points cardinaux
      */
-    public void seDeplacer(char cardinaux)
-    {
-    	int futureposX = 0;
-    	int futureposY = 0;
-    	
-    	switch(cardinaux)
-        {
-            case 'N': 
-            futureposY = this.y-10; 
-            futureposX = this.x;
-            break;
-            
-            case 'E': 
-            futureposX = this.x+10;
-            futureposY = this.y;
-            break;
-            
-            case 'S': 
-            futureposY = this.y+10;
-            futureposX = this.x;
-            break;
-            
-            case 'O': 
-            futureposX = this.x-10;
-            futureposY = this.y;
-            break;
-        }
-    	
-    	
-    	if (peutAvancer(futureposX,futureposY) == true) {
-    		switch(cardinaux)
-            {
-                case 'N': this.y-=10; break;
-                case 'E': this.x+=10; break;
-                case 'S': this.y+=10; break;
-                case 'O': this.x-=10; break;
-            }
-		}
-
-    }
+    public abstract void seDeplacer(char cardinaux);
 
     /**
      * permet de detecter si le joueur entre en collision avec un obstacle
@@ -118,6 +101,10 @@ abstract public class Entite{
 
     }
     
+    /**
+     * le joueur subit des degats
+     * @param pDegat degat que l'entite prend
+     */
     public void subirDegat(int pDegat) {
     	pv -= pDegat;
     	if(pv < 0) {
@@ -126,6 +113,9 @@ abstract public class Entite{
     	mort();
     }
     
+    /**
+     * indique si le l'entite est mort
+     */
     public void mort() {
     	if(pv == 0) {
     		vivant = false;

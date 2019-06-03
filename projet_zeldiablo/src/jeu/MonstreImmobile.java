@@ -15,9 +15,14 @@ public class MonstreImmobile extends Entite{
 		degat = pdegat;
 	}
 	
-	public void attaquer(JeuPerso jeuPerso) {
-		Aventurier perso = jeuPerso.getPerso();
+	public void attaquer(Aventurier pPerso) {
+		Aventurier perso = pPerso;
 		if(x - perso.x == 1) // A FAIRE
 		perso.subirDegat(degat);
+	}
+
+	@Override
+	public void seDeplacer(char cardinaux) {
+		
 	}
 }

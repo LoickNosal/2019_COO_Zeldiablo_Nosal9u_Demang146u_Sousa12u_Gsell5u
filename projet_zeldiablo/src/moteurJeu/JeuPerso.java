@@ -7,8 +7,8 @@ import jeu.Labyrinthe;
 import jeu.MonstreImmobile;
 
 /**
- * repr�sente le jeu Zeldiablo
- * @author Lo�ck
+ * represente le jeu Zeldiablo
+ * @author Loick
  *
  */
 public class JeuPerso implements Jeu{

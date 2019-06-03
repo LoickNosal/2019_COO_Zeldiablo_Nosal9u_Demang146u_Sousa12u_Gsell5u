@@ -1,14 +1,14 @@
 package jeu;
 /**
- * @author Nosal Loïck
+ * @author Nosal Loick
  * Classe qui mod2lise un mur
  */
 public class Mur extends Case {
 	
 	/**
 	 * Constructeur de base d'un Mur
-	 * @param x coordonnées x du mur
-	 * @param y coordonnées y du mur
+	 * @param x coordonnees x du mur
+	 * @param y coordonnees y du mur
 	 */
 	public Mur(int x, int y) {
 		if (x < 0) {
