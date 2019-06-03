@@ -1,14 +1,14 @@
 package jeu;
 /**
- * @author Nosal Lo�ck
- * Classe qui mod�lise un mur
+ * @author Nosal Loïck
+ * Classe qui mod2lise un mur
  */
 public class Mur extends Case {
 	
 	/**
 	 * Constructeur de base d'un Mur
-	 * @param x coordonn�es x du mur
-	 * @param y coordonn�es y du mur
+	 * @param x coordonnées x du mur
+	 * @param y coordonnées y du mur
 	 */
 	public Mur(int x, int y) {
 		if (x < 0) {
@@ -23,6 +23,11 @@ public class Mur extends Case {
 
 	public String toString() {
 		return "x";
+	}
+
+	@Override
+	public boolean peutTraverser() {
+		return false;
 	}
 
 }

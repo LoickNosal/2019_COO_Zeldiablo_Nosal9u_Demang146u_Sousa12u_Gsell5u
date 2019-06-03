@@ -21,6 +21,8 @@ public abstract class Case {
 	public int getPosY() {
 		return posY;
 	}
+	
+	public abstract boolean peutTraverser();
 
 	
 

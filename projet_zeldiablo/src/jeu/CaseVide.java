@@ -1,16 +1,16 @@
 package jeu;
 
 /**
- * @author Nosal Loïck
- * Classe qui modélise une Case Vide
+ * @author Nosal LoÃ¯ck
+ * Classe qui modÃ©lise une Case Vide
  */
 public class CaseVide extends Case{
 	
 	
 	/**
 	 * Constructeur de base d'une case Vide
-	 * @param x coordonnées x de la case Vide
-	 * @param y coordonnées y de la case Vide
+	 * @param x coordonnÃ©es x de la case Vide
+	 * @param y coordonnÃ©es y de la case Vide
 	 */
 	public CaseVide(int x, int y) {
 		if (x < 0) {
@@ -25,6 +25,11 @@ public class CaseVide extends Case{
 
 	public String toString() {
 		return "-";
+	}
+
+	@Override
+	public boolean peutTraverser() {
+		return true;
 	}
 
 }
