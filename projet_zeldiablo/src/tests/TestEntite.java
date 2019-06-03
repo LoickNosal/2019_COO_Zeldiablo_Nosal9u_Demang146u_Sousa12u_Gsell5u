@@ -27,8 +27,11 @@ public class TestEntite {
         Aventurier a = new Aventurier(10, 0,0, "LOL");
         a.seDeplacer('N');
         a.seDeplacer('E');
-        a.seDeplacer('E');
-        a.seDeplacer('E');
+        a.seDeplacer('S');
+        a.seDeplacer('O');
+
+        assertEquals("Se Deplacer (X)", 0, a.getX());
+        assertEquals("Se Deplacer (Y)", 0, a.getY());
     }
 
 
