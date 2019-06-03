@@ -23,4 +23,8 @@ public class CaseVide extends Case{
 		this.posY = y;
 	}
 
+	public String toString() {
+		return "-";
+	}
+
 }
