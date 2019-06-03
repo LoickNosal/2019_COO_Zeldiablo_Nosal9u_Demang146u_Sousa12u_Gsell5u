@@ -113,6 +113,4 @@ public class TestLabyrinthe {
         assertEquals(modeleDefaut, l.toString());
     }
 
-
-
 }

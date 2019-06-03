@@ -1,8 +1,11 @@
 package moteurJeu;
 
+import java.awt.*;
+import java.security.Principal;
 import java.util.Scanner;
 
 import jeu.Aventurier;
+import jeu.JeuPrincipal;
 import jeu.Labyrinthe;
 
 /**
@@ -15,10 +18,9 @@ public class MainPerso {
 	public static void main(String[] args) {
 
 		// creation du jeu particulier et de son afficheur
-		Labyrinthe lab = new Labyrinthe();
-		Aventurier av = new Aventurier(10, 0, 0, "Aventurier",lab);
-		JeuPerso jeu = new JeuPerso(av);
-		DessinPerso dp = new DessinPerso(jeu, lab);
+		JeuPrincipal j = new JeuPrincipal();
+		JeuPerso jeu = new JeuPerso(j.av);
+		DessinPerso dp = new DessinPerso(jeu, j.lab);
 
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, dp);
@@ -30,7 +32,6 @@ public class MainPerso {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		// lorsque le jeu est fini
 		System.out.println("Fin du Jeu - appuyer sur entree");
 		Scanner sc = new Scanner(System.in);
