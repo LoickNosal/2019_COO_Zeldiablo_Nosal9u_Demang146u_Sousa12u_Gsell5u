@@ -1,0 +1,83 @@
+"plantuml.exportOutDir": "."
+@startuml 
+title Zeldiablo
+
+interface Jeu {
+    +evoluer(Commande): void
+    +etreFini(): boolean
+}
+
+class JeuPerso {
+    -personnage: Aventurier
+    +JeuPerso()
+    +evoluer(Commande): void
+    +etreFini(): boolean
+}
+
+interface DessinJeu {
+    +dessine(BuffuredImage) : void
+}
+
+class DessinPerso {
+    -jeuEnCours
+    +DessinPerso(JeuPerso)
+    +dessine(BuffuredImage): void
+}
+
+class Labyrinthe {
+    -TAILLE_MIN: int
+    -TAILLE_MAX: int
+    +Labyrinthe(int, int)
+}
+
+class MonstreImmobile {
+    -pv: int
+    -x: int
+    -y: int
+    -degat: int
+    -nom: String
+    +MonstreImmobile(int, int, int, String, int)
+    +attaquer(): void
+}
+
+abstract Case {
+    #posX: int
+    #posY: int
+}
+
+class CaseVide {
+    +CaseVide(int, int)
+}
+
+class Mur {
+    +Mur(int, int)
+}
+
+abstract Entite {
+    -pv: int
+    -x: int
+    -y: int
+    -nom: String
+
+    +Entite(int, int, int, String)
+    +seDeplacer(char): void
+}
+
+class Aventurier {
+    +Aventurier(int, int int, String)
+}
+
+JeuPerso "1" --> "1" Labyrinthe : -labyrinthe
+DessinPerso "1" --> "1" JeuPerso : -jeuEnCours
+Labyrinthe "1" --> "0..*" Case : -cases
+JeuPerso "1" --> "0..*" Aventurier : -aventurier
+Labyrinthe "1" --> "1" Aventurier : -aventurier
+Labyrinthe "1" --> "0.." MonstreImmobile: -monstres
+
+JeuPerso ..|> Jeu
+DessinPerso ..|> DessinJeu
+CaseVide --|> Case
+Mur --|> Case
+Aventurier --|> Entite
+
+@enduml

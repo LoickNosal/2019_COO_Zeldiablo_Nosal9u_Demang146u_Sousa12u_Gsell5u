@@ -1,0 +1,23 @@
+Fonctionnalites
+
+- Fonctionnalite 1 : faire les labyrinthes customizées
+	Charger des labyrinthes via des fichiers .txt
+	- responsable : demang146u
+
+- Fonctionnalite 2 : gérer les collisions murs/joueur
+	Le joueur ne peut pas se deplacer si il y a un mur ou un ennemi
+	- responsable : nosal9u
+
+- Fonctionnalite 3 : generation de monstre immobiles
+	implementation des monstres immobiles dans le jeu
+	- responsable : sousa12u
+
+- Fonctionnalite 4 : affichage des tiles (sprites des cases)
+	creation de plusieurs sprites graphiques (joueur, murs, ect)
+	- responsable : gsell5u
+
+Realisation : 
+classe Entite : metjode detecteUneCollision : nosal9u
+creation et implementation des sprites : gsell5u
+creation et implementation des monstres : sousa12u
+implementation des labyrinthes customizées : demang146u

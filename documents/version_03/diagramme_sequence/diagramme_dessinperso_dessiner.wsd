@@ -1,0 +1,20 @@
+@startuml
+
+title Magasin
+
+
+participant "moteur:MoteurGraphique" as 0
+participant "gui:DessinPerso" as 1
+
+
+
+
+loop foreach
+0->1 : dessiner()
+activate 1
+1-->0
+deactivate 1
+
+
+
+@enduml

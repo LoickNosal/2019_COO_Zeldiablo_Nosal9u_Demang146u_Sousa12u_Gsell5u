@@ -72,9 +72,9 @@ abstract public class Entite{
                 case 'O': this.x-=10; break;
             }
 		}
-        
+
     }
-    
+
     /**
      * permet de detecter si le joueur entre en collision avec un obstacle
      * @return true si le joueur peut traverser
@@ -92,6 +92,6 @@ abstract public class Entite{
 			}
 		}
 		return res;
-    	
+
     }
 }
