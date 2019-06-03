@@ -3,13 +3,21 @@ title Création du Labyrinthe
 participant main
 participant Labyrinthe << (C,#ADD1B2) >>
 participant CaseVide << (C,#ADD1B2) >>
+participant Mur << (C,#ADD1B2) >>
 
+create Labyrinthe
 main -> Labyrinthe : Labyrinthe()
 Activate Labyrinthe
+create CaseVide
 Labyrinthe -> CaseVide : CaseVide()
 activate CaseVide
 CaseVide --> Labyrinthe
 deactivate CaseVide
+create Mur
+Labyrinthe -> Mur
+activate Mur
+Mur --> Labyrinthe
+deactivate Mur
 Labyrinthe --> main
 deactivate Labyrinthe
 
