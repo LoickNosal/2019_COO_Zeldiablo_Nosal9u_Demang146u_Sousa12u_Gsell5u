@@ -7,7 +7,7 @@ package jeu;
 public class Labyrinthe {
 
     private static final int TAILLE_MIN = 5;
-    private static final int TAILLE_MAX = 5;
+    private static final int TAILLE_MAX = 15;
     private Case[][] cases;
 
     /**
