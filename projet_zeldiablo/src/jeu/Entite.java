@@ -7,6 +7,7 @@ abstract public class Entite{
     protected int y;
     protected String nom;
     protected Labyrinthe lab;
+    protected boolean vivant;
 
     /**
      * Le constructeur de la classe Entite
@@ -38,6 +39,8 @@ abstract public class Entite{
         }else {
         	this.lab = new Labyrinthe();
         }
+        
+        vivant = true;
 
     }
 
@@ -113,5 +116,19 @@ abstract public class Entite{
 			}
 		return res;
 
+    }
+    
+    public void subirDegat(int pDegat) {
+    	pv -= pDegat;
+    	if(pv < 0) {
+    		pv = 0;
+    	}
+    	mort();
+    }
+    
+    public void mort() {
+    	if(pv == 0) {
+    		vivant = false;
+    	}
     }
 }
