@@ -1,7 +1,5 @@
 package jeu;
 
-import java.net.URL;
-
 /**
  * @author Louis Demange
  * Modélise le labyrinthe
@@ -57,6 +55,10 @@ public class Labyrinthe {
             aventurier = a;
     }
 
+    public boolean caseTraversable(int x, int y) {
+        return cases[x][y].peutTraverser();
+    }
+
     public String toString() {
         String res = "";
         for (int j = 0; j < cases[0].length; j++) {
@@ -82,14 +84,6 @@ public class Labyrinthe {
      */
     public int getHauteur() {
         return cases[0].length;
-    }
-
-    /**
-     * getter
-     * @return toute les cases su jeu
-     */
-    public Case[][] getCases() {
-        return cases;
     }
 
     /**
