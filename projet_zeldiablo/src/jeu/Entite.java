@@ -64,5 +64,7 @@ abstract public class Entite{
             case 'S': this.y+=2; break;
             case 'O': this.x-=2; break;
         }
+
+
     }
 }
