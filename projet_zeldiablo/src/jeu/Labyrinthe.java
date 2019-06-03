@@ -57,6 +57,10 @@ public class Labyrinthe {
             aventurier = a;
     }
 
+    public boolean caseTraversable(int x, int y) {
+        return cases[x][y].peutTraverser();
+    }
+
     public String toString() {
         String res = "";
         for (int j = 0; j < cases[0].length; j++) {
