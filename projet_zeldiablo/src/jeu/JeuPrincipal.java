@@ -43,7 +43,6 @@ public class JeuPrincipal {
                     this.labyrinthe = chargerLabyrinthe(json);
                     break;
                 case 3:
-                	System.out.println("test");
                 	obj = parser.parse(new FileReader(ressourcesPath + "lvl3.json"));
                     json = (JSONObject) obj;
                     
