@@ -3,8 +3,6 @@ package moteurJeu;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.beans.JavaBean;
-
 import javax.swing.*;
 
 public class PanelDessin extends JPanel {

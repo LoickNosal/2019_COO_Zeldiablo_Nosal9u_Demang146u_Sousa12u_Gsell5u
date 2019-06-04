@@ -2,7 +2,7 @@ package jeu;
 
 /**
  * represente un piege
- * @author Loïck
+ * @author Loï¿½ck
  *
  */
 public class CasePiege extends Case{

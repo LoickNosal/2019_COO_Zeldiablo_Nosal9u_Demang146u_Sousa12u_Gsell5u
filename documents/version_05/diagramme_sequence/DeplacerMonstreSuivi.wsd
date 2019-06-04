@@ -1,0 +1,16 @@
+@startuml 
+title Deplacement de Monstre Suivi
+participant "jeuM:JeuMonstre" as jeuM << (C,#ADD1B2) >> 
+participant "ms:MonstreSuivi" as mss << (C,#ADD1B2) >> 
+
+
+jeuM-> mss : seDeplacer() 
+activate mss
+mss -> mss : avancer(int)
+activate mss
+mss <-- mss : avancer(int)
+deactivate mss
+jeuM <-- mss
+deactivate mss
+
+@enduml
