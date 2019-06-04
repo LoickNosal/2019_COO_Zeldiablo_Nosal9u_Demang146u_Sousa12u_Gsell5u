@@ -1,8 +1,8 @@
 package jeu;
 
 /**
- * représente la sortie du labyrinthe
- * @author Loïck
+ * reprï¿½sente la sortie du labyrinthe
+ * @author Loï¿½ck
  *
  */
 public class CaseSortie extends Case {
