@@ -3,8 +3,8 @@ package jeu;
 import java.util.ArrayList;
 
 /**
- * @author Louis Demange
  * Modelise le labyrinthe
+ * @author Louis Demange
  */
 public class Labyrinthe {
 
