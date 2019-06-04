@@ -1,7 +1,7 @@
 package tests;
 
 import jeu.Labyrinthe;
-import jeu.MonstreImmobile;
+import jeu.Monstre;
 
 import org.junit.Test;
 
@@ -15,9 +15,9 @@ public class TestMonstre {
 	@Test
     public void testConstructeurMonstre() {
     	Labyrinthe lab = new Labyrinthe();
-        MonstreImmobile m = new MonstreImmobile(10, 5, 5, 3, "Chevalier noir",lab);
-        MonstreImmobile m2 = new MonstreImmobile(10, 5, 5, -5, "Chevalier noir",lab);
-        MonstreImmobile m3 = new MonstreImmobile(10, -500000, -50, 3, "Chevalier noir",lab);
+    	Monstre m = new Monstre(10, 5, 5, 3, "Chevalier noir",lab);
+    	Monstre m2 = new Monstre(10, 5, 5, -5, "Chevalier noir",lab);
+    	Monstre m3 = new Monstre(10, -500000, -50, 3, "Chevalier noir",lab);
         
         assertEquals("Le constructeur doit fonctionner normalement (DEGAT)", 3, m.getDegat());
         assertEquals("Le constructeur 2 doit fonctionner normalement (DEGAT)", 0, m2.getDegat());
