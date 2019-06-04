@@ -50,6 +50,9 @@ public class JeuMonstre implements Jeu{
 		return false;
 	}
 
+	//Methode qui pourra etre utilisée ultérieurement
+	public void setFini(boolean a) {}
+
 	public ArrayList<Monstre> getMonstres() {
 		return monstres;
 	}

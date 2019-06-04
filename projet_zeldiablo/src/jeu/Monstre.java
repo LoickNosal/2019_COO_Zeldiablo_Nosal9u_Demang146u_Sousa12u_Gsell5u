@@ -113,14 +113,14 @@ public abstract class Monstre extends Entite {
 	 * @param id id du monstre a creer
 	 * @return le monstre correspondant a l'ID
 	 */
-	public static Monstre creerMonstreParID(int id) {
+	public static Monstre creerMonstreParID(int id, int posX, int posY) {
 		switch (id) {
 			case 1:
-				//return new MonstreImmobile();
+				return new MonstreImmobile(50, posX,posY, 1, 50, "m1");
 			case 2:
-				//return new MonstreAleatoire();
+				return new MonstreAleatoire(50, posX, posY, 1, 50, "m2");
 			case 3:
-				//return new MonstreSuivi();
+				return new MonstreSuivi(50, posX, posY, 1, 50, "m3");
 			default:
 				return null;
 		}

@@ -1,0 +1,20 @@
+@startuml 
+title decodeJSON
+participant JeuPrincipal << (C,#ADD1B2) >>
+participant JSONObject << (C,#ADD1B2) >>
+
+
+activate JeuPrincipal
+JeuPrincipal -> JeuPrincipal : decodeJSON(JSONObject json)
+
+JeuPrincipal -> JSONObject : get("labyrinthe")
+activate JSONObject
+JSONObject --> JeuPrincipal : JSONArray modele
+deactivate JSONObject
+
+JeuPrincipal -> JSONObject : get("monstres")
+activate JSONObject
+JSONObject --> JeuPrincipal : JSONArray monstres
+deactivate JSONObject
+
+@enduml

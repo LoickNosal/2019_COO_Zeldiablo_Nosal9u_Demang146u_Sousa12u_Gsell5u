@@ -36,10 +36,10 @@ public class JeuPrincipal {
         this.aventurier = new Aventurier(50, 100, 100, "Aventurier");
         this.aventurier.setLabyrinthe(this.labyrinthe);
         ArrayList<Jeu> jeu = new ArrayList<Jeu>();
-        JeuPerso jeuperso = new JeuPerso(this.aventurier);
+        JeuPerso jeuperso = new JeuPerso(this.aventurier, this);
 
 
-        MonstreImmobile m = new MonstreImmobile(50, 400,81, 1, 50, "lol");
+        MonstreImmobile m = new MonstreImmobile(50,  1 * Case.TAILLE + Case.TAILLE / 2, 1 * Case.TAILLE + Case.TAILLE / 2, 1, 50, "lol");
         MonstreAleatoire m2 = new MonstreAleatoire(50, 400, 100, 1, 50, "m2");
         MonstreSuivi m3 = new MonstreSuivi(50, 400, 100, 1, 50, "m3");
         m.setLabyrinthe(this.labyrinthe);
@@ -141,6 +141,8 @@ public class JeuPrincipal {
 
             int posX = ((Long) ((JSONArray) jsonM.get("pos")).get(0)).intValue();
             int posY = ((Long) ((JSONArray) jsonM.get("pos")).get(1)).intValue();
+            posX = posX * Case.TAILLE + Case.TAILLE / 2;
+            posY = posY * Case.TAILLE + Case.TAILLE / 2;
         }
 
 
