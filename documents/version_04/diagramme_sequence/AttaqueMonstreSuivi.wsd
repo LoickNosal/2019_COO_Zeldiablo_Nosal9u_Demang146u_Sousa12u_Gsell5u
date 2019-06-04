@@ -1,0 +1,15 @@
+@startuml 
+title Attaque de Monstre Suivi
+participant "mss:MonstreSuivi" as mss << (C,#ADD1B2) >>
+
+
+ -> mss : seDeplacer() 
+activate mss
+mss -> mss : attaquer()
+activate mss
+mss --> mss
+deactivate mss
+ <-- mss
+deactivate mss
+
+@enduml
