@@ -12,6 +12,8 @@ import jeu.MonstreImmobile;
  *
  */
 public class JeuPerso implements Jeu{
+
+	private int compteur_pas;
 	
 	/**
 	 * personnage du jeu
@@ -21,6 +23,7 @@ public class JeuPerso implements Jeu{
 	public JeuPerso(Aventurier av) {
 		super();
 		this.personnage = av;
+		this.compteur_pas = 0;
 	}
 
 	@Override
@@ -29,17 +32,23 @@ public class JeuPerso implements Jeu{
 	 * des valeurs des attributs gauche,droite,haut,bas
 	 */
 	public void evoluer(Commande commandeUser) {
+		boolean marche = false;
+
 		if (commandeUser.bas == true) {
 			this.personnage.seDeplacer('S');
+			marche = true;
 		}
 		if (commandeUser.droite == true) {
 			this.personnage.seDeplacer('E');
+			marche = true;
 		}
 		if (commandeUser.gauche == true) {
 			this.personnage.seDeplacer('O');
+			marche = true;
 		}
 		if (commandeUser.haut == true) {
 			this.personnage.seDeplacer('N');
+			marche = true;
 		}
 	}
 
