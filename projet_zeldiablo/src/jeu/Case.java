@@ -2,6 +2,8 @@ package jeu;
 
 import java.awt.Rectangle;
 
+import moteurJeu.DessinPerso;
+
 /*
  * Classe abstraite qui modèle une case
  * @author Nosal Loïck
@@ -11,7 +13,7 @@ public abstract class Case {
 	/**
 	 * taille d'une case (carré)
 	 */
-	protected final static int taille = 60;
+	protected final static int taille = DessinPerso.TAILLE_CASE;
 	
 	/**
 	 * Coordonnées x de la case
@@ -41,7 +43,7 @@ public abstract class Case {
 		if (r.contains(x,y)) {
 			res = true;
 		}
-		
+	
 		return res;
 	}
 	
