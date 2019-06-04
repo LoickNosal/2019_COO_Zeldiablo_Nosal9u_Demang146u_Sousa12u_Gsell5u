@@ -66,25 +66,34 @@ class Labyrinthe {
 abstract Monstre {
     -portee : int
     -degat: int
-    +Monstre(int, int, int, String, Labyrinthe)
-    +attaquer(Aventurier,int,int,int): void
+    +Monstre(int, int, int, int, int, int, String, Labyrinthe)
+    +attaquer(Aventurier,int,int): void
     +seDeplacer(char):void
+    +seDeplacer(Aventurier):void
 }
 
 class MonstreAleatoire {
-    -portee : int
-    -degat: int
-    +Monstre(int, int, int, String, Labyrinthe)
-    +attaquer(Aventurier,int,int,int): void
+
+    +MonstreAleatoire(int, int, int, int, int, int, String, Labyrinthe)
+    +attaquer(Aventurier,int,int): void
     +seDeplacer(char):void
+    +seDeplacer(Aventurier):void
 }
 
 class MonstreSuivi {
-    -portee : int
-    -degat: int
-    +Monstre(int, int, int, String, Labyrinthe)
-    +attaquer(Aventurier,int,int,int): void
+
+    +MonstreSuivi(int, int, int, int, int, int, String, Labyrinthe)
+    +attaquer(Aventurier,int,int): void
     +seDeplacer(char):void
+    +seDeplacer(Aventurier):void
+}
+
+class MonstreImmobile {
+
+    +MonstreImmobile(int, int, int, int, int, int, String, Labyrinthe)
+    +attaquer(Aventurier,int,int): void
+    +seDeplacer(char):void
+    +seDeplacer(Aventurier):void
 }
 
 abstract Case {
@@ -154,6 +163,7 @@ JeuPerso "1" --> "1" Aventurier : -personnage
 JeuPerso ..|> Jeu
 
 JeuMonstre "1" --> "1" Monstre : -monstre
+JeuMonstre "1" --> "1" Aventurier : -personnage
 JeuMonstre ..|> Jeu
 
 JeuPrincipal "1" --> "1" Labyrinthe : +lab
@@ -174,6 +184,8 @@ CaseVide --|> Case
 Mur --|> Case
 
 CaseSortie--|> Case
+
+MonstreImmobile--|> Monstre
 
 MonstreAleatoire--|> Monstre
 

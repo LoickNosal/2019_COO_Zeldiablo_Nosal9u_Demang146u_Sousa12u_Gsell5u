@@ -26,7 +26,6 @@ public class Aventurier extends Entite {
     public void seDeplacer(char cardinaux) {
     	int futureposX = 0;
     	int futureposY = 0;
-    	ArrayList<Monstre> mi = lab.getMi();
     	
     	switch(cardinaux)
         {
@@ -63,10 +62,12 @@ public class Aventurier extends Entite {
    
 
     		
-    		for(Monstre monstre : mi) {
-        		monstre.attaquer(this, this.x, this.y);
-        	}
-    		
 		}
+	}
+
+	@Override
+	public void seDeplacer(Aventurier av) {
+		// vide
+		
 	}
 }
