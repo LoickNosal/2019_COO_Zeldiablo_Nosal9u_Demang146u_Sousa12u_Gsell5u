@@ -71,6 +71,8 @@ public class JeuPerso implements Jeu{
 				this.fini = true;
 		}else if(this.personnage.getLab().typeCase(this.personnage.getX()/DessinPerso.TAILLE_CASE,this.personnage.getY()/DessinPerso.TAILLE_CASE) == 3) {
 				this.personnage.subirDegat(1);
+				this.personnage.getLab().activerPiege(this.personnage.getX()/DessinPerso.TAILLE_CASE, this.personnage.getY()/DessinPerso.TAILLE_CASE);
+				
 		}
 	}
 

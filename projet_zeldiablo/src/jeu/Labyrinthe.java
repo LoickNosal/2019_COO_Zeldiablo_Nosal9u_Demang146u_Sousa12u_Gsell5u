@@ -88,6 +88,32 @@ public class Labyrinthe {
         }
         return false;
     }
+    
+    public void activerPiege(int x, int y) {
+    	//instance of
+    	if (x< 0) {
+			x = 0;
+		}
+    	if (y < 0) {
+			y = 0;
+		}
+    	if (cases[x][y] instanceof CasePiege) {
+    		((CasePiege)cases[x][y]).setEstPasse();
+		}
+    }
+    
+    public boolean testerPiege(int x, int y) {
+    	if (x< 0) {
+			x = 0;
+		}
+    	if (y < 0) {
+			y = 0;
+		}
+    	if (cases[x][y] instanceof CasePiege) {
+    		return ((CasePiege)cases[x][y]).getEstPasse();
+		}
+    	return false;
+    }
 
    
    public int typeCase(int x,int y) {
