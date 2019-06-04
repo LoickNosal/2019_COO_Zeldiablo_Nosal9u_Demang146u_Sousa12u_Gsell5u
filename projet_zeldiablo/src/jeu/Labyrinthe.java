@@ -11,7 +11,7 @@ public class Labyrinthe {
     private final int TAILLE_MIN = 5;
     private final int TAILLE_MAX = 15;
     private Case[][] cases;
-    private ArrayList<MonstreImmobile> monstres;
+    private ArrayList<Monstre> monstres;
 
 
     /**
@@ -19,7 +19,7 @@ public class Labyrinthe {
      */
     public Labyrinthe() {
         defautLabyrinthe();
-        monstres = new ArrayList<MonstreImmobile>();
+        monstres = new ArrayList<Monstre>();
     }
 
 
@@ -29,7 +29,7 @@ public class Labyrinthe {
      * @param modele tableau de chaine de caractere qui defini le modele du labyrinthes
      */
     public Labyrinthe(String[] modele) {
-        monstres = new ArrayList<MonstreImmobile>();
+        monstres = new ArrayList<Monstre>();
 
         boolean valide = valideModele(modele);
         if (!valide) {
@@ -63,7 +63,7 @@ public class Labyrinthe {
      * @param modele tableau de chaine de caractere qui defini le modele du labyrinthes
      * @param m liste de monstres
      */
-    public Labyrinthe(String[] modele, ArrayList<MonstreImmobile> m) {
+    public Labyrinthe(String[] modele, ArrayList<Monstre> m) {
         setMonstres(m);
 
         boolean valide = valideModele(modele);
@@ -91,11 +91,11 @@ public class Labyrinthe {
         }
     }
 
-    public void setMonstres(ArrayList<MonstreImmobile> m) {
+    public void setMonstres(ArrayList<Monstre> m) {
         if (m != null)
             monstres = m;
         else
-            monstres = new ArrayList<MonstreImmobile>();
+            monstres = new ArrayList<Monstre>();
     }
 
     /**
@@ -174,7 +174,7 @@ public class Labyrinthe {
      *
      * @return liste de monstres
      */
-    public ArrayList<MonstreImmobile> getMi() {
+    public ArrayList<Monstre> getMi() {
         return monstres;
     }
 

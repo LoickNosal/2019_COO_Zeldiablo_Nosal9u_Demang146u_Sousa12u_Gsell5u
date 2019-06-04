@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import jeu.Aventurier;
 import jeu.Labyrinthe;
-import jeu.MonstreImmobile;
+import jeu.Monstre;
 
 /**
  * represente le jeu Zeldiablo
