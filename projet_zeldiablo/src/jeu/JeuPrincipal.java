@@ -33,17 +33,18 @@ public class JeuPrincipal {
     public JeuPrincipal() {
         level = 3;
         chargerLVL(level);
-        this.aventurier = new Aventurier(10, 100, 100, "Aventurier");
+        this.aventurier = new Aventurier(50, 100, 100, "Aventurier");
         this.aventurier.setLabyrinthe(this.labyrinthe);
         ArrayList<Jeu> jeu = new ArrayList<Jeu>();
         JeuPerso jeuperso = new JeuPerso(this.aventurier);
         JeuMonstre jeumonstre = new JeuMonstre(this.aventurier);
         jeu.add(jeuperso);
         jeu.add(jeumonstre);
-		DessinPerso dp = new DessinPerso(jeuperso, this.labyrinthe);
-        MonstreImmobile m = new MonstreImmobile(10, 400,81, 10, 50, "lol");
-        //MonstreAleatoire m2 = new MonstreAleatoire(10, 400, 100, 10, 50, "m2");
-        MonstreSuivi m3 = new MonstreSuivi(10, 350, 500, 10, 50, "m3");
+
+		DessinPerso dp = new DessinPerso(jeuperso, this.labyrinthe,jeumonstre);
+        MonstreImmobile m = new MonstreImmobile(50, 400,81, 1, 50, "lol");
+        MonstreAleatoire m2 = new MonstreAleatoire(50, 400, 100, 1, 50, "m2");
+        MonstreSuivi m3 = new MonstreSuivi(50, 400, 100, 1, 50, "m3");
         m.setLabyrinthe(this.labyrinthe);
         //m2.setLabyrinthe(this.labyrinthe);
         m3.setLabyrinthe(this.labyrinthe);

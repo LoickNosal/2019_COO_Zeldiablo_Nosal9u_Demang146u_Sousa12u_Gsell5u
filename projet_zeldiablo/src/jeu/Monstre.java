@@ -9,6 +9,7 @@ public abstract class Monstre extends Entite {
 	protected int id;
 	protected int degat;
 	protected int portee;
+	private int pvMax;
 
 	public Monstre(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pNom);
@@ -22,8 +23,13 @@ public abstract class Monstre extends Entite {
 		}
 		degat = pDegat;
 		portee = pPortee;
+		this.pvMax = pPv;
 
 	}
+	
+	public int getPvMax() {
+    	return this.pvMax;
+    }
 	
 	public boolean peutAvancer(int posX, int posY) {
 		boolean res = false;
