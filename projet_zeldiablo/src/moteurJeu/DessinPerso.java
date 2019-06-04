@@ -42,10 +42,10 @@ public class DessinPerso implements DessinJeu{
 
 		try{
 			
-			slime_rouge[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/sa1.gif").getPath(), "UTF-8")));
-			slime_rouge[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/sa2.gif").getPath(), "UTF-8")));
-			slime_vert[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/s1.gif").getPath(), "UTF-8")));
-			slime_vert[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/s2.gif").getPath(), "UTF-8")));
+			slime_rouge[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sa1.gif").getPath(), "UTF-8")));
+			slime_rouge[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sa2.gif").getPath(), "UTF-8")));
+			slime_vert[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("s1.gif").getPath(), "UTF-8")));
+			slime_vert[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("s2.gif").getPath(), "UTF-8")));
 			perso_droite[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d1.gif").getPath(), "UTF-8")));
 			perso_droite[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d2.gif").getPath(), "UTF-8")));
 			perso_droite[2] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d3.gif").getPath(), "UTF-8")));
@@ -92,7 +92,13 @@ public class DessinPerso implements DessinJeu{
 		if(compteur > 20)
 			compteur =0;
 		for (Monstre m: lab.getMonstres()) {
-
+			System.out.println("lol");
+			if(m.getId() == 1){
+				g.drawImage(slime_vert[compteur/10], m.getX(), m.getY(), null);
+			}
+			if(m.getId() == 2){
+				g.drawImage(slime_rouge[compteur/10], m.getX(), m.getY(), null);
+			}
 		}
 
 
