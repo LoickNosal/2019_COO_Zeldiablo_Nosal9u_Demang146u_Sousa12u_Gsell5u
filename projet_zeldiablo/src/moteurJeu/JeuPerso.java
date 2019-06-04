@@ -61,7 +61,7 @@ public class JeuPerso implements Jeu{
 		}
 		else {
 			this.compteur_pas++;
-			if(compteur_pas>30)
+			if(compteur_pas>15)
 				compteur_pas = 0;
 		}
 		//affiche les pv du joueur
