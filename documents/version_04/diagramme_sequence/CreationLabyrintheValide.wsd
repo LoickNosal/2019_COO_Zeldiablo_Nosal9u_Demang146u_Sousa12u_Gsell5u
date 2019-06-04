@@ -1,0 +1,42 @@
+@startuml 
+title Création du Labyrinthe : valide
+participant JeuPrincipal << (C,#ADD1B2) >>
+participant Labyrinthe << (C,#ADD1B2) >>
+participant Mur << (C,#ADD1B2) >>
+participant CaseVide << (C,#ADD1B2) >>
+participant CaseSortie << (C,#ADD1B2) >>
+
+create Labyrinthe
+JeuPrincipal -> Labyrinthe : Labyrinthe(String[] modele)
+activate Labyrinthe
+
+Labyrinthe -> Labyrinthe : valideModele(String[] modele)
+activate Labyrinthe
+deactivate Labyrinthe
+
+loop switch cases
+
+create Mur
+Labyrinthe -> Mur : new
+activate Mur
+Mur --> Labyrinthe
+deactivate Mur
+
+create CaseVide
+Labyrinthe -> CaseVide : new
+activate CaseVide
+CaseVide --> Labyrinthe
+deactivate CaseVide
+
+create CaseSortie
+Labyrinthe -> CaseSortie : new
+activate CaseSortie
+CaseSortie --> Labyrinthe
+deactivate CaseSortie
+
+end
+
+Labyrinthe --> JeuPrincipal
+deactivate Labyrinthe
+
+@enduml
