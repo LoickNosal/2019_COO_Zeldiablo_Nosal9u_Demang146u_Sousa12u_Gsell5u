@@ -141,16 +141,26 @@ public class DessinPerso implements DessinJeu{
 		for (Monstre m : this.jeuMonstre.getMonstres()) {
 			int pvMax =  m.getPvMax();
 			int pvCourant = m.getPv();
+			//contour
+			g.setColor(Color.black);
+			g.fillRect(m.getX()-TAILLE_CASE/3-2, m.getY()-TAILLE_CASE-2, pvMax+4, 7+4);
+			//barre de vie rouge
 			g.setColor(Color.red);
 			g.fillRect(m.getX()-TAILLE_CASE/3, m.getY()-TAILLE_CASE, pvMax, 7);
+			//barre de vie verte
 			g.setColor(Color.green);
 			g.fillRect(m.getX()-TAILLE_CASE/3, m.getY()-TAILLE_CASE,pvCourant , 7);
 		}
 		//barre du joueur
 		int pvMax = this.jeuPerso.getPerso().getPvMax();
 		int pvCourant = this.jeuPerso.getPerso().getPv();
+		//contour
+		g.setColor(Color.black);
+		g.fillRect(this.jeuPerso.getPerso().getX()-TAILLE_CASE/3-2, this.jeuPerso.getPerso().getY()-TAILLE_CASE-2, pvMax+4, 7+4);
+		//barre de vie rouge
 		g.setColor(Color.red);
 		g.fillRect(this.jeuPerso.getPerso().getX()-TAILLE_CASE/3, this.jeuPerso.getPerso().getY()-TAILLE_CASE, pvMax, 7);
+		//barre de vie verte
 		g.setColor(Color.green);
 		g.fillRect(this.jeuPerso.getPerso().getX()-TAILLE_CASE/3, this.jeuPerso.getPerso().getY()-TAILLE_CASE,pvCourant , 7);
 		if (pvCourant == 0) {
