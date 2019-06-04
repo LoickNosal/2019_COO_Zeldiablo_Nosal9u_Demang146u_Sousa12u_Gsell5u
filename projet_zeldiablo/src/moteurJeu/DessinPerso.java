@@ -32,7 +32,14 @@ public class DessinPerso implements DessinJeu{
 
 		try{
 
-			sprite = ImageIO.read(new File(getClass().getClassLoader().getResource("sprite.png").getPath()));
+			perso_droite[0] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/d1.gif").getPath()));
+			perso_droite[1] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/d2.gif").getPath()));
+			perso_droite[2] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/d3.gif").getPath()));
+			perso_droite[3] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/d4.gif").getPath()));
+			perso_gauche[0] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/g1.gif").getPath()));
+			perso_gauche[1] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/g2.gif").getPath()));
+			perso_gauche[2] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/g3.gif").getPath()));
+			perso_gauche[3] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/g4.gif").getPath()));
 			mur = ImageIO.read(new File(getClass().getClassLoader().getResource("wall.png").getPath()));
 			casevide = ImageIO.read(new File(getClass().getClassLoader().getResource("sol.png").getPath()));
 		}catch (Exception e){
@@ -59,7 +66,13 @@ public class DessinPerso implements DessinJeu{
 			}
 		}
 
-		g.drawImage(perso_droite[0], jeuEnCours.getPerso().getX()-28, jeuEnCours.getPerso().getY()-40, 60,80,null);
+		if(jeuEnCours.isDirection()){
+			g.drawImage(perso_droite[jeuEnCours.getCompteur_pas()/10], jeuEnCours.getPerso().getX()-20, jeuEnCours.getPerso().getY()-30, 45,60,null);
+		}
+		else{
+			g.drawImage(perso_gauche[jeuEnCours.getCompteur_pas()/10], jeuEnCours.getPerso().getX()-20, jeuEnCours.getPerso().getY()-30, 45,60,null);
+		}
+
 
 
 		g.dispose();
