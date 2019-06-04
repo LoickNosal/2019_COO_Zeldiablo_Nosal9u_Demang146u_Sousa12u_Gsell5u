@@ -104,14 +104,7 @@ abstract public class Entite{
      * permet de detecter si le joueur entre en collision avec un obstacle
      * @return true si le joueur peut traverser
      */
-    public boolean peutAvancer(int posX, int posY) {
-		boolean res = false;
-			if (this.lab.estSurUnObstacle(posX,posY) == false) {
-				res = true;
-			}
-		return res;
-
-    }
+    public abstract boolean peutAvancer(int posX, int posY);
     
     /**
      * le joueur subit des degats

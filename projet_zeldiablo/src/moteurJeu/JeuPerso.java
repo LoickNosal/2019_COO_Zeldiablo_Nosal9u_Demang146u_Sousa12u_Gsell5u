@@ -64,6 +64,8 @@ public class JeuPerso implements Jeu{
 			if(compteur_pas>30)
 				compteur_pas = 0;
 		}
+		//affiche les pv du joueur
+		System.out.println(this.personnage.getPv());
 		//si le joueur entre dans la porte
 		if(this.personnage.getLab().typeCase(this.personnage.getX()/DessinPerso.TAILLE_CASE,this.personnage.getY()/DessinPerso.TAILLE_CASE) == 2) {
 				this.fini = true;
@@ -72,7 +74,7 @@ public class JeuPerso implements Jeu{
 
 	@Override
 	/**
-	 * le jeu ne s'arrète jamais. Return false
+	 * le jeu ne s'arrete jamais. Return false
 	 */
 	public boolean etreFini() {
 		return this.fini;

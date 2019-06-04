@@ -31,7 +31,7 @@ public class JeuPrincipal {
      * construit le modèle du jeu
      */
     public JeuPrincipal() {
-        level = 1;
+        level = 3;
         chargerLVL(level);
         this.aventurier = new Aventurier(10, 100, 100, "Aventurier");
         this.aventurier.setLabyrinthe(this.labyrinthe);
@@ -42,7 +42,11 @@ public class JeuPrincipal {
         jeu.add(jeumonstre);
 		DessinPerso dp = new DessinPerso(jeuperso, this.labyrinthe);
         MonstreImmobile m = new MonstreImmobile(10, 400,81, 10, 50, "lol");
+        MonstreAleatoire m2 = new MonstreAleatoire(10, 400, 100, 10, 50, "m2");
+        m.setLabyrinthe(this.labyrinthe);
+        m2.setLabyrinthe(this.labyrinthe);
         labyrinthe.getMonstres().add(m);
+        labyrinthe.getMonstres().add(m2);
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, dp);
 
