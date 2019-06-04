@@ -42,11 +42,14 @@ public class JeuPrincipal {
         jeu.add(jeumonstre);
 		DessinPerso dp = new DessinPerso(jeuperso, this.labyrinthe);
         MonstreImmobile m = new MonstreImmobile(10, 400,81, 10, 50, "lol");
-        MonstreAleatoire m2 = new MonstreAleatoire(10, 400, 100, 10, 50, "m2");
+        //MonstreAleatoire m2 = new MonstreAleatoire(10, 400, 100, 10, 50, "m2");
+        MonstreSuivi m3 = new MonstreSuivi(10, 350, 500, 10, 50, "m3");
         m.setLabyrinthe(this.labyrinthe);
-        m2.setLabyrinthe(this.labyrinthe);
+        //m2.setLabyrinthe(this.labyrinthe);
+        m3.setLabyrinthe(this.labyrinthe);
         labyrinthe.getMonstres().add(m);
-        labyrinthe.getMonstres().add(m2);
+        //labyrinthe.getMonstres().add(m2);
+        labyrinthe.getMonstres().add(m3);
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, dp);
 

@@ -38,9 +38,7 @@ public abstract class Monstre extends Entite {
 	public void attaquer(Aventurier pPerso) {
 		Aventurier perso = pPerso;
 		int distance = (int) Math.sqrt(Math.pow(pPerso.getX() - x, 2) + Math.pow(pPerso.getY() - y, 2));
-		if(distance < 0) {
-			distance *= -1;
-		}
+		Math.abs(distance);
 		if(distance <= portee) {
 			perso.subirDegat(degat);
 		}

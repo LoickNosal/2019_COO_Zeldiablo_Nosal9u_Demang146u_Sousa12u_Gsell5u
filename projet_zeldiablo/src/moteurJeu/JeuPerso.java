@@ -65,7 +65,7 @@ public class JeuPerso implements Jeu{
 				compteur_pas = 0;
 		}
 		//affiche les pv du joueur
-		System.out.println(this.personnage.getPv());
+		//System.out.println(this.personnage.getPv());
 		//si le joueur entre dans la porte
 		if(this.personnage.getLab().typeCase(this.personnage.getX()/DessinPerso.TAILLE_CASE,this.personnage.getY()/DessinPerso.TAILLE_CASE) == 2) {
 				this.fini = true;
