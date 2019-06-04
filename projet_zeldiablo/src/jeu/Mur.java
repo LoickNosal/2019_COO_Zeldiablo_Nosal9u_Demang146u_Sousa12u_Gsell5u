@@ -22,12 +22,16 @@ public class Mur extends Case {
 	}
 
 	public String toString() {
-		return "x";
+		return "X";
 	}
 
 	@Override
 	public boolean peutTraverser() {
 		return false;
+	}
+
+	public int typeCase() {
+		return 1;
 	}
 
 }

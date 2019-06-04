@@ -50,6 +50,16 @@ public abstract class Case {
 	 * @return boolean qui indique si la case peut etre traverse
 	 */
 	public abstract boolean peutTraverser();
+	
+		/**
+		* renvoit un int en fonction du type de case
+		* renvoit 0 : case vide
+		* renvoit 1 : mur
+		* renvoit 2 : sortie du labyrinthe
+		* @return int en fonction du type de case
+		*/
+		public abstract int typeCase();
+	
 
 	
 
