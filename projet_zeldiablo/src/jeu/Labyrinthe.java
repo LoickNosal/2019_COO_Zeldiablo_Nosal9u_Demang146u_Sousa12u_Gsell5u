@@ -1,7 +1,5 @@
 package jeu;
 
-import java.util.ArrayList;
-
 /**
  * Modelise le labyrinthe
  * @author Louis Demange
@@ -11,7 +9,6 @@ public class Labyrinthe {
     private final int TAILLE_MIN = 5;
     private final int TAILLE_MAX = 15;
     private Case[][] cases;
-    private ArrayList<Monstre> monstres;
 
 
     /**
@@ -19,7 +16,6 @@ public class Labyrinthe {
      */
     public Labyrinthe() {
         defautLabyrinthe();
-        monstres = new ArrayList<Monstre>();
     }
 
 
@@ -29,8 +25,6 @@ public class Labyrinthe {
      * @param modele tableau de chaine de caractere qui defini le modele du labyrinthes
      */
     public Labyrinthe(String[] modele) {
-        monstres = new ArrayList<Monstre>();
-
         boolean valide = valideModele(modele);
         if (!valide) {
             defautLabyrinthe();
@@ -59,50 +53,6 @@ public class Labyrinthe {
         }
     }
 
-
-    /**
-     * Creation d'un Labyrinthe custom avec monstres
-     *
-     * @param modele tableau de chaine de caractere qui defini le modele du labyrinthes
-     * @param m liste de monstres
-     */
-    public Labyrinthe(String[] modele, ArrayList<Monstre> m) {
-        setMonstres(m);
-
-        boolean valide = valideModele(modele);
-        if (!valide) {
-            defautLabyrinthe();
-            return;
-        }
-
-        int hauteur = modele.length;
-        int largeur = modele[0].split(" ").length;
-        cases = new Case[largeur][hauteur];
-
-        for (int j = 0; j < hauteur; j++) {
-            String[] ligne = modele[j].split(" ");
-            for (int i = 0; i < largeur; i++) {
-                switch (ligne[i]) {
-                    case "-":
-                        cases[i][j] = new CaseVide(i, j);
-                        break;
-                    case "X":
-                        cases[i][j] = new Mur(i, j);
-                        break;
-                    case "p":
-                    	cases[i][j] = new CaseSortie(i, j);
-                        break;
-                }
-            }
-        }
-    }
-
-    public void setMonstres(ArrayList<Monstre> m) {
-        if (m != null)
-            monstres = m;
-        else
-            monstres = new ArrayList<Monstre>();
-    }
 
     /**
      * indique si une case est traversable ou non
@@ -172,16 +122,6 @@ public class Labyrinthe {
      */
     public int getHauteur() {
         return cases[0].length;
-    }
-
-
-    /**
-     * getter
-     *
-     * @return liste de monstres
-     */
-    public ArrayList<Monstre> getMonstres() {
-        return monstres;
     }
 
 

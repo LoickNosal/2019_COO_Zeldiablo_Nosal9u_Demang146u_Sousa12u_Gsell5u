@@ -23,7 +23,7 @@ import java.util.Objects;
 public class JeuPrincipal {
 
     public Labyrinthe labyrinthe;
-    public Aventurier aventurier;
+    public Aventurier aventurier; //pas utile
     public int level;
 
 
@@ -31,22 +31,31 @@ public class JeuPrincipal {
      * construit le modèle du jeu
      */
     public JeuPrincipal() {
-        level = 3;
+        this.level = 3;
         chargerLVL(level);
-        this.aventurier = new Aventurier(10, 100, 100, "Aventurier");
+        this.aventurier = new Aventurier(50, 100, 100, "Aventurier");
         this.aventurier.setLabyrinthe(this.labyrinthe);
         ArrayList<Jeu> jeu = new ArrayList<Jeu>();
         JeuPerso jeuperso = new JeuPerso(this.aventurier);
-        JeuMonstre jeumonstre = new JeuMonstre(this.aventurier);
-        jeu.add(jeuperso);
-        jeu.add(jeumonstre);
-		DessinPerso dp = new DessinPerso(jeuperso, this.labyrinthe);
-        MonstreImmobile m = new MonstreImmobile(10, 400,81, 10, 50, "lol");
-        MonstreAleatoire m2 = new MonstreAleatoire(10, 400, 100, 10, 50, "m2");
+
+
+        MonstreImmobile m = new MonstreImmobile(50, 400,81, 1, 50, "lol");
+        MonstreAleatoire m2 = new MonstreAleatoire(50, 400, 100, 1, 50, "m2");
+        MonstreSuivi m3 = new MonstreSuivi(50, 400, 100, 1, 50, "m3");
         m.setLabyrinthe(this.labyrinthe);
         m2.setLabyrinthe(this.labyrinthe);
-        labyrinthe.getMonstres().add(m);
-        labyrinthe.getMonstres().add(m2);
+        m3.setLabyrinthe(this.labyrinthe);
+        ArrayList<Monstre> monstres = new ArrayList<Monstre>();
+        monstres.add(m);
+        monstres.add(m2);
+        monstres.add(m3);
+        JeuMonstre jeumonstre = new JeuMonstre(monstres);
+        jeumonstre.setAventurier(this.aventurier);
+
+        jeu.add(jeuperso);
+        jeu.add(jeumonstre);
+		DessinPerso dp = new DessinPerso(jeuperso, jeumonstre);
+
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, dp);
 
