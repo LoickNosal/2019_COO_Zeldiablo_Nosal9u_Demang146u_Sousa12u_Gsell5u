@@ -99,9 +99,6 @@ public class DessinPerso implements DessinJeu{
 		}
 
 
-		System.out.println(jeuEnCours.getPerso().getPv());
-
-
 		if(jeuEnCours.isDirection()){
 			g.drawImage(perso_droite[jeuEnCours.getCompteur_pas()/10], jeuEnCours.getPerso().getX()-20, jeuEnCours.getPerso().getY()-30, 45,60,null);
 		}

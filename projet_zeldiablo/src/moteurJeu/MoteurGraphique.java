@@ -1,5 +1,6 @@
 package moteurJeu;
 
+import java.util.ArrayList;
 
 /**
  * classe MoteurGraphique represente un moteur de jeu generique.
@@ -11,7 +12,7 @@ public class MoteurGraphique {
 	/**
 	 * le jeu a executer
 	 */
-	private Jeu jeu;
+	private ArrayList<Jeu> jeu;
 
 	/**
 	 * l'interface graphique
@@ -31,7 +32,7 @@ public class MoteurGraphique {
 	 * @param pAffiche
 	 *            afficheur a utiliser
 	 */
-	public MoteurGraphique(Jeu pJeu, DessinJeu pAffiche) {
+	public MoteurGraphique(ArrayList<Jeu> pJeu, DessinJeu pAffiche) {
 		// creation du jeu
 		this.jeu = pJeu;
 		this.dessin = pAffiche;
@@ -47,11 +48,13 @@ public class MoteurGraphique {
 		Controleur controle = this.gui.getControleur();
 
 		// boucle de jeu
-		while (!this.jeu.etreFini()) {
+		while (!this.jeu.get(0).etreFini()) {
 			// demande controle utilisateur
 			Commande c = controle.getCommande();
 			// fait evoluer le jeu
-			this.jeu.evoluer(c);
+			for(Jeu jeuX : jeu) {
+				jeuX.evoluer(c);
+			}
 			// affiche le jeu
 			this.gui.dessiner();
 			// met en attente

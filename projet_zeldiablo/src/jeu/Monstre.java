@@ -10,8 +10,8 @@ public abstract class Monstre extends Entite{
 	private int degat;
 	private int portee;
 	
-	public Monstre(int pId, int pPv, int px, int py, int pDegat, int pPortee, String pNom, Labyrinthe pLab) {
-		super(pPv, px, py, pNom, pLab);
+	public Monstre(int pId, int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
+		super(pPv, px, py, pNom);
 		
 		if(pDegat < 0) {
 			pDegat = 0;
@@ -20,7 +20,7 @@ public abstract class Monstre extends Entite{
 		if(pPortee < 0) {
 			pPortee = 0;
 		}
-		
+		id = pId;
 		degat = pDegat;
 		portee = pPortee;
 
@@ -30,6 +30,9 @@ public abstract class Monstre extends Entite{
 	public void attaquer(Aventurier pPerso) {
 		Aventurier perso = pPerso;
 		int distance = (int) Math.sqrt(Math.pow(pPerso.getX() - x, 2) + Math.pow(pPerso.getY() - y, 2));
+		if(distance < 0) {
+			distance *= -1;
+		}
 		if(distance <= portee) {
 			perso.subirDegat(degat);
 		}
@@ -87,7 +90,9 @@ public abstract class Monstre extends Entite{
 		return portee;
 	}
 
-	public int getId() { return id; }
+	public int getId() {
+		return id; 
+	}
 
 	
 }

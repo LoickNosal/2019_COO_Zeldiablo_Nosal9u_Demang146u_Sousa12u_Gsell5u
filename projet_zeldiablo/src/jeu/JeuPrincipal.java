@@ -4,6 +4,8 @@ import org.json.simple.*;
 import org.json.simple.parser.*;
 
 import moteurJeu.DessinPerso;
+import moteurJeu.Jeu;
+import moteurJeu.JeuMonstre;
 import moteurJeu.JeuPerso;
 import moteurJeu.MoteurGraphique;
 
@@ -32,9 +34,11 @@ public class JeuPrincipal {
         level = 1;
         chargerLVL(level);
         this.aventurier = new Aventurier(10, 100, 100, "Aventurier", this.labyrinthe);
-        JeuPerso jeu = new JeuPerso(this.aventurier);
-		DessinPerso dp = new DessinPerso(jeu, this.labyrinthe);
-        MonstreImmobile m = new MonstreImmobile(10,400,81, 50, 10 , "lol", labyrinthe);
+        ArrayList<Jeu> jeu = new ArrayList<Jeu>();
+        JeuPerso jeuperso = new JeuPerso(this.aventurier);
+        JeuMonstre jeumonstre = new JeuMonstre(this.aventurier);
+		DessinPerso dp = new DessinPerso(jeuperso, this.labyrinthe);
+        MonstreImmobile m = new MonstreImmobile(10, 400,81, 10, 50, "lol", labyrinthe);
         labyrinthe.getMonstres().add(m);
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, dp);
@@ -90,7 +94,7 @@ public class JeuPrincipal {
      */
     private JSONObject chargerJSON(String fichier) throws IOException, ParseException {
         JSONParser parser = new JSONParser();
-        String path = URLDecoder.decode(Objects.requireNonNull(getClass().getClassLoader().getResource(fichier)).getPath(), StandardCharsets.UTF_8);
+        String path = URLDecoder.decode(Objects.requireNonNull(getClass().getClassLoader().getResource(fichier)).getPath(), "UTF-8");
         Object obj = parser.parse(new FileReader(path));
         return (JSONObject) obj;
     }
