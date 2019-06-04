@@ -3,7 +3,7 @@ package jeu;
 public class MonstreAleatoire extends Monstre{
 
 	public MonstreAleatoire(int pPv, int px, int py, int pDegat, int pPortee, String pNom, Labyrinthe pLab) {
-		super(1, pPv, px, py, pDegat, pPortee, pNom, pLab);
+		super(2, pPv, px, py, pDegat, pPortee, pNom, pLab);
 	}
 
 	@Override
