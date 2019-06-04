@@ -63,7 +63,23 @@ class Labyrinthe {
     -defaut():void
 }
 
-class Monstre {
+abstract Monstre {
+    -portee : int
+    -degat: int
+    +Monstre(int, int, int, String, Labyrinthe)
+    +attaquer(Aventurier,int,int,int): void
+    +seDeplacer(char):void
+}
+
+class MonstreAleatoire {
+    -portee : int
+    -degat: int
+    +Monstre(int, int, int, String, Labyrinthe)
+    +attaquer(Aventurier,int,int,int): void
+    +seDeplacer(char):void
+}
+
+class MonstreSuivi {
     -portee : int
     -degat: int
     +Monstre(int, int, int, String, Labyrinthe)
@@ -158,4 +174,8 @@ CaseVide --|> Case
 Mur --|> Case
 
 CaseSortie--|> Case
+
+MonstreAleatoire--|> Monstre
+
+MonstreSuivi--|> Monstre
 @enduml

@@ -58,7 +58,10 @@ public class Aventurier extends Entite {
                 case 'S': this.y+=5; break;
                 case 'O': this.x-=5; break;
             }
-    			
+    		if (this.lab.typeCase(this.x, this.y) == 2) {
+    			System.out.println("test");
+				System.exit(1);
+			}
     		for(Monstre monstre : mi) {
         		monstre.attaquer(this, this.x, this.y);
         	}
