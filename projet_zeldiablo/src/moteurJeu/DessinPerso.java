@@ -6,6 +6,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.net.URLDecoder;
 
 /**
  * Classe qui dessine le jeu selon la taille de la fenetre
@@ -31,17 +32,18 @@ public class DessinPerso implements DessinJeu{
 		this.perso_gauche = new Image[4];
 
 		try{
+			
 
-			perso_droite[0] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/d1.gif").getPath()));
-			perso_droite[1] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/d2.gif").getPath()));
-			perso_droite[2] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/d3.gif").getPath()));
-			perso_droite[3] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/d4.gif").getPath()));
-			perso_gauche[0] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/g1.gif").getPath()));
-			perso_gauche[1] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/g2.gif").getPath()));
-			perso_gauche[2] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/g3.gif").getPath()));
-			perso_gauche[3] = ImageIO.read(new File(getClass().getClassLoader().getResource("spriteperso/g4.gif").getPath()));
-			mur = ImageIO.read(new File(getClass().getClassLoader().getResource("wall.png").getPath()));
-			casevide = ImageIO.read(new File(getClass().getClassLoader().getResource("sol.png").getPath()));
+			perso_droite[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d1.gif").getPath(), "UTF-8")));
+			perso_droite[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d2.gif").getPath(), "UTF-8")));
+			perso_droite[2] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d3.gif").getPath(), "UTF-8")));
+			perso_droite[3] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d4.gif").getPath(), "UTF-8")));
+			perso_gauche[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/g1.gif").getPath(), "UTF-8")));
+			perso_gauche[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/g2.gif").getPath(), "UTF-8")));
+			perso_gauche[2] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/g3.gif").getPath(), "UTF-8")));
+			perso_gauche[3] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/g4.gif").getPath(), "UTF-8")));
+			mur = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("wall.png").getPath(), "UTF-8")));
+			casevide = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sol.png").getPath(), "UTF-8")));
 		}catch (Exception e){
 			System.out.println("Probleme avec l'image");
 			e.printStackTrace();

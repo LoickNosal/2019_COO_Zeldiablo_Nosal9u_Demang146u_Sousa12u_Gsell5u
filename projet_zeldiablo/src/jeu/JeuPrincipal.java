@@ -6,6 +6,7 @@ import org.json.simple.parser.*;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.net.URLDecoder;
 
 /**
  * modelise le jeu principal
@@ -26,8 +27,7 @@ public class JeuPrincipal {
     private void chargerLVL(int lvl) {
         try {
             JSONParser parser = new JSONParser();
-            URL url = getClass().getClassLoader().getResource("./");
-            String ressourcesPath = url.getPath();
+            String ressourcesPath = URLDecoder.decode(getClass().getClassLoader().getResource("./").getPath(), "UTF-8");
             Object obj;
             JSONObject json;
 
