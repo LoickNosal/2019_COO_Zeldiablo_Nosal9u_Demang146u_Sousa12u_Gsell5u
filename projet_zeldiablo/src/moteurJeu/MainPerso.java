@@ -23,7 +23,7 @@ public class MainPerso {
 
 		// lance la boucle de jeu qui tourne jusque la fin du jeu
 		try {
-			moteur.lancerJeu(800, 800);
+			moteur.lancerJeu(900, 900);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

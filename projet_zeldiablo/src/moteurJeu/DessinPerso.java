@@ -58,10 +58,10 @@ public class DessinPerso implements DessinJeu{
 		for(int i = 0; i < lab.getHauteur(); i++){
 			for(int j = 0; j< lab.getLargeur(); j++){
 				if(lab.caseTraversable(i,j)) {
-					g.drawImage(casevide, i*80, j*80, 80,80,null);
+					g.drawImage(casevide, i*60, j*60, 60,60,null);
 				}
 				else{
-					g.drawImage(mur, i*80, j*80, 80,80,null);
+					g.drawImage(mur, i*60, j*60, 60,60,null);
 				}
 			}
 		}

@@ -11,7 +11,7 @@ public abstract class Case {
 	/**
 	 * taille d'une case (carré)
 	 */
-	protected final static int taille = 80;
+	protected final static int taille = 60;
 	
 	/**
 	 * Coordonnées x de la case
