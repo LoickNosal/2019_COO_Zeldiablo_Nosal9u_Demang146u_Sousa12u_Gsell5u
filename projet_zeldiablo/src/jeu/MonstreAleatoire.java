@@ -9,6 +9,7 @@ public class MonstreAleatoire extends Monstre{
 
 	public MonstreAleatoire(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pDegat, pPortee, pNom);
+		id = 2;
 	}
 
 	@Override
