@@ -31,9 +31,9 @@ public class DessinPerso implements DessinJeu{
 		Image mur;
 		Image casevide;
 		try{
-			sprite = ImageIO.read(new File("ressources/sprite.PNG"));
-			mur = ImageIO.read(new File("ressources/wall.PNG"));
-			casevide = ImageIO.read(new File("ressources/sol.PNG"));
+			sprite = ImageIO.read(new File(getClass().getClassLoader().getResource("sprite.png").getPath()));
+			mur = ImageIO.read(new File(getClass().getClassLoader().getResource("wall.png").getPath()));
+			casevide = ImageIO.read(new File(getClass().getClassLoader().getResource("sol.png").getPath()));
 		}catch (Exception e){
 			System.out.println("Probleme avec l'image");
 			e.printStackTrace();
