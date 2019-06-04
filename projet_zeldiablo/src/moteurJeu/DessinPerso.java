@@ -92,8 +92,16 @@ public class DessinPerso implements DessinJeu{
 		if(compteur > 59)
 			compteur =0;
 		for (Monstre m: lab.getMonstres()) {
+			switch(m.getId())
+			{
+				case 1 :
+					g.drawImage(slime_vert[compteur/30], m.getX()-36, m.getY()-50,73,55, null);
+					break;
+				case 2 :
+					g.drawImage(slime_rouge[compteur/30], m.getX()-36, m.getY()-50,73,55, null);
+					break;
+			}
 
-				g.drawImage(slime_vert[compteur/30], m.getX()-36, m.getY()-50,73,55, null);
 
 
 		}
