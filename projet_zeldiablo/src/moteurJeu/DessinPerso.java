@@ -19,6 +19,7 @@ public class DessinPerso implements DessinJeu{
 	private Labyrinthe lab;
 
 	private Image mur;
+	private Image porte;
 	private Image casevide;
 
 	private Image[] perso_droite;
@@ -43,6 +44,7 @@ public class DessinPerso implements DessinJeu{
 			perso_gauche[2] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/g3.gif").getPath(), "UTF-8")));
 			perso_gauche[3] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/g4.gif").getPath(), "UTF-8")));
 			mur = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("wall.png").getPath(), "UTF-8")));
+			porte = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("porte.png").getPath(), "UTF-8")));
 			casevide = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sol.png").getPath(), "UTF-8")));
 		}catch (Exception e){
 			System.out.println("Probleme avec l'image");
