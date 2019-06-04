@@ -11,7 +11,7 @@ public class MonstreSuivi extends Monstre{
 	}
 
 	public void seDeplacer(Aventurier av) {
-    	int direction = 1 ;
+    	int direction = 0;
     	int pX = av.getX();
     	int pY = av.getY();
     	int distance = (int) Math.sqrt(Math.pow(pX - x, 2) + Math.pow(pY - y, 2));
@@ -36,7 +36,7 @@ public class MonstreSuivi extends Monstre{
     		futurePosX -= 3; // Ouest
     	}
     	else {
-    		direction = 1;
+    		direction = 2;
     	}
     	futureDistance = (int) Math.sqrt(Math.pow(pX - futurePosX, 2) + Math.pow(pY - futurePosY, 2));
     	if(futureDistance >= distance) {
@@ -44,14 +44,14 @@ public class MonstreSuivi extends Monstre{
     		futurePosY -= 3; // Nord
     	}
     	else {
-    		direction = 1;
+    		direction = 3;
     	}
     	futureDistance = (int) Math.sqrt(Math.pow(pX - futurePosX, 2) + Math.pow(pY - futurePosY, 2));
     	if(futureDistance >= distance) {
     		futurePosY += 3;
     	}
     	else {
-    		direction = 1;
+    		direction = 0;
     	}
     	avancer(direction);
 	}
