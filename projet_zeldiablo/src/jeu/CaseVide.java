@@ -32,4 +32,8 @@ public class CaseVide extends Case{
 		return true;
 	}
 
+	public int typeCase() {
+		return 0;
+	}
+
 }

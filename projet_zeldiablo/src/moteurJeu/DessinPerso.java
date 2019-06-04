@@ -56,7 +56,6 @@ public class DessinPerso implements DessinJeu{
 		g.drawImage(sprite, jeuEnCours.getPerso().getX()-46, jeuEnCours.getPerso().getY()-52, 61,78,null);
 
 
-
 		g.dispose();
 	}
 	
