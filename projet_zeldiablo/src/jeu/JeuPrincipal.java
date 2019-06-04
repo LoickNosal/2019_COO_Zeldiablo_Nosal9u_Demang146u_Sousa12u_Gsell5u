@@ -3,6 +3,10 @@ package jeu;
 import org.json.simple.*;
 import org.json.simple.parser.*;
 
+import moteurJeu.DessinPerso;
+import moteurJeu.JeuPerso;
+import moteurJeu.MoteurGraphique;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -21,6 +25,20 @@ public class JeuPrincipal {
     public JeuPrincipal() {
         chargerLVL(3);
         this.aventurier = new Aventurier(10, 100, 100, "Aventurier", this.labyrinthe);
+        JeuPerso jeu = new JeuPerso(this.aventurier);
+		DessinPerso dp = new DessinPerso(jeu, this.labyrinthe);
+
+		// classe qui lance le moteur de jeu generique
+		MoteurGraphique moteur = new MoteurGraphique(jeu, dp);
+
+		// lance la boucle de jeu qui tourne jusque la fin du jeu
+		try {
+			moteur.lancerJeu(900, 900);
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 

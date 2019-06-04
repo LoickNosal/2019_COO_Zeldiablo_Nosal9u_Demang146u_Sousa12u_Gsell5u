@@ -25,6 +25,8 @@ public class DessinPerso implements DessinJeu{
 	private Image[] perso_droite;
 	private Image[] perso_gauche;
 	
+	public static int TAILLE_CASE = 60;
+	
 	public DessinPerso(JeuPerso pjeuEnCours, Labyrinthe l) {
 		this.jeuEnCours = pjeuEnCours;
 		this.lab = l;
@@ -63,16 +65,16 @@ public class DessinPerso implements DessinJeu{
 			for(int j = 0; j< lab.getLargeur(); j++){
 				switch(lab.typeCase(i, j)) {
 				case 0 :
-					g.drawImage(casevide, i*60, j*60, 60,60,null);
+					g.drawImage(casevide, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					break;
 				case 1: 
-					g.drawImage(mur, i*60, j*60, 60,60,null);
+					g.drawImage(mur, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					break;
 				case 2:
-					g.drawImage(porte, i*60, j*60, 60,60,null);
+					g.drawImage(porte, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					break;
 				default:
-					g.drawImage(casevide, i*60, j*60, 60,60,null);
+					g.drawImage(casevide, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					break;
 				}
 			}
