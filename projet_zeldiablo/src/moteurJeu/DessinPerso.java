@@ -27,9 +27,9 @@ public class DessinPerso implements DessinJeu{
 	private Image[] perso_gauche;
 	private Image[] slime_vert;
 	private Image[] slime_rouge;
-	
-	public static int TAILLE_CASE = 60;
-	
+
+	public static int TAILLE_CASE = Case.TAILLE;
+
 	public DessinPerso(JeuPerso pjeuEnCours, Labyrinthe l) {
 		this.jeuEnCours = pjeuEnCours;
 		this.lab = l;

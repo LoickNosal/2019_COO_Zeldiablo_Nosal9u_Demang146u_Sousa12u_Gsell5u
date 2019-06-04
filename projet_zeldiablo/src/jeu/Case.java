@@ -3,6 +3,7 @@ package jeu;
 import java.awt.Rectangle;
 
 import moteurJeu.DessinPerso;
+import org.junit.Test;
 
 /*
  * Classe abstraite qui modèle une case
@@ -13,7 +14,7 @@ public abstract class Case {
 	/**
 	 * taille d'une case (carré)
 	 */
-	protected final static int taille = DessinPerso.TAILLE_CASE;
+	public static int TAILLE = 60;
 	
 	/**
 	 * Coordonnées x de la case
@@ -39,7 +40,7 @@ public abstract class Case {
 	 */
 	public boolean estDedans(int x, int y) {
 		boolean res = false;
-		Rectangle r = new Rectangle(posX*taille,posY*taille,taille,taille);
+		Rectangle r = new Rectangle(posX * TAILLE,posY * TAILLE, TAILLE, TAILLE);
 		if (r.contains(x,y)) {
 			res = true;
 		}
