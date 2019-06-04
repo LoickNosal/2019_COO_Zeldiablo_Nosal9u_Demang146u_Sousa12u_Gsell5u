@@ -1,0 +1,15 @@
+@startuml 
+title Attaque de Monstre Aléatoire
+participant "msa:MonstreAleatoire" as msa << (C,#ADD1B2) >>
+
+
+ -> msa : seDeplacer() 
+activate msa
+msa -> msa : attaquer()
+activate msa
+msa --> msa
+deactivate msa
+ <-- msa
+deactivate msa
+
+@enduml
