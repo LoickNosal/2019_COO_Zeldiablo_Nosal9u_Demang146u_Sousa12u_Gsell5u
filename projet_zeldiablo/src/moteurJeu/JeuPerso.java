@@ -82,6 +82,10 @@ public class JeuPerso implements Jeu{
 		return this.fini;
 	}
 
+	public void setFini(boolean a) {
+		this.fini = a;
+	}
+
 	public boolean isDirection() {
 		return direction;
 	}

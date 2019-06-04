@@ -52,6 +52,7 @@ public class MoteurGraphique {
 		//En attente de la sortie du menu
 		while(true) {
 			// boucle de jeu
+
 			while (!this.jeu.get(0).etreFini() && !this.gui.menu.isVisible()) {
 				// demande controle utilisateur
 				Commande c = controle.getCommande();
@@ -65,6 +66,12 @@ public class MoteurGraphique {
 				Thread.sleep(10);
 			}
 			Thread.sleep(100);
+
+			if(this.jeu.get(0).etreFini())
+			{
+				this.gui.menu.setVisible(true);
+				this.jeu.get(0).setFini(false);
+			}
 		}
 
 
