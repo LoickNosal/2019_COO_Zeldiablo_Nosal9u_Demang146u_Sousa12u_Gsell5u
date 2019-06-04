@@ -90,7 +90,7 @@ public class JeuPrincipal {
      */
     private JSONObject chargerJSON(String fichier) throws IOException, ParseException {
         JSONParser parser = new JSONParser();
-        String path = URLDecoder.decode(Objects.requireNonNull(getClass().getClassLoader().getResource(fichier)).getPath(), StandardCharsets.UTF_8);
+        String path = URLDecoder.decode(Objects.requireNonNull(getClass().getClassLoader().getResource(fichier)).getPath(), "UTF-8");
         Object obj = parser.parse(new FileReader(path));
         return (JSONObject) obj;
     }
@@ -113,10 +113,12 @@ public class JeuPrincipal {
         ArrayList<Monstre> monstres = new ArrayList<Monstre>(jsonMonstres.size());
         for (int i = 0; i < jsonMonstres.size(); i++) {
             JSONObject jsonM = (JSONObject) jsonMonstres.get(i);
-            System.out.println(jsonM);
-            //int id = Integer.valueOf((String ) jsonM.get("id"));
-            //System.out.println(id);
+            int id = ((Long) jsonM.get("id")).intValue();
+
+            int posX = ((Long) ((JSONArray) jsonM.get("pos")).get(0)).intValue();
+            int posY = ((Long) ((JSONArray) jsonM.get("pos")).get(1)).intValue();
         }
+
 
 
         return new Labyrinthe(modeleLabyrinthe);
