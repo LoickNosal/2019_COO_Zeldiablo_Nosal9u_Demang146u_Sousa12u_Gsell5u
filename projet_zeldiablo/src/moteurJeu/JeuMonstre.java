@@ -16,7 +16,7 @@ public class JeuMonstre implements Jeu{
 	/**
 	 * monstre du jeu
 	 */
-	private Monstre monstre;
+	private ArrayList<Monstre> monstres;
 	
 	/**
 	 * personnage du jeu
@@ -26,10 +26,10 @@ public class JeuMonstre implements Jeu{
 	private int compteur_pas;
 	private boolean direction;
 	
-	public JeuMonstre(Monstre m, Aventurier pPersonnage) {
+	public JeuMonstre(Aventurier pPersonnage) {
 		super();
-		this.monstre = m;
 		this.personnage = pPersonnage;
+		this.monstres = personnage.getLab().getMonstres();
 	}
 
 	
@@ -39,8 +39,10 @@ public class JeuMonstre implements Jeu{
 	 * envoyées par l'utilisateur
 	 */
 	public void evoluer(Commande commandeUser) {
-		monstre.seDeplacer(personnage);
-        monstre.attaquer(personnage);
+		for(Monstre m : monstres) {
+			m.seDeplacer(personnage);
+	        m.attaquer(personnage);
+		}
 	}
 
 	@Override
@@ -51,8 +53,8 @@ public class JeuMonstre implements Jeu{
 		return false;
 	}
 
-	public Monstre getMonstre() {
-		return monstre;
+	public ArrayList<Monstre> getMonstres() {
+		return monstres;
 	}
 	
 	public Aventurier getPersonnage() {

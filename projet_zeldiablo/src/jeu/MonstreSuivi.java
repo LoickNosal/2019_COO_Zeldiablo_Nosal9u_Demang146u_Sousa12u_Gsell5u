@@ -1,5 +1,10 @@
 package jeu;
 
+/**
+ * Classe qui modélise un monstre se dirigeant vers l'aventurier
+ * @author Alexandre Sousa
+ *
+ */
 public class MonstreSuivi extends Monstre{
 
 	public MonstreSuivi(int pPv, int px, int py, int pDegat, int pPortee, String pNom, Labyrinthe pLab) {
