@@ -96,5 +96,7 @@ public abstract class Monstre extends Entite{
 		return portee;
 	}
 
+	public int getId() { return id; }
+
 	
 }
