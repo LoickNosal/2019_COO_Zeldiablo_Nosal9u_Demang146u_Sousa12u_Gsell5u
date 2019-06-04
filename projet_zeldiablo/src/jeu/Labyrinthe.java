@@ -84,6 +84,12 @@ public class Labyrinthe {
 	}
 	   return res;
    }
+   
+   public int typeCase(int x,int y) {
+	    if (x < 0 || x >= getLargeur() || y < 0 || y >= getHauteur())
+	    return -1;
+	         return cases[x][y].typeCase();
+	    }
 
     public String toString() {
         String res = "";

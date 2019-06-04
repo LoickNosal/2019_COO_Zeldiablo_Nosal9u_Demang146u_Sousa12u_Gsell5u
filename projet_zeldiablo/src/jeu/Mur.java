@@ -30,4 +30,8 @@ public class Mur extends Case {
 		return false;
 	}
 
+	public int typeCase() {
+		return 1;
+	}
+
 }
