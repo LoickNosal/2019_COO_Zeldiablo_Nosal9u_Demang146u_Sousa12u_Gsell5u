@@ -39,8 +39,8 @@ public class JeuPrincipal {
         JeuPerso jeuperso = new JeuPerso(this.aventurier);
 
 
-        MonstreImmobile m = new MonstreImmobile(10, 400,81, 10, 50, "lol");
-        MonstreAleatoire m2 = new MonstreAleatoire(10, 400, 100, 10, 50, "m2");
+        MonstreImmobile m = new MonstreImmobile(50, 400,81, 1, 50, "lol");
+        MonstreAleatoire m2 = new MonstreAleatoire(50, 400, 100, 1, 50, "m2");
         m.setLabyrinthe(this.labyrinthe);
         m2.setLabyrinthe(this.labyrinthe);
         ArrayList<Monstre> monstres = new ArrayList<Monstre>();
