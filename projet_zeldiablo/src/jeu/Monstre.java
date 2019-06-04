@@ -7,10 +7,10 @@ import moteurJeu.JeuPerso;
  * @author Alexandre Sousa
  *
  */
-public class MonstreImmobile extends Entite{
+public class Monstre extends Entite{
 	private int degat;
 	
-	public MonstreImmobile(int pPv, int px, int py, int pDegat, String pNom, Labyrinthe pLab) {
+	public Monstre(int pPv, int px, int py, int pDegat, String pNom, Labyrinthe pLab) {
 		super(pPv, px, py, pNom, pLab);
 		
 		if(pDegat < 0) {
