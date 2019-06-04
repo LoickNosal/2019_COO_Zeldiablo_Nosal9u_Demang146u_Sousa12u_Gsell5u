@@ -12,24 +12,17 @@ import jeu.Labyrinthe;
  *
  */
 public class JeuMonstre implements Jeu{
-	
+
 	/**
 	 * monstre du jeu
 	 */
 	private ArrayList<Monstre> monstres;
-	
-	/**
-	 * personnage du jeu
-	 */
-	private Aventurier personnage;
-	
-	private int compteur_pas;
-	private boolean direction;
-	
-	public JeuMonstre(Aventurier pPersonnage) {
+	private Aventurier aventurier;
+
+
+	public JeuMonstre(ArrayList<Monstre> m) {
 		super();
-		this.personnage = pPersonnage;
-		this.monstres = personnage.getLab().getMonstres();
+		this.monstres = m;
 	}
 
 	
@@ -40,9 +33,13 @@ public class JeuMonstre implements Jeu{
 	 */
 	public void evoluer(Commande commandeUser) {
 		for(Monstre m : monstres) {
-			m.seDeplacer(personnage);
-	        m.attaquer(personnage);
+			m.seDeplacer(null);
+	        m.attaquer(aventurier);
 		}
+	}
+
+	public void setAventurier(Aventurier av) {
+		this.aventurier = av;
 	}
 
 	@Override
@@ -56,11 +53,6 @@ public class JeuMonstre implements Jeu{
 	public ArrayList<Monstre> getMonstres() {
 		return monstres;
 	}
-	
-	public Aventurier getPersonnage() {
-		return personnage;
-	}
 
-	
 
 }

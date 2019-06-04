@@ -16,8 +16,8 @@ import java.net.URLDecoder;
 public class DessinPerso implements DessinJeu{
 
 	private int compteur;
-	private JeuPerso jeuEnCours;
-	private Labyrinthe lab;
+	private JeuPerso jeuPerso;
+	private JeuMonstre jeuMonstre;
 
 	private Image mur;
 	private Image porte;
@@ -30,9 +30,9 @@ public class DessinPerso implements DessinJeu{
 
 	public static int TAILLE_CASE = Case.TAILLE;
 
-	public DessinPerso(JeuPerso pjeuEnCours, Labyrinthe l) {
-		this.jeuEnCours = pjeuEnCours;
-		this.lab = l;
+	public DessinPerso(JeuPerso jP, JeuMonstre jM) {
+		this.jeuPerso = jP;
+		this.jeuMonstre = jM;
 		this.compteur = 0;
 		this.perso_droite = new Image[4];
 		this.perso_gauche = new Image[4];
@@ -70,9 +70,9 @@ public class DessinPerso implements DessinJeu{
 		compteur++;
 		Graphics2D g = (Graphics2D) image.getGraphics();
 
-		for(int i = 0; i < lab.getHauteur(); i++){
-			for(int j = 0; j< lab.getLargeur(); j++){
-				switch(lab.typeCase(i, j)) {
+		for(int i = 0; i < jeuPerso.getPerso().getLab().getHauteur(); i++){
+			for(int j = 0; j< jeuPerso.getPerso().getLab().getLargeur(); j++){
+				switch(jeuPerso.getPerso().getLab().typeCase(i, j)) {
 				case 0 :
 					g.drawImage(casevide, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					break;
@@ -91,7 +91,7 @@ public class DessinPerso implements DessinJeu{
 
 		if(compteur > 59)
 			compteur =0;
-		for (Monstre m: lab.getMonstres()) {
+		for (Monstre m: jeuMonstre.getMonstres()) {
 			switch(m.getId())
 			{
 				case 1 :
@@ -107,11 +107,11 @@ public class DessinPerso implements DessinJeu{
 		}
 
 
-		if(jeuEnCours.isDirection()){
-			g.drawImage(perso_droite[jeuEnCours.getCompteur_pas()/5], jeuEnCours.getPerso().getX()-20, jeuEnCours.getPerso().getY()-50, 45,60,null);
+		if(jeuPerso.isDirection()){
+			g.drawImage(perso_droite[jeuPerso.getCompteur_pas()/5], jeuPerso.getPerso().getX()-20, jeuPerso.getPerso().getY()-50, 45,60,null);
 		}
 		else{
-			g.drawImage(perso_gauche[jeuEnCours.getCompteur_pas()/5], jeuEnCours.getPerso().getX()-20, jeuEnCours.getPerso().getY()-50, 45,60,null);
+			g.drawImage(perso_gauche[jeuPerso.getCompteur_pas()/5], jeuPerso.getPerso().getX()-20, jeuPerso.getPerso().getY()-50, 45,60,null);
 		}
 
 
