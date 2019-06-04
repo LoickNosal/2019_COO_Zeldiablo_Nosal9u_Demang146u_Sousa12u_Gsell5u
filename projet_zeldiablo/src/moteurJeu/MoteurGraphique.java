@@ -46,24 +46,26 @@ public class MoteurGraphique {
 		// creation de l'interface graphique
 		this.gui = new InterfaceGraphique(this.dessin,width,height);
 		Controleur controle = this.gui.getControleur();
+		//menu cherche si il est affiche ou pas
 
-		// boucle de jeu
-		while (!this.jeu.get(0).etreFini()) {
-			// demande controle utilisateur
-			Commande c = controle.getCommande();
-			// fait evoluer le jeu
-			for(Jeu jeuX : jeu) {
-				jeuX.evoluer(c);
+
+		//En attente de la sortie du menu
+		while(true) {
+			// boucle de jeu
+			while (!this.jeu.get(0).etreFini() && !this.gui.menu.isVisible()) {
+				// demande controle utilisateur
+				Commande c = controle.getCommande();
+				// fait evoluer le jeu
+				for (Jeu jeuX : jeu) {
+					jeuX.evoluer(c);
+				}
+				// affiche le jeu
+				this.gui.dessiner();
+				// met en attente
+				Thread.sleep(10);
 			}
-			// affiche le jeu
-			this.gui.dessiner();
-			// met en attente
-			Thread.sleep(10);
-
+			Thread.sleep(100);
 		}
-
-		//FIN DU JEUs
-		System.exit(0);
 
 
 	}

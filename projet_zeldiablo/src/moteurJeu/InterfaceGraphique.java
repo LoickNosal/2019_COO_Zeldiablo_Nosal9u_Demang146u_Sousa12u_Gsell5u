@@ -1,6 +1,7 @@
 package moteurJeu;
 
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
 
 
 /**
@@ -9,6 +10,11 @@ import javax.swing.JFrame;
  *
  */
 public class InterfaceGraphique  {
+
+	/**
+	 * Le Panel qui affiche le menu de départ
+	 */
+	public Menu menu;
 
 	/**
 	 * le Panel lie a la JFrame
@@ -33,23 +39,33 @@ public class InterfaceGraphique  {
 		//creation JFrame
 		JFrame f=new JFrame();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		f.setResizable(false);
 		// creation panel
+		JPanel principal = new JPanel();
 		this.panel=new PanelDessin(x, y,afficheurUtil);
-		f.setContentPane(this.panel);
-		
+
+
+		principal.setLayout(null);
+		this.panel.setBounds(0,0,900,900);
+		principal.setPreferredSize(new Dimension(900,900));
+
+		this.menu = new Menu();
+		menu.setBounds(0,0,900,900);
+
+		principal.add(menu);
+		principal.add(this.panel);
+
+		f.setContentPane(principal);
 		//ajout du controleur
 		Controleur controlleurGraph=new Controleur();
 		this.controleur=controlleurGraph;
-		this.panel.addKeyListener(controlleurGraph);	
-		
+		principal.addKeyListener(controlleurGraph);
 		//recuperation du focus
 		f.pack();
 		f.getContentPane().setFocusable(true);
 		f.getContentPane().requestFocus();
 
 		f.setVisible(true);
-		
 	}
 	
 	

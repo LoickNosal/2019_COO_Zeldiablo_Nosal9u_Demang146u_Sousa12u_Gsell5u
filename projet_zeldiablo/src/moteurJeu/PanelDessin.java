@@ -3,8 +3,9 @@ package moteurJeu;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.beans.JavaBean;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class PanelDessin extends JPanel {
 
@@ -33,10 +34,8 @@ public class PanelDessin extends JPanel {
 	 * Panel associe. Les images stockent le dessin et on demande au panel la
 	 * mise a jour quand le dessin est fini
 	 * 
-	 * @param width
-	 *            largeur de l'image
-	 * @param height
-	 *            hauteur de l'image
+	 * @param width largeur de l'image
+	 * @param height hauteur de l'image
 	 */
 	public PanelDessin(int x, int y, DessinJeu affiche) {
 		super();
@@ -82,6 +81,8 @@ public class PanelDessin extends JPanel {
 		super.paint(g);
 		g.drawImage(this.imageEnCours, 0, 0, getWidth(), getHeight(), 0, 0,
 				getWidth(), getHeight(), null);
+
+
 	}
 
 }
