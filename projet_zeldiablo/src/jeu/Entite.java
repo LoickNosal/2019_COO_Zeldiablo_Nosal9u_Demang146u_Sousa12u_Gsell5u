@@ -38,7 +38,7 @@ abstract public class Entite{
      * @param y La position Y
      * @param n Son nom
      */
-    public Entite(int p, int x, int y, String n, Labyrinthe l)
+    public Entite(int p, int x, int y, String n)
     {
         if(p<= 0){
             this.pv = 1;
@@ -56,11 +56,6 @@ abstract public class Entite{
         else{
             this.nom = n;
         }
-        if(l != null ) {
-        	this.lab = l;
-        }else {
-        	this.lab = new Labyrinthe();
-        }
         
         vivant = true;
 
@@ -68,6 +63,13 @@ abstract public class Entite{
 
     public boolean getVivant() {
     	return vivant;
+    }
+    
+    public void setLabyrinthe(Labyrinthe l) {
+    	if (l != null) {
+    		this.lab = l;
+		}
+    	
     }
     
     public Labyrinthe getLab() {

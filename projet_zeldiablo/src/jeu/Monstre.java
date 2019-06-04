@@ -1,22 +1,22 @@
 package jeu;
 
 /**
- * Classe qui modélise un monstre 
+ * Classe qui modélise un monstre
  * @author Alexandre Sousa
  *
  */
-public abstract class Monstre extends Entite{
-	private int id; // 1: Monstre immobile, 2: Monstre aleatoire, 3: Monstre suivi 
-	private int degat;
-	private int portee;
-	
-	public Monstre(int pId, int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
+public abstract class Monstre extends Entite {
+	protected int id;
+	protected int degat;
+	protected int portee;
+
+	public Monstre(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pNom);
-		
+
 		if(pDegat < 0) {
 			pDegat = 0;
 		}
-		
+
 		if(pPortee < 0) {
 			pPortee = 0;
 		}
@@ -25,8 +25,8 @@ public abstract class Monstre extends Entite{
 		portee = pPortee;
 
 	}
-	
-	
+
+
 	public void attaquer(Aventurier pPerso) {
 		Aventurier perso = pPerso;
 		int distance = (int) Math.sqrt(Math.pow(pPerso.getX() - x, 2) + Math.pow(pPerso.getY() - y, 2));
@@ -37,35 +37,35 @@ public abstract class Monstre extends Entite{
 			perso.subirDegat(degat);
 		}
 	}
-	
+
 	public void avancer(int a) {
 		int futureposX = 0;
     	int futureposY = 0;
-    	
+
 		switch(a)
         {
-            case 0: 
-            futureposY = this.y-10; 
+            case 0:
+            futureposY = this.y-10;
             futureposX = this.x;
             break;
-            
-            case 1: 
+
+            case 1:
             futureposX = this.x+10;
             futureposY = this.y;
             break;
-            
-            case 2: 
+
+            case 2:
             futureposY = this.y+10;
             futureposX = this.x;
             break;
-            
-            case 3: 
+
+            case 3:
             futureposX = this.x-10;
             futureposY = this.y;
             break;
         }
-    	
-    	
+
+
     	if (peutAvancer(futureposX,futureposY) == true) {
     		switch(a)
             {
@@ -81,18 +81,37 @@ public abstract class Monstre extends Entite{
 	public abstract void seDeplacer(char cardinaux);
 	@Override
 	public abstract void seDeplacer(Aventurier av);
-	
+
 	public int getDegat() {
 		return degat;
 	}
-	
+
 	public int getPortee() {
 		return portee;
 	}
 
 	public int getId() {
-		return id; 
+		return id;
 	}
 
-	
+
+	/**
+	 * creer un monstre a partir d'un ID
+	 *
+	 * @param id id du monstre a creer
+	 * @return le monstre correspondant a l'ID
+	 */
+	public static Monstre creerMonstreParID(int id) {
+		switch (id) {
+			case 1:
+				//return new MonstreImmobile();
+			case 2:
+				//return new MonstreAleatoire();
+			case 3:
+				//return new MonstreSuivi();
+			default:
+				return null;
+		}
+	}
+
 }

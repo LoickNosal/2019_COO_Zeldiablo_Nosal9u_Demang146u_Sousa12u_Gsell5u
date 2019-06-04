@@ -33,12 +33,12 @@ public class JeuPrincipal {
     public JeuPrincipal() {
         level = 1;
         chargerLVL(level);
-        this.aventurier = new Aventurier(10, 100, 100, "Aventurier", this.labyrinthe);
+        this.aventurier = new Aventurier(10, 100, 100, "Aventurier");
         ArrayList<Jeu> jeu = new ArrayList<Jeu>();
         JeuPerso jeuperso = new JeuPerso(this.aventurier);
         JeuMonstre jeumonstre = new JeuMonstre(this.aventurier);
 		DessinPerso dp = new DessinPerso(jeuperso, this.labyrinthe);
-        MonstreImmobile m = new MonstreImmobile(10, 400,81, 10, 50, "lol", labyrinthe);
+        MonstreImmobile m = new MonstreImmobile(10, 400,81, 10, 50, "lol");
         labyrinthe.getMonstres().add(m);
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, dp);
@@ -46,7 +46,7 @@ public class JeuPrincipal {
 		// lance la boucle de jeu qui tourne jusque la fin du jeu
 		try {
 			moteur.lancerJeu(900, 900);
-			
+
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -117,10 +117,12 @@ public class JeuPrincipal {
         ArrayList<Monstre> monstres = new ArrayList<Monstre>(jsonMonstres.size());
         for (int i = 0; i < jsonMonstres.size(); i++) {
             JSONObject jsonM = (JSONObject) jsonMonstres.get(i);
-            System.out.println(jsonM);
-            //int id = Integer.valueOf((String ) jsonM.get("id"));
-            //System.out.println(id);
+            int id = ((Long) jsonM.get("id")).intValue();
+
+            int posX = ((Long) ((JSONArray) jsonM.get("pos")).get(0)).intValue();
+            int posY = ((Long) ((JSONArray) jsonM.get("pos")).get(1)).intValue();
         }
+
 
 
         return new Labyrinthe(modeleLabyrinthe);

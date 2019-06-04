@@ -27,9 +27,9 @@ public class DessinPerso implements DessinJeu{
 	private Image[] perso_gauche;
 	private Image[] slime_vert;
 	private Image[] slime_rouge;
-	
-	public static int TAILLE_CASE = 60;
-	
+
+	public static int TAILLE_CASE = Case.TAILLE;
+
 	public DessinPerso(JeuPerso pjeuEnCours, Labyrinthe l) {
 		this.jeuEnCours = pjeuEnCours;
 		this.lab = l;
@@ -41,7 +41,7 @@ public class DessinPerso implements DessinJeu{
 
 
 		try{
-			
+
 			slime_rouge[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sa1.gif").getPath(), "UTF-8")));
 			slime_rouge[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sa2.gif").getPath(), "UTF-8")));
 			slime_vert[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("s1.gif").getPath(), "UTF-8")));
@@ -64,7 +64,7 @@ public class DessinPerso implements DessinJeu{
 			casevide = null;
 		}
 	}
-	
+
 	@Override
 	public void dessiner(BufferedImage image) {
 		compteur++;
@@ -76,7 +76,7 @@ public class DessinPerso implements DessinJeu{
 				case 0 :
 					g.drawImage(casevide, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					break;
-				case 1: 
+				case 1:
 					g.drawImage(mur, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					break;
 				case 2:
@@ -111,7 +111,7 @@ public class DessinPerso implements DessinJeu{
 
 		g.dispose();
 	}
-	
-	
+
+
 
 }
