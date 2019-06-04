@@ -2,8 +2,8 @@ package jeu;
 
 public class MonstreAleatoire extends Monstre{
 
-	public MonstreAleatoire(int pId, int pPv, int px, int py, int pDegat, int pPortee, String pNom, Labyrinthe pLab) {
-		super(pId, pPv, px, py, pDegat, pPortee, pNom, pLab);
+	public MonstreAleatoire(int pPv, int px, int py, int pDegat, int pPortee, String pNom, Labyrinthe pLab) {
+		super(1, pPv, px, py, pDegat, pPortee, pNom, pLab);
 	}
 
 	@Override
