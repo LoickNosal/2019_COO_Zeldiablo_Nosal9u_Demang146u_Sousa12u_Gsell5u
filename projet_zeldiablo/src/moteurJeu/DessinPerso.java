@@ -114,10 +114,32 @@ public class DessinPerso implements DessinJeu{
 			g.drawImage(perso_gauche[jeuPerso.getCompteur_pas()/5], jeuPerso.getPerso().getX()-20, jeuPerso.getPerso().getY()-50, 45,60,null);
 		}
 
-
-
-
+		
+		this.gestionVie(g);
 		g.dispose();
+	}
+	
+	
+	
+	public void gestionVie(Graphics2D g) {
+		//deux barre de vie : une rouge et une verte pour les entites
+		
+		//barre des monstres
+		for (Monstre m : this.jeuMonstre.getMonstres()) {
+			int pvMax =  m.getPvMax();
+			int pvCourant = m.getPv();
+			g.setColor(Color.red);
+			g.fillRect(m.getX()-TAILLE_CASE/3, m.getY()-TAILLE_CASE, pvMax, 7);
+			g.setColor(Color.green);
+			g.fillRect(m.getX()-TAILLE_CASE/3, m.getY()-TAILLE_CASE,pvCourant , 7);
+		}
+		//barre du joueur
+		int pvMax = this.jeuPerso.getPerso().getPvMax();
+		int pvCourant = this.jeuPerso.getPerso().getPv();
+		g.setColor(Color.red);
+		g.fillRect(this.jeuPerso.getPerso().getX()-TAILLE_CASE/3, this.jeuPerso.getPerso().getY()-TAILLE_CASE, pvMax, 7);
+		g.setColor(Color.green);
+		g.fillRect(this.jeuPerso.getPerso().getX()-TAILLE_CASE/3, this.jeuPerso.getPerso().getY()-TAILLE_CASE,pvCourant , 7);
 	}
 
 
