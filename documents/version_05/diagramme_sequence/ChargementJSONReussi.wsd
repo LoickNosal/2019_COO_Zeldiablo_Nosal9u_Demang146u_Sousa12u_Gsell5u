@@ -1,0 +1,30 @@
+@startuml 
+title Chargement lvl.json : réussi
+participant JeuPrincipal << (C,#ADD1B2) >>
+participant Labyrinthe << (C,#ADD1B2) >>
+participant JeuMonstre << (C,#ADD1B2) >>
+
+activate JeuPrincipal
+JeuPrincipal -> JeuPrincipal : chargerLVL(int lvl)
+activate JeuPrincipal
+
+JeuPrincipal -> JeuPrincipal : chargerJSON(String url)
+activate JeuPrincipal
+
+JeuPrincipal -> JeuPrincipal : decodeJSON(JSONObject json)
+activate JeuPrincipal
+
+create Labyrinthe
+JeuPrincipal -> Labyrinthe : new Labyrinthe(String[] modele)
+activate Labyrinthe
+JeuPrincipal <-- Labyrinthe
+
+create JeuMonstre
+JeuPrincipal -> JeuMonstre : new JeuMonstre(ArrayList<Monstres>)
+activate JeuMonstre
+JeuPrincipal <-- JeuMonstre
+
+JeuPrincipal -> JeuMonstre : setAventurier(Aventurier av)
+JeuPrincipal <-- JeuMonstre
+
+@enduml
