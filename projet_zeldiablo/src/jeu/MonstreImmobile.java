@@ -8,7 +8,8 @@ package jeu;
 public class MonstreImmobile extends Monstre{
 
 	public MonstreImmobile( int pPv, int px, int py, int pDegat, int pPortee, String pNom, Labyrinthe pLab) {
-		super(1, pPv, px, py, pDegat, pPortee, pNom, pLab);
+		super(pPv, px, py, pDegat, pPortee, pNom, pLab);
+		id = 1;
 	}
 
 	@Override

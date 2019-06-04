@@ -5,12 +5,12 @@ package jeu;
  * @author Alexandre Sousa
  *
  */
-public abstract class Monstre extends Entite{
-	private int id; // 1: Monstre immobile, 2: Monstre aleatoire, 3: Monstre suivi 
-	private int degat;
-	private int portee;
+public abstract class Monstre extends Entite {
+	protected int id;
+	protected int degat;
+	protected int portee;
 	
-	public Monstre(int pId, int pPv, int px, int py, int pDegat, int pPortee, String pNom, Labyrinthe pLab) {
+	public Monstre(int pPv, int px, int py, int pDegat, int pPortee, String pNom, Labyrinthe pLab) {
 		super(pPv, px, py, pNom, pLab);
 		
 		if(pDegat < 0) {
@@ -89,5 +89,24 @@ public abstract class Monstre extends Entite{
 
 	public int getId() { return id; }
 
+
+	/**
+	 * creer un monstre a partir d'un ID
+	 *
+	 * @param id id du monstre a creer
+	 * @return le monstre correspondant a l'ID
+	 */
+	public static Monstre creerMonstreParID(int id) {
+		switch (id) {
+			case 1:
+				//return new MonstreImmobile();
+			case 2:
+				//return new MonstreAleatoire();
+			case 3:
+				//return new MonstreSuivi();
+			default:
+				return null;
+		}
+	}
 	
 }
