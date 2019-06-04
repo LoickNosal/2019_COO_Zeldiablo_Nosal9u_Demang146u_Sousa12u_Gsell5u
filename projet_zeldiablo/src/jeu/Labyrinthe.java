@@ -11,84 +11,129 @@ public class Labyrinthe {
     private final int TAILLE_MIN = 5;
     private final int TAILLE_MAX = 15;
     private Case[][] cases;
-    private ArrayList<MonstreImmobile> mi;
+    private ArrayList<MonstreImmobile> monstres;
+
 
     /**
      * Creation d'un Labyrinthe par defaut
      */
     public Labyrinthe() {
-        defaut();
-        mi = new ArrayList<MonstreImmobile>();
+        defautLabyrinthe();
+        monstres = new ArrayList<MonstreImmobile>();
     }
+
 
     /**
      * Creation d'un Labyrinthe custom
-     * @param modele chaine de caractere qui defini le modele du labyrinthes
+     *
+     * @param modele tableau de chaine de caractere qui defini le modele du labyrinthes
      */
-    public Labyrinthe(String modele) {
-        String[] lignes = modele.trim().split("\n");
+    public Labyrinthe(String[] modele) {
+        monstres = new ArrayList<MonstreImmobile>();
 
         boolean valide = valideModele(modele);
         if (!valide) {
-            defaut();
+            defautLabyrinthe();
             return;
         }
 
-        int x = lignes[0].length();
-        int y = lignes.length;
-        cases = new Case[x][y];
+        int hauteur = modele.length;
+        int largeur = modele[0].split(" ").length;
+        cases = new Case[largeur][hauteur];
 
-        for (int j = 0; j < y; j++) {
-            String ligne = lignes[j];
-            for (int i = 0; i < x; i++) {
-                switch (ligne.charAt(i)) {
-                    case '-':
+        for (int j = 0; j < hauteur; j++) {
+            String[] ligne = modele[j].split(" ");
+            for (int i = 0; i < largeur; i++) {
+                switch (ligne[i]) {
+                    case "-":
                         cases[i][j] = new CaseVide(i, j);
                         break;
-                    case 'x':
+                    case "X":
                         cases[i][j] = new Mur(i, j);
                         break;
                 }
             }
         }
-        mi = new ArrayList<MonstreImmobile>();
+    }
+
+
+    /**
+     * Creation d'un Labyrinthe custom avec monstres
+     *
+     * @param modele tableau de chaine de caractere qui defini le modele du labyrinthes
+     * @param m liste de monstres
+     */
+    public Labyrinthe(String[] modele, ArrayList<MonstreImmobile> m) {
+        setMonstres(m);
+
+        boolean valide = valideModele(modele);
+        if (!valide) {
+            defautLabyrinthe();
+            return;
+        }
+
+        int hauteur = modele.length;
+        int largeur = modele[0].split(" ").length;
+        cases = new Case[largeur][hauteur];
+
+        for (int j = 0; j < hauteur; j++) {
+            String[] ligne = modele[j].split(" ");
+            for (int i = 0; i < largeur; i++) {
+                switch (ligne[i]) {
+                    case "-":
+                        cases[i][j] = new CaseVide(i, j);
+                        break;
+                    case "X":
+                        cases[i][j] = new Mur(i, j);
+                        break;
+                }
+            }
+        }
+    }
+
+    public void setMonstres(ArrayList<MonstreImmobile> m) {
+        if (m != null)
+            monstres = m;
+        else
+            monstres = new ArrayList<MonstreImmobile>();
     }
 
     /**
      * indique si une case est traversable ou non
+     *
      * @param x abscisse de la case
      * @param y ordonnée de la case
-     * @return
+     * @return vrai si la case est traversable
      */
     public boolean caseTraversable(int x, int y) {
         if (x < 0 || x >= getLargeur() || y < 0 || y >= getHauteur())
             return false;
         return cases[x][y].peutTraverser();
     }
-    
+
+
     /**
-     * indique si les position posX,posY est sur un obstacle du labyrinthe
-     * @param posX position x a tester
-     * @param posY position y a tester 
-     * @return true si est sur un obstacle
+     * indique si les positions x, y sont sur un obstacle du labyrinthe
+     *
+     * @param x abscisse de la case
+     * @param y ordonnée de la case
+     * @return vrai si la case est sur un obstacle
      */
-   public boolean estSurUnObstacle(int posX,int posY) {
-	   boolean res = false;
-	   for (int i = 0; i < this.getHauteur(); i++) {
-		for (int j = 0; j < this.getLargeur(); j++) {
-			if (cases[i][j].estDedans(posX, posY) && cases[i][j].peutTraverser() == false) {
-				res = true;
-				return res;
-			}
-		}
-	}
-	   return res;
-   }
+    public boolean estSurUnObstacle(int x, int y) {
+        for (int j = 0; j < this.getHauteur(); j++) {
+            for (int i = 0; i < this.getLargeur(); i++) {
+                if (cases[i][j].estDedans(x, y) && !cases[i][j].peutTraverser()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     public String toString() {
         String res = "";
-        for (int j = 0; j < cases[0].length; j++) {
-            for (int i = 0; i < cases.length; i++) {
+        for (int j = 0; j < getHauteur(); j++) {
+            for (int i = 0; i < getLargeur(); i++) {
                 res += cases[i][j].toString();
             }
             res += "\n";
@@ -96,41 +141,51 @@ public class Labyrinthe {
         return res;
     }
 
+
     /**
      * getter
+     *
      * @return largeur
      */
     public int getLargeur() {
         return cases.length;
     }
 
+
     /**
      * getter
+     *
      * @return hauteur
      */
     public int getHauteur() {
         return cases[0].length;
     }
-    
+
+
+    /**
+     * getter
+     *
+     * @return liste de monstres
+     */
     public ArrayList<MonstreImmobile> getMi() {
-		return mi;
-	}
+        return monstres;
+    }
+
 
     /**
      * valide le modele
+     *
      * @param modele chaine de caractere qui defini le modele du labyrinthes
      * @return vrai si le modele est valide, faux sinon
      */
-    private boolean valideModele(String modele) {
+    private boolean valideModele(String[] modele) {
         if (modele == null)
             return false;
 
-        String[] lignes = modele.trim().split("\n");
-
-        int y = lignes.length;
-        int x = lignes[0].length();
+        int y = modele.length;
+        int x = modele[0].split(" ").length;
         for (int i = 1; i < y; i++) {
-            if (lignes[i].length() != x)
+            if (modele[i].split(" ").length != x)
                 return false;
         }
 
@@ -140,11 +195,15 @@ public class Labyrinthe {
         return true;
     }
 
-    private void defaut() {
-        cases = new Case[10][10];
-        for (int j = 0; j < 10; j++) {
-            for (int i = 0; i < 10; i++) {
-                if (i == 0 || i == 9 || j == 0 || j == 9) {
+
+    /**
+     * initialise le labyrinthe par defaut
+     */
+    private void defautLabyrinthe() {
+        cases = new Case[15][15];
+        for (int j = 0; j < 15; j++) {
+            for (int i = 0; i < 15; i++) {
+                if (i == 0 || i == 14 || j == 0 || j == 14) {
                     cases[i][j] = new Mur(i, j);
                 } else {
                     cases[i][j] = new CaseVide(i, j);
