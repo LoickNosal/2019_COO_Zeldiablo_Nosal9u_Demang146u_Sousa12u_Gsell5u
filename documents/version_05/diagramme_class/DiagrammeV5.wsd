@@ -11,7 +11,7 @@ class JeuPrincipal {
     -{static}level: int
     +JeuPrincipal()
     -chargerLabyrinthe() :void 
-    -charger FichierJson() :void 
+    -chargerFichierJson() :void 
 }
 
 class JeuPerso {
@@ -176,7 +176,7 @@ Aventurier --|> Entite
 Monstre --|> Entite
 
 Labyrinthe "1" --> "0..*" Case : -cases
-Labyrinthe "1" --> "0..*" Monstre : -mi
+JeuPrincipal "1" --> "0..*" Monstre : -monstres
 
 
 CaseVide --|> Case
