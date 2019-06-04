@@ -120,6 +120,7 @@ public class DessinPerso implements DessinJeu{
 
 		
 		this.gestionVie(g);
+		
 		g.dispose();
 	}
 	
@@ -144,6 +145,12 @@ public class DessinPerso implements DessinJeu{
 		g.fillRect(this.jeuEnCours.getPerso().getX()-TAILLE_CASE/3, this.jeuEnCours.getPerso().getY()-TAILLE_CASE, pvMax, 7);
 		g.setColor(Color.green);
 		g.fillRect(this.jeuEnCours.getPerso().getX()-TAILLE_CASE/3, this.jeuEnCours.getPerso().getY()-TAILLE_CASE,pvCourant , 7);
+		if (pvCourant == 0) {
+			g.setFont(new Font("TimesRoman", Font.PLAIN, 100)); 
+			g.setColor(Color.black);
+			g.drawString("GAME OVER", 150, 350);
+		}
+		
 	}
 
 
