@@ -3,6 +3,8 @@ package jeu;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import moteurJeu.DessinPerso;
+
 
 /**
  *Modelis un Aventurier
@@ -57,6 +59,12 @@ public class Aventurier extends Entite {
                 case 'S': this.y+=5; break;
                 case 'O': this.x-=5; break;
             }
+   
+    		//si le joueur entre dans la porte
+    		if (this.lab.typeCase(this.x/DessinPerso.TAILLE_CASE,this.y/DessinPerso.TAILLE_CASE) == 2) {
+				System.exit(1);
+			}
+    		
 		}
 	}
 

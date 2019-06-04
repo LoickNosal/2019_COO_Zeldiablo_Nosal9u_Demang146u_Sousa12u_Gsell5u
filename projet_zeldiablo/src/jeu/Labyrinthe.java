@@ -51,6 +51,9 @@ public class Labyrinthe {
                     case "X":
                         cases[i][j] = new Mur(i, j);
                         break;
+                    case "p":
+                    	cases[i][j] = new CaseSortie(i, j);
+                        break;
                 }
             }
         }
@@ -85,6 +88,9 @@ public class Labyrinthe {
                         break;
                     case "X":
                         cases[i][j] = new Mur(i, j);
+                        break;
+                    case "p":
+                    	cases[i][j] = new CaseSortie(i, j);
                         break;
                 }
             }

@@ -1,8 +1,17 @@
 package moteurJeu;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Scanner;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import jeu.JeuPrincipal;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * Main du moteur graphique
@@ -10,30 +19,66 @@ import jeu.JeuPrincipal;
  *
  */
 public class MainPerso {
+	
 
+	
 	public static void main(String[] args) {
+		
+		JFrame fenetre = new JFrame("ZelDiablo");
+		fenetre.setSize(800,800);
 
-		// creation du jeu particulier et de son afficheur
-		JeuPrincipal j = new JeuPrincipal();
-		JeuPerso jeu = new JeuPerso(j.aventurier);
-		DessinPerso dp = new DessinPerso(jeu, j.labyrinthe);
+		JPanel principal = new JPanel();
+		principal.setPreferredSize(new Dimension(800,800));
+		principal.setLayout(new BorderLayout());
 
-		// classe qui lance le moteur de jeu generique
-		MoteurGraphique moteur = new MoteurGraphique(jeu, dp);
+		JPanel haut = new JPanel();
+		JPanel milieu = new JPanel();
+		JPanel bas = new JPanel();
 
-		// lance la boucle de jeu qui tourne jusque la fin du jeu
-		try {
-			moteur.lancerJeu(900, 900);
+		JButton jouer = new JButton("Jouer");
+		JButton quitter = new JButton("Quitter");
+
+		jouer.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// creation du jeu particulier et de son afficheur
+			JeuPrincipal j = new JeuPrincipal();
 			
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// lorsque le jeu est fini
+			System.exit(1);
 		}
-		// lorsque le jeu est fini
-		System.out.println("Fin du Jeu - appuyer sur entree");
-		Scanner sc = new Scanner(System.in);
-		sc.nextLine();
+		});
+		
+		
+		quitter.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
 		System.exit(1);
+
+		}
+		});
+
+		milieu.add(jouer);
+		milieu.add(quitter);
+
+		principal.add(haut,BorderLayout.NORTH);
+		principal.add(milieu,BorderLayout.CENTER);
+		principal.add(bas,BorderLayout.SOUTH);
+
+
+
+		fenetre.setContentPane(principal);
+		fenetre.pack();
+		fenetre.setPreferredSize(new Dimension(800,800));
+		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) ;
+		fenetre.requestFocusInWindow();
+		fenetre.setVisible(true);
+
+
+		
+
 
 	}
 
