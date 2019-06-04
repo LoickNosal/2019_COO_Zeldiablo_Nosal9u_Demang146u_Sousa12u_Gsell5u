@@ -56,7 +56,13 @@ public class MoteurGraphique {
 			this.gui.dessiner();
 			// met en attente
 			Thread.sleep(10);
+
 		}
+
+		//FIN DU JEUs
+		System.exit(0);
+
+
 	}
 
 }
