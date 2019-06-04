@@ -22,7 +22,7 @@ public class Mur extends Case {
 	}
 
 	public String toString() {
-		return "x";
+		return "X";
 	}
 
 	@Override
