@@ -60,10 +60,7 @@ public class Aventurier extends Entite {
                 case 'O': this.x-=5; break;
             }
    
-    		//si le joueur entre dans la porte
-    		if (this.lab.typeCase(this.x/DessinPerso.TAILLE_CASE,this.y/DessinPerso.TAILLE_CASE) == 2) {
-				System.exit(1);
-			}
+
     		
 		}
 	}

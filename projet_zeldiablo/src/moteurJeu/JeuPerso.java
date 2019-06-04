@@ -15,6 +15,7 @@ public class JeuPerso implements Jeu{
 
 	private int compteur_pas;
 	private boolean direction;
+	private boolean fini;
 	/**
 	 * personnage du jeu
 	 */
@@ -25,6 +26,7 @@ public class JeuPerso implements Jeu{
 		this.personnage = av;
 		this.compteur_pas = 0;
 		this.direction = true;
+		this.fini = false;
 	}
 
 	@Override
@@ -62,6 +64,10 @@ public class JeuPerso implements Jeu{
 			if(compteur_pas>30)
 				compteur_pas = 0;
 		}
+		//si le joueur entre dans la porte
+		if(this.personnage.getLab().typeCase(this.personnage.getX()/DessinPerso.TAILLE_CASE,this.personnage.getY()/DessinPerso.TAILLE_CASE) == 2) {
+				this.fini = true;
+			}
 	}
 
 	@Override
@@ -69,7 +75,7 @@ public class JeuPerso implements Jeu{
 	 * le jeu ne s'arrète jamais. Return false
 	 */
 	public boolean etreFini() {
-		return false;
+		return this.fini;
 	}
 
 	public boolean isDirection() {

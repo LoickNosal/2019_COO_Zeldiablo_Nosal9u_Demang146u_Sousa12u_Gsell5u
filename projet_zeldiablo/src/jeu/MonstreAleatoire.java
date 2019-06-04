@@ -18,39 +18,7 @@ public class MonstreAleatoire extends Monstre{
     	int futureposY = 0;
     	int aleatoire = (int)(Math.random() * ((3) + 1));
     	
-    	switch(aleatoire)
-        {
-            case 0: 
-            futureposY = this.y-10; 
-            futureposX = this.x;
-            break;
-            
-            case 1: 
-            futureposX = this.x+10;
-            futureposY = this.y;
-            break;
-            
-            case 2: 
-            futureposY = this.y+10;
-            futureposX = this.x;
-            break;
-            
-            case 3: 
-            futureposX = this.x-10;
-            futureposY = this.y;
-            break;
-        }
-    	
-    	
-    	if (peutAvancer(futureposX,futureposY) == true) {
-    		switch(aleatoire)
-            {
-                case 0: this.y-=3; break;
-                case 1: this.x+=3; break;
-                case 2: this.y+=3; break;
-                case 3: this.x-=3; break;
-            }
-		}
+    	avancer(aleatoire);
 		
 	}
 
