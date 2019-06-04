@@ -20,7 +20,6 @@ public abstract class Monstre extends Entite {
 		if(pPortee < 0) {
 			pPortee = 0;
 		}
-		id = pId;
 		degat = pDegat;
 		portee = pPortee;
 
