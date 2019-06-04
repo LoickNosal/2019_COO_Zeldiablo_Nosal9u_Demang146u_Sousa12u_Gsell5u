@@ -17,6 +17,8 @@ public class DessinPerso implements DessinJeu{
 
 	private int compteur;
 	private JeuPerso jeuEnCours;
+	private JeuMonstre jeuMonstre;
+	
 	private Labyrinthe lab;
 
 	private Image mur;
@@ -30,8 +32,9 @@ public class DessinPerso implements DessinJeu{
 
 	public static int TAILLE_CASE = Case.TAILLE;
 
-	public DessinPerso(JeuPerso pjeuEnCours, Labyrinthe l) {
+	public DessinPerso(JeuPerso pjeuEnCours, Labyrinthe l, JeuMonstre jm) {
 		this.jeuEnCours = pjeuEnCours;
+		this.jeuMonstre = jm;
 		this.lab = l;
 		this.compteur = 0;
 		this.perso_droite = new Image[4];
@@ -123,7 +126,18 @@ public class DessinPerso implements DessinJeu{
 	
 	
 	public void gestionVie(Graphics2D g) {
-		//deux barre de vie : une rouge et une verte
+		//deux barre de vie : une rouge et une verte pour les entites
+		
+		//barre des monstres
+		for (Monstre m : this.jeuMonstre.getMonstres()) {
+			int pvMax =  m.getPvMax();
+			int pvCourant = m.getPv();
+			g.setColor(Color.red);
+			g.fillRect(m.getX()-TAILLE_CASE/3, m.getY()-TAILLE_CASE, pvMax, 7);
+			g.setColor(Color.green);
+			g.fillRect(m.getX()-TAILLE_CASE/3, m.getY()-TAILLE_CASE,pvCourant , 7);
+		}
+		//barre du joueur
 		int pvMax = this.jeuEnCours.getPerso().getPvMax();
 		int pvCourant = this.jeuEnCours.getPerso().getPv();
 		g.setColor(Color.red);
