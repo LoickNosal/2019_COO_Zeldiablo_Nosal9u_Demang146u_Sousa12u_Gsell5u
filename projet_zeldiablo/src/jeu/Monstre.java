@@ -23,16 +23,7 @@ public abstract class Monstre extends Entite{
 		
 		degat = pDegat;
 		portee = pPortee;
-		if(!lab.caseTraversable(px, py)) {
-			id = -1;
-			pv = -1;
-			x = -1;
-			y = -1;
-			degat = -1;
-			portee = -1;
-			nom = null;
-			lab = null;
-		}
+
 	}
 	
 	

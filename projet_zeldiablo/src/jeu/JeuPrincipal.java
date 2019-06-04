@@ -33,7 +33,8 @@ public class JeuPrincipal {
         this.aventurier = new Aventurier(10, 100, 100, "Aventurier", this.labyrinthe);
         JeuPerso jeu = new JeuPerso(this.aventurier);
 		DessinPerso dp = new DessinPerso(jeu, this.labyrinthe);
-
+        MonstreImmobile m = new MonstreImmobile(10,400,81, 50, 10 , "lol", labyrinthe);
+        labyrinthe.getMonstres().add(m);
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, dp);
 
@@ -46,8 +47,7 @@ public class JeuPrincipal {
 			e.printStackTrace();
 		}
 
-		MonstreImmobile m = new MonstreImmobile(1, 10,1,1, 50, 10 , "lol", labyrinthe);
-		labyrinthe.getMonstres().add(m);
+
     }
 
 
