@@ -31,7 +31,7 @@ public class JeuPrincipal {
      * construit le modèle du jeu
      */
     public JeuPrincipal() {
-        this.level = 3;
+        this.level = 4;
         chargerLVL(level);
         this.aventurier = new Aventurier(50, 100, 100, "Aventurier");
         this.aventurier.setLabyrinthe(this.labyrinthe);
@@ -90,6 +90,10 @@ public class JeuPrincipal {
                     break;
                 case 3:
                     json = chargerJSON("lvl3.json");
+                    this.labyrinthe = decoderJSON(json);
+                    break;
+                case 4:
+                	json = chargerJSON("lvl4.json");
                     this.labyrinthe = decoderJSON(json);
                     break;
                 default:

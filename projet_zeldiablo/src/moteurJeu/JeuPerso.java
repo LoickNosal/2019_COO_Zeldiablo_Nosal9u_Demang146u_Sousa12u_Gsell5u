@@ -69,7 +69,9 @@ public class JeuPerso implements Jeu{
 		//si le joueur entre dans la porte
 		if(this.personnage.getLab().typeCase(this.personnage.getX()/DessinPerso.TAILLE_CASE,this.personnage.getY()/DessinPerso.TAILLE_CASE) == 2) {
 				this.fini = true;
-			}
+		}else if(this.personnage.getLab().typeCase(this.personnage.getX()/DessinPerso.TAILLE_CASE,this.personnage.getY()/DessinPerso.TAILLE_CASE) == 3) {
+				this.personnage.subirDegat(1);
+		}
 	}
 
 	@Override

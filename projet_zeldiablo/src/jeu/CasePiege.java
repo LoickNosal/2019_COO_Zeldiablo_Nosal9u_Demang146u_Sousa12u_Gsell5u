@@ -1,13 +1,13 @@
 package jeu;
 
 /**
- * reprï¿½sente la sortie du labyrinthe
- * @author Loï¿½ck
+ * represente un piege
+ * @author Loïck
  *
  */
-public class CaseSortie extends Case {
+public class CasePiege extends Case{
 	
-	public CaseSortie(int x, int y) {
+	public CasePiege(int x, int y) {
 		if (x < 0) {
 		x = 0;
 		}
@@ -18,8 +18,6 @@ public class CaseSortie extends Case {
 		this.posY = y;
 	}
 
-
-
 	@Override
 	public boolean peutTraverser() {
 		return true;
@@ -27,7 +25,7 @@ public class CaseSortie extends Case {
 
 	@Override
 	public int typeCase() {
-		return 2;
+		return 3;
 	}
 
 }

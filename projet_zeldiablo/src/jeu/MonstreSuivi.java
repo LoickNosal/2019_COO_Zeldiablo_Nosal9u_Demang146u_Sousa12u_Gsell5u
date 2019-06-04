@@ -9,6 +9,7 @@ public class MonstreSuivi extends Monstre{
 
 	public MonstreSuivi(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pDegat, pPortee, pNom);
+		this.id = 3;
 	}
 
 	public void seDeplacer(char cardinaux) {
@@ -16,6 +17,7 @@ public class MonstreSuivi extends Monstre{
 	}
 
 	public void seDeplacer(Aventurier av) {
+
     	int direction = -1;
     	int pX = av.getX();
     	int pY = av.getY();
