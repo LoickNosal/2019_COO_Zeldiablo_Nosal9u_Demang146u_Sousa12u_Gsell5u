@@ -159,4 +159,12 @@ public class JeuPrincipal {
         return level;
     }
 
+
+
+
+    public static void main(String[] args) {
+        new JeuPrincipal();
+    }
+
+
 }

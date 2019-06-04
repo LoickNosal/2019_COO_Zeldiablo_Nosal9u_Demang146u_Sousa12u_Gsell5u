@@ -7,6 +7,8 @@ package jeu;
  */
 public class CasePiege extends Case{
 	
+	private boolean estPasseDessus;
+	
 	public CasePiege(int x, int y) {
 		if (x < 0) {
 		x = 0;
@@ -16,11 +18,20 @@ public class CasePiege extends Case{
 		}
 		this.posX = x;
 		this.posY = y;
+		this.estPasseDessus = false;
 	}
 
 	@Override
 	public boolean peutTraverser() {
 		return true;
+	}
+	
+	public void setEstPasse() {
+		this.estPasseDessus = true;
+	}
+	
+	public boolean getEstPasse() {
+		return this.estPasseDessus;
 	}
 
 	@Override

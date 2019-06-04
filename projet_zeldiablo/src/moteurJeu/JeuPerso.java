@@ -3,6 +3,7 @@ package moteurJeu;
 import java.util.ArrayList;
 
 import jeu.Aventurier;
+import jeu.JeuPrincipal;
 import jeu.Labyrinthe;
 import jeu.Monstre;
 
@@ -22,11 +23,11 @@ public class JeuPerso implements Jeu{
 	private Aventurier personnage;
 	
 	public JeuPerso(Aventurier av) {
-		super();
 		this.personnage = av;
 		this.compteur_pas = 0;
 		this.direction = true;
 		this.fini = false;
+		//this.jeu = j;
 	}
 
 	@Override
@@ -69,8 +70,11 @@ public class JeuPerso implements Jeu{
 		//si le joueur entre dans la porte
 		if(this.personnage.getLab().typeCase(this.personnage.getX()/DessinPerso.TAILLE_CASE,this.personnage.getY()/DessinPerso.TAILLE_CASE) == 2) {
 				this.fini = true;
+				new JeuPrincipal();
 		}else if(this.personnage.getLab().typeCase(this.personnage.getX()/DessinPerso.TAILLE_CASE,this.personnage.getY()/DessinPerso.TAILLE_CASE) == 3) {
 				this.personnage.subirDegat(1);
+				this.personnage.getLab().activerPiege(this.personnage.getX()/DessinPerso.TAILLE_CASE, this.personnage.getY()/DessinPerso.TAILLE_CASE);
+				
 		}
 	}
 
