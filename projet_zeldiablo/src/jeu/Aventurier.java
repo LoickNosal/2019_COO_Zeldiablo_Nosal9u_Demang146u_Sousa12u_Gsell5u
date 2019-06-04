@@ -53,10 +53,10 @@ public class Aventurier extends Entite {
     	if (peutAvancer(futureposX,futureposY) == true) {
     		switch(cardinaux)
             {
-                case 'N': this.y-=10; break;
-                case 'E': this.x+=10; break;
-                case 'S': this.y+=10; break;
-                case 'O': this.x-=10; break;
+                case 'N': this.y-=5; break;
+                case 'E': this.x+=5; break;
+                case 'S': this.y+=5; break;
+                case 'O': this.x-=5; break;
             }
     			
     		for(MonstreImmobile monstre : mi) {
