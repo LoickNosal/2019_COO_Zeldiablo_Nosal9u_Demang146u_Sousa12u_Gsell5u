@@ -99,7 +99,7 @@ public class DessinPerso implements DessinJeu{
 		}
 
 
-		System.out.println(jeuEnCours.getPerso().getPv());
+		//System.out.println(jeuEnCours.getPerso().getPv());
 
 
 		if(jeuEnCours.isDirection()){
