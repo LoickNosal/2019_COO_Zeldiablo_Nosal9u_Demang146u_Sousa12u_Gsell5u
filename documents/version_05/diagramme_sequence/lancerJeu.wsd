@@ -1,0 +1,31 @@
+@startuml
+
+title lancerJeu, utilisation du menu, si on fini le jeu
+
+
+participant "m:MoteurGraphique" as 0
+participant "i:InterfaceGraphique" as 1
+participant "menu:Menu" as 2
+
+create 1
+0->1 : create
+
+create 2
+1->2 : create
+
+loop true
+    loop JeuPerso.etreFini() && Menu.isVisible
+        1->1 : dessiner()
+        activate 1
+        1-->1
+        deactivate
+    end
+    1->2 : setVisible(true)
+    activate 2
+    2-->1
+    deactivate
+end
+
+
+
+@enduml
