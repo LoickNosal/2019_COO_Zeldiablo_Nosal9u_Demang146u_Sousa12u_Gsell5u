@@ -180,7 +180,7 @@ public class Labyrinthe {
      *
      * @return liste de monstres
      */
-    public ArrayList<Monstre> getMi() {
+    public ArrayList<Monstre> getMonstres() {
         return monstres;
     }
 

@@ -1,0 +1,27 @@
+@startuml
+title Fin du Labyrinthe
+participant MoteurGraphique<< (C,#ADD1B2) >>
+participant JeuPerso<< (C,#ADD1B2) >>
+participant Aventurier<< (C,#ADD1B2) >>
+participant Labyrinthe<< (C,#ADD1B2) >>
+
+loop etreFini == false
+activate MoteurGraphique 
+MoteurGraphique -> JeuPerso : evoluer()
+activate JeuPerso
+JeuPerso -> Aventurier : getLab()
+activate Aventurier
+Aventurier-> Labyrinthe : typeCase(x,y)
+activate Labyrinthe
+
+Aventurier <-- Labyrinthe
+deactivate Labyrinthe
+
+JeuPerso <-- Aventurier 
+deactivate Aventurier
+MoteurGraphique <-- JeuPerso
+deactivate JeuPerso
+deactivate MoteurGraphique 
+
+end
+@enduml
