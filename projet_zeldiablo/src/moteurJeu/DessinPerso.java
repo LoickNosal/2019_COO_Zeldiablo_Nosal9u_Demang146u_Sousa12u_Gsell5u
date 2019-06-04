@@ -27,6 +27,7 @@ public class DessinPerso implements DessinJeu{
 	private Image[] perso_gauche;
 	private Image[] slime_vert;
 	private Image[] slime_rouge;
+	private Image[] slime_violet;
 
 	public static int TAILLE_CASE = Case.TAILLE;
 
@@ -38,14 +39,20 @@ public class DessinPerso implements DessinJeu{
 		this.perso_gauche = new Image[4];
 		this.slime_rouge = new Image[2];
 		this.slime_vert = new Image[2];
+		this.slime_violet = new Image[2];
 
 
 		try{
-
+				
+			//slimes
 			slime_rouge[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sa1.gif").getPath(), "UTF-8")));
 			slime_rouge[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sa2.gif").getPath(), "UTF-8")));
 			slime_vert[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("s1.gif").getPath(), "UTF-8")));
 			slime_vert[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("s2.gif").getPath(), "UTF-8")));
+			slime_violet[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sf1.gif").getPath(), "UTF-8")));
+			slime_violet[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sf2.gif").getPath(), "UTF-8")));
+			
+			//personnage
 			perso_droite[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d1.gif").getPath(), "UTF-8")));
 			perso_droite[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d2.gif").getPath(), "UTF-8")));
 			perso_droite[2] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d3.gif").getPath(), "UTF-8")));
@@ -98,6 +105,11 @@ public class DessinPerso implements DessinJeu{
 					g.drawImage(slime_vert[compteur/30], m.getX()-36, m.getY()-50,73,55, null);
 					break;
 				case 2 :
+
+					g.drawImage(slime_violet[compteur/30], m.getX()-36, m.getY()-50,73,55, null);
+					break;
+				case 3:
+
 					g.drawImage(slime_rouge[compteur/30], m.getX()-36, m.getY()-50,73,55, null);
 					break;
 			}
