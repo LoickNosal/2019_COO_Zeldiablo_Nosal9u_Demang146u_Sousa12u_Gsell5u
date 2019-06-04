@@ -1,0 +1,36 @@
+{
+    "titre": "Niveau 3",
+    "niveau": 3,
+    "labyrinthe": [
+        "X X X X X X X X X X X X X X X",
+        "X - - - - - - - - - - - - - X",
+        "X - X - X - X - X - X - X - X",
+        "X - - - - - - - - - - - - - X",
+        "X - X - X - X - X - X - X - X",
+        "X - - - - - - - - - - - - - X",
+        "X - X - X - X - X - X - X - X",
+        "X - - - - - - - - - - - - - X",
+        "X - X - X - X - X - X - X - X",
+        "X - - - - - - - - - - - - - X",
+        "X - X - X - X - X - X - X - X",
+        "X - - - - - - - - - - - - - X",
+        "X - X - X - X - X - X - X - X",
+        "X - - - - - - - - - - - - p X",
+        "X X X X X X X X X X X X X X X"
+    ],
+    "spawnPos": [3, 3],
+    "monstres": [
+        {
+            "id": 1,
+            "pos": [11, 3]
+        },
+        {
+            "id": 1,
+            "pos": [3, 11]
+        },
+        {
+            "id": 1,
+            "pos": [11, 11]
+        }
+    ]
+}

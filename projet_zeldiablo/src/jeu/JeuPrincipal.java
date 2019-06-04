@@ -19,7 +19,7 @@ public class JeuPrincipal {
 
 
     public JeuPrincipal() {
-        chargerLVL(2);
+        chargerLVL(3);
         this.aventurier = new Aventurier(10, 100, 100, "Aventurier", this.labyrinthe);
     }
 
@@ -42,6 +42,14 @@ public class JeuPrincipal {
                     json = (JSONObject) obj;
                     this.labyrinthe = chargerLabyrinthe(json);
                     break;
+                case 3:
+                	System.out.println("test");
+                	obj = parser.parse(new FileReader(ressourcesPath + "lvl3.json"));
+                    json = (JSONObject) obj;
+                    
+                    this.labyrinthe = chargerLabyrinthe(json);
+                   
+                    break;
                 default:
                     this.labyrinthe = new Labyrinthe();
             }
@@ -58,6 +66,7 @@ public class JeuPrincipal {
 
         for (int i = 0; i < modeleLabyrinthe.length; i++) {
             modeleLabyrinthe[i] = (String) jsonArray.get(i);
+
         }
 
         return new Labyrinthe(modeleLabyrinthe);
