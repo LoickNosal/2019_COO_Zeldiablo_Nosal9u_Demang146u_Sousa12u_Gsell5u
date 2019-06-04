@@ -67,7 +67,7 @@ abstract Monstre {
     -portee : int
     -degat: int
     +Monstre(int, int, int, int, int, int, String, Labyrinthe)
-    +attaquer(Aventurier,int,int): void
+    +attaquer(Aventurier): void
     +seDeplacer(char):void
     +seDeplacer(Aventurier):void
 }
@@ -75,7 +75,7 @@ abstract Monstre {
 class MonstreAleatoire {
 
     +MonstreAleatoire(int, int, int, int, int, int, String, Labyrinthe)
-    +attaquer(Aventurier,int,int): void
+    +attaquer(Aventurier): void
     +seDeplacer(char):void
     +seDeplacer(Aventurier):void
 }
@@ -83,7 +83,7 @@ class MonstreAleatoire {
 class MonstreSuivi {
 
     +MonstreSuivi(int, int, int, int, int, int, String, Labyrinthe)
-    +attaquer(Aventurier,int,int): void
+    +attaquer(Aventurier): void
     +seDeplacer(char):void
     +seDeplacer(Aventurier):void
 }
@@ -91,7 +91,7 @@ class MonstreSuivi {
 class MonstreImmobile {
 
     +MonstreImmobile(int, int, int, int, int, int, String, Labyrinthe)
-    +attaquer(Aventurier,int,int): void
+    +attaquer(Aventurier): void
     +seDeplacer(char):void
     +seDeplacer(Aventurier):void
 }
