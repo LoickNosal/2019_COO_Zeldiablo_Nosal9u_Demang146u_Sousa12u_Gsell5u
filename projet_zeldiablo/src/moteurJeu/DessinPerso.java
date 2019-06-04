@@ -15,6 +15,7 @@ import java.net.URLDecoder;
  */
 public class DessinPerso implements DessinJeu{
 
+	private int compteur;
 	private JeuPerso jeuEnCours;
 	private Labyrinthe lab;
 
@@ -24,19 +25,27 @@ public class DessinPerso implements DessinJeu{
 
 	private Image[] perso_droite;
 	private Image[] perso_gauche;
+	private Image[] slime_vert;
+	private Image[] slime_rouge;
 	
 	public static int TAILLE_CASE = 60;
 	
 	public DessinPerso(JeuPerso pjeuEnCours, Labyrinthe l) {
 		this.jeuEnCours = pjeuEnCours;
 		this.lab = l;
-
+		this.compteur = 0;
 		this.perso_droite = new Image[4];
 		this.perso_gauche = new Image[4];
+		this.slime_rouge = new Image[2];
+		this.slime_vert = new Image[2];
+
 
 		try{
 			
-
+			slime_rouge[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/sa1.gif").getPath(), "UTF-8")));
+			slime_rouge[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/sa2.gif").getPath(), "UTF-8")));
+			slime_vert[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/s1.gif").getPath(), "UTF-8")));
+			slime_vert[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/s2.gif").getPath(), "UTF-8")));
 			perso_droite[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d1.gif").getPath(), "UTF-8")));
 			perso_droite[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d2.gif").getPath(), "UTF-8")));
 			perso_droite[2] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d3.gif").getPath(), "UTF-8")));
@@ -58,7 +67,7 @@ public class DessinPerso implements DessinJeu{
 	
 	@Override
 	public void dessiner(BufferedImage image) {
-
+		compteur++;
 		Graphics2D g = (Graphics2D) image.getGraphics();
 
 		for(int i = 0; i < lab.getHauteur(); i++){
@@ -80,12 +89,21 @@ public class DessinPerso implements DessinJeu{
 			}
 		}
 
+		if(compteur > 20)
+			compteur =0;
+		for (Monstre m: lab.getMonstres()) {
+
+		}
+
+
+
 		if(jeuEnCours.isDirection()){
 			g.drawImage(perso_droite[jeuEnCours.getCompteur_pas()/10], jeuEnCours.getPerso().getX()-20, jeuEnCours.getPerso().getY()-30, 45,60,null);
 		}
 		else{
 			g.drawImage(perso_gauche[jeuEnCours.getCompteur_pas()/10], jeuEnCours.getPerso().getX()-20, jeuEnCours.getPerso().getY()-30, 45,60,null);
 		}
+
 
 
 
