@@ -16,11 +16,11 @@ public class TestEntite {
     @Test
     public void testConstructeurAventurier() {
     	Labyrinthe lab = new Labyrinthe();
-        Aventurier a = new Aventurier(10, 0,0, "LOL",lab);
+        Aventurier a = new Aventurier(10, 0,0, "LOL");
         assertEquals("Le constructeur doit fonctionner normalement (PV)", 10, a.getPv());
         assertEquals("Le constructeur doit fonctionner normalement (NOM)", true, a.getNom().equals("LOL"));
 
-        Aventurier p = new Aventurier(-1, 5,-5, "",lab);
+        Aventurier p = new Aventurier(-1, 5,-5, "");
         assertEquals("Le constructeur 2 doit fonctionner normalement (PV)", 1, p.getPv());
         assertEquals("Le constructeur 2 doit fonctionner normalement (NOM)", true, p.getNom().equals("Entite"));
     }
@@ -28,7 +28,7 @@ public class TestEntite {
     @Test
     public void testSeDeplacer() {
     	Labyrinthe lab = new Labyrinthe();
-        Aventurier a = new Aventurier(10, 100,100, "LOL",lab);
+        Aventurier a = new Aventurier(10, 100,100, "LOL");
         a.seDeplacer('N');
         a.seDeplacer('E');
         a.seDeplacer('S');
@@ -41,7 +41,7 @@ public class TestEntite {
     @Test
     public void testSubirDegat() {
     	Labyrinthe lab = new Labyrinthe();
-        Aventurier a = new Aventurier(10, 0,0, "LOL",lab);
+        Aventurier a = new Aventurier(10, 0,0, "LOL");
         a.subirDegat(5);
        
        assertEquals("Devrait avoir perdu 5 pv", 5, a.getPv());
@@ -50,7 +50,7 @@ public class TestEntite {
     @Test
     public void testSubirDegatPvNegatif() {
     	Labyrinthe lab = new Labyrinthe();
-        Aventurier a = new Aventurier(10, 0,0, "LOL",lab);
+        Aventurier a = new Aventurier(10, 0,0, "LOL");
        a.subirDegat(15);
        
        assertEquals("Devrait avoir 0 pv", 0, a.getPv());
