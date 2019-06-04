@@ -8,7 +8,7 @@ import moteurJeu.JeuPerso;
  *
  */
 public abstract class Monstre extends Entite{
-	private int id;
+	private int id; // 1: Monstre immobile, 2: Monstre aleatoire, 3: Monstre suivi 
 	private int degat;
 	private int portee;
 	
