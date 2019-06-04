@@ -17,8 +17,8 @@ public class TestMonstre {
     public void testConstructeurMonstre() {
     	Labyrinthe lab = new Labyrinthe();
     	Monstre m = new MonstreImmobile(10, 5, 5, 3, 50, "Chevalier noir",lab);
-    	Monstre m2 = new MonstreImmobile(10, 5, 5, -5, 50, "Chevalier noir",lab);
-    	Monstre m3 = new MonstreImmobile(10, -500000, -50, 3, 50, "Chevalier noir",lab);
+    	Monstre m2 = new MonstreImmobile( 10, 5, 5, -5, 50, "Chevalier noir",lab);
+    	Monstre m3 = new MonstreImmobile( 10, -500000, -50, 3, 50, "Chevalier noir",lab);
         
         assertEquals("Le constructeur doit fonctionner normalement (DEGAT)", 3, m.getDegat());
         assertEquals("Le constructeur 2 doit fonctionner normalement (DEGAT)", 0, m2.getDegat());

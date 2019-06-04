@@ -89,18 +89,17 @@ public class DessinPerso implements DessinJeu{
 			}
 		}
 
-		if(compteur > 20)
+		if(compteur > 10)
 			compteur =0;
 		for (Monstre m: lab.getMonstres()) {
-			System.out.println("lol");
-			if(m.getId() == 1){
-				g.drawImage(slime_vert[compteur/10], m.getX(), m.getY(), null);
-			}
-			if(m.getId() == 2){
-				g.drawImage(slime_rouge[compteur/10], m.getX(), m.getY(), null);
-			}
+
+				g.drawImage(slime_vert[compteur/10], m.getX(), m.getY(),50,50, null);
+
+
 		}
 
+
+		System.out.println(jeuEnCours.getPerso().getPv());
 
 
 		if(jeuEnCours.isDirection()){
