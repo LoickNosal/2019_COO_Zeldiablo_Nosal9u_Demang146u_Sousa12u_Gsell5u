@@ -1,0 +1,26 @@
+Fonctionnalites
+
+- Fonctionnalite 1 : implémentation du chargement des labyrinthes customizées via des fichiers json
+	Charger des labyrinthes via des fichiers .json (caractères qui représente les murs, ect.)
+	- responsable : demang146u
+
+- Fonctionnalite 2 : menu de base et gestion de l'entrée et la sortie du labyrinthe
+	menu permettant de gérer le debut et la fin d'une partie.
+	Gestion de l'entrée et de la sortie du labyrinthe
+	- responsable : nosal9u
+
+- Fonctionnalite 3 : generation de monstre aleatoire et attire par le joueur
+	implementation de differents monstres dans le jeu
+	- responsable : sousa12u
+
+- Fonctionnalite 4 : affichage des sprites des monstres et du joueurs (animations)
+	implementation de plusieurs sprites graphiques
+	gestion des animations en fonction des actions des entites
+	- responsable : gsell5u
+
+Realisation : 
+labyrinthe customizées json : demang146u
+menu de base et gestion entree/sortie du labyrinthe : nosal9u
+creation et implementation des sprites joueur/monstre : gsell5u
+creation et implementation des differents monstres  : sousa12u
+
