@@ -66,6 +66,14 @@ abstract public class Entite{
 
     }
 
+    public boolean getVivant() {
+    	return vivant;
+    }
+    
+    public Labyrinthe getLab() {
+		return lab;
+	}
+    
     public String getNom() {
         return nom;
     }
