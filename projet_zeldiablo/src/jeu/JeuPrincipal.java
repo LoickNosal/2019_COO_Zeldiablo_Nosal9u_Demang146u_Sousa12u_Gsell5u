@@ -46,10 +46,10 @@ public class JeuPrincipal {
         MonstreAleatoire m2 = new MonstreAleatoire(50, 400, 100, 1, 50, "m2");
         MonstreSuivi m3 = new MonstreSuivi(50, 400, 100, 1, 50, "m3");
         m.setLabyrinthe(this.labyrinthe);
-        //m2.setLabyrinthe(this.labyrinthe);
+        m2.setLabyrinthe(this.labyrinthe);
         m3.setLabyrinthe(this.labyrinthe);
         labyrinthe.getMonstres().add(m);
-        //labyrinthe.getMonstres().add(m2);
+        labyrinthe.getMonstres().add(m2);
         labyrinthe.getMonstres().add(m3);
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, dp);
