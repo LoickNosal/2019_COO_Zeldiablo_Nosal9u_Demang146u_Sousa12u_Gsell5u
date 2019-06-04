@@ -1,0 +1,24 @@
+Fonctionnalites
+
+- Fonctionnalite 1 : suite implémentation des monstres dans le labyrinthe via des fichiers json
+	ajout des monstres dans les fichiers json et implémentation
+	- responsable : demang146u
+
+- Fonctionnalite 2 : Affichage de la barre de la vie du joueurs
+	- responsable : nosal9u
+
+- Fonctionnalite 3 : suite generation de monstre aleatoire et attire par le joueur
+	implementation de differents monstres dans le jeu
+	- responsable : sousa12u
+
+- Fonctionnalite 4 : suite affichage des sprites des monstres et du joueurs (animations)
+	implementation de plusieurs sprites graphiques
+	gestion des animations en fonction des actions des entites
+	- responsable : gsell5u
+
+Realisation : 
+ajout monstre json : demang146u
+affichage barre de vie : nosal9u
+creation et implementation des sprites monstre : gsell5u
+suite creation et implementation des differents monstres  : sousa12u
+
