@@ -28,7 +28,7 @@ public class MonstreSuivi extends Monstre{
     	// Est
     	futurePosX += 3;
     	futureDistance = (int) Math.sqrt(Math.pow(pX - futurePosX, 2) + Math.pow(pY - futurePosY, 2));
-    	System.out.println(distance + "   "  + futureDistance + "    " + direction);
+    	//System.out.println(distance + "   "  + futureDistance + "    " + direction);
     	if(futureDistance >= distance) {
     		futurePosX -= 3;
     		futurePosY += 3; // Sud

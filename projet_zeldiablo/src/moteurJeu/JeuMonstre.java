@@ -33,7 +33,7 @@ public class JeuMonstre implements Jeu{
 	 */
 	public void evoluer(Commande commandeUser) {
 		for(Monstre m : monstres) {
-			m.seDeplacer(null);
+			m.seDeplacer(aventurier);
 	        m.attaquer(aventurier);
 		}
 	}
