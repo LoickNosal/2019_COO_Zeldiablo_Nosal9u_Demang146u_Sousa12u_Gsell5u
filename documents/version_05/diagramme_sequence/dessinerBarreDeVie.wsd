@@ -1,0 +1,17 @@
+@startuml
+title Dessiner les barres de vie
+participant MoteurGraphique<< (C,#ADD1B2) >>
+participant DessinPerso<< (C,#ADD1B2) >>
+
+loop etreFini == false
+activate MoteurGraphique 
+MoteurGraphique -> DessinPerso: dessiner()
+activate DessinPerso
+DessinPerso -> DessinPerso : gestionVie(Graphics2D g)
+MoteurGraphique <-- DessinPerso
+deactivate DessinPerso
+
+
+
+end
+@enduml

@@ -17,11 +17,9 @@ import java.awt.*;
 /**
  * Main du moteur graphique
  *
- * @author Lo�ck
  */
 public class MainPerso {
 
-    static Thread t;
 
     public static void main(String[] args) {
 
