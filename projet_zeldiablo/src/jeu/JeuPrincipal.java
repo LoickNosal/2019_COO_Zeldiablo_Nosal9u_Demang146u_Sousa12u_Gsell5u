@@ -33,7 +33,7 @@ public class JeuPrincipal {
     public JeuPrincipal() {
         level = 3;
         chargerLVL(level);
-        this.aventurier = new Aventurier(10, 100, 100, "Aventurier");
+        this.aventurier = new Aventurier(50, 100, 100, "Aventurier");
         this.aventurier.setLabyrinthe(this.labyrinthe);
         ArrayList<Jeu> jeu = new ArrayList<Jeu>();
         JeuPerso jeuperso = new JeuPerso(this.aventurier);

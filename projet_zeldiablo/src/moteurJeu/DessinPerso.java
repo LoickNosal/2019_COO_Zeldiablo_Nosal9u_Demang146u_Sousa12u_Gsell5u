@@ -69,7 +69,8 @@ public class DessinPerso implements DessinJeu{
 	public void dessiner(BufferedImage image) {
 		compteur++;
 		Graphics2D g = (Graphics2D) image.getGraphics();
-
+		
+		
 		for(int i = 0; i < lab.getHauteur(); i++){
 			for(int j = 0; j< lab.getLargeur(); j++){
 				switch(lab.typeCase(i, j)) {
@@ -106,10 +107,21 @@ public class DessinPerso implements DessinJeu{
 			g.drawImage(perso_gauche[jeuEnCours.getCompteur_pas()/5], jeuEnCours.getPerso().getX()-20, jeuEnCours.getPerso().getY()-50, 45,60,null);
 		}
 
-
-
-
+		
+		this.gestionVie(g);
 		g.dispose();
+	}
+	
+	
+	
+	public void gestionVie(Graphics2D g) {
+		//deux barre de vie : une rouge et une verte
+		int pvMax = this.jeuEnCours.getPerso().getPvMax();
+		int pvCourant = this.jeuEnCours.getPerso().getPv();
+		g.setColor(Color.red);
+		g.fillRect(this.jeuEnCours.getPerso().getX()-TAILLE_CASE/3, this.jeuEnCours.getPerso().getY()-TAILLE_CASE, pvMax, 7);
+		g.setColor(Color.green);
+		g.fillRect(this.jeuEnCours.getPerso().getX()-TAILLE_CASE/3, this.jeuEnCours.getPerso().getY()-TAILLE_CASE,pvCourant , 7);
 	}
 
 
