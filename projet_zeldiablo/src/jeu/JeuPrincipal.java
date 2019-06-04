@@ -45,6 +45,9 @@ public class JeuPrincipal {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		MonstreImmobile m = new MonstreImmobile(1, 10,1,1, 50, 10 , "lol", labyrinthe);
+		labyrinthe.getMonstres().add(m);
     }
 
 
