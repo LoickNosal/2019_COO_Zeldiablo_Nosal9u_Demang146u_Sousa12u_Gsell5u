@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -98,14 +99,23 @@ public class JeuPrincipal {
      * @return le labyrinthe correspondant au fichier JSON
      */
     private Labyrinthe decoderJSON(JSONObject json) {
-        JSONArray jsonArrayLaby = (JSONArray) json.get("labyrinthe");
-        String[] modeleLabyrinthe = new String[jsonArrayLaby.size()];
+        JSONArray jsonModeleLaby = (JSONArray) json.get("labyrinthe");
+        String[] modeleLabyrinthe = new String[jsonModeleLaby.size()];
         for (int i = 0; i < modeleLabyrinthe.length; i++) {
-            modeleLabyrinthe[i] = (String) jsonArrayLaby.get(i);
+            modeleLabyrinthe[i] = (String) jsonModeleLaby.get(i);
         }
 
-        JSONArray jsonArrayMonstres = (JSONArray) json.get("monstres");
-        System.out.println(jsonArrayMonstres.get(0));
+
+        JSONArray jsonMonstres = (JSONArray) json.get("monstres");
+        ArrayList<Monstre> monstres = new ArrayList<Monstre>(jsonMonstres.size());
+        for (int i = 0; i < jsonMonstres.size(); i++) {
+            JSONObject jsonM = (JSONObject) jsonMonstres.get(i);
+            System.out.println(jsonM);
+            //int id = Integer.valueOf((String ) jsonM.get("id"));
+            //System.out.println(id);
+        }
+
+
         return new Labyrinthe(modeleLabyrinthe);
     }
 
