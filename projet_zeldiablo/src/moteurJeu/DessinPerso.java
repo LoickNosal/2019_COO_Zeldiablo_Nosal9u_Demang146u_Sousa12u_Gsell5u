@@ -89,21 +89,21 @@ public class DessinPerso implements DessinJeu{
 			}
 		}
 
-		if(compteur > 10)
+		if(compteur > 59)
 			compteur =0;
 		for (Monstre m: lab.getMonstres()) {
 
-				g.drawImage(slime_vert[compteur/10], m.getX(), m.getY(),50,50, null);
+				g.drawImage(slime_vert[compteur/30], m.getX()-36, m.getY()-50,73,55, null);
 
 
 		}
 
 
 		if(jeuEnCours.isDirection()){
-			g.drawImage(perso_droite[jeuEnCours.getCompteur_pas()/10], jeuEnCours.getPerso().getX()-20, jeuEnCours.getPerso().getY()-30, 45,60,null);
+			g.drawImage(perso_droite[jeuEnCours.getCompteur_pas()/5], jeuEnCours.getPerso().getX()-20, jeuEnCours.getPerso().getY()-50, 45,60,null);
 		}
 		else{
-			g.drawImage(perso_gauche[jeuEnCours.getCompteur_pas()/10], jeuEnCours.getPerso().getX()-20, jeuEnCours.getPerso().getY()-30, 45,60,null);
+			g.drawImage(perso_gauche[jeuEnCours.getCompteur_pas()/5], jeuEnCours.getPerso().getX()-20, jeuEnCours.getPerso().getY()-50, 45,60,null);
 		}
 
 

@@ -61,7 +61,7 @@ public class JeuPerso implements Jeu{
 		}
 		else {
 			this.compteur_pas++;
-			if(compteur_pas>30)
+			if(compteur_pas>15)
 				compteur_pas = 0;
 		}
 		//si le joueur entre dans la porte
