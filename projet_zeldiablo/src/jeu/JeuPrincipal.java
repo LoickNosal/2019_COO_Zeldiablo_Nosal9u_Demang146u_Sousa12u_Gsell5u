@@ -98,11 +98,14 @@ public class JeuPrincipal {
      * @return le labyrinthe correspondant au fichier JSON
      */
     private Labyrinthe decoderJSON(JSONObject json) {
-        JSONArray jsonArray = (JSONArray) json.get("labyrinthe");
-        String[] modeleLabyrinthe = new String[jsonArray.size()];
+        JSONArray jsonArrayLaby = (JSONArray) json.get("labyrinthe");
+        String[] modeleLabyrinthe = new String[jsonArrayLaby.size()];
         for (int i = 0; i < modeleLabyrinthe.length; i++) {
-            modeleLabyrinthe[i] = (String) jsonArray.get(i);
+            modeleLabyrinthe[i] = (String) jsonArrayLaby.get(i);
         }
+
+        JSONArray jsonArrayMonstres = (JSONArray) json.get("monstres");
+        System.out.println(jsonArrayMonstres.get(0));
         return new Labyrinthe(modeleLabyrinthe);
     }
 

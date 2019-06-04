@@ -40,7 +40,7 @@ public class JeuMonstre implements Jeu{
 	 */
 	public void evoluer(Commande commandeUser) {
 		monstre.seDeplacer(personnage);
-        monstre.attaquer(personnage, monstre.getX(), monstre.getY());
+        monstre.attaquer(personnage);
 	}
 
 	@Override
