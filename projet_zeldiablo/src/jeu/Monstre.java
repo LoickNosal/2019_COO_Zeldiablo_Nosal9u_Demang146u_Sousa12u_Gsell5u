@@ -10,8 +10,8 @@ public abstract class Monstre extends Entite {
 	protected int degat;
 	protected int portee;
 	
-	public Monstre(int pPv, int px, int py, int pDegat, int pPortee, String pNom, Labyrinthe pLab) {
-		super(pPv, px, py, pNom, pLab);
+	public Monstre(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
+		super(pPv, px, py, pNom);
 		
 		if(pDegat < 0) {
 			pDegat = 0;

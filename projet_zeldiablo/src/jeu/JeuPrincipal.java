@@ -31,10 +31,11 @@ public class JeuPrincipal {
     public JeuPrincipal() {
         level = 1;
         chargerLVL(level);
-        this.aventurier = new Aventurier(10, 100, 100, "Aventurier", this.labyrinthe);
+        this.aventurier = new Aventurier(10, 100, 100, "Aventurier");
+        this.aventurier.setLabyrinthe(this.labyrinthe);
         JeuPerso jeu = new JeuPerso(this.aventurier);
 		DessinPerso dp = new DessinPerso(jeu, this.labyrinthe);
-        MonstreImmobile m = new MonstreImmobile(10,400,81, 50, 10 , "lol", labyrinthe);
+        MonstreImmobile m = new MonstreImmobile(10,400,81, 50, 10 , "lol");
         labyrinthe.getMonstres().add(m);
 		// classe qui lance le moteur de jeu generique
 		MoteurGraphique moteur = new MoteurGraphique(jeu, dp);

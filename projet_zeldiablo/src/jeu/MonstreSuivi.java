@@ -7,8 +7,8 @@ package jeu;
  */
 public class MonstreSuivi extends Monstre{
 
-	public MonstreSuivi(int pPv, int px, int py, int pDegat, int pPortee, String pNom, Labyrinthe pLab) {
-		super(pPv, px, py, pDegat, pPortee, pNom, pLab);
+	public MonstreSuivi(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
+		super(pPv, px, py, pDegat, pPortee, pNom);
 	}
 
 	public void seDeplacer(char cardinaux) {

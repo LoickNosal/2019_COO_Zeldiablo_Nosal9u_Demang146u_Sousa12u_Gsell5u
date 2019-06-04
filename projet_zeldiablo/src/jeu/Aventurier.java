@@ -17,9 +17,9 @@ public class Aventurier extends Entite {
      * @param y La position Y
      * @param n Son nom
      */
-    public Aventurier(int p, int x, int y, String n,Labyrinthe l)
+    public Aventurier(int p, int x, int y, String n)
     {
-        super(p,x,y,n,l);
+        super(p,x,y,n);
     }
     
     @Override

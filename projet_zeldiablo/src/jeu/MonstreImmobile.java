@@ -7,8 +7,8 @@ package jeu;
  */
 public class MonstreImmobile extends Monstre{
 
-	public MonstreImmobile( int pPv, int px, int py, int pDegat, int pPortee, String pNom, Labyrinthe pLab) {
-		super(pPv, px, py, pDegat, pPortee, pNom, pLab);
+	public MonstreImmobile( int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
+		super(pPv, px, py, pDegat, pPortee, pNom);
 		id = 1;
 	}
 
