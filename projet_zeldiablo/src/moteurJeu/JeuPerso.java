@@ -66,7 +66,7 @@ public class JeuPerso implements Jeu{
 
 	@Override
 	/**
-	 * le jeu ne s'arr�te jamais. Return false
+	 * le jeu ne s'arrète jamais. Return false
 	 */
 	public boolean etreFini() {
 		return false;
@@ -83,5 +83,7 @@ public class JeuPerso implements Jeu{
 	public Aventurier getPerso() {
 		return personnage;
 	}
+
+	
 
 }

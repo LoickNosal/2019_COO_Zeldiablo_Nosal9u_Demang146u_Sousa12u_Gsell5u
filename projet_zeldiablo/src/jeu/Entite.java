@@ -95,6 +95,8 @@ abstract public class Entite{
      * @param cardinaux Les points cardinaux
      */
     public abstract void seDeplacer(char cardinaux);
+    
+    public abstract void seDeplacer(Aventurier av);
 
     /**
      * permet de detecter si le joueur entre en collision avec un obstacle
