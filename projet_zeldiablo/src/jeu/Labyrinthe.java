@@ -48,6 +48,9 @@ public class Labyrinthe {
                     case "p":
                     	cases[i][j] = new CaseSortie(i, j);
                         break;
+                    case "t":
+                    	cases[i][j] = new CasePiege(i,j);
+                    	break;
                 }
             }
         }
