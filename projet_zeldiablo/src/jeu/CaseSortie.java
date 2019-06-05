@@ -29,5 +29,9 @@ public class CaseSortie extends Case {
 	public int typeCase() {
 		return 2;
 	}
+	
+	public String toString() {
+		return "p";
+	}
 
 }

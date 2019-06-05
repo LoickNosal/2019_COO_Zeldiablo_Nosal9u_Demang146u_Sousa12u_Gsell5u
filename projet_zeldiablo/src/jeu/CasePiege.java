@@ -33,6 +33,10 @@ public class CasePiege extends Case{
 	public boolean getEstPasse() {
 		return this.estPasseDessus;
 	}
+	
+	public String toString() {
+		return "t";
+	}
 
 	@Override
 	public int typeCase() {
