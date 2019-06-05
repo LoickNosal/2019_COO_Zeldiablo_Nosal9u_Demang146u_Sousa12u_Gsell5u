@@ -12,7 +12,7 @@ public abstract class Item {
 	/**
 	 * cercle autour de l'objet pour pourvoir le ramasser
 	 */
-	public static int TAILLE = 40;
+	public static int TAILLE = 60;
 	
 	/**
 	 * position x de l'objet
@@ -55,8 +55,8 @@ public abstract class Item {
 	 */
 	public boolean peutRamasse(int x, int y) {
 		boolean res = false;
-		Rectangle r = new Rectangle(this.posX * TAILLE,this.posY * TAILLE, TAILLE, TAILLE);
-		if (r.contains(x,y)) {
+		Rectangle r = new Rectangle(posX * TAILLE,posY * TAILLE, TAILLE, TAILLE);
+		if (r.contains(x*TAILLE,y*TAILLE)) {
 			res = true;
 		}
 	

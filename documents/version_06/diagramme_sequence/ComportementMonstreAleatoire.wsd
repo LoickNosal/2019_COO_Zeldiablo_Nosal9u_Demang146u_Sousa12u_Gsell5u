@@ -1,5 +1,5 @@
 @startuml 
-title Comportement de Monstre aléatoire et suivi
+title Comportement de Monstre aléatoire
 participant "JeuPrincipal:Jeu" as jeu << (C,#ADD1B2) >>
 participant "monstre:Monstre" as monstre << (C,#ADD1B2) >>
 participant "aventurier:Aventurier" as aventurier << (C,#ADD1B2) >>
