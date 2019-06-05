@@ -2,11 +2,7 @@ package moteurJeu;
 
 import java.util.ArrayList;
 
-import jeu.Aventurier;
-import jeu.Item;
-import jeu.JeuPrincipal;
-import jeu.Labyrinthe;
-import jeu.Monstre;
+import jeu.*;
 
 /**
  * represente le jeu en cours
@@ -61,6 +57,9 @@ public class JeuEvolution implements Jeu {
 		this.compteurInvulnerabilite = 0;
 		this.direction = true;
 		this.fini = false;
+		this.items=new ArrayList<Item>();
+		Item n= new PotionVie(120,120);
+		items.add(n);
 	}
 
 	@Override
@@ -111,11 +110,6 @@ public class JeuEvolution implements Jeu {
 			if(compteurPas>15)
 				compteurPas = 0;
 		}
-
-		//si le joueur entre dans la porte
-		if(this.aventurier.getLab().typeCase(this.aventurier.getX()/DessinPerso.TAILLE_CASE,this.aventurier.getY()/DessinPerso.TAILLE_CASE) == 2) {
-			
-		}else if(this.aventurier.getLab().typeCase(this.aventurier.getX()/DessinPerso.TAILLE_CASE,this.aventurier.getY()/DessinPerso.TAILLE_CASE) == 3) {
 			
 		int px = this.aventurier.getX();
 		int py = this.aventurier.getY();
@@ -146,8 +140,7 @@ public class JeuEvolution implements Jeu {
 
 		// MONSTERS
 		for(Monstre m : monstres) {
-			m.comportement(aventurier);
-			m.attaquer(aventurier);
+			m.comportement();
 		}
 
 		monstres.removeIf(n -> (n.getPv() <= 0));

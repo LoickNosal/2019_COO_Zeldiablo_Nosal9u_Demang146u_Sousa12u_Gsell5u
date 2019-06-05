@@ -14,7 +14,7 @@ public class MonstreAleatoire extends Monstre{
 
 
 	@Override
-	public void comportement(Aventurier pPerso) {
+	public void comportement() {
 		int aleatoire = (int)(Math.random() * ((3) + 1));
     	char deplacement = 'd';
     	
