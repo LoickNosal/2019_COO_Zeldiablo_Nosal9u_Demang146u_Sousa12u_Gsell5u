@@ -1,13 +1,17 @@
 package jeu;
 
 /**
- * case qui represente une mine
+ * represente la case de fin du jeu
  * @author Loick
  *
  */
-public class CaseMine extends Case{
+public class CaseAmulette extends Case{
 
-	public CaseMine(int x, int y) {
+	
+	/*
+	 * Constructeur
+	 */
+	public CaseAmulette(int x, int y) {
 		if (x < 0) {
 		x = 0;
 		}
@@ -26,11 +30,14 @@ public class CaseMine extends Case{
 
 	@Override
 	public int typeCase() {
-		return 4;
+		return 5;
 	}
 	
 	public String toString() {
-		return "m";
+		return "a";
 	}
+	
+	
+	
 
 }
