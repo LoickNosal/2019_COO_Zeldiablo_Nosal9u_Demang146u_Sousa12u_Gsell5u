@@ -80,9 +80,9 @@ public class DessinPerso implements DessinJeu{
 		compteur++;
 		Graphics2D g = (Graphics2D) image.getGraphics();
 
-		for(int i = 0; i < jeuEvolution.getPerso().getLab().getHauteur(); i++){
-			for(int j = 0; j< jeuEvolution.getPerso().getLab().getLargeur(); j++){
-				switch(jeuEvolution.getPerso().getLab().typeCase(i, j)) {
+		for(int i = 0; i < jeuEvolution.getAventurier().getLab().getHauteur(); i++){
+			for(int j = 0; j< jeuEvolution.getAventurier().getLab().getLargeur(); j++){
+				switch(jeuEvolution.getAventurier().getLab().typeCase(i, j)) {
 				case 0 :
 					g.drawImage(casevide, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					break;
@@ -93,7 +93,7 @@ public class DessinPerso implements DessinJeu{
 					g.drawImage(porte, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					break;
 				case 3:
-					if (jeuEvolution.getPerso().getLab().testerPiege(i, j)) {
+					if (jeuEvolution.getAventurier().getLab().testerPiege(i, j)) {
 						g.drawImage(casePiege, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					}else {
 						g.drawImage(casevide, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
@@ -108,7 +108,7 @@ public class DessinPerso implements DessinJeu{
 
 		if(compteur > 59)
 			compteur =0;
-		for (Monstre m: jeuEvolution.monstres) {
+		for (Monstre m: jeuEvolution.getMonstres()) {
 			switch(m.getId())
 			{
 				case 1 :
@@ -130,10 +130,10 @@ public class DessinPerso implements DessinJeu{
 
 
 		if(jeuEvolution.isDirection()){
-			g.drawImage(perso_droite[jeuEvolution.getCompteur_pas()/5], jeuEvolution.getPerso().getX()-20, jeuEvolution.getPerso().getY()-50, 45,60,null);
+			g.drawImage(perso_droite[jeuEvolution.getCompteur_pas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
 		}
 		else{
-			g.drawImage(perso_gauche[jeuEvolution.getCompteur_pas()/5], jeuEvolution.getPerso().getX()-20, jeuEvolution.getPerso().getY()-50, 45,60,null);
+			g.drawImage(perso_gauche[jeuEvolution.getCompteur_pas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
 		}
 
 		
@@ -148,7 +148,7 @@ public class DessinPerso implements DessinJeu{
 		//deux barre de vie : une rouge et une verte pour les entites
 		
 		//barre des monstres
-		for (Monstre m : jeuEvolution.monstres) {
+		for (Monstre m : jeuEvolution.getMonstres()) {
 			int pvMax =  m.getPvMax();
 			int pvCourant = m.getPv();
 			//contour
@@ -162,18 +162,18 @@ public class DessinPerso implements DessinJeu{
 			g.fillRect(m.getX()-TAILLE_CASE/3, m.getY()-TAILLE_CASE,pvCourant , 7);
 		}
 		//barre du joueur
-		int pvMax = this.jeuEvolution.getPerso().getPvMax();
-		int pvCourant = this.jeuEvolution.getPerso().getPv();
+		int pvMax = this.jeuEvolution.getAventurier().getPvMax();
+		int pvCourant = this.jeuEvolution.getAventurier().getPv();
 		//contour
 		g.setColor(Color.black);
-		g.fillRect(this.jeuEvolution.getPerso().getX()-TAILLE_CASE/3-2, this.jeuEvolution.getPerso().getY()-TAILLE_CASE-2, pvMax+4, 7+4);
+		g.fillRect(this.jeuEvolution.getAventurier().getX()-TAILLE_CASE/3-2, this.jeuEvolution.getAventurier().getY()-TAILLE_CASE-2, pvMax+4, 7+4);
 		//barre de vie rouge
 		g.setColor(Color.red);
-		g.fillRect(this.jeuEvolution.getPerso().getX()-TAILLE_CASE/3, this.jeuEvolution.getPerso().getY()-TAILLE_CASE, pvMax, 7);
+		g.fillRect(this.jeuEvolution.getAventurier().getX()-TAILLE_CASE/3, this.jeuEvolution.getAventurier().getY()-TAILLE_CASE, pvMax, 7);
 		//barre de vie verte
 		g.setColor(Color.green);
-		g.fillRect(this.jeuEvolution.getPerso().getX()-TAILLE_CASE/3, this.jeuEvolution.getPerso().getY()-TAILLE_CASE,pvCourant , 7);
-		if (this.jeuEvolution.getPerso().getVivant() == false) {
+		g.fillRect(this.jeuEvolution.getAventurier().getX()-TAILLE_CASE/3, this.jeuEvolution.getAventurier().getY()-TAILLE_CASE,pvCourant , 7);
+		if (this.jeuEvolution.getAventurier().getVivant() == false) {
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 100)); 
 			g.setColor(Color.black);
 			g.drawString("GAME OVER", 150, 350);

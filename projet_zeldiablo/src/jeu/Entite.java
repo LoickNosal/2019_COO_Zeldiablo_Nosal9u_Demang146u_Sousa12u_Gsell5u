@@ -126,4 +126,10 @@ abstract public class Entite{
     		vivant = false;
     	}
     }
+
+    public double distance(Entite ent) {
+        double d = Math.sqrt(Math.pow((this.x-ent.x),2)+Math.pow((this.y-ent.y),2));
+        return d;
+
+    }
 }
