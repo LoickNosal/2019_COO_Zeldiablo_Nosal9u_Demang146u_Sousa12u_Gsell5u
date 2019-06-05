@@ -37,10 +37,6 @@ public abstract class Monstre extends Entite {
 		this.vitesse = 3;
 	}
 	
-	
-	
-	
-	
 	public abstract void comportement();
 
 
