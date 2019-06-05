@@ -9,7 +9,7 @@ import jeu.PotionVie;
 
 /**
  * Classe de test pour les items (objets) du jeu
- * @author Loïck
+ * @author Loï¿½ck
  *
  */
 public class TestItems {

@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 
 /**
  * modelise les objets du jeu
- * @author Loïck
+ * @author Loï¿½ck
  *
  */
 public abstract class Item {

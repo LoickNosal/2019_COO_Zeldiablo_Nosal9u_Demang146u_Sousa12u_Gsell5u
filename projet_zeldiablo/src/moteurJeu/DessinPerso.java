@@ -129,11 +129,11 @@ public class DessinPerso implements DessinJeu{
 		}
 
 
-		if(jeuEvolution.isDirection()){
-			g.drawImage(perso_droite[jeuEvolution.getCompteur_pas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
+		if(jeuEvolution.getDirection()){
+			g.drawImage(perso_droite[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
 		}
 		else{
-			g.drawImage(perso_gauche[jeuEvolution.getCompteur_pas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
+			g.drawImage(perso_gauche[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
 		}
 
 		

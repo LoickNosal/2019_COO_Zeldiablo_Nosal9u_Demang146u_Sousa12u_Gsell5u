@@ -12,17 +12,28 @@ public class MonstreAleatoire extends Monstre{
 		id = 2;
 	}
 
-	@Override
-	public void seDeplacer(char cardinaux) {
-		// vide
-		
-	}
 
 	@Override
-	public void seDeplacer(Aventurier av) {
-    	int aleatoire = (int)(Math.random() * ((3) + 1));
+	public void comportement(Aventurier pPerso) {
+		int aleatoire = (int)(Math.random() * ((3) + 1));
+    	char deplacement = 'd';
     	
-    	avancer(aleatoire);
+    	switch(aleatoire) {
+    	case 0:
+    		deplacement = 'N';
+    		break;
+    	case 1:
+    		deplacement = 'E';
+    		break;
+    	case 2:
+    		deplacement = 'S';
+    		break;
+    	case 3:
+    		deplacement = 'O';
+    		break;
+    	}
+    	
+    	seDeplacer(deplacement);
 		
 	}
 

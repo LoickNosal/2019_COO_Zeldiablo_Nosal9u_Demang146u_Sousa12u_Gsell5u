@@ -16,9 +16,9 @@ public class MonstreSuivi extends Monstre{
 		// vide
 	}
 
-	public void seDeplacer(Aventurier av) {
+	public void comportement(Aventurier av) {
 
-    	int direction = -1;
+    	char direction = 'd';
     	int pX = av.getX();
     	int pY = av.getY();
     	int distance = (int) Math.sqrt(Math.pow(pX - x, 2) + Math.pow(pY - y, 2));
@@ -47,22 +47,22 @@ public class MonstreSuivi extends Monstre{
                 		futurePosY += 3;
                 	}
                 	else {
-                		direction = 0;
+                		direction = 'N';
                 	}
             	}
             	else {
-            		direction = 3;
+            		direction = 'O';
             	}
         	}
         	else {
-        		direction = 2;
+        		direction = 'S';
         	}
     	}
     	else {
-    		direction = 1;
+    		direction = 'E';
     		
     	}
-    	avancer(direction);
+    	seDeplacer(direction);
 	}
 	
 }

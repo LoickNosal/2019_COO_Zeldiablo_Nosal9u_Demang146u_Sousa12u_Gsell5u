@@ -9,30 +9,36 @@ import jeu.Labyrinthe;
 import jeu.Monstre;
 
 /**
- * represente le jeu Zeldiablo
- * @author Loick
+ * represente le jeu en cours
  *
+ * @author Loick
+ * @author Louis Demange
  */
 public class JeuEvolution implements Jeu {
 
-	private int compteur_pas;
+	private int compteurPas;
+	private int compteur_attaque;
+
 	private boolean direction;
 	private boolean fini;
-	/**
-	 * personnage du jeu
-	 */
+
+	/** aventurier */
 	private Aventurier aventurier;
+	/** labyrinthe du niveau en cours */
 	private Labyrinthe labyrinthe;
+	/** liste de monstres dans le labyrinthe en cours */
 	private ArrayList<Monstre> monstres;
 	private ArrayList<Item> items;
 
-
+	/**
+	 * construit un jeu avec un aventurier
+	 * @param av aventurier en train de jouer
+	 */
 	public JeuEvolution(Aventurier av) {
 		this.aventurier = av;
-		this.compteur_pas = 0;
+		this.compteurPas = 0;
 		this.direction = true;
 		this.fini = false;
-		//this.jeu = j;
 	}
 
 	@Override
@@ -44,43 +50,49 @@ public class JeuEvolution implements Jeu {
 		//PERSO
 		boolean marche = false;
 
-		if (commandeUser.bas == true) {
+		if (commandeUser.bas) {
 			this.aventurier.seDeplacer('S');
 			marche = true;
 		}
-		if (commandeUser.droite == true) {
+		if (commandeUser.droite) {
 			this.aventurier.seDeplacer('E');
 			marche = true;
 			this.direction = true;
 		}
-		if (commandeUser.gauche == true) {
+		if (commandeUser.gauche) {
 			this.aventurier.seDeplacer('O');
 			marche = true;
 			this.direction = false;
 		}
-		if (commandeUser.haut == true) {
+		if (commandeUser.haut) {
 			this.aventurier.seDeplacer('N');
 			marche = true;
 		}
-		if(commandeUser.espace == true){
-			for (Monstre m: monstres) {
-				if(getAventurier().distance(m)<50)
-					m.subirDegat(5);
-			}
+		if(commandeUser.espace){
+			compteur_attaque ++;
+			if(compteur_attaque <2)
+				for (Monstre m: monstres) {
+					aventurier.attaquer(m);
+				}
+		}else{
+			if(compteur_attaque >=2)
+				compteur_attaque ++;
+			if(compteur_attaque >20)
+				compteur_attaque = 0;
 		}
 
 		if(marche == false) {
-			this.compteur_pas = 0;
+			this.compteurPas = 0;
 		}
 		else {
-			this.compteur_pas++;
-			if(compteur_pas>15)
-				compteur_pas = 0;
+			this.compteurPas++;
+			if(compteurPas>15)
+				compteurPas = 0;
 		}
-		
+
 		int px = this.aventurier.getX();
 		int py = this.aventurier.getY();
-		
+
 		//affiche les pv du joueur
 		//System.out.println(this.personnage.getPv());
 		//si le joueur entre dans la porte
@@ -90,9 +102,9 @@ public class JeuEvolution implements Jeu {
 		}else if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 3) {
 				this.aventurier.subirDegat(1);
 				this.aventurier.getLab().activerPiege(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE);
-				
+
 		}
-		
+
 		//ITEMS
 		for (Item i : this.items) {
 			if (i.peutRamasse(px, py)) {
@@ -117,9 +129,6 @@ public class JeuEvolution implements Jeu {
 
 
 	@Override
-	/**
-	 * le jeu ne s'arrete jamais. Return false
-	 */
 	public boolean etreFini() {
 		return this.fini;
 	}
@@ -128,12 +137,21 @@ public class JeuEvolution implements Jeu {
 		this.fini = a;
 	}
 
-	public boolean isDirection() {
+	public boolean getDirection() {
 		return direction;
 	}
 
-	public int getCompteur_pas() {
-		return compteur_pas;
+	public int getCompteurPas() {
+		return compteurPas;
+	}
+
+
+	public void changeNiveau(Labyrinthe l, ArrayList<Monstre> m) {
+		setLabyrinthe(l);
+		setMonstres(m);
+		compteurPas = 0;
+		direction = true;
+		fini = false;
 	}
 
 
@@ -151,17 +169,22 @@ public class JeuEvolution implements Jeu {
 	}
 
 	public void setAventurier(Aventurier av) {
-		aventurier = av;
+		if (av != null)
+			aventurier = av;
 	}
 
 	public void setLabyrinthe(Labyrinthe l) {
-		labyrinthe = l;
+		if (l != null)
+			labyrinthe = l;
 	}
 
 	public void setMonstres(ArrayList<Monstre> m) {
-		monstres = m;
+		if (m != null)
+			monstres = m;
+		else
+			monstres = new ArrayList<Monstre>();
 	}
-	
+
 	public void setItems(ArrayList<Item> it) {
 		this.items = it;
 	}
