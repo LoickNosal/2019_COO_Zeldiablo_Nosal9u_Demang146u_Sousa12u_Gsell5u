@@ -20,8 +20,7 @@ import java.util.Objects;
  */
 public class JeuPrincipal {
 
-    public Labyrinthe labyrinthe;
-    public Aventurier aventurier; //pas utile
+    private JeuEvolution jeuEvolution;
     public int level;
 
 
@@ -29,13 +28,14 @@ public class JeuPrincipal {
      * construit le modèle du jeu
      */
     public JeuPrincipal() {
-        this.level = 4;
+        this.level = 2;
+        Aventurier aventurier = new Aventurier(50, 100, 100, "Aventurier");
+        jeuEvolution = new JeuEvolution(aventurier);
+
         chargerLVL(level);
-        this.aventurier = new Aventurier(50, 100, 100, "Aventurier");
-        this.aventurier.setLabyrinthe(this.labyrinthe);
-        JeuEvolution jeuEvolution = new JeuEvolution(this.aventurier);
 
 
+        /*
         MonstreImmobile m = new MonstreImmobile(50,  1 * Case.TAILLE + Case.TAILLE / 2, 1 * Case.TAILLE + Case.TAILLE / 2, 1, 50, "lol");
         MonstreAleatoire m2 = new MonstreAleatoire(50, 400, 100, 1, 50, "m2");
         MonstreSuivi m3 = new MonstreSuivi(50, 400, 100, 1, 50, "m3");
@@ -47,6 +47,7 @@ public class JeuPrincipal {
         monstres.add(m2);
         monstres.add(m3);
         jeuEvolution.setMonstres(monstres);
+        */
 
 		DessinPerso dp = new DessinPerso(jeuEvolution);
 
@@ -56,9 +57,7 @@ public class JeuPrincipal {
 		// lance la boucle de jeu qui tourne jusque la fin du jeu
 		try {
 			moteur.lancerJeu(900, 900);
-
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -70,31 +69,31 @@ public class JeuPrincipal {
      * charge un niveau a partir du numero du niveau
      * @param lvl numero du niveau
      */
-    private void chargerLVL(int lvl) {
+    public void chargerLVL(int lvl) {
         try {
             JSONObject json;
             switch (lvl) {
                 case 1:
                     json = chargerJSON("lvl1.json");
-                    this.labyrinthe = decoderJSON(json);
+                    decoderJSON(json);
                     break;
                 case 2:
                     json = chargerJSON("lvl2.json");
-                    this.labyrinthe = decoderJSON(json);
+                    decoderJSON(json);
                     break;
                 case 3:
                     json = chargerJSON("lvl3.json");
-                    this.labyrinthe = decoderJSON(json);
+                    decoderJSON(json);
                     break;
                 case 4:
                 	json = chargerJSON("lvl4.json");
-                    this.labyrinthe = decoderJSON(json);
+                    decoderJSON(json);
                     break;
                 default:
-                    this.labyrinthe = new Labyrinthe();
+                    //TODO
             }
         } catch (ParseException | IOException e) {
-            this.labyrinthe = new Labyrinthe();
+            //TODO
         }
     }
 
@@ -115,17 +114,16 @@ public class JeuPrincipal {
 
 
     /**
-     * construit un labyrinthe a partir d'un JSON
+     * decode le JSON et changer le niveau de JeuEvoluer
      * @param json fichier JSON comtenant les informations du niveau
-     * @return le labyrinthe correspondant au fichier JSON
      */
-    private Labyrinthe decoderJSON(JSONObject json) {
+    private void decoderJSON(JSONObject json) {
         JSONArray jsonModeleLaby = (JSONArray) json.get("labyrinthe");
         String[] modeleLabyrinthe = new String[jsonModeleLaby.size()];
         for (int i = 0; i < modeleLabyrinthe.length; i++) {
             modeleLabyrinthe[i] = (String) jsonModeleLaby.get(i);
         }
-
+        Labyrinthe labyrinthe = new Labyrinthe(modeleLabyrinthe);
 
         JSONArray jsonMonstres = (JSONArray) json.get("monstres");
         ArrayList<Monstre> monstres = new ArrayList<Monstre>(jsonMonstres.size());
@@ -137,11 +135,13 @@ public class JeuPrincipal {
             int posY = ((Long) ((JSONArray) jsonM.get("pos")).get(1)).intValue();
             posX = posX * Case.TAILLE + Case.TAILLE / 2;
             posY = posY * Case.TAILLE + Case.TAILLE / 2;
+
+            Monstre m = Monstre.creerMonstreParID(id, posX, posY);
+            m.setLabyrinthe(labyrinthe);
+            monstres.add(m);
         }
 
-
-
-        return new Labyrinthe(modeleLabyrinthe);
+        jeuEvolution.changeNiveau(labyrinthe, monstres);
     }
 
 
