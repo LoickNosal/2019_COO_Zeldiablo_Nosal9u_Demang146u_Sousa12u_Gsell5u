@@ -150,7 +150,7 @@ public class DessinPerso implements DessinJeu{
 			}
 		}
 
-		this.gestionVie(g);
+
 
 		if(jeuEvolution.getAventurier().getVivant())
 		{
@@ -175,7 +175,7 @@ public class DessinPerso implements DessinJeu{
 		{
 			g.drawImage(mort, jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
 		}
-
+		this.gestionVie(g);
 		g.dispose();
 	}
 	
