@@ -26,27 +26,21 @@ class JeuPrincipal {
     
 }
 
-class JeuPerso {
+class JeuEvolution {
     -compteur_pas : int
     -direction: boolean
     -fini: boolean
-    +JeuPerso(Aventurier)
+    +Aventurier: aventurier
+    +ArrayList<Monstre>: monstres
+    +JeuEvolution(Aventurier)
     +evoluer(Commande): void
     +etreFini(): boolean
     +setFini(boolean):void
     +isDirection(): boolean
     +getCompteur_pas(): int
-    +getPerso(): Aventurier
+    +setAventurier(Aventurier): void
 }
 
-class JeuMonstre {
-    +JeuMonstre(ArrayList<Monstre>)
-    +evoluer(Commande): void
-    +setAventurier(Aventurier): void
-    +etreFini(): boolean
-    +setFini(boolean):void
-    +getMonstres():ArrayList<Monstre>
-}
 
 interface DessinJeu {
     +dessiner(BuffuredImage) : void
@@ -71,7 +65,7 @@ class DessinPerso {
     -slime_rouge: Image
     -slime_violet: Image
     +{static}TAILLE_CASE: int
-    +DessinPerso(JeuPerso,JeuMonstre)
+    +DessinPerso(JeuEvolution)
     +dessine(BuffuredImage): void
     +gestionVie(Graphics2D): void
 }
@@ -96,43 +90,67 @@ class Labyrinthe {
     -defautLabyrinthe():void
 }
 
+
+abstract Entite {
+    #x: int
+    #y: int
+    #pv: int
+    #pvMax: int
+    #nom: String
+    #vivant: boolean
+    #labyrinthe: Labyrinthe
+
+    +Entite(int, int, int, String)
+    +getVivant(): boolean
+    +getNom(): String
+    +setLabyrinthe(Labyrinthe) : void
+    +getLab(): Labyrinthe
+    +getPv(): int
+    +getPvMax(): int
+    +getX(): int
+    +getY(): int
+    +{abstract}seDeplacer(char): void
+    +{abstract}peutAvancer(int,int): boolean
+    +subirDegat(int): void
+    +mort(): void
+}
+
+class Aventurier {
+
+    +Aventurier(int, int int, String)
+    +seDeplacer(char): void
+    +peutAvancer(int, int): boolean
+}
+
 abstract Monstre {
     #id: int
     #portee : int
     #degat: int
-    -pvMax: int
     +Monstre(int, int, int, int, int, int, String)
-    +getPvMax(): int
     +peutAvancer(int, int): boolean
     +attaquer(Aventurier): void
-    +avancer(int): void
-    +{abstract}seDeplacer(char):void
-    +{abstract}seDeplacer(Aventurier):void
-    +getDegat():int
-    +getPortee():int
-    +getId():int
-    +{static}creerMonstreParID(int,int,int):Monstre
+    +seDeplacer(char): void
 }
 
 class MonstreAleatoire {
 
     +MonstreAleatoire(int, int, int, int, int, int, String)
     +seDeplacer(char):void
-    +seDeplacer(Aventurier):void
 }
 
 class MonstreSuivi {
+    #cible: Aventurier
 
     +MonstreSuivi(int, int, int, int, int, int, String)
-    +seDeplacer(char):void
-    +seDeplacer(Aventurier):void
+    +seDeplacer(char): void
+    #calculChemin(): char
+    +ajouterCible(Aventurier): void
 }
 
 class MonstreImmobile {
 
     +MonstreImmobile(int, int, int, int, int, int, String)
     +seDeplacer(char):void
-    +seDeplacer(Aventurier):void
 }
 
 abstract Case {
@@ -175,36 +193,6 @@ class CasePiege {
     +typeCase():int
 }
 
-abstract Entite {
-    #pv: int
-    #x: int
-    #y: int
-    #nom: String
-    #vivant: boolean
-
-    +Entite(int, int, int, String)
-    +getVivant(); boolean
-    +setLabyrinthe(Labyrinthe):void
-    +getLab(): Labyrinthe
-    +getNom():String
-    +getPv():int
-    +getX():int
-    +getY():int
-    +{abstract}seDeplacer(char): void
-    +{abstract}seDeplacer(Aventurier): void
-    +{abstract}peutAvancer(int,int):boolean
-    +subirDegat(int): void
-    +mort(): void
-}
-
-class Aventurier {
-    -pvMax: int
-    +Aventurier(int, int int, String)
-    +getPvMax(): int
-    +seDeplacer(char):void
-    +seDeplacer(Aventurier): void
-    +peutAvancer(int, int): boolean
-}
 
 
 JeuPrincipal "1" --> "0" Labyrinthe : +labyrinthe
@@ -212,12 +200,11 @@ JeuPrincipal "1" --> "1" Aventurier : +aventurier
 
 Entite --> "1" Labyrinthe : #lab
 
-JeuPerso "1" --> "1" Aventurier : -personnage
-JeuPerso ..|> Jeu
+JeuEvolution "1" --> "1" Aventurier : -personnage
+JeuEvolution ..|> Jeu
 
 DessinPerso ..|> DessinJeu
-DessinPerso "1" --> "0..1" JeuPerso : -jeuPerso
-DessinPerso "1" --> "0..1" JeuMonstre : -jeuMonstre
+DessinPerso "1" --> "0..1" JeuEvolution : -JeuEvolution
 
 MoteurGraphique "1" --> DessinJeu : -dessin
 MoteurGraphique "1" --> InterfaceGraphique : -gui
@@ -225,10 +212,6 @@ MoteurGraphique "0..*" --> Jeu : -jeu
 
 InterfaceGraphique "1" --> Menu : +menu
 
-
-JeuMonstre "1" --> "0..*" Monstre : -monstres
-JeuMonstre "1" --> "0..1" Aventurier : -aventurier
-JeuMonstre ..|> Jeu
 
 Aventurier --|> Entite
 
