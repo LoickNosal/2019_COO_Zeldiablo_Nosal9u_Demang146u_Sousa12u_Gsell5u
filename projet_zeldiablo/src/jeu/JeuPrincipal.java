@@ -15,6 +15,7 @@ import java.util.Objects;
 
 /**
  * modelise le jeu principal
+ *
  * @author Louis Demange
  */
 public class JeuPrincipal {
@@ -49,17 +50,17 @@ public class JeuPrincipal {
         jeuEvolution.setMonstres(monstres);
         */
 
-		DessinPerso dp = new DessinPerso(jeuEvolution);
+        DessinPerso dp = new DessinPerso(jeuEvolution);
 
-		// classe qui lance le moteur de jeu generique
-		MoteurGraphique moteur = new MoteurGraphique(jeuEvolution, dp);
+        // classe qui lance le moteur de jeu generique
+        MoteurGraphique moteur = new MoteurGraphique(jeuEvolution, dp);
 
-		// lance la boucle de jeu qui tourne jusque la fin du jeu
-		try {
-			moteur.lancerJeu(900, 900);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+        // lance la boucle de jeu qui tourne jusque la fin du jeu
+        try {
+            moteur.lancerJeu(900, 900);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -67,6 +68,7 @@ public class JeuPrincipal {
 
     /**
      * charge un niveau a partir du numero du niveau
+     *
      * @param lvl numero du niveau
      */
     public void chargerLVL(int lvl) {
@@ -86,7 +88,7 @@ public class JeuPrincipal {
                     decoderJSON(json);
                     break;
                 case 4:
-                	json = chargerJSON("lvl4.json");
+                    json = chargerJSON("lvl4.json");
                     decoderJSON(json);
                     break;
                 default:
@@ -100,9 +102,10 @@ public class JeuPrincipal {
 
     /**
      * charge un JSON a partir
+     *
      * @param fichier nom du fichier JSON
      * @return le fichier JSON
-     * @throws IOException erreur dans l'url du fichier
+     * @throws IOException    erreur dans l'url du fichier
      * @throws ParseException erreur avec le JSON
      */
     private JSONObject chargerJSON(String fichier) throws IOException, ParseException {
@@ -115,6 +118,7 @@ public class JeuPrincipal {
 
     /**
      * decode le JSON et changer le niveau de JeuEvoluer
+     *
      * @param json fichier JSON comtenant les informations du niveau
      */
     private void decoderJSON(JSONObject json) {
@@ -135,28 +139,45 @@ public class JeuPrincipal {
 
         // monstres
         JSONArray jsonMonstres = (JSONArray) json.get("monstres");
-        ArrayList<Monstre> monstres = new ArrayList<Monstre>(jsonMonstres.size());
-        for (int i = 0; i < jsonMonstres.size(); i++) {
-            JSONObject jsonM = (JSONObject) jsonMonstres.get(i);
-            int id = ((Long) jsonM.get("id")).intValue();
-
-            int posX = ((Long) ((JSONArray) jsonM.get("pos")).get(0)).intValue();
-            int posY = ((Long) ((JSONArray) jsonM.get("pos")).get(1)).intValue();
-            posX = posX * Case.TAILLE + Case.TAILLE / 2;
-            posY = posY * Case.TAILLE + Case.TAILLE / 2;
-
-            Monstre m = Monstre.creerMonstreParID(id, posX, posY);
-            m.setLabyrinthe(labyrinthe);
-            m.setCible(aventurier);
-            monstres.add(m);
+        ArrayList<Monstre> monstres = null;
+        if (jsonMonstres != null) {
+            monstres = new ArrayList<Monstre>(jsonMonstres.size());
+            for (int i = 0; i < jsonMonstres.size(); i++) {
+                JSONObject jsonM = (JSONObject) jsonMonstres.get(i);
+                int id = ((Long) jsonM.get("id")).intValue();
+                int posX = ((Long) ((JSONArray) jsonM.get("pos")).get(0)).intValue();
+                int posY = ((Long) ((JSONArray) jsonM.get("pos")).get(1)).intValue();
+                posX = posX * Case.TAILLE + Case.TAILLE / 2;
+                posY = posY * Case.TAILLE + Case.TAILLE / 2;
+                Monstre m = Monstre.creerMonstreParID(id, posX, posY);
+                m.setLabyrinthe(labyrinthe);
+                m.setCible(aventurier);
+                monstres.add(m);
+            }
         }
 
-        jeuEvolution.changeNiveau(labyrinthe, monstres);
+        // items
+        JSONArray jsonItems = (JSONArray) json.get("items");
+        ArrayList<Item> items = null;
+        if (jsonItems != null) {
+            items = new ArrayList<Item>(jsonItems.size());
+            for (int j = 0; j < jsonItems.size(); j++) {
+                JSONObject jsonI = (JSONObject) jsonItems.get(j);
+                int id = ((Long) jsonI.get("id")).intValue();
+                int posX = ((Long) ((JSONArray) jsonI.get("pos")).get(0)).intValue();
+                int posY = ((Long) ((JSONArray) jsonI.get("pos")).get(1)).intValue();
+                Item i = Item.creerItemParID(id, posX, posY);
+                items.add(i);
+            }
+        }
+
+        jeuEvolution.changeNiveau(labyrinthe, monstres, items);
     }
 
 
     /**
      * retourne le niveau actuel
+     *
      * @return le niveau
      */
     public int getLVL() {
@@ -167,7 +188,6 @@ public class JeuPrincipal {
         level++;
         chargerLVL(level);
     }
-
 
 
     public static void main(String[] args) {

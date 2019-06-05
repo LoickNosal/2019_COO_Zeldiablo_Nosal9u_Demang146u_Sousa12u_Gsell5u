@@ -182,9 +182,10 @@ public class JeuEvolution implements Jeu {
 	}
 
 
-	public void changeNiveau(Labyrinthe l, ArrayList<Monstre> m) {
+	public void changeNiveau(Labyrinthe l, ArrayList<Monstre> m, ArrayList<Item> it) {
 		setLabyrinthe(l);
 		setMonstres(m);
+		setItems(it);
 		compteurPas = 0;
 		direction = true;
 		fini = false;
@@ -202,6 +203,10 @@ public class JeuEvolution implements Jeu {
 
 	public ArrayList<Monstre> getMonstres() {
 		return monstres;
+	}
+
+	public ArrayList<Item> getItems() {
+		return this.items;
 	}
 
 	public void setAventurier(Aventurier av) {
@@ -224,12 +229,10 @@ public class JeuEvolution implements Jeu {
 	}
 
 	public void setItems(ArrayList<Item> it) {
-		this.items = it;
+		if (it != null)
+			items = it;
+		else
+			items = new ArrayList<Item>();
 	}
-	public ArrayList<Item> gettItems() {
-		return this.items;
-	}
-
-
 
 }
