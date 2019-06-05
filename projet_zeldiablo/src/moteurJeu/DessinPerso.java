@@ -23,6 +23,7 @@ public class DessinPerso implements DessinJeu{
 	private Image casevide;
 	private Image casePiege;
 	private Image mort;
+	private Image potion;
 
 	private Image[] perso_droite;
 	private Image[] perso_gauche;
@@ -42,7 +43,6 @@ public class DessinPerso implements DessinJeu{
 		this.slime_vert = new Image[2];
 		this.slime_violet = new Image[2];
 		this.epee = new Image[2];
-
 
 		try{
 				
@@ -72,6 +72,8 @@ public class DessinPerso implements DessinJeu{
 			//epee
 			epee[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("epeed.png").getPath(), "UTF-8")));
 			epee[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("epeeg.png").getPath(), "UTF-8")));
+			//potion
+			potion = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("potionVie.png").getPath(), "UTF-8")));
 		}catch (Exception e){
 			System.out.println("Probleme avec l'image");
 			e.printStackTrace();
@@ -145,6 +147,12 @@ public class DessinPerso implements DessinJeu{
 		}else
 		{
 			g.drawImage(mort, jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
+		}
+
+		for (Item i:jeuEvolution.getItems()) {
+			switch(i.getId()){
+				case 0 : g.drawImage(potion, i.getPosX()* Case.TAILLE+5, i.getPosY()*Case.TAILLE+5, 50,50,null);
+			}
 		}
 
 

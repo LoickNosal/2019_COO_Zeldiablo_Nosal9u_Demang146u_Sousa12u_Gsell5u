@@ -57,9 +57,8 @@ public class JeuEvolution implements Jeu {
 		this.compteurInvulnerabilite = 0;
 		this.direction = true;
 		this.fini = false;
+
 		this.items=new ArrayList<Item>();
-		Item n= new PotionVie(120,120);
-		items.add(n);
 	}
 
 	@Override
