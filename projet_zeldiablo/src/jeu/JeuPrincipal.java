@@ -6,7 +6,7 @@ import org.json.simple.parser.*;
 import moteurJeu.DessinPerso;
 import moteurJeu.Jeu;
 import moteurJeu.JeuMonstre;
-import moteurJeu.JeuPerso;
+import moteurJeu.JeuEvolution;
 import moteurJeu.MoteurGraphique;
 
 import java.io.FileReader;
@@ -36,7 +36,7 @@ public class JeuPrincipal {
         this.aventurier = new Aventurier(50, 100, 100, "Aventurier");
         this.aventurier.setLabyrinthe(this.labyrinthe);
         ArrayList<Jeu> jeu = new ArrayList<Jeu>();
-        JeuPerso jeuperso = new JeuPerso(this.aventurier);
+        JeuEvolution jeuperso = new JeuEvolution(this.aventurier);
 
 
         MonstreImmobile m = new MonstreImmobile(50,  1 * Case.TAILLE + Case.TAILLE / 2, 1 * Case.TAILLE + Case.TAILLE / 2, 1, 50, "lol");
