@@ -199,7 +199,11 @@ abstract public class Entite{
     public double distanceEntite(Entite ent) {
         double d = Math.sqrt(Math.pow((this.x-ent.x),2)+Math.pow((this.y-ent.y),2));
         return d;
-
+    }
+    
+    public double distanceEntite(int px, int py, int dx, int dy) {
+		double d = Math.sqrt(Math.pow((px - dx),2)+Math.pow((py - dy),2));
+        return d;
     }
 
     public double distanceItem(Item ent) {
