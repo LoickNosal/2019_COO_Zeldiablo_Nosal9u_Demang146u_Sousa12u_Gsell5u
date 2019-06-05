@@ -12,6 +12,7 @@ import moteurJeu.DessinPerso;
 public class Aventurier extends Entite {
 	
 	private boolean attaque;
+	private boolean saut;
     /**
      * Le constructeur de la classe Aventurier, qui herite du constructeur de Entite
      * @param p Les points de vie
@@ -24,6 +25,7 @@ public class Aventurier extends Entite {
         super(p,x,y,n);
         this.vitesse = 5;
         this.attaque=false;
+        this.saut=false;
     }
 
 	public void attaquer(Monstre m)
@@ -39,5 +41,13 @@ public class Aventurier extends Entite {
 
     public void setAttaque(boolean attaque) {
         this.attaque = attaque;
+    }
+
+    public boolean getSaut() {
+        return saut;
+    }
+
+    public void setSaut(boolean saut) {
+        this.saut = saut;
     }
 }

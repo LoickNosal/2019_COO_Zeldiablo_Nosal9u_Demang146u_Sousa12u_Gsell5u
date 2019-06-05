@@ -16,6 +16,7 @@ import java.net.URLDecoder;
 public class DessinPerso implements DessinJeu{
 
 	private int compteur;
+	private int saut;
 	private JeuEvolution jeuEvolution;
 
 	private Image mur;
@@ -153,15 +154,22 @@ public class DessinPerso implements DessinJeu{
 
 		if(jeuEvolution.getAventurier().getVivant())
 		{
+			if(jeuEvolution.getAventurier().getSaut()){
+				saut = -20;
+				g.setColor(new Color(0,0,0,120));
+				g.fillOval(jeuEvolution.getAventurier().getX()-16,jeuEvolution.getAventurier().getY()-10,35,20);
+			}else{
+				saut = 0;
+			}
 			if(jeuEvolution.getDirection()){
-				g.drawImage(perso_droite[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
+				g.drawImage(perso_droite[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50+saut, 45,60,null);
 				if(jeuEvolution.getAventurier().getAttaque())
-					g.drawImage(epee[0], jeuEvolution.getAventurier().getX()-10, jeuEvolution.getAventurier().getY()-40, 60,60,null);
+					g.drawImage(epee[0], jeuEvolution.getAventurier().getX()-10, jeuEvolution.getAventurier().getY()-40+saut, 60,60,null);
 			}
 			else{
-				g.drawImage(perso_gauche[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
+				g.drawImage(perso_gauche[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50+saut, 45,60,null);
 				if(jeuEvolution.getAventurier().getAttaque())
-					g.drawImage(epee[1], jeuEvolution.getAventurier().getX()-45, jeuEvolution.getAventurier().getY()-40, 60,60,null);
+					g.drawImage(epee[1], jeuEvolution.getAventurier().getX()-45, jeuEvolution.getAventurier().getY()-40+saut, 60,60,null);
 			}
 		}else
 		{
@@ -195,13 +203,13 @@ public class DessinPerso implements DessinJeu{
 		int pvCourant = this.jeuEvolution.getAventurier().getPv();
 		//contour
 		g.setColor(Color.black);
-		g.fillRect(this.jeuEvolution.getAventurier().getX()-TAILLE_CASE/3-2, this.jeuEvolution.getAventurier().getY()-TAILLE_CASE-2, pvMax+4, 7+4);
+		g.fillRect(this.jeuEvolution.getAventurier().getX()-TAILLE_CASE/3-2, this.jeuEvolution.getAventurier().getY()-TAILLE_CASE-2+saut, pvMax+4, 7+4);
 		//barre de vie rouge
 		g.setColor(Color.red);
-		g.fillRect(this.jeuEvolution.getAventurier().getX()-TAILLE_CASE/3, this.jeuEvolution.getAventurier().getY()-TAILLE_CASE, pvMax, 7);
+		g.fillRect(this.jeuEvolution.getAventurier().getX()-TAILLE_CASE/3, this.jeuEvolution.getAventurier().getY()-TAILLE_CASE+saut, pvMax, 7);
 		//barre de vie verte
 		g.setColor(Color.green);
-		g.fillRect(this.jeuEvolution.getAventurier().getX()-TAILLE_CASE/3, this.jeuEvolution.getAventurier().getY()-TAILLE_CASE,pvCourant , 7);
+		g.fillRect(this.jeuEvolution.getAventurier().getX()-TAILLE_CASE/3, this.jeuEvolution.getAventurier().getY()-TAILLE_CASE+saut,pvCourant , 7);
 		if (this.jeuEvolution.getAventurier().getVivant() == false) {
 			g.setFont(new Font(null, Font.PLAIN, 100)); 
 			g.setColor(new Color(0,0,0,120));
