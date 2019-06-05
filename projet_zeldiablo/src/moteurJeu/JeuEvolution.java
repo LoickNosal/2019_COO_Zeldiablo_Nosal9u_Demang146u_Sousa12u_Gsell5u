@@ -20,10 +20,13 @@ public class JeuEvolution implements Jeu {
 	/**
 	 * personnage du jeu
 	 */
-	private Aventurier personnage;
-	
+	public Aventurier aventurier;
+	public Labyrinthe labyrinthe;
+	public ArrayList<Monstre> monstres;
+
+
 	public JeuEvolution(Aventurier av) {
-		this.personnage = av;
+		this.aventurier = av;
 		this.compteur_pas = 0;
 		this.direction = true;
 		this.fini = false;
@@ -36,24 +39,25 @@ public class JeuEvolution implements Jeu {
 	 * des valeurs des attributs gauche,droite,haut,bas
 	 */
 	public void evoluer(Commande commandeUser) {
+		//PERSO
 		boolean marche = false;
 
 		if (commandeUser.bas == true) {
-			this.personnage.seDeplacer('S');
+			this.aventurier.seDeplacer('S');
 			marche = true;
 		}
 		if (commandeUser.droite == true) {
-			this.personnage.seDeplacer('E');
+			this.aventurier.seDeplacer('E');
 			marche = true;
 			this.direction = true;
 		}
 		if (commandeUser.gauche == true) {
-			this.personnage.seDeplacer('O');
+			this.aventurier.seDeplacer('O');
 			marche = true;
 			this.direction = false;
 		}
 		if (commandeUser.haut == true) {
-			this.personnage.seDeplacer('N');
+			this.aventurier.seDeplacer('N');
 			marche = true;
 		}
 		if(commandeUser.espace == true){
@@ -73,14 +77,24 @@ public class JeuEvolution implements Jeu {
 		//affiche les pv du joueur
 		//System.out.println(this.personnage.getPv());
 		//si le joueur entre dans la porte
-		if(this.personnage.getLab().typeCase(this.personnage.getX()/DessinPerso.TAILLE_CASE,this.personnage.getY()/DessinPerso.TAILLE_CASE) == 2) {
+		if(this.aventurier.getLab().typeCase(this.aventurier.getX()/DessinPerso.TAILLE_CASE,this.aventurier.getY()/DessinPerso.TAILLE_CASE) == 2) {
 				this.fini = true;
 				new JeuPrincipal();
-		}else if(this.personnage.getLab().typeCase(this.personnage.getX()/DessinPerso.TAILLE_CASE,this.personnage.getY()/DessinPerso.TAILLE_CASE) == 3) {
-				this.personnage.subirDegat(1);
-				this.personnage.getLab().activerPiege(this.personnage.getX()/DessinPerso.TAILLE_CASE, this.personnage.getY()/DessinPerso.TAILLE_CASE);
+		}else if(this.aventurier.getLab().typeCase(this.aventurier.getX()/DessinPerso.TAILLE_CASE,this.aventurier.getY()/DessinPerso.TAILLE_CASE) == 3) {
+				this.aventurier.subirDegat(1);
+				this.aventurier.getLab().activerPiege(this.aventurier.getX()/DessinPerso.TAILLE_CASE, this.aventurier.getY()/DessinPerso.TAILLE_CASE);
 				
 		}
+
+		// MONSTERS
+		for(Monstre m : monstres) {
+			m.seDeplacer(aventurier);
+			m.attaquer(aventurier);
+		}
+	}
+
+	public void setMonstres(ArrayList<Monstre> m) {
+		monstres = m;
 	}
 
 	@Override
@@ -104,7 +118,7 @@ public class JeuEvolution implements Jeu {
 	}
 
 	public Aventurier getPerso() {
-		return personnage;
+		return aventurier;
 	}
 
 	
