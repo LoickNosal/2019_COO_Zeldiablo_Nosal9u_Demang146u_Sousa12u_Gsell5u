@@ -264,4 +264,12 @@ public class JeuEvolution implements Jeu {
 			items = new ArrayList<Item>();
 	}
 
+
+	/**
+	 * recharge le premier niveau
+	 */
+	public void restart() {
+		jeuPrincipal.chargerLVL(1);
+	}
+
 }
