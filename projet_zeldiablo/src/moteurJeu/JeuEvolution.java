@@ -135,8 +135,7 @@ public class JeuEvolution implements Jeu {
 
 		// MONSTERS
 		for(Monstre m : monstres) {
-			m.comportement(aventurier);
-			m.attaquer(aventurier);
+			m.comportement();
 		}
 
 		monstres.removeIf(n -> (n.getPv() <= 0));

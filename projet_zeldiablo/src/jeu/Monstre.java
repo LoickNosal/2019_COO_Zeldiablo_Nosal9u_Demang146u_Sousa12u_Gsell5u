@@ -9,7 +9,8 @@ public abstract class Monstre extends Entite {
 	protected int id;
 	protected int degat;
 	protected int portee;
-	private int pvMax;
+	protected int pvMax;
+	protected Aventurier cible;
 
 	/**
 	 * Constructeur qui modélise un monstre
@@ -36,9 +37,7 @@ public abstract class Monstre extends Entite {
 		this.vitesse = 3;
 	}
 	
-	public int getPvMax() {
-    	return this.pvMax;
-    }
+	
 	
 	public boolean peutAvancer(int posX, int posY) {
 		boolean res = false;
@@ -61,6 +60,10 @@ public abstract class Monstre extends Entite {
 		}
 	}
 
+	public int getId() {
+		return id;
+	}
+	
 	public int getDegat() {
 		return degat;
 	}
@@ -69,10 +72,17 @@ public abstract class Monstre extends Entite {
 		return portee;
 	}
 
-	public int getId() {
-		return id;
+	public int getPvMax() {
+    	return this.pvMax;
+    }
+	
+	public Aventurier getCible() {
+		return cible;
 	}
-
+	
+	public void setCible(Aventurier av) {
+		cible = av;
+	}
 
 	/**
 	 * creer un monstre a partir d'un ID
