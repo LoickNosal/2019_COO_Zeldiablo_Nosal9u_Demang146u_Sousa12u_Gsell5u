@@ -1,12 +1,26 @@
-@startuml
-
+@startuml 
 title Changement de niveau
+participant JeuEvolution << (C,#ADD1B2) >>
+participant JeuPrincipal << (C,#ADD1B2) >>
 
-participant "jeuP : JeuPrincipal" as JeuPrincipal << (C,#ADD1B2) >>
+activate JeuEvolution
+JeuEvolution -> JeuPrincipal : chargerLVLSuivant()
 
 activate JeuPrincipal
-JeuPrincipal -> JeuPrincipal : chargerLVL(2)
+JeuPrincipal -> JeuPrincipal : chargerLVL(int lvl)
 activate JeuPrincipal
 
+JeuPrincipal -> JeuPrincipal : chargerJSON(String url)
+activate JeuPrincipal
 
+JeuPrincipal -> JeuPrincipal : decodeJSON(JSONObject json)
+activate JeuPrincipal
+
+JeuPrincipal -> JeuEvolution : changeNiveau(Labyrinthe, ArrayList<Monstre>, ArrayList<Item>)
+activate JeuEvolution
+JeuEvolution --> JeuPrincipal
+deactivate JeuEvolution
+
+JeuPrincipal --> JeuEvolution
+deactivate JeuPrincipal
 @enduml
