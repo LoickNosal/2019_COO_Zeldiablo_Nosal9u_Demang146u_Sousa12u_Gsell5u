@@ -25,6 +25,7 @@ public class Menu extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 disparaitre();
+
             }
         });
 

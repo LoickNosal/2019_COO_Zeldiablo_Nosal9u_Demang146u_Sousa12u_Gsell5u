@@ -77,6 +77,11 @@ public class Controleur implements KeyListener {
                 break;
 
         }
+        if(KeyEvent.VK_ESCAPE == e.getKeyCode())
+        {
+            this.commandeEnCours.echap = true;
+            this.commandeARetourner.echap = true;
+        }
 
     }
 
@@ -104,6 +109,11 @@ public class Controleur implements KeyListener {
             case 'f':
                 this.commandeEnCours.attaque = false;
                 break;
+        }
+
+        if(KeyEvent.VK_ESCAPE == e.getKeyCode())
+        {
+            this.commandeEnCours.echap=false;
         }
 
     }
