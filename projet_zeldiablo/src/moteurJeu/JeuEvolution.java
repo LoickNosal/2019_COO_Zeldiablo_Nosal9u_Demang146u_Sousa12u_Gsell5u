@@ -43,13 +43,18 @@ public class JeuEvolution implements Jeu {
 	private Labyrinthe labyrinthe;
 	/** liste de monstres dans le labyrinthe en cours */
 	private ArrayList<Monstre> monstres;
+	/** liste d'items present dans le labyrinthe en cours */
 	private ArrayList<Item> items;
+
+	/** reference au JeuPrincipal pour recharger un niveau */
+	private JeuPrincipal jeuPrincipal;
 
 	/**
 	 * construit un jeu avec un aventurier
 	 * @param av aventurier en train de jouer
 	 */
-	public JeuEvolution(Aventurier av) {
+	public JeuEvolution(Aventurier av, JeuPrincipal jP) {
+		this.jeuPrincipal = jP;
 		this.aventurier = av;
 		this.compteurPas = 0;
 		this.compteurAttaque = 0;

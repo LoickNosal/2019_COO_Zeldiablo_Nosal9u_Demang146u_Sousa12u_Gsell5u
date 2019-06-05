@@ -4,7 +4,6 @@ import org.json.simple.*;
 import org.json.simple.parser.*;
 
 import moteurJeu.DessinPerso;
-import moteurJeu.Jeu;
 import moteurJeu.JeuEvolution;
 import moteurJeu.MoteurGraphique;
 
@@ -30,7 +29,7 @@ public class JeuPrincipal {
     public JeuPrincipal() {
         this.level = 2;
         Aventurier aventurier = new Aventurier(50, 100, 100, "Aventurier");
-        jeuEvolution = new JeuEvolution(aventurier);
+        jeuEvolution = new JeuEvolution(aventurier, this);
 
         chargerLVL(level);
 
