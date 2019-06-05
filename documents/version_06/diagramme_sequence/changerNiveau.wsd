@@ -1,0 +1,12 @@
+@startuml
+
+title Changement de niveau
+
+participant "jeuP : JeuPrincipal" as JeuPrincipal << (C,#ADD1B2) >>
+
+activate JeuPrincipal
+JeuPrincipal -> JeuPrincipal : chargerLVL(2)
+activate JeuPrincipal
+
+
+@enduml

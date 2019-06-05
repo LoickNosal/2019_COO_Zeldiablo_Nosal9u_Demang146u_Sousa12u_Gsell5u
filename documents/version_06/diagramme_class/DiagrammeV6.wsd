@@ -1,0 +1,212 @@
+@startuml
+title Zeldiablo
+
+interface Jeu {
+    +evoluer(Commande): void
+    +etreFini(): boolean
+}
+
+class JeuPrincipal {
+    -level: int
+    +JeuPrincipal()
+    -chargerLVL(int) :void 
+    -chargerJSON(String): JSONObject
+    -decoderJSON(JSONObject): Labyrinthe
+    -getLVL(): int
+}
+
+class JeuPerso {
+    -compteur_pas : int
+    -direction: boolean
+    -fini: boolean
+    +JeuPerso(Aventurier)
+    +evoluer(Commande): void
+    +etreFini(): boolean
+    +getPerso():Aventurier
+    +isDirection(): boolean
+    +getCompteur_pas(): int
+    +getPerso(): Aventurier
+}
+
+class JeuMonstre {
+    +JeuMonstre(ArrayList<Monstre>)
+    +evoluer(Aventurier): void
+    +setAventurier(Aventurier): void
+    +etreFini(): boolean
+    +getMonstre():ArrayList<Monstre>
+}
+
+interface DessinJeu {
+    +dessiner(BuffuredImage) : void
+}
+
+class DessinPerso {
+    -compteur: int
+    -mur:  Image
+    -porte: Image
+    -casevide : Image
+    -persoDroite : Image[]
+    -persoGauche : Image[]
+    -slime_vert: Image
+    -slime_rouge: Image
+    -slime_violet: Image
+    +{static}TAILLE_CASE: int
+    +DessinPerso(JeuPerso, Labyrinthe)
+    +dessine(BuffuredImage): void
+    +gestionVie(Graphics2D): void
+}
+
+class Labyrinthe {
+    -TAILLE_MIN: int
+    -TAILLE_MAX: int
+    +Labyrinthe()
+    +Labyrinthe(String[])
+    +caseTraversable(int,int) : boolean
+    +estSurUnObstacle(int,int) : boolean
+    +typeCase(int, int): int
+    +toString():String
+    +getLargeur():int
+    +getHauteur():int
+    -valideModele(String[]):boolean
+    -defautLabyrinthe():void
+}
+
+abstract Case {
+    -{static} taille: int
+    #posX: int
+    #posY: int
+    +Case()
+    +getPosX():int
+    +getPosY():int
+    +estDedans(int,int):boolean
+    +{abstract}peutTraverser():boolean
+    +{abstract}typeCase():int
+}
+
+class CaseVide {
+    +CaseVide(int, int)
+    +toString():String
+    +peutTraverser():boolean
+    +typeCase():int
+}
+
+class Mur {
+    +Mur(int, int)
+    +toString():String
+    +peutTraverser():boolean
+    +typeCase():int
+}
+
+class CaseSortie {
+    +CaseSortie(int, int)
+    +peutTraverser():boolean
+    +typeCase():int
+}
+   
+
+abstract Entite {
+    #x: int
+    #y: int
+    #pv: int
+    #pvMax: int
+    #nom: String
+    #vivant: boolean
+    #labyrinthe: Labyrinthe
+
+    +Entite(int, int, int, String)
+    +getVivant(): boolean
+    +getNom(): String
+    +setLabyrinthe(Labyrinthe) : void
+    +getLab(): Labyrinthe
+    +getPv(): int
+    +getX(): int
+    +getY(): int
+    +{abstract}seDeplacer(char): void
+    +{abstract}peutAvancer(int,int): boolean
+    +subirDegat(int): void
+    +mort(): void
+}
+
+class Aventurier {
+
+    +Aventurier(int, int int, String)
+    +getPvMax(): int
+    +seDeplacer(char): void
+    +peutAvancer(int, int): boolean
+}
+
+
+abstract Monstre {
+    #id: int
+    #portee : int
+    #degat: int
+    +Monstre(int, int, int, int, int, int, String)
+    +getPvMax(): int
+    +peutAvancer(int, int): boolean
+    +attaquer(Aventurier): void
+    +seDeplacer(char): void
+}
+
+class MonstreAleatoire {
+
+    +MonstreAleatoire(int, int, int, int, int, int, String)
+    +seDeplacer(char):void
+}
+
+class MonstreSuivi {
+    #cible: Aventurier
+
+    +MonstreSuivi(int, int, int, int, int, int, String)
+    +seDeplacer(char): void
+    #calculChemin(): char
+    +ajouterCible(Aventurier): void
+}
+
+class MonstreImmobile {
+
+    +MonstreImmobile(int, int, int, int, int, int, String)
+    +seDeplacer(char):void
+}
+
+
+DessinPerso "1" --> "1" Labyrinthe : -lab
+DessinPerso "1" --> "0..1" JeuPerso : -jeuPerso
+DessinPerso "1" --> "0..1" JeuMonstre : -jeuMonstre
+
+
+JeuPerso "1" --> "1" Aventurier : -personnage
+
+
+JeuMonstre "1" --> "0.." Monstre : -monstre
+JeuMonstre "1" --> "0..1" Aventurier : -personnage
+
+
+JeuPrincipal "1" --> "0" Labyrinthe : +labyrinthe
+JeuPrincipal "1" --> "1" Aventurier : +av
+
+Entite --> "1" Labyrinthe : #lab
+
+Labyrinthe "1" --> "0.." Case : -cases
+
+DessinPerso ..|> DessinJeu
+
+JeuPerso ..|> Jeu
+
+JeuMonstre ..|> Jeu
+
+Aventurier --|> Entite
+
+Monstre --|> Entite
+
+CaseVide --|> Case
+
+Mur --|> Case
+
+CaseSortie--|> Case
+
+MonstreImmobile--|> Monstre
+
+MonstreAleatoire--|> Monstre
+
+MonstreSuivi--|> Monstre
+@enduml
