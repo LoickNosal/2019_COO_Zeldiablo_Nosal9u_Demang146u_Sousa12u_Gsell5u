@@ -217,4 +217,9 @@ abstract public class Entite{
     {
         this.invulnerable = a;
     }
+
+    public void setPositon(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 }

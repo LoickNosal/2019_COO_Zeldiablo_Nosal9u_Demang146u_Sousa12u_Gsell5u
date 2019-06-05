@@ -118,7 +118,7 @@ public class JeuPrincipal {
      * @param json fichier JSON comtenant les informations du niveau
      */
     private void decoderJSON(JSONObject json) {
-        // decode
+        // labyrinthe
         JSONArray jsonModeleLaby = (JSONArray) json.get("labyrinthe");
         String[] modeleLabyrinthe = new String[jsonModeleLaby.size()];
         for (int i = 0; i < modeleLabyrinthe.length; i++) {
@@ -126,6 +126,14 @@ public class JeuPrincipal {
         }
         Labyrinthe labyrinthe = new Labyrinthe(modeleLabyrinthe);
 
+        // spawn position
+        int spawnX = ((Long) ((JSONArray) json.get("spawnPos")).get(0)).intValue();
+        int spawnY = ((Long) ((JSONArray) json.get("spawnPos")).get(1)).intValue();
+        spawnX = spawnX * Case.TAILLE + Case.TAILLE / 2;
+        spawnY = spawnY * Case.TAILLE + Case.TAILLE / 2;
+        aventurier.setPositon(spawnX, spawnY);
+
+        // monstres
         JSONArray jsonMonstres = (JSONArray) json.get("monstres");
         ArrayList<Monstre> monstres = new ArrayList<Monstre>(jsonMonstres.size());
         for (int i = 0; i < jsonMonstres.size(); i++) {
