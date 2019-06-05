@@ -28,7 +28,7 @@ public class JeuPrincipal {
      * construit le modèle du jeu
      */
     public JeuPrincipal() {
-        this.level = 2;
+        this.level = 1;
         aventurier = new Aventurier(50, 100, 100, "Aventurier");
         jeuEvolution = new JeuEvolution(aventurier, this);
 
