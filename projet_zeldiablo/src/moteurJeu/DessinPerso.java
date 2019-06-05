@@ -16,7 +16,7 @@ import java.net.URLDecoder;
 public class DessinPerso implements DessinJeu{
 
 	private int compteur;
-	private JeuPerso jeuPerso;
+	private JeuEvolution jeuEvolution;
 	private JeuMonstre jeuMonstre;
 
 	private Image mur;
@@ -32,8 +32,8 @@ public class DessinPerso implements DessinJeu{
 
 	public static int TAILLE_CASE = Case.TAILLE;
 
-	public DessinPerso(JeuPerso jP, JeuMonstre jM) {
-		this.jeuPerso = jP;
+	public DessinPerso(JeuEvolution jP, JeuMonstre jM) {
+		this.jeuEvolution = jP;
 		this.jeuMonstre = jM;
 		this.compteur = 0;
 		this.perso_droite = new Image[4];
@@ -82,9 +82,9 @@ public class DessinPerso implements DessinJeu{
 		compteur++;
 		Graphics2D g = (Graphics2D) image.getGraphics();
 
-		for(int i = 0; i < jeuPerso.getPerso().getLab().getHauteur(); i++){
-			for(int j = 0; j< jeuPerso.getPerso().getLab().getLargeur(); j++){
-				switch(jeuPerso.getPerso().getLab().typeCase(i, j)) {
+		for(int i = 0; i < jeuEvolution.getPerso().getLab().getHauteur(); i++){
+			for(int j = 0; j< jeuEvolution.getPerso().getLab().getLargeur(); j++){
+				switch(jeuEvolution.getPerso().getLab().typeCase(i, j)) {
 				case 0 :
 					g.drawImage(casevide, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					break;
@@ -95,7 +95,7 @@ public class DessinPerso implements DessinJeu{
 					g.drawImage(porte, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					break;
 				case 3:
-					if (jeuPerso.getPerso().getLab().testerPiege(i, j)) {
+					if (jeuEvolution.getPerso().getLab().testerPiege(i, j)) {
 						g.drawImage(casePiege, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					}else {
 						g.drawImage(casevide, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
@@ -131,11 +131,11 @@ public class DessinPerso implements DessinJeu{
 		}
 
 
-		if(jeuPerso.isDirection()){
-			g.drawImage(perso_droite[jeuPerso.getCompteur_pas()/5], jeuPerso.getPerso().getX()-20, jeuPerso.getPerso().getY()-50, 45,60,null);
+		if(jeuEvolution.isDirection()){
+			g.drawImage(perso_droite[jeuEvolution.getCompteur_pas()/5], jeuEvolution.getPerso().getX()-20, jeuEvolution.getPerso().getY()-50, 45,60,null);
 		}
 		else{
-			g.drawImage(perso_gauche[jeuPerso.getCompteur_pas()/5], jeuPerso.getPerso().getX()-20, jeuPerso.getPerso().getY()-50, 45,60,null);
+			g.drawImage(perso_gauche[jeuEvolution.getCompteur_pas()/5], jeuEvolution.getPerso().getX()-20, jeuEvolution.getPerso().getY()-50, 45,60,null);
 		}
 
 		
@@ -164,18 +164,18 @@ public class DessinPerso implements DessinJeu{
 			g.fillRect(m.getX()-TAILLE_CASE/3, m.getY()-TAILLE_CASE,pvCourant , 7);
 		}
 		//barre du joueur
-		int pvMax = this.jeuPerso.getPerso().getPvMax();
-		int pvCourant = this.jeuPerso.getPerso().getPv();
+		int pvMax = this.jeuEvolution.getPerso().getPvMax();
+		int pvCourant = this.jeuEvolution.getPerso().getPv();
 		//contour
 		g.setColor(Color.black);
-		g.fillRect(this.jeuPerso.getPerso().getX()-TAILLE_CASE/3-2, this.jeuPerso.getPerso().getY()-TAILLE_CASE-2, pvMax+4, 7+4);
+		g.fillRect(this.jeuEvolution.getPerso().getX()-TAILLE_CASE/3-2, this.jeuEvolution.getPerso().getY()-TAILLE_CASE-2, pvMax+4, 7+4);
 		//barre de vie rouge
 		g.setColor(Color.red);
-		g.fillRect(this.jeuPerso.getPerso().getX()-TAILLE_CASE/3, this.jeuPerso.getPerso().getY()-TAILLE_CASE, pvMax, 7);
+		g.fillRect(this.jeuEvolution.getPerso().getX()-TAILLE_CASE/3, this.jeuEvolution.getPerso().getY()-TAILLE_CASE, pvMax, 7);
 		//barre de vie verte
 		g.setColor(Color.green);
-		g.fillRect(this.jeuPerso.getPerso().getX()-TAILLE_CASE/3, this.jeuPerso.getPerso().getY()-TAILLE_CASE,pvCourant , 7);
-		if (this.jeuPerso.getPerso().getVivant() == false) {
+		g.fillRect(this.jeuEvolution.getPerso().getX()-TAILLE_CASE/3, this.jeuEvolution.getPerso().getY()-TAILLE_CASE,pvCourant , 7);
+		if (this.jeuEvolution.getPerso().getVivant() == false) {
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 100)); 
 			g.setColor(Color.black);
 			g.drawString("GAME OVER", 150, 350);

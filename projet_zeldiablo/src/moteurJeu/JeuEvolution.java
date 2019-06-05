@@ -12,7 +12,7 @@ import jeu.Monstre;
  * @author Loick
  *
  */
-public class JeuPerso implements Jeu{
+public class JeuEvolution implements Jeu {
 
 	private int compteur_pas;
 	private boolean direction;
@@ -22,7 +22,7 @@ public class JeuPerso implements Jeu{
 	 */
 	private Aventurier personnage;
 	
-	public JeuPerso(Aventurier av) {
+	public JeuEvolution(Aventurier av) {
 		this.personnage = av;
 		this.compteur_pas = 0;
 		this.direction = true;
