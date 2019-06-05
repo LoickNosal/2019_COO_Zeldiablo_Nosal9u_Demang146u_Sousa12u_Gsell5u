@@ -15,7 +15,7 @@ import jeu.Monstre;
  */
 public class JeuEvolution implements Jeu {
 
-	private int compteur_pas;
+	private int compteurPas;
 	private int compteur_attaque;
 
 	private boolean direction;
