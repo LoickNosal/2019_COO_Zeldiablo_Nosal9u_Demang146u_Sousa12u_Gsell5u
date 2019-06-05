@@ -1,0 +1,45 @@
+@startuml 
+title Comportement de Monstre suivi
+participant "JeuPrincipal:Jeu" as jeu << (C,#ADD1B2) >>
+participant "monstre:Monstre" as monstre << (C,#ADD1B2) >>
+participant "aventurier:Aventurier" as aventurier << (C,#ADD1B2) >>
+participant "entite:Entite" as entite << (C,#ADD1B2) >>
+participant "lab:Labyrinthe" as lab << (C,#ADD1B2) >>
+
+jeu -> monstre : evoluer()
+loop
+activate monstre
+alt
+monstre -> lab: CaseTraversable(int, int)
+activate lab
+monstre <-- lab : boolean
+deactivate lab
+end
+monstre -> monstre: comportement(Aventurier)
+activate monstre
+monstre -> monstre: seDeplacer(Cardinaux)
+activate monstre
+monstre -> entite: peutAvancer(int, int)
+activate entite
+monstre <-- entite : boolean
+deactivate entite
+monstre <-- monstre 
+deactivate monstre
+monstre -> monstre: attaquer(Aventurier)
+activate monstre
+alt distance <= monstre.portee
+monstre -> aventurier: subirDegat()
+activate aventurier
+monstre <-- aventurier
+deactivate aventurier
+end
+monstre <-- monstre
+deactivate monstre
+monstre <-- monstre
+deactivate monstre
+end
+jeu <-- monstre
+deactivate monstre
+
+
+@enduml
