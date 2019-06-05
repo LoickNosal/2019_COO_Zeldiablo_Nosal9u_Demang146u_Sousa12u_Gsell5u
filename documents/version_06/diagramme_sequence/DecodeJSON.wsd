@@ -2,19 +2,68 @@
 title decodeJSON
 participant JeuPrincipal << (C,#ADD1B2) >>
 participant JSONObject << (C,#ADD1B2) >>
-
+participant Labyrinthe << (C,#ADD1B2) >>
+participant Monstre << (C,#ADD1B2) >>
+participant "monstres : ArrayList<Monstres>" as monstres << (C,#ADD1B2) >>
+participant Item << (C,#ADD1B2) >>
+participant "items : ArrayList<Item>" as items << (C,#ADD1B2) >>
 
 activate JeuPrincipal
 JeuPrincipal -> JeuPrincipal : decodeJSON(JSONObject json)
+activate JeuPrincipal
 
 JeuPrincipal -> JSONObject : get("labyrinthe")
 activate JSONObject
 JSONObject --> JeuPrincipal : JSONArray modele
 deactivate JSONObject
 
+create Labyrinthe
+JeuPrincipal -> Labyrinthe : new Labyrinthe(String[] modele)
+activate Labyrinthe
+JeuPrincipal <-- Labyrinthe
+deactivate Labyrinthe
+
+
 JeuPrincipal -> JSONObject : get("monstres")
 activate JSONObject
 JSONObject --> JeuPrincipal : JSONArray monstres
 deactivate JSONObject
+
+loop monstres.size()
+create Monstre
+JeuPrincipal -> Monstre : creerMonstreParID(id, posX, posY);
+activate Monstre
+JeuPrincipal <-- Monstre
+deactivate Monstre
+end
+
+create monstres
+JeuPrincipal -> monstres : create
+activate monstres
+JeuPrincipal <-- monstres
+deactivate monstres
+
+
+JeuPrincipal -> JSONObject : get("items")
+activate JSONObject
+JSONObject --> JeuPrincipal : JSONArray items
+deactivate JSONObject
+
+loop items.size()
+create Item
+JeuPrincipal -> Item : creerItemParID(id, posX, posY);
+activate Item
+JeuPrincipal <-- Item
+deactivate Item
+end
+
+create items
+JeuPrincipal -> items : create
+activate items
+JeuPrincipal <-- items
+deactivate items
+
+
+deactivate JeuPrincipal
 
 @enduml
