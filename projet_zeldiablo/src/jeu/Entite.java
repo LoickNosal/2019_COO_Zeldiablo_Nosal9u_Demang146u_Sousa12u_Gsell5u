@@ -114,7 +114,7 @@ abstract public class Entite{
      */
     public boolean peutAvancer(int posX, int posY) {
 		boolean res = false;
-			if (this.lab.estSurUnObstacle(posX,posY) == false) {
+			if (this.lab.estSurUnObstacle(posX,posY) == false && vivant == true) {
 				res = true;
 			}
 		return res;
