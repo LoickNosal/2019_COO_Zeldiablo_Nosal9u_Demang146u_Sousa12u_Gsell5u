@@ -12,15 +12,11 @@ public class MonstreSuivi extends Monstre{
 		this.id = 3;
 	}
 
-	public void seDeplacer(char cardinaux) {
-		// vide
-	}
-
-	public void comportement(Aventurier av) {
+	public void comportement() {
 
     	char direction = 'd';
-    	int pX = av.getX();
-    	int pY = av.getY();
+    	int pX = cible.getX();
+    	int pY = cible.getY();
     	int distance = (int) Math.sqrt(Math.pow(pX - x, 2) + Math.pow(pY - y, 2));
     	Math.abs(distance);
     	int futureDistance;
