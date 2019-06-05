@@ -3,6 +3,7 @@ package moteurJeu;
 import java.util.ArrayList;
 
 import jeu.Aventurier;
+import jeu.Item;
 import jeu.JeuPrincipal;
 import jeu.Labyrinthe;
 import jeu.Monstre;
@@ -15,10 +16,25 @@ import jeu.Monstre;
  */
 public class JeuEvolution implements Jeu {
 
+	/**
+	 * Permet de gerer les sprites de l'aventurier
+	 */
 	private int compteurPas;
-	private int compteur_attaque;
-
+	/**
+	 * Empeche le joueur de spammer l'attaque
+	 */
+	private int compteurAttaque;
+	/**
+	 * Empeche le joueur de mourir instantanement sur un monstre
+	 */
+	private int compteurInvulnerabilite;
+	/**
+	 * Permet de gerer le sprite de l'aventurier, le sens de sa marche
+	 */
 	private boolean direction;
+	/**
+	 * Permet de finir le jeu lorsqu'il passe à true
+	 */
 	private boolean fini;
 
 	/** aventurier */
@@ -27,6 +43,7 @@ public class JeuEvolution implements Jeu {
 	private Labyrinthe labyrinthe;
 	/** liste de monstres dans le labyrinthe en cours */
 	private ArrayList<Monstre> monstres;
+	private ArrayList<Item> items;
 
 	/**
 	 * construit un jeu avec un aventurier
@@ -35,6 +52,8 @@ public class JeuEvolution implements Jeu {
 	public JeuEvolution(Aventurier av) {
 		this.aventurier = av;
 		this.compteurPas = 0;
+		this.compteurAttaque = 0;
+		this.compteurInvulnerabilite = 0;
 		this.direction = true;
 		this.fini = false;
 	}
@@ -67,16 +86,16 @@ public class JeuEvolution implements Jeu {
 			marche = true;
 		}
 		if(commandeUser.espace){
-			compteur_attaque ++;
-			if(compteur_attaque <2)
+			compteurAttaque ++;
+			if(compteurAttaque <2)
 				for (Monstre m: monstres) {
 					aventurier.attaquer(m);
 				}
 		}else{
-			if(compteur_attaque >=2)
-				compteur_attaque ++;
-			if(compteur_attaque >20)
-				compteur_attaque = 0;
+			if(compteurAttaque >=2)
+				compteurAttaque ++;
+			if(compteurAttaque >20)
+				compteurAttaque = 0;
 		}
 
 		if(marche == false) {
@@ -88,15 +107,36 @@ public class JeuEvolution implements Jeu {
 				compteurPas = 0;
 		}
 
-
 		//si le joueur entre dans la porte
 		if(this.aventurier.getLab().typeCase(this.aventurier.getX()/DessinPerso.TAILLE_CASE,this.aventurier.getY()/DessinPerso.TAILLE_CASE) == 2) {
+			
+		}else if(this.aventurier.getLab().typeCase(this.aventurier.getX()/DessinPerso.TAILLE_CASE,this.aventurier.getY()/DessinPerso.TAILLE_CASE) == 3) {
+			
+		int px = this.aventurier.getX();
+		int py = this.aventurier.getY();
+
+		//affiche les pv du joueur
+		//System.out.println(this.personnage.getPv());
+		//si le joueur entre dans la porte
+		if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 2) {
 				this.fini = true;
 				new JeuPrincipal();
-		}else if(this.aventurier.getLab().typeCase(this.aventurier.getX()/DessinPerso.TAILLE_CASE,this.aventurier.getY()/DessinPerso.TAILLE_CASE) == 3) {
+		}else if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 3) {
 				this.aventurier.subirDegat(1);
-				this.aventurier.getLab().activerPiege(this.aventurier.getX()/DessinPerso.TAILLE_CASE, this.aventurier.getY()/DessinPerso.TAILLE_CASE);
-				
+				this.aventurier.getLab().activerPiege(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE);
+
+		}
+
+		//ITEMS
+		for (Item i : this.items) {
+			if (i.peutRamasse(px, py)) {
+				if (i.typeItem() == 0) { //Potion de vie
+					if (this.aventurier.getPv() != this.aventurier.getPvMax()) { //si le perso n'a pas tout ses pv
+						i.setRamasse();
+						this.aventurier.subirDegat(-30); //heal le personnage de 30 pv
+					}
+				}
+			}
 		}
 
 		// MONSTERS
@@ -166,6 +206,13 @@ public class JeuEvolution implements Jeu {
 			monstres = m;
 		else
 			monstres = new ArrayList<Monstre>();
+	}
+
+	public void setItems(ArrayList<Item> it) {
+		this.items = it;
+	}
+	public ArrayList<Item> gettItems() {
+		return this.items;
 	}
 
 

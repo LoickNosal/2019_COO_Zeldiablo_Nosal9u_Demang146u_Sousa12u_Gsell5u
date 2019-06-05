@@ -1,11 +1,18 @@
 package jeu;
 
+import java.awt.Rectangle;
+
 /**
  * modelise les objets du jeu
  * @author Lo�ck
  *
  */
 public abstract class Item {
+	
+	/**
+	 * cercle autour de l'objet pour pourvoir le ramasser
+	 */
+	public static int TAILLE = 40;
 	
 	/**
 	 * position x de l'objet
@@ -38,6 +45,22 @@ public abstract class Item {
 		this.ramasse = false;
 	}
 	
+	/**
+	 * indique si on peut ramasser l'item
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public boolean peutRamasse(int x, int y) {
+		boolean res = false;
+		Rectangle r = new Rectangle(this.posX * TAILLE,this.posY * TAILLE, TAILLE, TAILLE);
+		if (r.contains(x,y)) {
+			res = true;
+		}
+	
+		return res;
+	}
+
 	public int getPosX() {
 		return this.posX;
 	}
@@ -62,4 +85,6 @@ public abstract class Item {
 	 * @return int correspond a l'item
 	 */
 	public abstract int typeItem();
+	
+	
 }
