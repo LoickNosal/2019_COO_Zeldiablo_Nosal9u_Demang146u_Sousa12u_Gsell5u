@@ -144,8 +144,7 @@ abstract Monstre {
     +getPvMax(): int
     +peutAvancer(int, int): boolean
     +attaquer(Aventurier): void
-    +avancer(int): void
-    +seDeplacer(char):void
+    +seDeplacer(char): void
 }
 
 class MonstreAleatoire {
