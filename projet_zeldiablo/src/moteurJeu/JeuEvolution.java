@@ -143,21 +143,24 @@ public class JeuEvolution implements Jeu {
 
 		//ITEMS
 		for (Item i : this.items) {
-			if (i.peutRamasse(px, py)) {
+			if (i.peutRamasse(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE)) {
 				if (i.typeItem() == 0) { //Potion de vie
-					if (this.aventurier.getPv() != this.aventurier.getPvMax()) { //si le perso n'a pas tout ses pv
+					if (this.aventurier.getPv() != this.aventurier.getPvMax() && i.getRamasse() != true) { //si le perso n'a pas tout ses pv
 						i.setRamasse();
 						this.aventurier.soigner(30); //heal le personnage de 30 pv
 					}
 				}
 			}
 		}
+		
+		items.removeIf(n -> (n.getRamasse() == true));
 
 		// MONSTERS
 		for(Monstre m : monstres) {
 			m.comportement();
 		}
 		monstres.removeIf(n -> (n.getPv() <= 0));
+		
 
 		//INVULNERABILITE
 		if(pvActuel != aventurier.getPv()){
