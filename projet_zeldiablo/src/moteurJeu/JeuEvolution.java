@@ -20,9 +20,9 @@ public class JeuEvolution implements Jeu {
 	/**
 	 * personnage du jeu
 	 */
-	public Aventurier aventurier;
-	public Labyrinthe labyrinthe;
-	public ArrayList<Monstre> monstres;
+	private Aventurier aventurier;
+	private Labyrinthe labyrinthe;
+	private ArrayList<Monstre> monstres;
 
 
 	public JeuEvolution(Aventurier av) {
@@ -96,9 +96,7 @@ public class JeuEvolution implements Jeu {
 		monstres.removeIf(n -> (n.getPv() <= 0));
 	}
 
-	public void setMonstres(ArrayList<Monstre> m) {
-		monstres = m;
-	}
+
 
 	@Override
 	/**
@@ -120,10 +118,32 @@ public class JeuEvolution implements Jeu {
 		return compteur_pas;
 	}
 
-	public Aventurier getPerso() {
+
+
+	public Aventurier getAventurier() {
 		return aventurier;
 	}
 
-	
+	public Labyrinthe getLabyrinthe() {
+		return labyrinthe;
+	}
+
+	public ArrayList<Monstre> getMonstres() {
+		return monstres;
+	}
+
+	public void setAventurier(Aventurier av) {
+		aventurier = av;
+	}
+
+	public void setLabyrinthe(Labyrinthe l) {
+		labyrinthe = l;
+	}
+
+	public void setMonstres(ArrayList<Monstre> m) {
+		monstres = m;
+	}
+
+
 
 }

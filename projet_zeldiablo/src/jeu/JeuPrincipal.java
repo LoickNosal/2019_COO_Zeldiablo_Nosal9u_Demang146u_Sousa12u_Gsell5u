@@ -152,7 +152,7 @@ public class JeuPrincipal {
     public int getLVL() {
         return level;
     }
-    
+
 
 
     public static void main(String[] args) {
