@@ -23,7 +23,6 @@
     file="/Zeldiablo/src/moteurJeu/DessinJeu.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="88" width="191" x="241" y="518"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
