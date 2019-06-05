@@ -24,6 +24,7 @@ public abstract class Monstre extends Entite {
 		degat = pDegat;
 		portee = pPortee;
 		this.pvMax = pPv;
+		this.vitesse = 3;
 
 	}
 	
@@ -39,6 +40,8 @@ public abstract class Monstre extends Entite {
 		return res;
 
 	}
+	
+	public abstract void comportement(Aventurier pPerso);
 
 
 	public void attaquer(Aventurier pPerso) {
@@ -49,50 +52,6 @@ public abstract class Monstre extends Entite {
 			perso.subirDegat(degat);
 		}
 	}
-
-	public void avancer(int a) {
-		int futureposX = 0;
-    	int futureposY = 0;
-
-		switch(a)
-        {
-            case 0:
-            futureposY = this.y-10;
-            futureposX = this.x;
-            break;
-
-            case 1:
-            futureposX = this.x+10;
-            futureposY = this.y;
-            break;
-
-            case 2:
-            futureposY = this.y+10;
-            futureposX = this.x;
-            break;
-
-            case 3:
-            futureposX = this.x-10;
-            futureposY = this.y;
-            break;
-        }
-
-
-    	if (peutAvancer(futureposX,futureposY) == true) {
-    		switch(a)
-            {
-                case 0: this.y-=3; break;
-                case 1: this.x+=3; break;
-                case 2: this.y+=3; break;
-                case 3: this.x-=3; break;
-            }
-		}
-	}
-
-	@Override
-	public abstract void seDeplacer(char cardinaux);
-	@Override
-	public abstract void seDeplacer(Aventurier av);
 
 	public int getDegat() {
 		return degat;
