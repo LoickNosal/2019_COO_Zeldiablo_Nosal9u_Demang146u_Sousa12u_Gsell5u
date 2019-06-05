@@ -174,8 +174,10 @@ public class JeuEvolution implements Jeu {
 	}
 
 	public void setLabyrinthe(Labyrinthe l) {
-		if (l != null)
+		if (l != null) {
 			labyrinthe = l;
+			aventurier.setLabyrinthe(l);
+		}
 	}
 
 	public void setMonstres(ArrayList<Monstre> m) {
