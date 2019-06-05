@@ -3,7 +3,7 @@
     "niveau": 1,
     "labyrinthe": [
         "X X X X X X X X X X X X X X X",
-        "X - - - - - - - - - - t - - X",
+        "X - - - - - m - - - - t - - X",
         "X - X - X - X - X - X - X - X",
         "X - - - - - - - - - - - - - X",
         "X - X t X - X - X - X - X - X",
