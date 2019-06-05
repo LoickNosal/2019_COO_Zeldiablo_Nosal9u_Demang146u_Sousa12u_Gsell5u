@@ -6,7 +6,7 @@
         "X - - - - - X - X - - - - - X",
         "X - X X X - X - X - X X X - X",
         "X - X - t - X - X - t - X - X",
-        "X - X x X - X - X - X X X - X",
+        "X - X X X - X - X - X X X - X",
         "X - - - - - - - - - - - - - X",
         "X X X X X - X t X - X X X X X",
         "X - - - - - X p X - - - - - X",
@@ -18,7 +18,7 @@
         "X - - - - - X - X - - - - - X",
         "X X X X X X X X X X X X X X X"
     ],
-    "spawnPos": [1, 1],
+    "spawnPos": [3, 3],
     "monstres": [
         {
             "id": 1,
