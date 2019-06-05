@@ -3,6 +3,7 @@ package moteurJeu;
 import java.util.ArrayList;
 
 import jeu.Aventurier;
+import jeu.Item;
 import jeu.JeuPrincipal;
 import jeu.Labyrinthe;
 import jeu.Monstre;
@@ -23,6 +24,7 @@ public class JeuEvolution implements Jeu {
 	private Aventurier aventurier;
 	private Labyrinthe labyrinthe;
 	private ArrayList<Monstre> monstres;
+	private ArrayList<Item> items;
 
 
 	public JeuEvolution(Aventurier av) {
@@ -62,7 +64,7 @@ public class JeuEvolution implements Jeu {
 		}
 		if(commandeUser.espace == true){
 			for (Monstre m: monstres) {
-				if(getPerso().distance(m)<50)
+				if(getAventurier().distance(m)<50)
 					m.subirDegat(5);
 			}
 		}
@@ -75,16 +77,32 @@ public class JeuEvolution implements Jeu {
 			if(compteur_pas>15)
 				compteur_pas = 0;
 		}
+		
+		int px = this.aventurier.getX();
+		int py = this.aventurier.getY();
+		
 		//affiche les pv du joueur
 		//System.out.println(this.personnage.getPv());
 		//si le joueur entre dans la porte
-		if(this.aventurier.getLab().typeCase(this.aventurier.getX()/DessinPerso.TAILLE_CASE,this.aventurier.getY()/DessinPerso.TAILLE_CASE) == 2) {
+		if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 2) {
 				this.fini = true;
 				new JeuPrincipal();
-		}else if(this.aventurier.getLab().typeCase(this.aventurier.getX()/DessinPerso.TAILLE_CASE,this.aventurier.getY()/DessinPerso.TAILLE_CASE) == 3) {
+		}else if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 3) {
 				this.aventurier.subirDegat(1);
-				this.aventurier.getLab().activerPiege(this.aventurier.getX()/DessinPerso.TAILLE_CASE, this.aventurier.getY()/DessinPerso.TAILLE_CASE);
+				this.aventurier.getLab().activerPiege(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE);
 				
+		}
+		
+		//ITEMS
+		for (Item i : this.items) {
+			if (i.peutRamasse(px, py)) {
+				if (i.typeItem() == 0) { //Potion de vie
+					if (this.aventurier.getPv() != this.aventurier.getPvMax()) { //si le perso n'a pas tout ses pv
+						i.setRamasse();
+						this.aventurier.subirDegat(-30); //heal le personnage de 30 pv
+					}
+				}
+			}
 		}
 
 		// MONSTERS
@@ -142,6 +160,13 @@ public class JeuEvolution implements Jeu {
 
 	public void setMonstres(ArrayList<Monstre> m) {
 		monstres = m;
+	}
+	
+	public void setItems(ArrayList<Item> it) {
+		this.items = it;
+	}
+	public ArrayList<Item> gettItems() {
+		return this.items;
 	}
 
 
