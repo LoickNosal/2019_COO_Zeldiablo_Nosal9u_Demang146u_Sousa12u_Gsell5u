@@ -101,7 +101,7 @@ public class JeuEvolution implements Jeu {
 
 		// MONSTERS
 		for(Monstre m : monstres) {
-			m.seDeplacer(aventurier);
+			m.comportement(aventurier);
 			m.attaquer(aventurier);
 		}
 

@@ -11,6 +11,15 @@ public abstract class Monstre extends Entite {
 	protected int portee;
 	private int pvMax;
 
+	/**
+	 * Constructeur qui modélise un monstre
+	 * @param pPv
+	 * @param px
+	 * @param py
+	 * @param pDegat
+	 * @param pPortee
+	 * @param pNom
+	 */
 	public Monstre(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pNom);
 
@@ -25,7 +34,6 @@ public abstract class Monstre extends Entite {
 		portee = pPortee;
 		this.pvMax = pPv;
 		this.vitesse = 3;
-
 	}
 	
 	public int getPvMax() {
