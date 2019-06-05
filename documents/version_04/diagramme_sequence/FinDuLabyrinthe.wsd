@@ -11,14 +11,18 @@ MoteurGraphique -> JeuPerso : evoluer()
 activate JeuPerso
 JeuPerso -> Aventurier : getLab()
 activate Aventurier
-Aventurier-> Labyrinthe : typeCase(x,y)
-activate Labyrinthe
-
-Aventurier <-- Labyrinthe
-deactivate Labyrinthe
-
 JeuPerso <-- Aventurier 
 deactivate Aventurier
+JeuPerso-> Labyrinthe : typeCase(x,y)
+
+
+activate Labyrinthe
+
+JeuPerso <-- Labyrinthe
+deactivate Labyrinthe
+
+
+
 MoteurGraphique <-- JeuPerso
 deactivate JeuPerso
 deactivate MoteurGraphique 
