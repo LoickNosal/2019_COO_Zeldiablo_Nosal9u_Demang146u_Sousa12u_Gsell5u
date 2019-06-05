@@ -17,7 +17,6 @@ public class DessinPerso implements DessinJeu{
 
 	private int compteur;
 	private JeuEvolution jeuEvolution;
-	private JeuMonstre jeuMonstre;
 
 	private Image mur;
 	private Image porte;
@@ -32,9 +31,8 @@ public class DessinPerso implements DessinJeu{
 
 	public static int TAILLE_CASE = Case.TAILLE;
 
-	public DessinPerso(JeuEvolution jP, JeuMonstre jM) {
+	public DessinPerso(JeuEvolution jP) {
 		this.jeuEvolution = jP;
-		this.jeuMonstre = jM;
 		this.compteur = 0;
 		this.perso_droite = new Image[4];
 		this.perso_gauche = new Image[4];
@@ -110,7 +108,7 @@ public class DessinPerso implements DessinJeu{
 
 		if(compteur > 59)
 			compteur =0;
-		for (Monstre m: jeuMonstre.getMonstres()) {
+		for (Monstre m: jeuEvolution.monstres) {
 			switch(m.getId())
 			{
 				case 1 :
@@ -150,7 +148,7 @@ public class DessinPerso implements DessinJeu{
 		//deux barre de vie : une rouge et une verte pour les entites
 		
 		//barre des monstres
-		for (Monstre m : this.jeuMonstre.getMonstres()) {
+		for (Monstre m : jeuEvolution.monstres) {
 			int pvMax =  m.getPvMax();
 			int pvCourant = m.getPv();
 			//contour
