@@ -19,6 +19,10 @@ abstract public class Entite{
      */
     protected int y;
     /**
+     * vitesse de l'entite
+     */
+    protected int vitesse;
+    /**
      * nom de l'entite
      */
     protected String nom;
@@ -79,6 +83,10 @@ abstract public class Entite{
     public String getNom() {
         return nom;
     }
+    
+    public int getVitesse() {
+		return vitesse;
+	}
 
     public int getPv() {
         return pv;
@@ -96,9 +104,44 @@ abstract public class Entite{
      * Fonction seDeplacer : on met les char des points cardinaux pour choisir la position dans laquelle l'Entite va avancer
      * @param cardinaux Les points cardinaux
      */
-    public abstract void seDeplacer(char cardinaux);
-    
-    public abstract void seDeplacer(Aventurier av);
+    public void seDeplacer(char cardinaux) {
+    	int futureposX = 0;
+    	int futureposY = 0;
+    	
+    	switch(cardinaux)
+        {
+            case 'N': 
+            futureposY = this.y-10; 
+            futureposX = this.x;
+            break;
+            
+            case 'E': 
+            futureposX = this.x+10;
+            futureposY = this.y;
+            break;
+            
+            case 'S': 
+            futureposY = this.y+10;
+            futureposX = this.x;
+            break;
+            
+            case 'O': 
+            futureposX = this.x-10;
+            futureposY = this.y;
+            break;
+        }
+    	
+    	
+    	if (peutAvancer(futureposX,futureposY) == true) {
+    		switch(cardinaux)
+            {
+                case 'N': this.y-=vitesse; break;
+                case 'E': this.x+=vitesse; break;
+                case 'S': this.y+=vitesse; break;
+                case 'O': this.x-=vitesse; break;
+            }
+		}
+    }
 
     /**
      * permet de detecter si le joueur entre en collision avec un obstacle
@@ -127,8 +170,14 @@ abstract public class Entite{
     	}
     }
 
-    public double distance(Entite ent) {
+    public double distanceEntite(Entite ent) {
         double d = Math.sqrt(Math.pow((this.x-ent.x),2)+Math.pow((this.y-ent.y),2));
+        return d;
+
+    }
+
+    public double distanceItem(Item ent) {
+        double d = Math.sqrt(Math.pow((this.x-ent.getPosX()),2)+Math.pow((this.y-ent.getPosY()),2));
         return d;
 
     }
