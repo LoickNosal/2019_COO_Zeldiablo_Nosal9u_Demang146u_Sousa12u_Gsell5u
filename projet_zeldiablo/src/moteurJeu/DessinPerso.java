@@ -125,11 +125,17 @@ public class DessinPerso implements DessinJeu{
 			}
 		}
 
-		if(jeuEvolution.getDirection()){
-			g.drawImage(perso_droite[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
-		}
-		else{
-			g.drawImage(perso_gauche[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
+		if(jeuEvolution.getAventurier().getVivant())
+		{
+			if(jeuEvolution.getDirection()){
+				g.drawImage(perso_droite[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
+			}
+			else{
+				g.drawImage(perso_gauche[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
+			}
+		}else
+		{
+			
 		}
 
 		this.gestionVie(g);
@@ -168,7 +174,7 @@ public class DessinPerso implements DessinJeu{
 		g.setColor(Color.green);
 		g.fillRect(this.jeuEvolution.getAventurier().getX()-TAILLE_CASE/3, this.jeuEvolution.getAventurier().getY()-TAILLE_CASE,pvCourant , 7);
 		if (this.jeuEvolution.getAventurier().getVivant() == false) {
-			g.setFont(new Font("TimesRoman", Font.PLAIN, 100)); 
+			g.setFont(new Font(null, Font.PLAIN, 100)); 
 			g.setColor(Color.black);
 			g.drawString("GAME OVER", 150, 350);
 		}
