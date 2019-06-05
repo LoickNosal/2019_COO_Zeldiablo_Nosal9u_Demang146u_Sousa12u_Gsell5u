@@ -177,7 +177,7 @@ abstract public class Entite{
     }
 
     public double distanceItem(Item ent) {
-        double d = Math.sqrt(Math.pow((this.x-ent.x),2)+Math.pow((this.y-ent.y),2));
+        double d = Math.sqrt(Math.pow((this.x-ent.getPosX()),2)+Math.pow((this.y-ent.getPosY()),2));
         return d;
 
     }
