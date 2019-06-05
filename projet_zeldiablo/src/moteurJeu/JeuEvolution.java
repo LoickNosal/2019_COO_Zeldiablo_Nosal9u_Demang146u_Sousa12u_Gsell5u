@@ -70,6 +70,7 @@ public class JeuEvolution implements Jeu {
 	public void evoluer(Commande commandeUser) {
 		//PERSO
 		boolean marche = false;
+		int pvActuel = aventurier.getPv();
 
 		if (commandeUser.bas) {
 			this.aventurier.seDeplacer('S');
@@ -118,11 +119,10 @@ public class JeuEvolution implements Jeu {
 		//System.out.println(this.personnage.getPv());
 		//si le joueur entre dans la porte
 		if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 2) {
-				jeuPrincipal.chargerLVL(2);
+				jeuPrincipal.chargerLVLSuivant();
 		}else if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 3) {
-				this.aventurier.subirDegat(1);
+				this.aventurier.subirDegat(10);
 				this.aventurier.getLab().activerPiege(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE);
-
 		}
 
 		//ITEMS
@@ -141,6 +141,22 @@ public class JeuEvolution implements Jeu {
 		for(Monstre m : monstres) {
 			m.comportement();
 		}
+
+		//INVULNERABILITE
+		if(pvActuel != aventurier.getPv()){
+			compteurInvulnerabilite = 1;
+			aventurier.setInvulnerable(true);
+		}
+		if(compteurInvulnerabilite >= 1)
+			compteurInvulnerabilite ++;
+		if(compteurInvulnerabilite>50){
+			compteurInvulnerabilite=0;
+			aventurier.setInvulnerable(false);
+		}
+
+		System.out.println(compteurInvulnerabilite);
+
+
 
 		monstres.removeIf(n -> (n.getPv() <= 0));
 	}

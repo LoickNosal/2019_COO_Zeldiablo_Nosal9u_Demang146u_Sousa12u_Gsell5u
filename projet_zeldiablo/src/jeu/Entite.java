@@ -39,6 +39,10 @@ abstract public class Entite{
      */
     protected int pvMax;
     /**
+     * Le mode invulnerable pour eviter de deceder directement
+     */
+    protected boolean invulnerable;
+    /**
      * Le constructeur de la classe Entite
      * @param p Les Points de Vie
      * @param x La position X
@@ -66,7 +70,7 @@ abstract public class Entite{
         
         vivant = true;
         this.pvMax = p;
-
+        this.invulnerable = false;
     }
 
     public boolean getVivant() {
@@ -158,7 +162,8 @@ abstract public class Entite{
      * @param pDegat degat que l'entite prend
      */
     public void subirDegat(int pDegat) {
-    	pv -= pDegat;
+        if(!invulnerable)
+    	    pv -= pDegat;
     	if(pv < 0) {
     		pv = 0;
     	}
@@ -200,5 +205,10 @@ abstract public class Entite{
         double d = Math.sqrt(Math.pow((this.x-ent.getPosX()),2)+Math.pow((this.y-ent.getPosY()),2));
         return d;
 
+    }
+
+    public void setInvulnerable(boolean a)
+    {
+        this.invulnerable = a;
     }
 }
