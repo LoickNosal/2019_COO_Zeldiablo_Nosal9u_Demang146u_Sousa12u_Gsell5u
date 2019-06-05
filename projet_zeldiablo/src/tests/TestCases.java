@@ -1,6 +1,7 @@
 package tests;
 
 import jeu.Aventurier;
+import jeu.CaseMine;
 import jeu.CasePiege;
 import jeu.CaseSortie;
 import jeu.CaseVide;
@@ -130,6 +131,35 @@ public class TestCases {
 		assertEquals("le String devrait renvoyer t","t",cv.toString());
 		assertEquals("la case peut etre traversee",true,cv.peutTraverser());
 		assertEquals("la type devrait etre 3",3,cv.typeCase());
+	}
+	
+	@Test
+	/*
+	 * Test le constructeur de la classe CaseMine
+	 */
+	public void testConstructeurCaseMine() {
+		CaseMine m = new CaseMine(10, 10);
+		assertEquals("la case devrait etre en position 10 pour x", 10, m.getPosX());
+		assertEquals("la case devrait etre en position 10 pour y", 10, m.getPosY());
+		
+		CaseMine m2 = new CaseMine(-1, -10);
+		assertEquals("la case devrait etre en position 0 pour x", 0, m2.getPosX());
+		assertEquals("la case devrait etre en position 0 pour y", 0, m2.getPosY());
+		
+	}
+	
+	@Test
+	/*
+	 * Test methode de la classe CaseMine
+	 */
+	public void testMethodeCaseMine() {
+		CaseMine cv = new CaseMine(10, 10); 
+		assertEquals("la case devrait etre en position 10 pour x", 10, cv.getPosX());
+		assertEquals("la case devrait etre en position 10 pour y", 10, cv.getPosY());
+
+		assertEquals("le String devrait renvoyer m","m",cv.toString());
+		assertEquals("la case peut etre traversee",true,cv.peutTraverser());
+		assertEquals("la type devrait etre 4",4,cv.typeCase());
 	}
 	
 	

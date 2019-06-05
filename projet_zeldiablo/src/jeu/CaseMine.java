@@ -28,5 +28,9 @@ public class CaseMine extends Case{
 	public int typeCase() {
 		return 4;
 	}
+	
+	public String toString() {
+		return "m";
+	}
 
 }

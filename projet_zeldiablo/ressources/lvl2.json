@@ -8,7 +8,7 @@
         "X - - - X - X - X - X - - - X",
         "X X X - X - X X X - X - X X X",
         "X - - - - - - - - - - - - - X",
-        "X - X X X X X t X X X X X - X",
+        "X - X X X X X - X X X X X - X",
         "X - X - m - - - - - m - X - X",
         "X - X X X X X t X X X X X - X",
         "X - - - - - - - - - - - - - X",
@@ -31,6 +31,16 @@
         {
             "id": 3,
             "pos": [11, 11]
+        }
+    ],
+	"items": [
+        {
+            "id": 0,
+            "pos": [1, 13]
+        },
+        {
+            "id": 0,
+            "pos": [7, 3]
         }
     ]
 }
