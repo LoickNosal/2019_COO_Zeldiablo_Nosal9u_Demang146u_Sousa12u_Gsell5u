@@ -15,6 +15,7 @@ import jeu.Monstre;
 public class JeuEvolution implements Jeu {
 
 	private int compteur_pas;
+	private int compteur_attaque;
 	private boolean direction;
 	private boolean fini;
 	/**
@@ -61,10 +62,16 @@ public class JeuEvolution implements Jeu {
 			marche = true;
 		}
 		if(commandeUser.espace == true){
-			for (Monstre m: monstres) {
-				if(getPerso().distance(m)<50)
-					m.subirDegat(5);
-			}
+			compteur_attaque ++;
+			if(compteur_attaque <2)
+				for (Monstre m: monstres) {
+					aventurier.attaquer(m);
+				}
+		}else{
+			if(compteur_attaque >=2)
+				compteur_attaque ++;
+			if(compteur_attaque >20)
+				compteur_attaque = 0;
 		}
 
 		if(marche == false) {
