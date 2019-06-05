@@ -60,6 +60,11 @@ public class JeuEvolution implements Jeu {
 			this.aventurier.seDeplacer('N');
 			marche = true;
 		}
+		if(commandeUser.espace == true){
+			for (Monstre m: monstres) {
+				m.subirDegat(5);
+			}
+		}
 
 		if(marche == false) {
 			this.compteur_pas = 0;
