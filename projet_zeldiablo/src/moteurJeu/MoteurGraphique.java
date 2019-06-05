@@ -47,7 +47,7 @@ public class MoteurGraphique {
 		this.gui = new InterfaceGraphique(this.dessin,width,height);
 		Controleur controle = this.gui.getControleur();
 		//menu cherche si il est affiche ou pas
-
+		this.gui.menu.ajouterJeu(jeuEvolution);
 
 		//En attente de la sortie du menu
 		while(true) {
@@ -63,6 +63,7 @@ public class MoteurGraphique {
 				this.gui.dessiner();
 				// met en attente
 				Thread.sleep(10);
+
 			}
 			Thread.sleep(100);
 

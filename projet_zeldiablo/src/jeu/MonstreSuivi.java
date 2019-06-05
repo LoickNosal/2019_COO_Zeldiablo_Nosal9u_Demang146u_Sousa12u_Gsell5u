@@ -6,6 +6,8 @@ package jeu;
  *
  */
 public class MonstreSuivi extends Monstre{
+	private static int compteur_pas = 0;
+	private static char direction = 'd';
 
 	public MonstreSuivi(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pDegat, pPortee, pNom);
@@ -13,52 +15,57 @@ public class MonstreSuivi extends Monstre{
 	}
 
 	public void comportement() {
-
-    	char direction = 'd';
-    	int pX = cible.getX();
-    	int pY = cible.getY();
-    	int distance = (int) Math.sqrt(Math.pow(pX - x, 2) + Math.pow(pY - y, 2));
-    	Math.abs(distance);
-    	int futureDistance;
-    	int futurePosX = x;
-    	int futurePosY = y;
-    	// 0: Nord, 1: Est, 2: Sud, 3: Ouest
-    	// Est
-    	futurePosX += 3;
-    	futureDistance = (int) Math.sqrt(Math.pow(pX - futurePosX, 2) + Math.pow(pY - futurePosY, 2));
-    	//System.out.println(distance + "   "  + futureDistance + "    " + direction);
-    	if(futureDistance >= distance) {
-    		futurePosX -= 3;
-    		futurePosY += 3; // Sud
-    		futureDistance = (int) Math.sqrt(Math.pow(pX - futurePosX, 2) + Math.pow(pY - futurePosY, 2));
-        	if(futureDistance >= distance) {
-        		futurePosY -= 3;
-        		futurePosX -= 3; // Ouest
-        		futureDistance = (int) Math.sqrt(Math.pow(pX - futurePosX, 2) + Math.pow(pY - futurePosY, 2));
-            	if(futureDistance >= distance) {
-            		futurePosX += 3;
-            		futurePosY -= 3; // Nord
-            		futureDistance = (int) Math.sqrt(Math.pow(pX - futurePosX, 2) + Math.pow(pY - futurePosY, 2));
-                	if(futureDistance >= distance) {
-                		futurePosY += 3;
+		
+    	if(compteur_pas == 0) {
+    		Labyrinthe lab = this.getLab();
+        	int pxc = cible.getX()/ Case.TAILLE;
+        	int pyc = cible.getY()/ Case.TAILLE;
+        	int px = x / Case.TAILLE;
+        	int py = y / Case.TAILLE;
+        	int distance = (int) distanceEntite(pxc, pyc, px, py);
+        	int futurePosX = px;
+        	int futurePosY = py;
+        	int futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
+        	
+        	futurePosX += 1;
+        	futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
+        	if(futureDistance >= distance) { // TEST EST
+        		futurePosX -= 1;
+        		futurePosY += 1; 
+        		futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
+            	if(futureDistance >= distance) { // TEST SUD
+            		futurePosY -= 1;
+            		futurePosX -= 1; 
+            		futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
+                	if(futureDistance >= distance ) { // TEST OUEST
+                		futurePosX += 1;
+                		futurePosY -= 1; 
+                		futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
+                    	if(futureDistance >= distance) { // TEST NORD
+                    		futurePosY += 1;
+                    	}
+                    	else if(lab.caseTraversable(futurePosX, futurePosY)) {
+                    		direction = 'N';
+                    	}
                 	}
-                	else {
-                		direction = 'N';
+                	else if(lab.caseTraversable(futurePosX, futurePosY)) {
+                		direction = 'O';
                 	}
             	}
-            	else {
-            		direction = 'O';
+            	else if(lab.caseTraversable(futurePosX, futurePosY)) {
+            		direction = 'S';
             	}
         	}
-        	else {
-        		direction = 'S';
+        	else if(lab.caseTraversable(futurePosX, futurePosY)) {
+        			direction = 'E';
         	}
     	}
-    	else {
-    		direction = 'E';
-    		
-    	}
+    	
     	seDeplacer(direction);
+    	compteur_pas += 1;
+    	if(compteur_pas == Case.TAILLE/vitesse) {
+    		compteur_pas = 0;
+    	}
     	attaquer();
 	}
 	
