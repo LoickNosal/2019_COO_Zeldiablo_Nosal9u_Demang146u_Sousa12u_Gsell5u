@@ -277,7 +277,7 @@ public class JeuEvolution implements Jeu {
 	 * recharge le premier niveau
 	 */
 	public void restart() {
-		jeuPrincipal.chargerLVL(1);
+		jeuPrincipal.restart();
 	}
 
 }

@@ -32,9 +32,7 @@ public class JeuPrincipal {
         this.level = 3;
         aventurier = new Aventurier(50, 100, 100, "Aventurier");
         jeuEvolution = new JeuEvolution(aventurier, this);
-
         chargerLVL(level);
-
 
         /*
         MonstreImmobile m = new MonstreImmobile(50,  1 * Case.TAILLE + Case.TAILLE / 2, 1 * Case.TAILLE + Case.TAILLE / 2, 1, 50, "lol");
@@ -175,13 +173,9 @@ public class JeuPrincipal {
     }
 
 
-    /**
-     * retourne le niveau actuel
-     *
-     * @return le niveau
-     */
-    public int getLVL() {
-        return level;
+    public void restart() {
+        level = 1;
+        chargerLVL(level);
     }
 
     public void chargerLVLSuivant() {
