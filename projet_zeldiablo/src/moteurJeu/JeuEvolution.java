@@ -95,6 +95,7 @@ public class JeuEvolution implements Jeu {
 		//ATTAQUER
 		if(commandeUser.espace){
 			compteurAttaque ++;
+			aventurier.setAttaque(true);
 			if(compteurAttaque <2)
 				for (Monstre m: monstres) {
 					aventurier.attaquer(m);
@@ -102,8 +103,10 @@ public class JeuEvolution implements Jeu {
 		}else{
 			if(compteurAttaque >=2)
 				compteurAttaque ++;
-			if(compteurAttaque >20)
+			if(compteurAttaque >20) {
 				compteurAttaque = 0;
+				aventurier.setAttaque(false);
+			}
 		}
 
 		//FRAMERATE DU SPRITE AVENTURIER
