@@ -28,7 +28,7 @@ public class JeuPrincipal {
      * construit le modèle du jeu
      */
     public JeuPrincipal() {
-        this.level = 1;
+        this.level = 4;
         aventurier = new Aventurier(50, 100, 100, "Aventurier");
         jeuEvolution = new JeuEvolution(aventurier, this);
 
@@ -139,19 +139,29 @@ public class JeuPrincipal {
         for (int i = 0; i < jsonMonstres.size(); i++) {
             JSONObject jsonM = (JSONObject) jsonMonstres.get(i);
             int id = ((Long) jsonM.get("id")).intValue();
-
             int posX = ((Long) ((JSONArray) jsonM.get("pos")).get(0)).intValue();
             int posY = ((Long) ((JSONArray) jsonM.get("pos")).get(1)).intValue();
             posX = posX * Case.TAILLE + Case.TAILLE / 2;
             posY = posY * Case.TAILLE + Case.TAILLE / 2;
-
             Monstre m = Monstre.creerMonstreParID(id, posX, posY);
             m.setLabyrinthe(labyrinthe);
             m.setCible(aventurier);
             monstres.add(m);
         }
 
-        jeuEvolution.changeNiveau(labyrinthe, monstres);
+        // items
+        JSONArray jsonItems = (JSONArray) json.get("items");
+        ArrayList<Item> items = new ArrayList<Item>(jsonItems.size());
+        for (int j = 0; j < jsonItems.size(); j++) {
+            JSONObject jsonI = (JSONObject) jsonItems.get(j);
+            int id = ((Long) jsonI.get("id")).intValue();
+            int posX = ((Long) ((JSONArray) jsonI.get("pos")).get(0)).intValue();
+            int posY = ((Long) ((JSONArray) jsonI.get("pos")).get(1)).intValue();
+            Item i = Item.creerItemParID(id, posX, posY);
+            items.add(i);
+        }
+
+        jeuEvolution.changeNiveau(labyrinthe, monstres, items);
     }
 
 
