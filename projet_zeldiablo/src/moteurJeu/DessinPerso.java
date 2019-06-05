@@ -174,7 +174,7 @@ public class DessinPerso implements DessinJeu{
 		g.setColor(Color.green);
 		g.fillRect(this.jeuEvolution.getAventurier().getX()-TAILLE_CASE/3, this.jeuEvolution.getAventurier().getY()-TAILLE_CASE,pvCourant , 7);
 		if (this.jeuEvolution.getAventurier().getVivant() == false) {
-			g.setFont(new Font("TimesRoman", Font.PLAIN, 100)); 
+			g.setFont(new Font(null, Font.PLAIN, 100)); 
 			g.setColor(Color.black);
 			g.drawString("GAME OVER", 150, 350);
 		}
