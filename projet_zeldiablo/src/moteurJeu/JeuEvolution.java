@@ -25,6 +25,10 @@ public class JeuEvolution implements Jeu {
 	 */
 	private int compteurInvulnerabilite;
 	/**
+	 * Empeche le joueur de sauter tout le temps
+	 */
+	private int compteurSaut;
+	/**
 	 * Permet de gerer le sprite de l'aventurier, le sens de sa marche
 	 */
 	private boolean direction;
@@ -55,6 +59,7 @@ public class JeuEvolution implements Jeu {
 		this.compteurPas = 0;
 		this.compteurAttaque = 0;
 		this.compteurInvulnerabilite = 0;
+		this.compteurSaut = 0;
 		this.direction = true;
 		this.fini = false;
 
@@ -92,7 +97,7 @@ public class JeuEvolution implements Jeu {
 		}
 
 		//ATTAQUER
-		if(commandeUser.espace){
+		if(commandeUser.attaque){
 			compteurAttaque ++;
 			aventurier.setAttaque(true);
 			if(compteurAttaque <2)
@@ -107,6 +112,18 @@ public class JeuEvolution implements Jeu {
 				aventurier.setAttaque(false);
 			}
 		}
+
+		//SAUT
+		if(commandeUser.saut) {
+			if(compteurSaut == 0)
+				aventurier.setSaut(true);
+		}
+		if(aventurier.getSaut()==true)
+			compteurSaut =1;
+		if(compteurSaut>=1)
+			compteurSaut++;
+		if(compteurSaut>100)
+			compteurSaut =0;
 
 		//FRAMERATE DU SPRITE AVENTURIER
 		if(marche == false) {
@@ -143,32 +160,36 @@ public class JeuEvolution implements Jeu {
 
 		//ITEMS
 		for (Item i : this.items) {
-			if (i.peutRamasse(px, py)) {
+			if (i.peutRamasse(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE)) {
 				if (i.typeItem() == 0) { //Potion de vie
-					if (this.aventurier.getPv() != this.aventurier.getPvMax()) { //si le perso n'a pas tout ses pv
+					if (this.aventurier.getPv() != this.aventurier.getPvMax() && i.getRamasse() != true) { //si le perso n'a pas tout ses pv
 						i.setRamasse();
 						this.aventurier.soigner(30); //heal le personnage de 30 pv
 					}
 				}
 			}
 		}
+		
+		items.removeIf(n -> (n.getRamasse() == true));
 
 		// MONSTERS
 		for(Monstre m : monstres) {
 			m.comportement();
 		}
 		monstres.removeIf(n -> (n.getPv() <= 0));
+		
 
 		//INVULNERABILITE
-		if(pvActuel != aventurier.getPv()){
-			compteurInvulnerabilite = 1;
+		if(pvActuel != aventurier.getPv() || aventurier.getSaut()){
+			compteurInvulnerabilite +=2;
 			aventurier.setInvulnerable(true);
 		}
-		if(compteurInvulnerabilite >= 1)
+		if(compteurInvulnerabilite >= 1 && !aventurier.getSaut())
 			compteurInvulnerabilite ++;
 		if(compteurInvulnerabilite>50){
 			compteurInvulnerabilite=0;
 			aventurier.setInvulnerable(false);
+			aventurier.setSaut(false);
 		}
 	}
 
