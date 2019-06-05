@@ -26,6 +26,8 @@ public abstract class Item {
 	 * indique si l'item est ramasse
 	 */
 	protected boolean ramasse;
+
+	protected int id;
 	
 	/**
 	 * constructeur
@@ -100,6 +102,8 @@ public abstract class Item {
 				return null;
 		}
 	}
-	
-	
+
+	public int getId() {
+		return id;
+	}
 }

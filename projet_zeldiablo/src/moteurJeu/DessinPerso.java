@@ -22,12 +22,17 @@ public class DessinPerso implements DessinJeu{
 	private Image porte;
 	private Image casevide;
 	private Image casePiege;
+	private Image mort;
+	private Image potion;
+	private Image caseMine;
+	private Image caseMineDesac;
 
 	private Image[] perso_droite;
 	private Image[] perso_gauche;
 	private Image[] slime_vert;
 	private Image[] slime_rouge;
 	private Image[] slime_violet;
+	private Image[] epee;
 
 	public static int TAILLE_CASE = Case.TAILLE;
 
@@ -39,7 +44,7 @@ public class DessinPerso implements DessinJeu{
 		this.slime_rouge = new Image[2];
 		this.slime_vert = new Image[2];
 		this.slime_violet = new Image[2];
-
+		this.epee = new Image[2];
 
 		try{
 				
@@ -60,13 +65,19 @@ public class DessinPerso implements DessinJeu{
 			perso_gauche[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/g2.gif").getPath(), "UTF-8")));
 			perso_gauche[2] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/g3.gif").getPath(), "UTF-8")));
 			perso_gauche[3] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/g4.gif").getPath(), "UTF-8")));
-			
+			mort = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/mort.png").getPath(), "UTF-8")));
 			//cases
 			mur = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("wall.png").getPath(), "UTF-8")));
 			porte = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("porte.png").getPath(), "UTF-8")));
 			casevide = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sol.png").getPath(), "UTF-8")));
 			casePiege = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("piege.png").getPath(), "UTF-8")));
-		
+			caseMine = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("mine.png").getPath(), "UTF-8")));
+			caseMineDesac = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("mineDesac.png").getPath(), "UTF-8")));
+			//epee
+			epee[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("epeed.png").getPath(), "UTF-8")));
+			epee[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("epeeg.png").getPath(), "UTF-8")));
+			//potion
+			potion = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("potionVie.png").getPath(), "UTF-8")));
 		}catch (Exception e){
 			System.out.println("Probleme avec l'image");
 			e.printStackTrace();
@@ -99,6 +110,13 @@ public class DessinPerso implements DessinJeu{
 						g.drawImage(casevide, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					}
 					break;
+				case 4:
+					if (jeuEvolution.getAventurier().getLab().testerPiege(i, j)) {
+						g.drawImage(caseMineDesac, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
+					}else {
+						g.drawImage(caseMine, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
+					}
+					break;
 				default:
 					g.drawImage(casevide, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					break;
@@ -123,22 +141,33 @@ public class DessinPerso implements DessinJeu{
 					g.drawImage(slime_rouge[compteur/30], m.getX()-36, m.getY()-50,73,55, null);
 					break;
 			}
-
-
-
 		}
 
-
-		if(jeuEvolution.getDirection()){
-			g.drawImage(perso_droite[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
-		}
-		else{
-			g.drawImage(perso_gauche[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
+		for (Item i:jeuEvolution.getItems()) {
+			switch(i.getId()){
+				case 0 : g.drawImage(potion, i.getPosX()* Case.TAILLE+5, i.getPosY()*Case.TAILLE+5, 50,50,null);
+			}
 		}
 
-		
 		this.gestionVie(g);
-		
+
+		if(jeuEvolution.getAventurier().getVivant())
+		{
+			if(jeuEvolution.getDirection()){
+				g.drawImage(perso_droite[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
+				if(jeuEvolution.getAventurier().getAttaque())
+					g.drawImage(epee[0], jeuEvolution.getAventurier().getX()-10, jeuEvolution.getAventurier().getY()-40, 60,60,null);
+			}
+			else{
+				g.drawImage(perso_gauche[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
+				if(jeuEvolution.getAventurier().getAttaque())
+					g.drawImage(epee[1], jeuEvolution.getAventurier().getX()-45, jeuEvolution.getAventurier().getY()-40, 60,60,null);
+			}
+		}else
+		{
+			g.drawImage(mort, jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
+		}
+
 		g.dispose();
 	}
 	
@@ -174,9 +203,13 @@ public class DessinPerso implements DessinJeu{
 		g.setColor(Color.green);
 		g.fillRect(this.jeuEvolution.getAventurier().getX()-TAILLE_CASE/3, this.jeuEvolution.getAventurier().getY()-TAILLE_CASE,pvCourant , 7);
 		if (this.jeuEvolution.getAventurier().getVivant() == false) {
-			g.setFont(new Font("TimesRoman", Font.PLAIN, 100)); 
-			g.setColor(Color.black);
+			g.setFont(new Font(null, Font.PLAIN, 100)); 
+			g.setColor(new Color(0,0,0,120));
+			g.fill(new Rectangle(0,0,900,900));
+			g.setColor(Color.WHITE);
 			g.drawString("GAME OVER", 150, 350);
+			g.setFont(new Font(null, Font.PLAIN, 45));
+			g.drawString("Appuyez sur Echap pour revenir au menu",20,500);
 		}
 		
 	}
