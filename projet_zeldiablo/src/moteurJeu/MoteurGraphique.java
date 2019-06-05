@@ -12,7 +12,7 @@ public class MoteurGraphique {
 	/**
 	 * le jeu a executer
 	 */
-	private ArrayList<Jeu> jeu;
+	private JeuEvolution jeuEvolution;
 
 	/**
 	 * l'interface graphique
@@ -27,14 +27,14 @@ public class MoteurGraphique {
 	/**
 	 * construit un moteur
 	 * 
-	 * @param pJeu
+	 * @param jE
 	 *            jeu a lancer
 	 * @param pAffiche
 	 *            afficheur a utiliser
 	 */
-	public MoteurGraphique(ArrayList<Jeu> pJeu, DessinJeu pAffiche) {
+	public MoteurGraphique(JeuEvolution jE, DessinJeu pAffiche) {
 		// creation du jeu
-		this.jeu = pJeu;
+		this.jeuEvolution = jE;
 		this.dessin = pAffiche;
 	}
 
@@ -53,13 +53,12 @@ public class MoteurGraphique {
 		while(true) {
 			// boucle de jeu
 
-			while (!this.jeu.get(0).etreFini() && !this.gui.menu.isVisible()) {
+			while (!this.jeuEvolution.etreFini() && !this.gui.menu.isVisible()) {
 				// demande controle utilisateur
 				Commande c = controle.getCommande();
 				// fait evoluer le jeu
-				for (Jeu jeuX : jeu) {
-					jeuX.evoluer(c);
-				}
+
+				jeuEvolution.evoluer(c);
 				// affiche le jeu
 				this.gui.dessiner();
 				// met en attente
@@ -67,10 +66,10 @@ public class MoteurGraphique {
 			}
 			Thread.sleep(100);
 
-			if(this.jeu.get(0).etreFini())
+			if(this.jeuEvolution.etreFini())
 			{
 				this.gui.menu.setVisible(true);
-				this.jeu.get(0).setFini(false);
+				this.jeuEvolution.setFini(false);
 			}
 		}
 

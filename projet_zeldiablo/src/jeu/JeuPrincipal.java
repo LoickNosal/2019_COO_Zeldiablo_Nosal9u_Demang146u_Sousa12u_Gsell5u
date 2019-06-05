@@ -5,14 +5,12 @@ import org.json.simple.parser.*;
 
 import moteurJeu.DessinPerso;
 import moteurJeu.Jeu;
-import moteurJeu.JeuMonstre;
 import moteurJeu.JeuEvolution;
 import moteurJeu.MoteurGraphique;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -35,8 +33,7 @@ public class JeuPrincipal {
         chargerLVL(level);
         this.aventurier = new Aventurier(50, 100, 100, "Aventurier");
         this.aventurier.setLabyrinthe(this.labyrinthe);
-        ArrayList<Jeu> jeu = new ArrayList<Jeu>();
-        JeuEvolution jeuperso = new JeuEvolution(this.aventurier);
+        JeuEvolution jeuEvolution = new JeuEvolution(this.aventurier);
 
 
         MonstreImmobile m = new MonstreImmobile(50,  1 * Case.TAILLE + Case.TAILLE / 2, 1 * Case.TAILLE + Case.TAILLE / 2, 1, 50, "lol");
@@ -49,15 +46,12 @@ public class JeuPrincipal {
         monstres.add(m);
         monstres.add(m2);
         monstres.add(m3);
-        JeuMonstre jeumonstre = new JeuMonstre(monstres);
-        jeumonstre.setAventurier(this.aventurier);
+        jeuEvolution.setMonstres(monstres);
 
-        jeu.add(jeuperso);
-        jeu.add(jeumonstre);
-		DessinPerso dp = new DessinPerso(jeuperso, jeumonstre);
+		DessinPerso dp = new DessinPerso(jeuEvolution);
 
 		// classe qui lance le moteur de jeu generique
-		MoteurGraphique moteur = new MoteurGraphique(jeu, dp);
+		MoteurGraphique moteur = new MoteurGraphique(jeuEvolution, dp);
 
 		// lance la boucle de jeu qui tourne jusque la fin du jeu
 		try {
@@ -158,8 +152,7 @@ public class JeuPrincipal {
     public int getLVL() {
         return level;
     }
-
-
+    
 
 
     public static void main(String[] args) {
