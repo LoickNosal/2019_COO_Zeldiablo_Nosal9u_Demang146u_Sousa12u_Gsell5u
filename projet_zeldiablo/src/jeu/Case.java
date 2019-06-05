@@ -24,6 +24,10 @@ public abstract class Case {
 	 * Coordonnées y de la case
 	 */
 	protected int posY;
+	/*
+	 * indique si on est deja passe sur la case
+	 */
+	protected boolean estPasseDessus;
 	
 	
 	public int getPosX() {
@@ -46,6 +50,14 @@ public abstract class Case {
 		}
 	
 		return res;
+	}
+	
+	public boolean getEstPasse() {
+		return this.estPasseDessus;
+	}
+	
+	public void setEstPasse() {
+		this.estPasseDessus = true;
 	}
 	
 	/**
