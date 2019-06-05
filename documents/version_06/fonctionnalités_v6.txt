@@ -11,11 +11,16 @@ Fonctionnalites
 
 - Fonctionnalite 3 : gestion du comportement des monstres
 	les monstres se déplacent en fonction de leur comportement
-	ajouter une cible Aventurier au MonstreSuivi 
+	ajouter une cible Aventurier au MonstreSuivi a suivre
 	- responsable : sousa12u
 
 - Fonctionnalite 4 : implementation d'un menu
 	menu de pause sur la touche Echap
+	- responsable : gsell5u
+
+- Fonctionnalite 5 : attaque de l'aventurier
+	l'aventurier peut attaquer les monstres avec la touche Espace
+	l'aventurier ne peut pas attaquer a travers les murs
 	- responsable : gsell5u
 
 

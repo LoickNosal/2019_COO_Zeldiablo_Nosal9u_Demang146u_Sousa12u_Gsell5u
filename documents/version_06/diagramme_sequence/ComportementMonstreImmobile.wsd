@@ -1,0 +1,29 @@
+@startuml 
+title Comportement de Monstre immobile
+participant "JeuPrincipal:Jeu" as jeu << (C,#ADD1B2) >>
+participant "monstre:MonstreImmobile" as monstre << (C,#ADD1B2) >>
+participant "aventurier:Aventurier" as aventurier << (C,#ADD1B2) >>
+
+jeu -> monstre : evoluer()
+loop
+activate monstre
+monstre -> monstre: comportement(Aventurier)
+activate monstre
+monstre -> monstre: attaquer(Aventurier)
+activate monstre
+alt distance <= monstre.portee
+monstre -> aventurier: subirDegat()
+activate aventurier
+monstre <-- aventurier
+deactivate aventurier
+end
+monstre <-- monstre
+deactivate monstre
+monstre <-- monstre
+deactivate monstre
+end
+jeu <-- monstre
+deactivate monstre
+
+
+@enduml
