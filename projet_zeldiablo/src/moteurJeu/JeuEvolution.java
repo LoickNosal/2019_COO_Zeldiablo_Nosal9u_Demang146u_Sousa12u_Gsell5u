@@ -62,7 +62,8 @@ public class JeuEvolution implements Jeu {
 		}
 		if(commandeUser.espace == true){
 			for (Monstre m: monstres) {
-				m.subirDegat(5);
+				if(getPerso().distance(m)<50)
+					m.subirDegat(5);
 			}
 		}
 
@@ -91,6 +92,8 @@ public class JeuEvolution implements Jeu {
 			m.seDeplacer(aventurier);
 			m.attaquer(aventurier);
 		}
+
+		monstres.removeIf(n -> (n.getPv() <= 0));
 	}
 
 	public void setMonstres(ArrayList<Monstre> m) {
