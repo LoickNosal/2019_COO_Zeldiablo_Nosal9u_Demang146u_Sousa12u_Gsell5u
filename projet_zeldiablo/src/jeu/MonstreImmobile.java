@@ -13,8 +13,8 @@ public class MonstreImmobile extends Monstre{
 	}
 
 	@Override
-	public void comportement(Aventurier pPerso) {
-		this.attaquer(pPerso);
+	public void comportement() {
+		this.attaquer();
 	}
 
 	

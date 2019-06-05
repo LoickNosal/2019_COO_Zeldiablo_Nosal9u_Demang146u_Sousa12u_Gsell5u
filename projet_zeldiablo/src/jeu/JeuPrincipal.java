@@ -4,7 +4,6 @@ import org.json.simple.*;
 import org.json.simple.parser.*;
 
 import moteurJeu.DessinPerso;
-import moteurJeu.Jeu;
 import moteurJeu.JeuEvolution;
 import moteurJeu.MoteurGraphique;
 
@@ -21,6 +20,7 @@ import java.util.Objects;
 public class JeuPrincipal {
 
     private JeuEvolution jeuEvolution;
+    private Aventurier aventurier;
     public int level;
 
 
@@ -29,8 +29,8 @@ public class JeuPrincipal {
      */
     public JeuPrincipal() {
         this.level = 2;
-        Aventurier aventurier = new Aventurier(50, 100, 100, "Aventurier");
-        jeuEvolution = new JeuEvolution(aventurier);
+        aventurier = new Aventurier(50, 100, 100, "Aventurier");
+        jeuEvolution = new JeuEvolution(aventurier, this);
 
         chargerLVL(level);
 
@@ -138,6 +138,7 @@ public class JeuPrincipal {
 
             Monstre m = Monstre.creerMonstreParID(id, posX, posY);
             m.setLabyrinthe(labyrinthe);
+            m.setCible(aventurier);
             monstres.add(m);
         }
 

@@ -2,11 +2,7 @@ package moteurJeu;
 
 import java.util.ArrayList;
 
-import jeu.Aventurier;
-import jeu.Item;
-import jeu.JeuPrincipal;
-import jeu.Labyrinthe;
-import jeu.Monstre;
+import jeu.*;
 
 /**
  * represente le jeu en cours
@@ -16,10 +12,25 @@ import jeu.Monstre;
  */
 public class JeuEvolution implements Jeu {
 
+	/**
+	 * Permet de gerer les sprites de l'aventurier
+	 */
 	private int compteurPas;
-	private int compteur_attaque;
-
+	/**
+	 * Empeche le joueur de spammer l'attaque
+	 */
+	private int compteurAttaque;
+	/**
+	 * Empeche le joueur de mourir instantanement sur un monstre
+	 */
+	private int compteurInvulnerabilite;
+	/**
+	 * Permet de gerer le sprite de l'aventurier, le sens de sa marche
+	 */
 	private boolean direction;
+	/**
+	 * Permet de finir le jeu lorsqu'il passe à true
+	 */
 	private boolean fini;
 
 	/** aventurier */
@@ -28,17 +39,27 @@ public class JeuEvolution implements Jeu {
 	private Labyrinthe labyrinthe;
 	/** liste de monstres dans le labyrinthe en cours */
 	private ArrayList<Monstre> monstres;
+	/** liste d'items present dans le labyrinthe en cours */
 	private ArrayList<Item> items;
+
+	/** reference au JeuPrincipal pour recharger un niveau */
+	private JeuPrincipal jeuPrincipal;
 
 	/**
 	 * construit un jeu avec un aventurier
 	 * @param av aventurier en train de jouer
 	 */
-	public JeuEvolution(Aventurier av) {
+	public JeuEvolution(Aventurier av, JeuPrincipal jP) {
+		this.jeuPrincipal = jP;
 		this.aventurier = av;
 		this.compteurPas = 0;
+		this.compteurAttaque = 0;
+		this.compteurInvulnerabilite = 0;
 		this.direction = true;
 		this.fini = false;
+		this.items=new ArrayList<Item>();
+		Item n= new PotionVie(120,120);
+		items.add(n);
 	}
 
 	@Override
@@ -69,16 +90,16 @@ public class JeuEvolution implements Jeu {
 			marche = true;
 		}
 		if(commandeUser.espace){
-			compteur_attaque ++;
-			if(compteur_attaque <2)
+			compteurAttaque ++;
+			if(compteurAttaque <2)
 				for (Monstre m: monstres) {
 					aventurier.attaquer(m);
 				}
 		}else{
-			if(compteur_attaque >=2)
-				compteur_attaque ++;
-			if(compteur_attaque >20)
-				compteur_attaque = 0;
+			if(compteurAttaque >=2)
+				compteurAttaque ++;
+			if(compteurAttaque >20)
+				compteurAttaque = 0;
 		}
 
 		if(marche == false) {
@@ -89,7 +110,7 @@ public class JeuEvolution implements Jeu {
 			if(compteurPas>15)
 				compteurPas = 0;
 		}
-
+			
 		int px = this.aventurier.getX();
 		int py = this.aventurier.getY();
 
@@ -119,8 +140,7 @@ public class JeuEvolution implements Jeu {
 
 		// MONSTERS
 		for(Monstre m : monstres) {
-			m.comportement(aventurier);
-			m.attaquer(aventurier);
+			m.comportement();
 		}
 
 		monstres.removeIf(n -> (n.getPv() <= 0));
