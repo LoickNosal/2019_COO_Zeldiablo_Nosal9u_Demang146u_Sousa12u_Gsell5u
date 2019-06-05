@@ -143,6 +143,14 @@ public class DessinPerso implements DessinJeu{
 			}
 		}
 
+		for (Item i:jeuEvolution.getItems()) {
+			switch(i.getId()){
+				case 0 : g.drawImage(potion, i.getPosX()* Case.TAILLE+5, i.getPosY()*Case.TAILLE+5, 50,50,null);
+			}
+		}
+
+		this.gestionVie(g);
+
 		if(jeuEvolution.getAventurier().getVivant())
 		{
 			if(jeuEvolution.getDirection()){
@@ -160,15 +168,6 @@ public class DessinPerso implements DessinJeu{
 			g.drawImage(mort, jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
 		}
 
-		for (Item i:jeuEvolution.getItems()) {
-			switch(i.getId()){
-				case 0 : g.drawImage(potion, i.getPosX()* Case.TAILLE+5, i.getPosY()*Case.TAILLE+5, 50,50,null);
-			}
-		}
-
-
-
-		this.gestionVie(g);
 		g.dispose();
 	}
 	
