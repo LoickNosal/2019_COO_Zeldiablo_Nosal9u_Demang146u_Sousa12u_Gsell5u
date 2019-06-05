@@ -21,7 +21,7 @@ public class JeuPrincipal {
 
     private JeuEvolution jeuEvolution;
     private Aventurier aventurier;
-    public int level;
+    private int level;
 
 
     /**
@@ -152,6 +152,11 @@ public class JeuPrincipal {
      */
     public int getLVL() {
         return level;
+    }
+
+    public void chargerLVLSuivant() {
+        level++;
+        chargerLVL(level);
     }
 
 
