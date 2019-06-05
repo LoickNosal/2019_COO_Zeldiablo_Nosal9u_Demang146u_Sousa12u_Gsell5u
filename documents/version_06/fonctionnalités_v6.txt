@@ -4,11 +4,12 @@ Fonctionnalites
 	genrer un nouveau labyrinthe et des nouveaux monstres a partir d'un JSON et les ajouter au jeu
 	- responsable : demang146u
 
-- Fonctionnalite 2 : gestion des degats
+- Fonctionnalite 2 : gestion des degats et ajout des Item (potion de vie)
 	imuniser le joueur un court instant apres qu'il ai pris des degats
+	Ajout des Item
 	- responsable : nosal9u
 
-- Fonctionnalite 3 : gestion du deplacement des monstres
+- Fonctionnalite 3 : gestion du comportement des monstres
 	ajouter une cible Aventurier au MonstreSuivi 
 	- responsable : sousa12u
 
