@@ -86,5 +86,20 @@ public abstract class Item {
 	 */
 	public abstract int typeItem();
 	
+	/**
+	 * creer un monstre a partir d'un ID
+	 *
+	 * @param id id du monstre a creer
+	 * @return le monstre correspondant a l'ID
+	 */
+	public static Item creerItemParID(int id, int posX, int posY) {
+		switch (id) {
+			case 0:
+				return new PotionVie(posX,posY);
+			default:
+				return null;
+		}
+	}
+	
 	
 }

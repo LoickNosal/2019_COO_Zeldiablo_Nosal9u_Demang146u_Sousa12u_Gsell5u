@@ -105,6 +105,19 @@ abstract public class Entite{
     }
 
     /**
+     * permet de detecter si l'entité entre en collision avec un obstacle
+     * @return true si le joueur peut traverser
+     */
+    public boolean peutAvancer(int posX, int posY) {
+		boolean res = false;
+			if (this.lab.estSurUnObstacle(posX,posY) == false) {
+				res = true;
+			}
+		return res;
+
+	}
+    
+    /**
      * Fonction seDeplacer : on met les char des points cardinaux pour choisir la position dans laquelle l'Entite va avancer
      * @param cardinaux Les points cardinaux
      */
@@ -135,7 +148,6 @@ abstract public class Entite{
             break;
         }
     	
-    	
     	if (peutAvancer(futureposX,futureposY) == true) {
     		switch(cardinaux)
             {
@@ -146,12 +158,6 @@ abstract public class Entite{
             }
 		}
     }
-
-    /**
-     * permet de detecter si le joueur entre en collision avec un obstacle
-     * @return true si le joueur peut traverser
-     */
-    public abstract boolean peutAvancer(int posX, int posY);
     
     /**
      * le joueur subit des degats

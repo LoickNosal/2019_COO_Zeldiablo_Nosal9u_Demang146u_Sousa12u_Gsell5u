@@ -34,7 +34,7 @@ public class MonstreAleatoire extends Monstre{
     	}
     	
     	seDeplacer(deplacement);
-		
+		attaquer();
 	}
 
 }
