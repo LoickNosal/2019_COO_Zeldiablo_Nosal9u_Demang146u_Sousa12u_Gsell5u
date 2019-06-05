@@ -31,7 +31,6 @@ class JeuEvolution {
     -direction: boolean
     -fini: boolean
     +Aventurier: aventurier
-    +ArrayList<Monstre>: monstres
     +JeuEvolution(Aventurier)
     +evoluer(Commande): void
     +etreFini(): boolean
@@ -153,6 +152,25 @@ class MonstreImmobile {
     +seDeplacer(char):void
 }
 
+abstract Item{
+    #posX : int
+    #posY : int
+    #ramasse : boolean
+    +Item(int,int)
+    +getPosX():int
+    +getPosY():int
+    +getRamasse():boolean
+    +setRamasse():void
+    +{abstract}typeItem():int
+}
+
+class PotionVie{
+    +PotionVie(int,int)
+    +typeItem():int
+    
+    
+}
+
 abstract Case {
     -{static} taille: int
     #posX: int
@@ -202,6 +220,8 @@ Entite --> "1" Labyrinthe : #lab
 
 JeuEvolution "1" --> "1" Aventurier : -personnage
 JeuEvolution ..|> Jeu
+JeuEvolution "1" -->"0..*" Monstre : +monstres
+JeuEvolution "1" -->"0..*" Item : +items
 
 DessinPerso ..|> DessinJeu
 DessinPerso "1" --> "0..1" JeuEvolution : -JeuEvolution
@@ -212,6 +232,7 @@ MoteurGraphique "0..*" --> Jeu : -jeu
 
 InterfaceGraphique "1" --> Menu : +menu
 
+PotionVie --|> Item
 
 Aventurier --|> Entite
 
