@@ -21,14 +21,14 @@ public class JeuPrincipal {
 
     private JeuEvolution jeuEvolution;
     private Aventurier aventurier;
-    public int level;
+    private int level;
 
 
     /**
      * construit le modèle du jeu
      */
     public JeuPrincipal() {
-        this.level = 2;
+        this.level = 1;
         aventurier = new Aventurier(50, 100, 100, "Aventurier");
         jeuEvolution = new JeuEvolution(aventurier, this);
 
@@ -152,6 +152,11 @@ public class JeuPrincipal {
      */
     public int getLVL() {
         return level;
+    }
+
+    public void chargerLVLSuivant() {
+        level++;
+        chargerLVL(level);
     }
 
 

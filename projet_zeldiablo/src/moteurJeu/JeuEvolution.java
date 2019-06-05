@@ -118,8 +118,7 @@ public class JeuEvolution implements Jeu {
 		//System.out.println(this.personnage.getPv());
 		//si le joueur entre dans la porte
 		if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 2) {
-				this.fini = true;
-				new JeuPrincipal();
+				jeuPrincipal.chargerLVL(2);
 		}else if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 3) {
 				this.aventurier.subirDegat(1);
 				this.aventurier.getLab().activerPiege(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE);
