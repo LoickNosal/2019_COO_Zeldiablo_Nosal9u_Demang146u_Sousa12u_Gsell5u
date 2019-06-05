@@ -39,14 +39,7 @@ public abstract class Monstre extends Entite {
 	
 	
 	
-	public boolean peutAvancer(int posX, int posY) {
-		boolean res = false;
-			if (this.lab.estSurUnObstacle(posX,posY) == false) {
-				res = true;
-			}
-		return res;
-
-	}
+	
 	
 	public abstract void comportement();
 
