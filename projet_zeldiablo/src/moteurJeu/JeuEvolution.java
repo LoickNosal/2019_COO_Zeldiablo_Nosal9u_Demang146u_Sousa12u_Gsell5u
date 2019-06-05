@@ -121,13 +121,22 @@ public class JeuEvolution implements Jeu {
 		//affiche les pv du joueur
 		//System.out.println(this.personnage.getPv());
 		//si le joueur entre dans la porte
+		
 		int px = this.aventurier.getX();
 		int py = this.aventurier.getY();
+		
 		if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 2) {
 				jeuPrincipal.chargerLVLSuivant();
 		}else if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 3) {
 				this.aventurier.subirDegat(10);
 				this.aventurier.getLab().activerPiege(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE);
+		}else if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 4) {
+			if (this.aventurier.getLab().testerPiege(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE) == false) {
+				this.aventurier.subirDegat(25);
+				this.aventurier.getLab().activerPiege(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE);
+			}
+			
+			
 		}
 
 		//ITEMS
