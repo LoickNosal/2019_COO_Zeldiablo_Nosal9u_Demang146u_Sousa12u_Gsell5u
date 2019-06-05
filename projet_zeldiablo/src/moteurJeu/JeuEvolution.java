@@ -113,6 +113,12 @@ public class JeuEvolution implements Jeu {
 			}
 		}
 
+		//ECHAP
+		if(commandeUser.echap)
+		{
+			setFini(true);
+		}
+
 		//SAUT
 		if(commandeUser.saut) {
 			if(compteurSaut == 0)
