@@ -15,10 +15,25 @@ import jeu.Monstre;
  */
 public class JeuEvolution implements Jeu {
 
+	/**
+	 * Permet de gerer les sprites de l'aventurier
+	 */
 	private int compteurPas;
-	private int compteur_attaque;
-
+	/**
+	 * Empeche le joueur de spammer l'attaque
+	 */
+	private int compteurAttaque;
+	/**
+	 * Empeche le joueur de mourir instantanement sur un monstre
+	 */
+	private int compteurInvulnerabilite;
+	/**
+	 * Permet de gerer le sprite de l'aventurier, le sens de sa marche
+	 */
 	private boolean direction;
+	/**
+	 * Permet de finir le jeu lorsqu'il passe à true
+	 */
 	private boolean fini;
 
 	/** aventurier */
@@ -35,6 +50,8 @@ public class JeuEvolution implements Jeu {
 	public JeuEvolution(Aventurier av) {
 		this.aventurier = av;
 		this.compteurPas = 0;
+		this.compteurAttaque = 0;
+		this.compteurInvulnerabilite = 0;
 		this.direction = true;
 		this.fini = false;
 	}
@@ -67,16 +84,16 @@ public class JeuEvolution implements Jeu {
 			marche = true;
 		}
 		if(commandeUser.espace){
-			compteur_attaque ++;
-			if(compteur_attaque <2)
+			compteurAttaque ++;
+			if(compteurAttaque <2)
 				for (Monstre m: monstres) {
 					aventurier.attaquer(m);
 				}
 		}else{
-			if(compteur_attaque >=2)
-				compteur_attaque ++;
-			if(compteur_attaque >20)
-				compteur_attaque = 0;
+			if(compteurAttaque >=2)
+				compteurAttaque ++;
+			if(compteurAttaque >20)
+				compteurAttaque = 0;
 		}
 
 		if(marche == false) {
@@ -88,11 +105,9 @@ public class JeuEvolution implements Jeu {
 				compteurPas = 0;
 		}
 
-
 		//si le joueur entre dans la porte
 		if(this.aventurier.getLab().typeCase(this.aventurier.getX()/DessinPerso.TAILLE_CASE,this.aventurier.getY()/DessinPerso.TAILLE_CASE) == 2) {
-				this.fini = true;
-				new JeuPrincipal();
+			
 		}else if(this.aventurier.getLab().typeCase(this.aventurier.getX()/DessinPerso.TAILLE_CASE,this.aventurier.getY()/DessinPerso.TAILLE_CASE) == 3) {
 				this.aventurier.subirDegat(1);
 				this.aventurier.getLab().activerPiege(this.aventurier.getX()/DessinPerso.TAILLE_CASE, this.aventurier.getY()/DessinPerso.TAILLE_CASE);
