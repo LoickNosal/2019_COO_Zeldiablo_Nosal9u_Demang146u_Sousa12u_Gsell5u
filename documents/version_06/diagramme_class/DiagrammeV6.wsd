@@ -156,16 +156,16 @@ abstract Item{
     #posX : int
     #posY : int
     #ramasse : boolean
-    +Item()
+    +Item(int,int)
     +getPosX():int
-    +getPosY:int
+    +getPosY():int
     +getRamasse():boolean
     +setRamasse():void
     +{abstract}typeItem():int
 }
 
 class PotionVie{
-    +PotionVie()
+    +PotionVie(int,int)
     +typeItem():int
     
     
