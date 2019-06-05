@@ -3,33 +3,33 @@
     "niveau": 3,
     "labyrinthe": [
         "X X X X X X X X X X X X X X X",
+        "X - - - - - X - X - - - - - X",
+        "X - X X X - X - X - X X X - X",
+        "X - X - t - X - X - t - X - X",
+        "X - X x X - X - X - X X X - X",
         "X - - - - - - - - - - - - - X",
-        "X - X - X - X - X - X - X - X",
+        "X X X X X - X t X - X X X X X",
+        "X - - - - - X p X - - - - - X",
+        "X X X X X - X t X - X X X X X",
         "X - - - - - - - - - - - - - X",
-        "X - X - X - X - X - X - X - X",
-        "X - - - - - - - - - - - - - X",
-        "X - X - X - X - X - X - X - X",
-        "X - - - p - - - - - - - - - X",
-        "X - X - X - X - X - X - X - X",
-        "X - - - - - - - - - - - - - X",
-        "X - X - X - X - X - X - X - X",
-        "X - - - - - - - - - - - - - X",
-        "X - X - X - X - X - X - X X X",
-        "X - - - - - - - - - - - - - X",
+        "X - X X X - X - X - X X X - X",
+        "X - X - t - X - X - t - X - X",
+        "X - X X X - X - X - X X X - X",
+        "X - - - - - X - X - - - - - X",
         "X X X X X X X X X X X X X X X"
     ],
-    "spawnPos": [3, 3],
+    "spawnPos": [1, 1],
     "monstres": [
         {
             "id": 1,
             "pos": [11, 3]
         },
         {
-            "id": 1,
+            "id": 2,
             "pos": [3, 11]
         },
         {
-            "id": 1,
+            "id": 3,
             "pos": [11, 11]
         }
     ]
