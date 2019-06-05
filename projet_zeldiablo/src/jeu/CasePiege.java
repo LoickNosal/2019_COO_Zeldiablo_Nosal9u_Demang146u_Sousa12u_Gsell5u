@@ -7,7 +7,7 @@ package jeu;
  */
 public class CasePiege extends Case{
 	
-	private boolean estPasseDessus;
+	
 	
 	public CasePiege(int x, int y) {
 		if (x < 0) {
@@ -24,14 +24,6 @@ public class CasePiege extends Case{
 	@Override
 	public boolean peutTraverser() {
 		return true;
-	}
-	
-	public void setEstPasse() {
-		this.estPasseDessus = true;
-	}
-	
-	public boolean getEstPasse() {
-		return this.estPasseDessus;
 	}
 	
 	public String toString() {
