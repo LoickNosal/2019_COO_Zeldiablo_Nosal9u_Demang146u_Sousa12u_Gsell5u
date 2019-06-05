@@ -119,6 +119,7 @@ abstract Entite {
     +setLabyrinthe(Labyrinthe) : void
     +getLab(): Labyrinthe
     +getPv(): int
+    +getPvMax(): int
     +getX(): int
     +getY(): int
     +{abstract}seDeplacer(char): void
@@ -130,7 +131,6 @@ abstract Entite {
 class Aventurier {
 
     +Aventurier(int, int int, String)
-    +getPvMax(): int
     +seDeplacer(char): void
     +peutAvancer(int, int): boolean
 }
@@ -141,7 +141,6 @@ abstract Monstre {
     #portee : int
     #degat: int
     +Monstre(int, int, int, int, int, int, String)
-    +getPvMax(): int
     +peutAvancer(int, int): boolean
     +attaquer(Aventurier): void
     +seDeplacer(char): void
