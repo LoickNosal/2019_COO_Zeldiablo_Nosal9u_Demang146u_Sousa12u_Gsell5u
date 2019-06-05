@@ -1,0 +1,25 @@
+Fonctionnalites
+
+- Fonctionnalite 1 : gestion du changement de niveau / passage niveau suivant
+	genrer un nouveau labyrinthe et des nouveaux monstres a partir d'un JSON et les ajouter au jeu
+	- responsable : demang146u
+
+- Fonctionnalite 2 : gestion des degats
+	imuniser le joueur un court instant apres qu'il ai pris des degats
+	- responsable : nosal9u
+
+- Fonctionnalite 3 : gestion du deplacement des monstres
+	ajouter une cible Aventurier au MonstreSuivi 
+	- responsable : sousa12u
+
+- Fonctionnalite 4 : implementation d'un menu
+	menu de pause sur la touche Echap
+	- responsable : gsell5u
+
+
+Realisation : 
+gestion du changement de niveau : demang146u
+gestion des degats : nosal9u
+gestion du deplacement des monstres : sousa12u
+implementation d'un menu : gsell5u
+
