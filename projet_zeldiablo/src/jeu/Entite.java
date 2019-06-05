@@ -34,7 +34,10 @@ abstract public class Entite{
      * indique si l'entite est vivante
      */
     protected boolean vivant;
-
+    /**
+     * pv max de l'entite
+     */
+    protected int pvMax;
     /**
      * Le constructeur de la classe Entite
      * @param p Les Points de Vie
@@ -62,6 +65,7 @@ abstract public class Entite{
         }
         
         vivant = true;
+        this.pvMax = p;
 
     }
 
@@ -162,12 +166,28 @@ abstract public class Entite{
     }
     
     /**
+     * pour heal le joueur
+     * @param heal vie que l'entite prend
+     */
+    public void soigner(int heal) {
+    	pv += heal;
+    	if(this.pv > this.pvMax) {
+    		this.pv = pvMax;
+    	}
+    	mort();
+    }
+    
+    /**
      * indique si le l'entite est mort
      */
     public void mort() {
     	if(pv == 0) {
     		vivant = false;
     	}
+    }
+    
+    public int getPvMax() {
+    	return this.pvMax;
     }
 
     public double distanceEntite(Entite ent) {

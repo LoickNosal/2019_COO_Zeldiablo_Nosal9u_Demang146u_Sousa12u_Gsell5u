@@ -132,7 +132,7 @@ public class JeuEvolution implements Jeu {
 				if (i.typeItem() == 0) { //Potion de vie
 					if (this.aventurier.getPv() != this.aventurier.getPvMax()) { //si le perso n'a pas tout ses pv
 						i.setRamasse();
-						this.aventurier.subirDegat(-30); //heal le personnage de 30 pv
+						this.aventurier.soigner(30); //heal le personnage de 30 pv
 					}
 				}
 			}
