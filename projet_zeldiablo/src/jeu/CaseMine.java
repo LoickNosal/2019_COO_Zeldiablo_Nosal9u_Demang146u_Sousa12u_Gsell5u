@@ -1,15 +1,13 @@
 package jeu;
 
 /**
- * represente un piege
+ * case qui represente une mine
  * @author Loick
  *
  */
-public class CasePiege extends Case{
-	
-	
-	
-	public CasePiege(int x, int y) {
+public class CaseMine extends Case{
+
+	public CaseMine(int x, int y) {
 		if (x < 0) {
 		x = 0;
 		}
@@ -20,19 +18,15 @@ public class CasePiege extends Case{
 		this.posY = y;
 		this.estPasseDessus = false;
 	}
-
+	
 	@Override
 	public boolean peutTraverser() {
 		return true;
 	}
-	
-	public String toString() {
-		return "t";
-	}
 
 	@Override
 	public int typeCase() {
-		return 3;
+		return 4;
 	}
 
 }
