@@ -28,7 +28,7 @@ public class JeuPrincipal {
      * construit le modèle du jeu
      */
     public JeuPrincipal() {
-        this.level = 2;
+        this.level = 1;
         aventurier = new Aventurier(50, 100, 100, "Aventurier");
         jeuEvolution = new JeuEvolution(aventurier, this);
 
@@ -118,6 +118,7 @@ public class JeuPrincipal {
      * @param json fichier JSON comtenant les informations du niveau
      */
     private void decoderJSON(JSONObject json) {
+        // decode
         JSONArray jsonModeleLaby = (JSONArray) json.get("labyrinthe");
         String[] modeleLabyrinthe = new String[jsonModeleLaby.size()];
         for (int i = 0; i < modeleLabyrinthe.length; i++) {
