@@ -49,7 +49,7 @@ public class InterfaceGraphique  {
 		this.panel.setBounds(0,0,900,900);
 		principal.setPreferredSize(new Dimension(900,900));
 
-		this.menu = new Menu();
+		this.menu = new Menu(null);
 		menu.setBounds(0,0,900,900);
 
 		principal.add(menu);

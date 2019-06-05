@@ -163,6 +163,8 @@ public class JeuEvolution implements Jeu {
 			
 			
 		}
+		if(this.aventurier.getVivant() ==false)
+			setFini(true);
 
 		//ITEMS
 		for (Item i : this.items) {

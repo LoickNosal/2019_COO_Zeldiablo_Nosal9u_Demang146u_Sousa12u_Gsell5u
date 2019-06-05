@@ -50,4 +50,10 @@ public class Aventurier extends Entite {
     public void setSaut(boolean saut) {
         this.saut = saut;
     }
+
+    public void revivre()
+    {
+        this.pv=pvMax;
+        this.vivant = true;
+    }
 }

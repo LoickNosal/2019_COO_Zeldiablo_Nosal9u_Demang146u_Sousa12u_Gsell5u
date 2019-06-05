@@ -11,9 +11,11 @@ import java.net.URLDecoder;
 
 public class Menu extends JPanel {
 
+    private JeuEvolution jeu;
 
-    public Menu(){
+    public Menu(JeuEvolution jaj){
         super();
+        this.jeu = jaj;
         setPreferredSize(new Dimension(1200,1200));
         setBackground(Color.WHITE);
         setLayout(null);
@@ -25,7 +27,8 @@ public class Menu extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 disparaitre();
-
+                jeu.restart();
+                jeu.getAventurier().revivre();
             }
         });
 
@@ -66,5 +69,10 @@ public class Menu extends JPanel {
         }
 
         g.drawImage(menu, 0,0,this);
+    }
+
+    public void ajouterJeu(JeuEvolution j)
+    {
+        this.jeu = j;
     }
 }
