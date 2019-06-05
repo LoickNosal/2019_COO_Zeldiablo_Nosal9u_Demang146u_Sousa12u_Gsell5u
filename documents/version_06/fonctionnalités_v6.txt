@@ -10,6 +10,7 @@ Fonctionnalites
 	- responsable : nosal9u
 
 - Fonctionnalite 3 : gestion du comportement des monstres
+	les monstres se déplacent en fonction de leur comportement
 	ajouter une cible Aventurier au MonstreSuivi 
 	- responsable : sousa12u
 
@@ -21,6 +22,6 @@ Fonctionnalites
 Realisation : 
 gestion du changement de niveau : demang146u
 gestion des degats : nosal9u
-gestion du deplacement des monstres : sousa12u
+gestion du Comportement des monstres : sousa12u
 implementation d'un menu : gsell5u
 
