@@ -23,6 +23,9 @@ public class DessinPerso implements DessinJeu{
 	private Image casevide;
 	private Image casePiege;
 	private Image mort;
+	private Image potion;
+	private Image caseMine;
+	private Image caseMineDesac;
 
 	private Image[] perso_droite;
 	private Image[] perso_gauche;
@@ -42,7 +45,6 @@ public class DessinPerso implements DessinJeu{
 		this.slime_vert = new Image[2];
 		this.slime_violet = new Image[2];
 		this.epee = new Image[2];
-
 
 		try{
 				
@@ -69,9 +71,13 @@ public class DessinPerso implements DessinJeu{
 			porte = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("porte.png").getPath(), "UTF-8")));
 			casevide = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sol.png").getPath(), "UTF-8")));
 			casePiege = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("piege.png").getPath(), "UTF-8")));
+			caseMine = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("mine.png").getPath(), "UTF-8")));
+			caseMineDesac = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("mineDesac.png").getPath(), "UTF-8")));
 			//epee
 			epee[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("epeed.png").getPath(), "UTF-8")));
 			epee[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("epeeg.png").getPath(), "UTF-8")));
+			//potion
+			potion = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("potionVie.png").getPath(), "UTF-8")));
 		}catch (Exception e){
 			System.out.println("Probleme avec l'image");
 			e.printStackTrace();
@@ -102,6 +108,13 @@ public class DessinPerso implements DessinJeu{
 						g.drawImage(casePiege, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					}else {
 						g.drawImage(casevide, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
+					}
+					break;
+				case 4:
+					if (jeuEvolution.getAventurier().getLab().testerPiege(i, j)) {
+						g.drawImage(caseMineDesac, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
+					}else {
+						g.drawImage(caseMine, i*TAILLE_CASE, j*TAILLE_CASE, TAILLE_CASE,TAILLE_CASE,null);
 					}
 					break;
 				default:
@@ -145,6 +158,12 @@ public class DessinPerso implements DessinJeu{
 		}else
 		{
 			g.drawImage(mort, jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
+		}
+
+		for (Item i:jeuEvolution.getItems()) {
+			switch(i.getId()){
+				case 0 : g.drawImage(potion, i.getPosX()* Case.TAILLE+5, i.getPosY()*Case.TAILLE+5, 50,50,null);
+			}
 		}
 
 

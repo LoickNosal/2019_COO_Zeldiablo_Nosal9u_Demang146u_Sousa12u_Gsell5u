@@ -51,6 +51,9 @@ public class Labyrinthe {
                     case "t":
                     	cases[i][j] = new CasePiege(i,j);
                     	break;
+                    case "m":
+                    	cases[i][j] = new CaseMine(i,j);
+                    	break;
                     default:
                         System.out.println("Caractere inconnue: '" + ligne[i] + "'");
                         cases[i][j] = new CaseVide(i, j);
