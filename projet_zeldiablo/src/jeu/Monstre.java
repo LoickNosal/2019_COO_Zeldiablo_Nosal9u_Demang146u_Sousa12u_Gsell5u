@@ -37,17 +37,6 @@ public abstract class Monstre extends Entite {
 		this.vitesse = 3;
 	}
 	
-	
-	
-	public boolean peutAvancer(int posX, int posY) {
-		boolean res = false;
-			if (this.lab.estSurUnObstacle(posX,posY) == false) {
-				res = true;
-			}
-		return res;
-
-	}
-	
 	public abstract void comportement();
 
 
@@ -92,11 +81,11 @@ public abstract class Monstre extends Entite {
 	public static Monstre creerMonstreParID(int id, int posX, int posY) {
 		switch (id) {
 			case 1:
-				return new MonstreImmobile(50, posX,posY, 1, 50, "m1");
+				return new MonstreImmobile(50, posX,posY, 10, 50, "m1");
 			case 2:
-				return new MonstreAleatoire(50, posX, posY, 1, 50, "m2");
+				return new MonstreAleatoire(50, posX, posY, 5, 50, "m2");
 			case 3:
-				return new MonstreSuivi(50, posX, posY, 1, 50, "m3");
+				return new MonstreSuivi(50, posX, posY, 5, 50, "m3");
 			default:
 				return null;
 		}

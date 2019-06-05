@@ -59,6 +59,7 @@ public class MonstreSuivi extends Monstre{
     		
     	}
     	seDeplacer(direction);
+    	attaquer();
 	}
 	
 }

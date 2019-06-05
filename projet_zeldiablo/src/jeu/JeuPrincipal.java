@@ -118,6 +118,7 @@ public class JeuPrincipal {
      * @param json fichier JSON comtenant les informations du niveau
      */
     private void decoderJSON(JSONObject json) {
+        // decode
         JSONArray jsonModeleLaby = (JSONArray) json.get("labyrinthe");
         String[] modeleLabyrinthe = new String[jsonModeleLaby.size()];
         for (int i = 0; i < modeleLabyrinthe.length; i++) {

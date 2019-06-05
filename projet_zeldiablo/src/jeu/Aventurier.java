@@ -26,14 +26,9 @@ public class Aventurier extends Entite {
     }
     
 	
-	public boolean peutAvancer(int posX, int posY) {
-		boolean res = false;
-			if (this.lab.estSurUnObstacle(posX,posY) == false) {
-				res = true;
-			}
-		return res;
-
-	}
+	
+	
+	
 
 	public void attaquer(Monstre m)
     {

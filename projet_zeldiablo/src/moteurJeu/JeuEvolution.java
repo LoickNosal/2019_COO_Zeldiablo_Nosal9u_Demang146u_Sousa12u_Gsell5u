@@ -68,8 +68,10 @@ public class JeuEvolution implements Jeu {
 	 * des valeurs des attributs gauche,droite,haut,bas
 	 */
 	public void evoluer(Commande commandeUser) {
-		//PERSO
+
+		//PERSONNAGE MOUVEMENT
 		boolean marche = false;
+		int pvActuel = aventurier.getPv();
 
 		if (commandeUser.bas) {
 			this.aventurier.seDeplacer('S');
@@ -89,6 +91,8 @@ public class JeuEvolution implements Jeu {
 			this.aventurier.seDeplacer('N');
 			marche = true;
 		}
+
+		//ATTAQUER
 		if(commandeUser.espace){
 			compteurAttaque ++;
 			if(compteurAttaque <2)
@@ -102,6 +106,7 @@ public class JeuEvolution implements Jeu {
 				compteurAttaque = 0;
 		}
 
+		//FRAMERATE DU SPRITE AVENTURIER
 		if(marche == false) {
 			this.compteurPas = 0;
 		}
@@ -111,18 +116,18 @@ public class JeuEvolution implements Jeu {
 				compteurPas = 0;
 		}
 			
-		int px = this.aventurier.getX();
-		int py = this.aventurier.getY();
 
+		//CHANGEMENT DE NIVEAU
 		//affiche les pv du joueur
 		//System.out.println(this.personnage.getPv());
 		//si le joueur entre dans la porte
+		int px = this.aventurier.getX();
+		int py = this.aventurier.getY();
 		if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 2) {
-				jeuPrincipal.chargerLVL(2);
+				jeuPrincipal.chargerLVLSuivant();
 		}else if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 3) {
-				this.aventurier.subirDegat(1);
+				this.aventurier.subirDegat(10);
 				this.aventurier.getLab().activerPiege(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE);
-
 		}
 
 		//ITEMS
@@ -141,11 +146,20 @@ public class JeuEvolution implements Jeu {
 		for(Monstre m : monstres) {
 			m.comportement();
 		}
-
 		monstres.removeIf(n -> (n.getPv() <= 0));
+
+		//INVULNERABILITE
+		if(pvActuel != aventurier.getPv()){
+			compteurInvulnerabilite = 1;
+			aventurier.setInvulnerable(true);
+		}
+		if(compteurInvulnerabilite >= 1)
+			compteurInvulnerabilite ++;
+		if(compteurInvulnerabilite>50){
+			compteurInvulnerabilite=0;
+			aventurier.setInvulnerable(false);
+		}
 	}
-
-
 
 	@Override
 	public boolean etreFini() {

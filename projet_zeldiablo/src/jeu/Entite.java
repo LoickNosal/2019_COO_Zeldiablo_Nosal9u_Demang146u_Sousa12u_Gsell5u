@@ -39,6 +39,10 @@ abstract public class Entite{
      */
     protected int pvMax;
     /**
+     * Le mode invulnerable pour eviter de deceder directement
+     */
+    protected boolean invulnerable;
+    /**
      * Le constructeur de la classe Entite
      * @param p Les Points de Vie
      * @param x La position X
@@ -66,7 +70,7 @@ abstract public class Entite{
         
         vivant = true;
         this.pvMax = p;
-
+        this.invulnerable = false;
     }
 
     public boolean getVivant() {
@@ -105,6 +109,19 @@ abstract public class Entite{
     }
 
     /**
+     * permet de detecter si l'entité entre en collision avec un obstacle
+     * @return true si le joueur peut traverser
+     */
+    public boolean peutAvancer(int posX, int posY) {
+		boolean res = false;
+			if (this.lab.estSurUnObstacle(posX,posY) == false) {
+				res = true;
+			}
+		return res;
+
+	}
+    
+    /**
      * Fonction seDeplacer : on met les char des points cardinaux pour choisir la position dans laquelle l'Entite va avancer
      * @param cardinaux Les points cardinaux
      */
@@ -135,7 +152,6 @@ abstract public class Entite{
             break;
         }
     	
-    	
     	if (peutAvancer(futureposX,futureposY) == true) {
     		switch(cardinaux)
             {
@@ -146,19 +162,14 @@ abstract public class Entite{
             }
 		}
     }
-
-    /**
-     * permet de detecter si le joueur entre en collision avec un obstacle
-     * @return true si le joueur peut traverser
-     */
-    public abstract boolean peutAvancer(int posX, int posY);
     
     /**
      * le joueur subit des degats
      * @param pDegat degat que l'entite prend
      */
     public void subirDegat(int pDegat) {
-    	pv -= pDegat;
+        if(!invulnerable)
+    	    pv -= pDegat;
     	if(pv < 0) {
     		pv = 0;
     	}
@@ -200,5 +211,10 @@ abstract public class Entite{
         double d = Math.sqrt(Math.pow((this.x-ent.getPosX()),2)+Math.pow((this.y-ent.getPosY()),2));
         return d;
 
+    }
+
+    public void setInvulnerable(boolean a)
+    {
+        this.invulnerable = a;
     }
 }
