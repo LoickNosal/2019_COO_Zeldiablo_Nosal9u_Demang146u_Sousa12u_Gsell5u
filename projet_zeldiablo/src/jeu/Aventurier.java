@@ -41,7 +41,7 @@ public class Aventurier extends Entite {
 
 	public void attaquer(Monstre m)
     {
-        if(vivant && this.distance(m)<70) {
+        if(vivant && this.distanceEntite(m)<70) {
             m.subirDegat(10);
         }
     }

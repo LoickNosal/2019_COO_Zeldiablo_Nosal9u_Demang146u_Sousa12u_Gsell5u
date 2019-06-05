@@ -1,0 +1,26 @@
+@startuml 
+title Attaque de l'Aventurier
+participant "jeu:JeuEvolution" as 1 << (C,#ADD1B2) >>
+participant "av:Aventurier" as 2 << (C,#ADD1B2) >>
+participant "m:Monstre" as 3 << (C,#ADD1B2) >>
+
+1 -> 2 : attaquer()
+activate 2
+
+    
+    2->3 : distance(m)
+    activate 3
+    3-->2
+    deactivate 3
+
+    3->3 : subirDegats(10)
+    activate 3
+    3-->3
+    deactivate 3
+
+2-->1
+deactivate 2 
+
+
+
+@enduml
