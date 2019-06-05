@@ -123,11 +123,7 @@ public class DessinPerso implements DessinJeu{
 					g.drawImage(slime_rouge[compteur/30], m.getX()-36, m.getY()-50,73,55, null);
 					break;
 			}
-
-
-
 		}
-
 
 		if(jeuEvolution.getDirection()){
 			g.drawImage(perso_droite[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
@@ -136,9 +132,7 @@ public class DessinPerso implements DessinJeu{
 			g.drawImage(perso_gauche[jeuEvolution.getCompteurPas()/5], jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
 		}
 
-		
 		this.gestionVie(g);
-		
 		g.dispose();
 	}
 	

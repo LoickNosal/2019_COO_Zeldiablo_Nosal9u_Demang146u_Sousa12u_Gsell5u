@@ -24,11 +24,6 @@ public class Aventurier extends Entite {
         super(p,x,y,n);
         this.vitesse = 5;
     }
-    
-	
-	
-	
-	
 
 	public void attaquer(Monstre m)
     {
