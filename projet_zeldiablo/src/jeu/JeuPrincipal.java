@@ -89,6 +89,14 @@ public class JeuPrincipal {
                     json = chargerJSON("lvl4.json");
                     decoderJSON(json);
                     break;
+                case 5:
+                	json = chargerJSON("lvl5.json");
+                    decoderJSON(json);
+                    break;
+                case 6:
+                	json = chargerJSON("lvl6.json");
+                    decoderJSON(json);
+                    break;
                 default:
                     //TODO
             }
