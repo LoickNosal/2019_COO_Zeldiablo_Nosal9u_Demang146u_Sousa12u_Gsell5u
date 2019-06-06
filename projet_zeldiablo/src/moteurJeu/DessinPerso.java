@@ -312,6 +312,16 @@ public class DessinPerso implements DessinJeu{
 
 		this.gestionVie(g);
 
+
+		
+		
+		//affichage de l'etage du labyrinthe
+		g.setFont(new Font(null, Font.BOLD, 40)); 
+		g.setColor(Color.black);
+		String texte = this.jeuEvolution.titreLVL;
+		//permet de centrer le texte
+		this.centrerTexte(g, texte, 900,60, g.getFont());
+
 		//quand le joueur gagne la partie
 		if(jeuEvolution.aGagner()){
 			g.setFont(new Font(null, Font.PLAIN, 100));
@@ -322,12 +332,6 @@ public class DessinPerso implements DessinJeu{
 
 		}
 		
-		
-		//affichage de l'etage du labyrinthe
-		g.setFont(new Font(null, Font.BOLD, 40)); 
-		g.setColor(Color.black);
-		String texte = this.jeuEvolution.titreLVL;
-		g.drawString(texte, (380-texte.length()*4), 50);
 		g.dispose();
 	}
 	
@@ -370,9 +374,20 @@ public class DessinPerso implements DessinJeu{
 			g.setColor(new Color(0,0,0,120));
 			g.fill(new Rectangle(0,0,900,900));
 			g.setColor(Color.WHITE);
-			g.drawString("GAME OVER", 150, 450);
+			this.centrerTexte(g, "GAME OVER", 900,900, g.getFont());
 		}
 		
+	}
+	
+	//permet de centrer un texte en fonction de deux coordonnes
+	public void centrerTexte(Graphics2D g, String text, int posx, int posy , Font font) {
+		
+		Rectangle rect = new Rectangle(0,0,posx,posy);
+	    FontMetrics metrics = g.getFontMetrics(font);
+	    int x = rect.x + (rect.width - metrics.stringWidth(text)) / 2;
+	    int y = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
+	    g.setFont(font);
+	    g.drawString(text, x, y);
 	}
 
 	public void initialiserReaper()
