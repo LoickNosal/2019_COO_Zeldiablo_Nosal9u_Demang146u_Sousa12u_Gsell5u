@@ -18,7 +18,7 @@ public class Menu extends JPanel {
 
     /**
      * constructeur du menu
-     * @param jaj jeu du menu
+     * @param jeu jeu du menu
      */
     public Menu(JeuEvolution jeu){
         super();
