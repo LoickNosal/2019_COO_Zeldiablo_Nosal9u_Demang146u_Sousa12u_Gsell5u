@@ -4,17 +4,17 @@
     "labyrinthe": [
         "X X X X X X X X X X X X X X X",
         "X - - - - - m - - - - t - - X",
-        "X - X - X - X - X - X - X - X",
-        "X - - - - - - - - - - - - - X",
+        "X - X - X - X - X X X - X - X",
+        "X - - - X - - - - - - - - - X",
         "X - X t X - X - X - X - X - X",
-        "X - - - - - - - - t - - - - X",
+        "X - - - - - - - - t X - - - X",
         "X - X - X - X t X - X - X - X",
         "X - - - - - - p - - - - - - X",
-        "X - X - X - X t X - X - X - X",
-        "X - - - - - - - - - - - - - X",
+        "X - X - X X X t X - X - X - X",
+        "X - t - - - - - - - - - - - X",
         "X - X - X - X - X m X - X - X",
-        "X - - - - - - - - - - - - - X",
-        "X - X - X - X - X - X - X - X",
+        "X - - - - - X - - - X - - - X",
+        "X - X - X - X - X - X - X t X",
         "X - - t - - - - - - - - - - X",
         "X X X X X X X X X X X X X X X"
     ],
@@ -41,14 +41,6 @@
         {
             "id": 0,
             "pos": [11, 8]
-        },
-	{
-            "id": 2,
-            "pos": [1, 10]
-        },
-	{
-            "id": 2,
-            "pos": [1, 12]
         }
     ]
 }
