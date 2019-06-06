@@ -17,12 +17,12 @@ public class Menu extends JPanel {
     private JeuEvolution jeu;
 
     /**
-     * constructeur du menu
-     * @param jeu jeu du menu
+     * constructeur du menus
+     * @param jeuEv jeu du menu
      */
-    public Menu(JeuEvolution jeu){
+    public Menu(JeuEvolution jeuEv){
         super();
-        this.jeu = jeu;
+        this.jeu = jeuEv;
         setPreferredSize(new Dimension(1200,1200));
         setBackground(Color.WHITE);
         setLayout(null);
@@ -34,10 +34,9 @@ public class Menu extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 disparaitre();
-                if(jeu !=null) {
-                    jeu.restart();
-                    jeu.getAventurier().revivre();
-                }
+                jeu.restart();
+                jeu.getAventurier().revivre();
+
             }
         });
 

@@ -43,6 +43,7 @@ public class Boss extends Monstre {
 		pasParCase = Case.TAILLE / vitesse;
 		compteurPas = 0;
 		this.vitesse = 6;
+		this.degat = 8;
 	}
 
 	public void comportement() {

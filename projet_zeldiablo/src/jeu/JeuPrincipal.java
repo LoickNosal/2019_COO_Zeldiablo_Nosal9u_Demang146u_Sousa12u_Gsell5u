@@ -67,27 +67,27 @@ public class JeuPrincipal {
             JSONObject json;
             switch (lvl) {
                 case 1:
-                    json = chargerJSON("lvl1.json");
+                    json = chargerJSON("maps/lvl1.json");
                     decoderJSON(json);
                     break;
                 case 2:
-                    json = chargerJSON("lvl2.json");
+                    json = chargerJSON("maps/lvl2.json");
                     decoderJSON(json);
                     break;
                 case 3:
-                    json = chargerJSON("lvl3.json");
+                    json = chargerJSON("maps/lvl3.json");
                     decoderJSON(json);
                     break;
                 case 4:
-                    json = chargerJSON("lvl4.json");
+                    json = chargerJSON("maps/lvl4.json");
                     decoderJSON(json);
                     break;
                 case 5:
-                	json = chargerJSON("lvl5.json");
+                	json = chargerJSON("maps/lvl5.json");
                     decoderJSON(json);
                     break;
                 case 6:
-                	json = chargerJSON("lvl6.json");
+                	json = chargerJSON("maps/lvl6.json");
                     decoderJSON(json);
                     break;
                 default:
