@@ -29,6 +29,10 @@ public class JeuEvolution implements Jeu {
 	 */
 	private int compteurSaut;
 	/**
+	 * Donne du temps pendant le game over
+	 */
+	private int compteurMort;
+	/**
 	 * Permet de gerer le sprite de l'aventurier, le sens de sa marche
 	 */
 	private boolean direction;
@@ -116,7 +120,16 @@ public class JeuEvolution implements Jeu {
 		//ECHAP
 		if(commandeUser.echap)
 		{
-			setFini(true);
+			aventurier.subirDegat(100);
+			if(this.aventurier.getVivant() ==false){
+				this.compteurMort++;
+				if(compteurMort>300){
+					setFini(true);
+					this.compteurMort =0;
+					aventurier.revivre();
+				}
+
+			}
 		}
 
 		//SAUT
@@ -128,7 +141,7 @@ public class JeuEvolution implements Jeu {
 			compteurSaut =1;
 		if(compteurSaut>=1)
 			compteurSaut++;
-		if(compteurSaut>100)
+		if(compteurSaut>50)
 			compteurSaut =0;
 
 		//FRAMERATE DU SPRITE AVENTURIER
@@ -163,8 +176,16 @@ public class JeuEvolution implements Jeu {
 			
 			
 		}
-		if(this.aventurier.getVivant() ==false)
-			setFini(true);
+		if(this.aventurier.getVivant() ==false){
+			this.compteurMort++;
+			if(compteurMort>300){
+				setFini(true);
+				this.compteurMort =0;
+				aventurier.revivre();
+			}
+
+		}
+
 
 		//ITEMS
 		for (Item i : this.items) {

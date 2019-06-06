@@ -6,8 +6,8 @@ package jeu;
  *
  */
 public class MonstreSuivi extends Monstre{
-	private static int compteur_pas = 0;
-	private static char direction = 'd';
+	private int compteur_pas = 0;
+	private char direction = 'd';
 
 	public MonstreSuivi(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pDegat, pPortee, pNom);
