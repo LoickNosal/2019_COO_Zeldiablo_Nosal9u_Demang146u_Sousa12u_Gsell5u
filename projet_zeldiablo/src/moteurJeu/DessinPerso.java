@@ -178,14 +178,8 @@ public class DessinPerso implements DessinJeu{
 			if(m.getId()==4) {
 				char c =((Boss) m).getDeplacementEnCours();
 
-				if(c == 'E' && (c=='N' || c=='S'))
-				{
-					g.drawImage(grim_i_d[1], m.getX()* Case.TAILLE+10, m.getY()*Case.TAILLE+10, 100,100,null);
-				}
-				if(c == 'O' && (c=='N' || c=='S'))
-				{
-					g.drawImage(grim_i_g[1], m.getX()* Case.TAILLE+10, m.getY()*Case.TAILLE+10, 100,100,null);
-				}
+					g.drawImage(grim_i_d[1], m.getX(), m.getY()-50, 100,100,null);
+
 			}
 		}
 
