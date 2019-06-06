@@ -196,7 +196,7 @@ public class Labyrinthe {
 
 
     /**
-     * calcule une version simplifier du labyrinthe ou les cases sont numero,
+     * calcule une version simplifier du labyrinthe ou les cases sont numero pour l'IA
      * -1: case vide, -2: mur
      * Utiliser pour l'algorithme de Lee
      */
@@ -214,7 +214,7 @@ public class Labyrinthe {
 
 
     /**
-     * retourne un clone de l'empreinte du labyrinthe
+     * retourne un clone de l'empreinte du labyrinthe pour l'IA
      * @return clone de l'empreinte
      */
     public int[][] getEmpreinte() {

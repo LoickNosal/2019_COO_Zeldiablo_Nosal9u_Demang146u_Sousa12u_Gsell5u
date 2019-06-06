@@ -169,11 +169,21 @@ public class JeuEvolution implements Jeu {
 		//ITEMS
 		for (Item i : this.items) {
 			if (i.peutRamasse(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE)) {
-				if (i.typeItem() == 0) { //Potion de vie
+				
+				switch (i.typeItem()) {
+				case 0://Potion de vie
+					
 					if (this.aventurier.getPv() != this.aventurier.getPvMax() && i.getRamasse() != true) { //si le perso n'a pas tout ses pv
 						i.setRamasse();
 						this.aventurier.soigner(30); //heal le personnage de 30 pv
 					}
+					break;
+				case 1: //Amulette
+					i.setRamasse();
+					this.setFini(true);
+					break;
+				default:
+					break;
 				}
 			}
 		}
