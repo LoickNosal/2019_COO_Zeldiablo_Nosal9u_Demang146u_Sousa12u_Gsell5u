@@ -343,6 +343,7 @@ public class JeuEvolution implements Jeu {
 	 * recharge le premier niveau
 	 */
 	public void restart() {
+		aventurier.resetDegat();
 		jeuPrincipal.restart();
 	}
 

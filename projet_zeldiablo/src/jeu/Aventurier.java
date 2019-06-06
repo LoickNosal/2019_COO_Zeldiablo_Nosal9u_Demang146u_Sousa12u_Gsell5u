@@ -98,6 +98,10 @@ public class Aventurier extends Entite {
 			this.degat = 30;
 		}
     }
+
+    public void resetDegat() {
+        this.degat = 10;
+    }
     
 
     /**
