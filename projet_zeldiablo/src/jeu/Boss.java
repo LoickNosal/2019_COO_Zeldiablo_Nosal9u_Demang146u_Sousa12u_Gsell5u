@@ -6,7 +6,7 @@ import java.util.Deque;
 
 /**
  * Classe qui modelise un monstre se dirigeant vers l'aventurier
- * @author Alexandre Sousa/Demange Louis
+ * @author Demange Louis
  *
  */
 public class Boss extends Monstre {
@@ -80,30 +80,6 @@ public class Boss extends Monstre {
 
 
     /**
-     * cherche les deplacements possible depuis une certaine position dans le labyrinthe
-     * @param posX coordonnée x a tester en pixel
-     * @param posY coordonnée y a tester en pixel
-     * @return une liste de deplacement possible
-     */
-	protected ArrayList<Character> deplacementPossible(int posX, int posY) {
-	    ArrayList<Character> possible = new ArrayList<Character>();
-        if (peutAvancer(posX, posY - Case.TAILLE)) {
-            possible.add('N');
-        }
-        if (peutAvancer(posX + Case.TAILLE, posY)) {
-            possible.add('E');
-        }
-        if (peutAvancer(posX, posY + Case.TAILLE)) {
-            possible.add('S');
-        }
-        if (peutAvancer( posX - Case.TAILLE, posY)) {
-            possible.add('O');
-        }
-        return possible;
-    }
-
-
-    /**
      * calcul la position de la cible sur la grille et dit si elle a bougé
      * @return vrai si la cible a bougé
      */
@@ -152,7 +128,7 @@ public class Boss extends Monstre {
 
 
     /**
-     * TODO implemntation de l'algorithme de Lee
+     * calcul du plus cour chemin avec l'algorithme de Lee
      * @param laby empreinte du labyrinthe
      * @param startX position x de depart
      * @param startY position y de depart
@@ -261,32 +237,6 @@ public class Boss extends Monstre {
         }
     }
 
-
-    /**
-     * calcul la position apres un deplacement a partir des coordonnée dans le labyrinthe
-     * @param posX position x de depart
-     * @param posY position y de depart
-     * @param deplacement point cardinal
-     * @return la position apres se deplacement
-     */
-    protected int[] getPosApres(int posX, int posY, char deplacement) {
-        int[] posApres = {posX, posY};
-        switch (deplacement) {
-            case 'N':
-                posApres[1] = posY - Case.TAILLE;
-                break;
-            case 'E':
-                posApres[0] = posX + Case.TAILLE;
-                break;
-            case 'S':
-                posApres[1] = posY + Case.TAILLE;
-                break;
-            case 'O':
-                posApres[0] = posX - Case.TAILLE;
-                break;
-        }
-        return posApres;
-    }
 
     public boolean getDirection() {
         return direction;
