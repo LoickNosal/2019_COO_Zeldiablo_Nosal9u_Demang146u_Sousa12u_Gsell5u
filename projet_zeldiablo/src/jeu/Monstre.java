@@ -20,10 +20,6 @@ public abstract class Monstre extends Entite {
 	 */
 	protected int portee;
 	/**
-	 * pv maximum du monstre
-	 */
-	protected int pvMax;
-	/**
 	 * la cible du monstre
 	 */
 	protected Aventurier cible;
@@ -119,10 +115,6 @@ public abstract class Monstre extends Entite {
 	public int getPortee() {
 		return portee;
 	}
-
-	public int getPvMax() {
-    	return this.pvMax;
-    }
 
 	public Aventurier getCible() {
 		return cible;
