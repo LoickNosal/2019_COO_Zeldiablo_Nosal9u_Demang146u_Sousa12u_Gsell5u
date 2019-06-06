@@ -124,6 +124,8 @@ public abstract class Monstre extends Entite {
 				return new MonstreAleatoire(50, posX, posY, 5, 50, "m2");
 			case 3:
 				return new MonstreSuivi(50, posX, posY, 5, 50, "m3");
+            case 4:
+                return new Boss(50, posX, posY, 5, 50, "Boss");
 			default:
 				return null;
 		}
