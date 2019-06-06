@@ -2,7 +2,7 @@ package jeu;
 
 /**
  * Modelise le labyrinthe
- * @author Louis Demange
+ * @author Louis Demange / Loick Nosal
  */
 public class Labyrinthe {
 
@@ -138,7 +138,9 @@ public class Labyrinthe {
             return -1;
         return cases[x][y].typeCase();
     }
-    /*
+
+
+    /**
      * information sur le labyrinthe
      */
     public String toString() {

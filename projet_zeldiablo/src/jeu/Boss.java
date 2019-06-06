@@ -6,7 +6,7 @@ import java.util.Deque;
 
 /**
  * Classe qui modelise un monstre se dirigeant vers l'aventurier
- * @author Demange Louis
+ * @author Louis Demange
  *
  */
 public class Boss extends MonstreSuivi {

@@ -7,8 +7,7 @@ import jeu.*;
 /**
  * represente le jeu en cours
  *
- * @author Loick
- * @author Louis Demange
+ * @author Loick Nosal / Paul Gsell / Louis Demange
  */
 public class JeuEvolution implements Jeu {
 

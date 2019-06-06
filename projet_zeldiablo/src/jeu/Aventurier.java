@@ -1,13 +1,8 @@
 package jeu;
 
-import java.awt.Point;
-import java.util.ArrayList;
-
-import moteurJeu.DessinPerso;
-
 
 /**
- *Modelise un Aventurier
+ * Modelise un Aventurier
  */
 public class Aventurier extends Entite {
 	

@@ -14,23 +14,17 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * modelise le jeu principal
+ * Démarre le jeu et charge les differents niveaux
  *
  * @author Louis Demange
  */
 public class JeuPrincipal {
 
-	/**
-	 * le jeu en cours
-	 */
+	/** le jeu en cours */
     private JeuEvolution jeuEvolution;
-    /**
-     * l'aventurier du jeu
-     */
+    /** l'aventurier du jeu */
     private Aventurier aventurier;
-    /**
-     * le level du jeu (etage du laybrinthe)
-     */
+    /** le level du jeu (etage du laybrinthe) */
     private int level;
 
 

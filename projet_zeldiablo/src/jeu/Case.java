@@ -2,10 +2,8 @@ package jeu;
 
 import java.awt.Rectangle;
 
-import moteurJeu.DessinPerso;
-import org.junit.Test;
 
-/*
+/**
  * Classe abstraite qui modelise une case
  * @author Nosal Loick
  */
@@ -24,7 +22,7 @@ public abstract class Case {
 	 * Coordonnees y de la case
 	 */
 	protected int posY;
-	/*
+	/**
 	 * indique si on est deja passe sur la case
 	 */
 	protected boolean estPasseDessus;

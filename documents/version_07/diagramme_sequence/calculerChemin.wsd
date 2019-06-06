@@ -1,27 +1,24 @@
 @startuml 
-title méthode comportement() du Boss
-participant JeuEvolution <<(C,#ADD1B2)>>
+title méthode calculerChemin
 participant Boss <<(C,#ADD1B2)>>
+participant "suiteDeDeplacement : Deque<Character>" as deplacements
+participant Labyrinthe
 
-activate JeuEvolution
-JeuEvolution -> Boss : comportement()
 activate Boss
-
-alt compteurPas > 0
-Boss -> Boss : seDeplacer(deplacementEnCours)
-
-else
-Boss -> Boss : calculPosCible()
-activate Boss
-Boss --> Boss : true
-deactivate Boss
-
-alt cibleBouger == true
 Boss -> Boss : calculerChemin()
-end
-end
+activate Boss
+Boss -> deplacements : clear()
+activate deplacements
+deplacements --> Boss
+deactivate deplacements
 
-Boss --> JeuEvolution
-deactivate Boss
+Boss -> Labyrinthe : getEmpreinte()
+activate Labyrinthe
+Labyrinthe --> Boss
+deactivate Labyrinthe
+
+Boss -> Boss : lee()
+activate Boss
+Boss -> Boss : retraceChemin()
 
 @enduml
