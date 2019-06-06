@@ -13,6 +13,7 @@ public class Aventurier extends Entite {
 	
 	private boolean attaque;
 	private boolean saut;
+	private int degat;
     /**
      * Le constructeur de la classe Aventurier, qui herite du constructeur de Entite
      * @param p Les points de vie
@@ -26,12 +27,13 @@ public class Aventurier extends Entite {
         this.vitesse = 5;
         this.attaque=false;
         this.saut=false;
+        this.degat = 10;
     }
 
 	public void attaquer(Monstre m)
     {
         if(vivant && this.distanceEntite(m)<80) {
-            m.subirDegat(10);
+            m.subirDegat(this.degat);
         }
     }
 
@@ -50,6 +52,19 @@ public class Aventurier extends Entite {
     public void setSaut(boolean saut) {
         this.saut = saut;
     }
+   
+    public int getDegat() {
+    	return this.degat;
+    }
+    
+    public void augmenterDegat() {
+    	this.degat += 10;
+    	if (this.degat > 30) {
+			this.degat = 30;
+		}
+    }
+    
+
 
     public void revivre()
     {

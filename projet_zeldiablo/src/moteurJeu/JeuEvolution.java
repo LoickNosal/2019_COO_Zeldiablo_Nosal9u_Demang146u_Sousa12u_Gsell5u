@@ -203,6 +203,12 @@ public class JeuEvolution implements Jeu {
 					i.setRamasse();
 					this.setFini(true);
 					break;
+				case 2: //Potion de Force
+					 if (this.aventurier.getDegat() <= 30 && i.getRamasse() != true) { //si le perso n'a pas sa force max
+						i.setRamasse();
+						this.aventurier.augmenterDegat(); //augmente la force du personnage
+					}
+					break;
 				default:
 					break;
 				}
