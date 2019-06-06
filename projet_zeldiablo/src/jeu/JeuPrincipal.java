@@ -90,6 +90,9 @@ public class JeuPrincipal {
      * @param json fichier JSON comtenant les informations du niveau
      */
     private void decoderJSON(JSONObject json) {
+        // titre
+        String titre = (String) json.get("titre");
+
         // labyrinthe
         JSONArray jsonModeleLaby = (JSONArray) json.get("labyrinthe");
         String[] modeleLabyrinthe = new String[jsonModeleLaby.size()];
@@ -139,7 +142,7 @@ public class JeuPrincipal {
             }
         }
 
-        jeuEvolution.changeNiveau(labyrinthe, monstres, items);
+        jeuEvolution.changeNiveau(titre, labyrinthe, monstres, items);
     }
 
     /**

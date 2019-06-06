@@ -59,6 +59,8 @@ public class JeuEvolution implements Jeu {
 
 	/** reference au JeuPrincipal pour recharger un niveau */
 	private JeuPrincipal jeuPrincipal;
+	/** titre du niveau chargé */
+	public String titreLVL;
 
 	/**
 	 * construit un jeu avec un aventurier
@@ -73,7 +75,7 @@ public class JeuEvolution implements Jeu {
 		this.compteurSaut = 0;
 		this.direction = true;
 		this.fini = false;
-
+		this.titreLVL = "";
 		this.items=new ArrayList<Item>();
 	}
 
@@ -284,7 +286,8 @@ public class JeuEvolution implements Jeu {
 	 * @param m liste de monstre de l'etage
 	 * @param it liste d'item de l'etage
 	 */
-	public void changeNiveau(Labyrinthe l, ArrayList<Monstre> m, ArrayList<Item> it) {
+	public void changeNiveau(String titre, Labyrinthe l, ArrayList<Monstre> m, ArrayList<Item> it) {
+		titreLVL = titre;
 		setLabyrinthe(l);
 		setMonstres(m);
 		setItems(it);
