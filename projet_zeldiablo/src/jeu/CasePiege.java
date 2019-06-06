@@ -8,7 +8,11 @@ package jeu;
 public class CasePiege extends Case{
 	
 	
-	
+	/**
+	 * constructeur 
+	 * @param x pos x
+	 * @param y pos y 
+	 */
 	public CasePiege(int x, int y) {
 		if (x < 0) {
 		x = 0;

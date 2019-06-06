@@ -23,5 +23,9 @@ public interface Jeu {
 	 */
 	public boolean etreFini();
 
+	/***
+	 * permet d'indiquer si le jeu est fini
+	 * @param a indique si le jeu est fini
+	 */
 	public void setFini(boolean a);
 }

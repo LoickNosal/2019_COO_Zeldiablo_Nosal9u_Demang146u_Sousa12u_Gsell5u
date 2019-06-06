@@ -8,8 +8,10 @@ package jeu;
 public class CaseAmulette extends Case{
 
 	
-	/*
+	/**
 	 * Constructeur
+	 * @param x pos x
+	 * @param y pos y
 	 */
 	public CaseAmulette(int x, int y) {
 		if (x < 0) {

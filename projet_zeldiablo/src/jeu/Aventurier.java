@@ -7,12 +7,21 @@ import moteurJeu.DessinPerso;
 
 
 /**
- *Modelis un Aventurier
+ *Modelise un Aventurier
  */
 public class Aventurier extends Entite {
 	
+	/**
+	 * permet de savoir si l'aventurier attaque
+	 */
 	private boolean attaque;
+	/**
+	 * indique si le joueur saute
+	 */
 	private boolean saut;
+	/**
+	 * degat du joueur
+	 */
 	private int degat;
     /**
      * Le constructeur de la classe Aventurier, qui herite du constructeur de Entite
@@ -30,42 +39,70 @@ public class Aventurier extends Entite {
         this.degat = 10;
     }
 
+    /**
+     * methode qui permet d'attaquer un monstre
+     * @param m monstre a attaquer
+     */
 	public void attaquer(Monstre m)
     {
         if(vivant && this.distanceEntite(m)<80) {
             m.subirDegat(this.degat);
         }
     }
-
+	/**
+	 * renvoit si le joueur est en train d'attaquer
+	 * @return si le joueur attaque : true
+	 */
     public boolean getAttaque() {
         return attaque;
     }
-
+    
+    /**
+     * permet de definir si le joueur attaque
+     * @param attaque defini si le joueur attaque
+     */
     public void setAttaque(boolean attaque) {
         this.attaque = attaque;
     }
-
+    
+    /**
+     * indique si le joueur saute
+     * @return si le joueur saute : true
+     */
     public boolean getSaut() {
         return saut;
     }
 
+    /**
+     * defini si le joueur saute
+     * @param saut defini si le joueur saute
+     */
     public void setSaut(boolean saut) {
         this.saut = saut;
     }
    
+    /**
+     * getter des degats
+     * @return degats
+     */
     public int getDegat() {
     	return this.degat;
     }
     
+    /**
+     * augmente les degats du joueur (potion de force)
+     */
     public void augmenterDegat() {
-    	this.degat += 10;
+    	this.degat += 5;
     	if (this.degat > 30) {
 			this.degat = 30;
 		}
     }
     
 
-
+    /**
+     * permet de faire revivre le joueur
+     */
     public void revivre()
     {
         this.pv=pvMax;
@@ -82,8 +119,6 @@ public class Aventurier extends Entite {
     @Override
     public boolean seDeplacer(char cardinaux) {
 
-
-        //System.out.println(x % Case.TAILLE + " " + y % Case.TAILLE);
 
 
         boolean bouger = false;

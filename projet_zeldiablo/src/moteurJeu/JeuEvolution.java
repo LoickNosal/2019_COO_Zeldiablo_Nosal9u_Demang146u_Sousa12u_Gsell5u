@@ -223,12 +223,15 @@ public class JeuEvolution implements Jeu {
 			}
 		}
 		
+		//supprimer les objets si ils sont ramasses
 		items.removeIf(n -> (n.getRamasse() == true));
 
 		// MONSTERS
 		for(Monstre m : monstres) {
 			m.comportement();
 		}
+		
+		//supprime les monstres si ils sont morts
 		monstres.removeIf(n -> (n.getPv() <= 0));
 		
 
@@ -263,7 +266,7 @@ public class JeuEvolution implements Jeu {
 	public void setFini(boolean a) {
 		this.fini = a;
 	}
-
+	
 	public boolean aGagner() {
 		return aGagner;
 	}
@@ -276,7 +279,12 @@ public class JeuEvolution implements Jeu {
 		return compteurPas;
 	}
 
-
+	/**
+	 * permet de changer de niveau et reset certains attributs
+	 * @param l labyrinthe de l'etage
+	 * @param m liste de monstre de l'etage
+	 * @param it liste d'item de l'etage
+	 */
 	public void changeNiveau(Labyrinthe l, ArrayList<Monstre> m, ArrayList<Item> it) {
 		setLabyrinthe(l);
 		setMonstres(m);

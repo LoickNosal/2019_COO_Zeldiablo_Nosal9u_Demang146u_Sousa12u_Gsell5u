@@ -19,10 +19,10 @@ public class Commande {
 	public boolean saut;
 	public boolean echap;
 
-	public Commande()
-	{
-		
-	}
+	/**
+	 * constructeur vide
+	 */
+	public Commande(){}
 	
 	/**
 	 * constructeur par copie

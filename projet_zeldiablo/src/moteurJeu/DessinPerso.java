@@ -11,7 +11,7 @@ import java.net.URLDecoder;
 
 /**
  * Classe qui dessine le jeu selon la taille de la fenetre
- * @author Alexandre Sousa, Paul Gsell
+ * @author Alexandre Sousa/Paul Gsell/Nosal Loick
  *
  */
 public class DessinPerso implements DessinJeu{

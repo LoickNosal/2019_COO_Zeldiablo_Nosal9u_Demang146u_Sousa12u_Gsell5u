@@ -92,6 +92,11 @@ public class Labyrinthe {
         return !cases[x][y].peutTraverser();
     }
 
+    /**
+     * permet d'activer un piege, de dire qu'on est passe sur une case
+     * @param x pos x a activer
+     * @param y pos y a activer
+     */
     public void activerPiege(int x, int y) {
     	if (x< 0) {
 			x = 0;
@@ -103,6 +108,13 @@ public class Labyrinthe {
 		
     }
     
+    /**
+     * permet de savoir si on est passe sur une case
+     * (tester les pieges)
+     * @param x a tester
+     * @param y a tester
+     * @return true si le piege est deja active
+     */
     public boolean testerPiege(int x, int y) {
     	if (x< 0) {
 			x = 0;
@@ -115,13 +127,20 @@ public class Labyrinthe {
 
     }
 
-
+    /**
+     * renvoit le type de la case (vide,mur,piege,mine)
+     * @param x pos x 
+     * @param y pos y 
+     * @return type de la case
+     */
     public int typeCase(int x, int y) {
         if (x < 0 || x >= getLargeur() || y < 0 || y >= getHauteur())
             return -1;
         return cases[x][y].typeCase();
     }
-
+    /*
+     * information sur le labyrinthe
+     */
     public String toString() {
         String res = "";
         for (int j = 0; j < getHauteur(); j++) {

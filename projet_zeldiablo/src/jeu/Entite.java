@@ -178,7 +178,7 @@ abstract public class Entite{
     }
     
     /**
-     * L'entité subit des degats
+     * L'entitee subit des degats
      * @param pDegat degat que l'entite prend
      */
     public void subirDegat(int pDegat) {
@@ -228,9 +228,9 @@ abstract public class Entite{
     /**
      * Calcule la distance en vol d'oiseau entre deux points
      * @param px abscisse du premier point
-     * @param py ordonnée du premier point
+     * @param py ordonnee du premier point
      * @param dx abscisse du deuxième point
-     * @param dy ordonnée du deuxième point
+     * @param dy ordonnee du deuxieme point
      * @return la distance
      */
     public double distanceEntite(int px, int py, int dx, int dy) {
@@ -250,8 +250,8 @@ abstract public class Entite{
     }
 
     /**
-     * Rend l'entité invulnérable a la méthode subirDegat
-     * @param vrai si le joueur est invulnérable
+     * Rend l'entitee invulnerable a la methode subirDegat
+     * @param vrai si le joueur est invulnerable
      */
     public void setInvulnerable(boolean a)
     {

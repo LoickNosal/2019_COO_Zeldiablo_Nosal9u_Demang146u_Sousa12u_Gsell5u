@@ -20,34 +20,28 @@ import java.util.Objects;
  */
 public class JeuPrincipal {
 
+	/**
+	 * le jeu en cours
+	 */
     private JeuEvolution jeuEvolution;
+    /**
+     * l'aventurier du jeu
+     */
     private Aventurier aventurier;
+    /**
+     * le level du jeu (etage du laybrinthe)
+     */
     private int level;
 
 
     /**
-     * construit le modèle du jeu
+     * construit le modele du jeu
      */
     public JeuPrincipal() {
         this.level = 1;
         aventurier = new Aventurier(50, 100, 100, "Aventurier");
         jeuEvolution = new JeuEvolution(aventurier, this);
         chargerLVL(level);
-
-        /*
-        MonstreImmobile m = new MonstreImmobile(50,  1 * Case.TAILLE + Case.TAILLE / 2, 1 * Case.TAILLE + Case.TAILLE / 2, 1, 50, "lol");
-        MonstreAleatoire m2 = new MonstreAleatoire(50, 400, 100, 1, 50, "m2");
-        MonstreSuivi m3 = new MonstreSuivi(50, 400, 100, 1, 50, "m3");
-        m.setLabyrinthe(this.labyrinthe);
-        m2.setLabyrinthe(this.labyrinthe);
-        m3.setLabyrinthe(this.labyrinthe);
-        ArrayList<Monstre> monstres = new ArrayList<Monstre>();
-        monstres.add(m);
-        monstres.add(m2);
-        monstres.add(m3);
-        jeuEvolution.setMonstres(monstres);
-        */
-
         DessinPerso dp = new DessinPerso(jeuEvolution);
 
         // classe qui lance le moteur de jeu generique
@@ -66,7 +60,6 @@ public class JeuPrincipal {
 
     /**
      * charge un niveau a partir du numero du niveau
-     *
      * @param lvl numero du niveau
      */
     public void chargerLVL(int lvl) {
@@ -98,17 +91,16 @@ public class JeuPrincipal {
                     decoderJSON(json);
                     break;
                 default:
-                    //TODO
+                    break;
             }
         } catch (ParseException | IOException e) {
-            //TODO
+            System.out.println("chargement impossible");
         }
     }
 
 
     /**
-     * charge un JSON a partir
-     *
+     * charge un JSON a partir d'un fichier json
      * @param fichier nom du fichier JSON
      * @return le fichier JSON
      * @throws IOException    erreur dans l'url du fichier
@@ -124,7 +116,6 @@ public class JeuPrincipal {
 
     /**
      * decode le JSON et changer le niveau de JeuEvoluer
-     *
      * @param json fichier JSON comtenant les informations du niveau
      */
     private void decoderJSON(JSONObject json) {
@@ -180,18 +171,26 @@ public class JeuPrincipal {
         jeuEvolution.changeNiveau(labyrinthe, monstres, items);
     }
 
-
+    /**
+     * permet de recharger le premier niveau (redemarrage jeu)
+     */
     public void restart() {
         level = 1;
         chargerLVL(level);
     }
 
+    /**
+     * permet de charger le prochain niveau)
+     */
     public void chargerLVLSuivant() {
         level++;
         chargerLVL(level);
     }
-
-
+    
+    /**
+     * Main du jeu : appelle le jeu principal
+     * @param args
+     */
     public static void main(String[] args) {
         new JeuPrincipal();
     }

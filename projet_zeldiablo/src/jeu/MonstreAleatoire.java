@@ -7,11 +7,24 @@ package jeu;
  */
 public class MonstreAleatoire extends Monstre {
 
-	/** direction choisie aleatoirement */
+	/** 
+	 * direction choisie aleatoirement 
+	 */
 	protected char deplacement;
-	/** timer pour changer de direction */
+	/** 
+	 * timer pour changer de direction
+	 */
 	protected int timer;
 
+	/**
+	 * constructeur du monstre aleatoire
+	 * @param pPv 
+	 * @param px
+	 * @param py
+	 * @param pDegat
+	 * @param pPortee
+	 * @param pNom
+	 */
 	public MonstreAleatoire(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pDegat, pPortee, pNom);
 		id = 2;

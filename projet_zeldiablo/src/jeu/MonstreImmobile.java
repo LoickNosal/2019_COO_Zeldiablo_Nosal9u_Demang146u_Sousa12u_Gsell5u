@@ -1,7 +1,7 @@
 package jeu;
 
 /**
- * Classe qui modélise un monstre qui ne bouge pas
+ * Classe qui modelise un monstre qui ne bouge pas
  * @author Alexandre Sousa
  *
  */
@@ -29,6 +29,6 @@ public class MonstreImmobile extends Monstre{
 		this.attaquer();
 	}
 
-	
+
 
 }

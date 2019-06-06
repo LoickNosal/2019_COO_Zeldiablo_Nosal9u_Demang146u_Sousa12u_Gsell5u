@@ -14,7 +14,7 @@ public interface DessinJeu {
 	 * jeu. Jeu est un attribut de l'afficheur
 	 * 
 	 * @param image
-	 *            image sur laquelle dessiner
+	 * image sur laquelle dessiner
 	 */
 	public abstract void dessiner(BufferedImage image);
 

@@ -5,14 +5,27 @@ import java.util.ArrayList;
 import java.util.Deque;
 
 /**
- * Classe qui modélise un monstre se dirigeant vers l'aventurier
- * @author Alexandre Sousa
+ * Classe qui modelise un monstre se dirigeant vers l'aventurier
+ * @author Alexandre Sousa/Demange Louis
  *
  */
 public class Boss extends Monstre {
+	
+	/**
+	 * indique la position x et y  de la cible
+	 */
 	protected int cibleX, cibleY;
+	/**
+	 * 
+	 */
 	protected Deque<Character> suiteDeDeplacement;
+	/**
+	 * caractere du deplacement
+	 */
 	protected char deplacementEnCours;
+	/**
+	 * 
+	 */
 	protected int compteurPas, pasParCase;
 	/** direction pour le sprite, true=droite */
 	protected boolean direction;
@@ -29,7 +42,7 @@ public class Boss extends Monstre {
 		direction = true;
 		pasParCase = Case.TAILLE / vitesse;
 		compteurPas = 0;
-		this.vitesse = 4;
+		this.vitesse = 6;
 	}
 
 	public void comportement() {

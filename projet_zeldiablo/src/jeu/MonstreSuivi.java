@@ -6,7 +6,14 @@ package jeu;
  *
  */
 public class MonstreSuivi extends Monstre{
+
+	/**
+	 * pour savoir quand le monstre se deplace d'une case entiere
+	 */
 	private int compteur_pas = 0;
+	/**
+	 * direction du monstre
+	 */
 	private char direction = 'd';
 
 	/**
@@ -30,7 +37,7 @@ public class MonstreSuivi extends Monstre{
 	 */
 	@Override
 	public void comportement() {
-		
+
     	if(compteur_pas == 0) {
     		Labyrinthe lab = this.getLab();
         	int pxc = cible.getX()/ Case.TAILLE;
@@ -41,20 +48,20 @@ public class MonstreSuivi extends Monstre{
         	int futurePosX = px;
         	int futurePosY = py;
         	int futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
-        	
+
         	futurePosX += 1;
         	futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
         	if(futureDistance >= distance) { // TEST EST
         		futurePosX -= 1;
-        		futurePosY += 1; 
+        		futurePosY += 1;
         		futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
             	if(futureDistance >= distance) { // TEST SUD
             		futurePosY -= 1;
-            		futurePosX -= 1; 
+            		futurePosX -= 1;
             		futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
                 	if(futureDistance >= distance ) { // TEST OUEST
                 		futurePosX += 1;
-                		futurePosY -= 1; 
+                		futurePosY -= 1;
                 		futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
                     	if(futureDistance >= distance) { // TEST NORD
                     		futurePosY += 1;
@@ -75,7 +82,7 @@ public class MonstreSuivi extends Monstre{
         			direction = 'E';
         	}
     	}
-    	
+
     	seDeplacer(direction);
     	compteur_pas += 1;
     	if(compteur_pas == Case.TAILLE/vitesse) {
@@ -83,5 +90,5 @@ public class MonstreSuivi extends Monstre{
     	}
     	attaquer();
 	}
-	
+
 }

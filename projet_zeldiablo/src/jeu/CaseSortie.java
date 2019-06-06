@@ -7,6 +7,12 @@ package jeu;
  */
 public class CaseSortie extends Case {
 	
+	
+	/**
+	 * constructeur
+	 * @param x pos x 
+	 * @param y pos y
+	 */
 	public CaseSortie(int x, int y) {
 		if (x < 0) {
 		x = 0;

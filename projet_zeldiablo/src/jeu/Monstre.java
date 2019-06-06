@@ -1,15 +1,31 @@
 package jeu;
 
 /**
- * Classe qui modélise un monstre
+ * Classe qui modelise un monstre
  * @author Alexandre Sousa
  *
  */
 public abstract class Monstre extends Entite {
+
+	/**
+	 * id du monstre unique
+	 */
 	protected int id;
+	/**
+	 * degat du monstre
+	 */
 	protected int degat;
+	/**
+	 * portee du monstre
+	 */
 	protected int portee;
+	/**
+	 * pv maximum du monstre
+	 */
 	protected int pvMax;
+	/**
+	 * la cible du monstre
+	 */
 	protected Aventurier cible;
 
 	/**
@@ -36,14 +52,16 @@ public abstract class Monstre extends Entite {
 		this.pvMax = pPv;
 		this.vitesse = 3;
 	}
-	
+
 	/**
-	 * méthode qui permet de controler les déplacements des monstre ainsi que leurs attaques
+	 * gere le comportement du monstre (deplacement/attaque)
 	 */
 	public abstract void comportement();
 
-
-	public boolean attaquer() {
+	/**
+	 *permet d'attaquer la cible
+	 */
+	public void attaquer() {
 		int distance = (int) Math.sqrt(Math.pow(cible.getX() - x, 2) + Math.pow(cible.getY() - y, 2));
 		if(distance <= portee) {
 			cible.subirDegat(degat);
@@ -93,7 +111,7 @@ public abstract class Monstre extends Entite {
 	public int getId() {
 		return id;
 	}
-	
+
 	public int getDegat() {
 		return degat;
 	}
@@ -105,11 +123,11 @@ public abstract class Monstre extends Entite {
 	public int getPvMax() {
     	return this.pvMax;
     }
-	
+
 	public Aventurier getCible() {
 		return cible;
 	}
-	
+
 	public void setCible(Aventurier av) {
 		cible = av;
 	}
