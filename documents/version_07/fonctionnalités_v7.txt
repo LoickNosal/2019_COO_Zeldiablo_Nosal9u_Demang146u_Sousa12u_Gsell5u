@@ -1,26 +1,24 @@
-﻿TODO:
- - menu Echap
- - passage niveau suivant qui si tout les monstres sont mort
- - amulette pour fin du jeu
- - level design
- - tests
- - diagramme
- - debugage / reformatage / javadoc
+﻿Fonctionnalites
 
-
-Fonctionnalites
-
-- Fonctionnalite 1 :
+- Fonctionnalite 1 : aujout Monstre très intelligent : algorithme de Lee
+	Monstre la Faucheuse : boss du jeu doit etre tue
 	- responsable : demang146u
 
-- Fonctionnalite 2 : 
+- Fonctionnalite 2 : ajout de l'item amulette pour finir le jeu
+	item indispensable a recuperer pour gagner le jeu
 	- responsable : nosal9u
 
 - Fonctionnalite 3 : 
+	dette technique : debugage/test unitaire/javadoc
 	- responsable : sousa12u
 
-- Fonctionnalite 4 :
+- Fonctionnalite 4 : passage niveau suivant qui si tout les monstres sont mort (systeme de "vague")
+	graphique pour la faucheuse (animation)
 	- responsable : gsell5u
 
 
 Realisation :
+monstre intelligent : demang146u
+amulette : nosal9u
+dette technique : sousa12u
+oblige de tuer les monstres : gsell5u

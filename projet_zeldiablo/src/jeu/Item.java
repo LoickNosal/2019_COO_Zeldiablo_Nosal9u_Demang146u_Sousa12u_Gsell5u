@@ -98,6 +98,10 @@ public abstract class Item {
 		switch (id) {
 			case 0:
 				return new PotionVie(posX,posY);
+			case 1:
+				return new Amulette(posX, posY);
+			case 2:
+				return new PotionForce(posX,posY);
 			default:
 				return null;
 		}

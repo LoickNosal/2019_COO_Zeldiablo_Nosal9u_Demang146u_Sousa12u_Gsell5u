@@ -65,13 +65,9 @@ public class MoteurGraphique {
 				Thread.sleep(10);
 
 			}
+			this.jeuEvolution.setFini(false);
+			this.gui.menu.setVisible(true);
 			Thread.sleep(100);
-
-			if(this.jeuEvolution.etreFini())
-			{
-				this.gui.menu.setVisible(true);
-				this.jeuEvolution.setFini(false);
-			}
 		}
 
 

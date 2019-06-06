@@ -110,6 +110,7 @@ abstract public class Entite{
 
     /**
      * permet de savoir si une entite peut se deplacer sur les ces coordonnées
+     *check si l'aventurier n'avance pas sur une case et EST VIVANT
      * @param posX coordonnée x a tester en pixel
      * @param posY coordonnée y a tester en pixel
      * @return true si le joueur peut avancer

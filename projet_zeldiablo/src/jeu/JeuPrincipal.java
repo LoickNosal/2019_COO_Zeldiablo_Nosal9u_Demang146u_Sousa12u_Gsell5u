@@ -29,7 +29,7 @@ public class JeuPrincipal {
      * construit le modèle du jeu
      */
     public JeuPrincipal() {
-        this.level = 3;
+        this.level = 5;
         aventurier = new Aventurier(50, 100, 100, "Aventurier");
         jeuEvolution = new JeuEvolution(aventurier, this);
         chargerLVL(level);
@@ -87,6 +87,14 @@ public class JeuPrincipal {
                     break;
                 case 4:
                     json = chargerJSON("lvl4.json");
+                    decoderJSON(json);
+                    break;
+                case 5:
+                	json = chargerJSON("lvl5.json");
+                    decoderJSON(json);
+                    break;
+                case 6:
+                	json = chargerJSON("lvl6.json");
                     decoderJSON(json);
                     break;
                 default:
