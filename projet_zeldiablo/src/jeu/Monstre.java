@@ -43,15 +43,13 @@ public abstract class Monstre extends Entite {
 	public abstract void comportement();
 
 
-	/**
-	 * permet d'attaquer l'aventurier en cible s'il est a portée
-	 */
-	public void attaquer() {
-		int distance = (int) distanceEntite(cible.getX(), cible.getY(), x, y);
-		//Math.abs(distance);
+	public boolean attaquer() {
+		int distance = (int) Math.sqrt(Math.pow(cible.getX() - x, 2) + Math.pow(cible.getY() - y, 2));
 		if(distance <= portee) {
 			cible.subirDegat(degat);
+			return true;
 		}
+		return false;
 	}
 
 	/**
