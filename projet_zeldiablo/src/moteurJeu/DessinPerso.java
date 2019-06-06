@@ -17,6 +17,7 @@ import java.net.URLDecoder;
 public class DessinPerso implements DessinJeu{
 
 	private int compteur;
+	private int compteurBoss;
 	private int saut;
 	private JeuEvolution jeuEvolution;
 
