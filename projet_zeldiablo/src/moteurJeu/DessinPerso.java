@@ -27,6 +27,7 @@ public class DessinPerso implements DessinJeu{
 	private Image potion;
 	private Image caseMine;
 	private Image caseMineDesac;
+	private Image amulette;
 
 	private Image[] perso_droite;
 	private Image[] perso_gauche;
@@ -79,6 +80,7 @@ public class DessinPerso implements DessinJeu{
 			epee[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("epeeg.png").getPath(), "UTF-8")));
 			//potion
 			potion = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("potionVie.png").getPath(), "UTF-8")));
+			amulette = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("amulette.png").getPath(), "UTF-8")));
 		}catch (Exception e){
 			System.out.println("Probleme avec l'image");
 			e.printStackTrace();
@@ -147,6 +149,7 @@ public class DessinPerso implements DessinJeu{
 		for (Item i:jeuEvolution.getItems()) {
 			switch(i.getId()){
 				case 0 : g.drawImage(potion, i.getPosX()* Case.TAILLE+5, i.getPosY()*Case.TAILLE+5, 50,50,null);
+				case 1 : g.drawImage(amulette, i.getPosX()* Case.TAILLE+10, i.getPosY()*Case.TAILLE+10, 30,30,null);
 			}
 		}
 
@@ -215,9 +218,7 @@ public class DessinPerso implements DessinJeu{
 			g.setColor(new Color(0,0,0,120));
 			g.fill(new Rectangle(0,0,900,900));
 			g.setColor(Color.WHITE);
-			g.drawString("GAME OVER", 150, 350);
-			g.setFont(new Font(null, Font.PLAIN, 45));
-			g.drawString("Appuyez sur Echap pour revenir au menu",20,500);
+			g.drawString("GAME OVER", 150, 450);
 		}
 		
 	}
