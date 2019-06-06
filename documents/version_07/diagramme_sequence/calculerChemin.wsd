@@ -1,0 +1,27 @@
+@startuml 
+title méthode comportement() du Boss
+participant JeuEvolution <<(C,#ADD1B2)>>
+participant Boss <<(C,#ADD1B2)>>
+
+activate JeuEvolution
+JeuEvolution -> Boss : comportement()
+activate Boss
+
+alt compteurPas > 0
+Boss -> Boss : seDeplacer(deplacementEnCours)
+
+else
+Boss -> Boss : calculPosCible()
+activate Boss
+Boss --> Boss : true
+deactivate Boss
+
+alt cibleBouger == true
+Boss -> Boss : calculerChemin()
+end
+end
+
+Boss --> JeuEvolution
+deactivate Boss
+
+@enduml
