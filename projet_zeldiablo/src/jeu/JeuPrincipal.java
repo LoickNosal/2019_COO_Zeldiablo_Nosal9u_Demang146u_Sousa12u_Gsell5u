@@ -11,7 +11,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Démarre le jeu et charge les differents niveaux
@@ -26,16 +25,17 @@ public class JeuPrincipal {
     private Aventurier aventurier;
     /** le level du jeu (etage du laybrinthe) */
     private int level;
+    /** permet de changer le level de depart (debug) */
+    private static int levelDebut = 1;
 
 
     /**
      * construit le modele du jeu
      */
     public JeuPrincipal() {
-        this.level = 1;
+        //restart();
         aventurier = new Aventurier(50, 100, 100, "Aventurier");
         jeuEvolution = new JeuEvolution(aventurier, this);
-        chargerLVL(level);
         DessinPerso dp = new DessinPerso(jeuEvolution);
 
         // classe qui lance le moteur de jeu generique
@@ -58,37 +58,14 @@ public class JeuPrincipal {
      */
     public void chargerLVL(int lvl) {
         try {
-            JSONObject json;
-            switch (lvl) {
-                case 1:
-                    json = chargerJSON("maps/lvl1.json");
-                    decoderJSON(json);
-                    break;
-                case 2:
-                    json = chargerJSON("maps/lvl2.json");
-                    decoderJSON(json);
-                    break;
-                case 3:
-                    json = chargerJSON("maps/lvl3.json");
-                    decoderJSON(json);
-                    break;
-                case 4:
-                    json = chargerJSON("maps/lvl4.json");
-                    decoderJSON(json);
-                    break;
-                case 5:
-                	json = chargerJSON("maps/lvl5.json");
-                    decoderJSON(json);
-                    break;
-                case 6:
-                	json = chargerJSON("maps/lvl6.json");
-                    decoderJSON(json);
-                    break;
-                default:
-                    break;
-            }
-        } catch (ParseException | IOException e) {
-            System.out.println("chargement impossible");
+            JSONObject json = chargerJSON("maps/lvl" + lvl +".json");
+            decoderJSON(json);
+        } catch (ParseException e) {
+            System.out.printf("fichier \"lvl%d.json\" corrompu", lvl);
+        } catch (IOException e) {
+            System.out.printf("Chargement du fichier \"lvl%d.json\" impossible", lvl);
+        } catch (NullPointerException e) {
+            System.out.printf("fichier \"lvl%d.json\" introuvable\n", lvl);
         }
     }
 
@@ -100,9 +77,9 @@ public class JeuPrincipal {
      * @throws IOException    erreur dans l'url du fichier
      * @throws ParseException erreur avec le JSON
      */
-    private JSONObject chargerJSON(String fichier) throws IOException, ParseException {
+    private JSONObject chargerJSON(String fichier) throws IOException, ParseException, NullPointerException {
         JSONParser parser = new JSONParser();
-        String path = URLDecoder.decode(Objects.requireNonNull(getClass().getClassLoader().getResource(fichier)).getPath(), "UTF-8");
+        String path = URLDecoder.decode((getClass().getClassLoader().getResource(fichier)).getPath(), "UTF-8");
         Object obj = parser.parse(new FileReader(path));
         return (JSONObject) obj;
     }
@@ -169,7 +146,7 @@ public class JeuPrincipal {
      * permet de recharger le premier niveau (redemarrage jeu)
      */
     public void restart() {
-        level = 1;
+        level = levelDebut;
         chargerLVL(level);
     }
 
