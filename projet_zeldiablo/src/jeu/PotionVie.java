@@ -2,7 +2,7 @@ package jeu;
 
 /**
  * modelise une potion de vie
- * @author Lo�ck
+ * @author Loick
  *
  */
 public class PotionVie extends Item{
