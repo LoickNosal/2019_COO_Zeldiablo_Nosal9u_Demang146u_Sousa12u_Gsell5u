@@ -16,6 +16,8 @@ public class Boss extends Monstre {
 	protected int compteurPas, pasParCase;
 	/** direction pour le sprite, true=droite */
 	protected boolean direction;
+    /** attaque pour le sprite, true=attaque en cours */
+	protected boolean attaque;
 
 	public Boss(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pDegat, pPortee, pNom);
@@ -60,7 +62,7 @@ public class Boss extends Monstre {
 
         }
 
-    	attaquer();
+		attaque = attaquer();
 	}
 
 
@@ -275,5 +277,9 @@ public class Boss extends Monstre {
 
     public boolean getDirection() {
         return direction;
+    }
+
+    public boolean getAttaque() {
+        return attaque;
     }
 }

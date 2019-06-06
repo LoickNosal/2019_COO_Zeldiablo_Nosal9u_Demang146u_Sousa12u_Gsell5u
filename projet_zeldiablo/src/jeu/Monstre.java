@@ -40,12 +40,14 @@ public abstract class Monstre extends Entite {
 	public abstract void comportement();
 
 
-	public void attaquer() {
+	public boolean attaquer() {
 		int distance = (int) Math.sqrt(Math.pow(cible.getX() - x, 2) + Math.pow(cible.getY() - y, 2));
 		//Math.abs(distance);
 		if(distance <= portee) {
 			cible.subirDegat(degat);
+			return true;
 		}
+		return false;
 	}
 
 	/**
