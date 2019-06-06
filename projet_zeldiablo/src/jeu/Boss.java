@@ -24,6 +24,7 @@ public class Boss extends Monstre {
 		cibleY = py / Case.TAILLE;
 		suiteDeDeplacement = new ArrayDeque<>();
 		deplacementEnCours = ' ';
+		direction = true;
 		pasParCase = Case.TAILLE / vitesse;
 		compteurPas = 0;
 		this.vitesse = 4;
@@ -51,6 +52,10 @@ public class Boss extends Monstre {
                 deplacementEnCours = suiteDeDeplacement.pollFirst();
                 compteurPas = pasParCase;
                 //System.out.println("#" + deplacementEnCours);
+                if (deplacementEnCours == 'E')
+                    direction = true;
+                else if (deplacementEnCours == 'O')
+                    direction = false;
             }
 
         }
@@ -268,7 +273,7 @@ public class Boss extends Monstre {
         return posApres;
     }
 
-    public char getDeplacementEnCours() {
-        return deplacementEnCours;
+    public boolean getDirection() {
+        return direction;
     }
 }
