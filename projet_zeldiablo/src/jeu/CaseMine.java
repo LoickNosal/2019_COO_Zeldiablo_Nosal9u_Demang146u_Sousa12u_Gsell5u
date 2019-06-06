@@ -7,6 +7,11 @@ package jeu;
  */
 public class CaseMine extends Case{
 
+	/**
+	 * constructeur
+	 * @param x pos x
+	 * @param y pos y
+	 */
 	public CaseMine(int x, int y) {
 		if (x < 0) {
 		x = 0;

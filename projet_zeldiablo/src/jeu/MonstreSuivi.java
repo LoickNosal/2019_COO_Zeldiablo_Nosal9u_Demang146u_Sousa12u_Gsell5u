@@ -6,14 +6,33 @@ package jeu;
  *
  */
 public class MonstreSuivi extends Monstre{
+	
+	/**
+	 * pour savoir quand le monstre se deplace d'une case entiere
+	 */
 	private int compteur_pas = 0;
+	/**
+	 * direction du monstre
+	 */
 	private char direction = 'd';
 
+	/**
+	 * constructeur du monstre Suivi
+	 * @param pPv
+	 * @param px
+	 * @param py
+	 * @param pDegat
+	 * @param pPortee
+	 * @param pNom
+	 */
 	public MonstreSuivi(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pDegat, pPortee, pNom);
 		this.id = 3;
 	}
-
+	
+	/**
+	 * le comportement du monstre suivi (esseye de se rapprocher du personnage"
+	 */
 	public void comportement() {
 		
     	if(compteur_pas == 0) {

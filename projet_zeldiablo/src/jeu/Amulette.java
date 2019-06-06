@@ -7,6 +7,11 @@ package jeu;
  */
 public class Amulette extends Item{
 
+	/**
+	 * constructeur 
+	 * @param x position x 
+	 * @param y position y
+	 */
 	public Amulette(int x, int y) {
 		super(x, y);
 		this.id = 1;

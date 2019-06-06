@@ -6,22 +6,22 @@ import moteurJeu.DessinPerso;
 import org.junit.Test;
 
 /*
- * Classe abstraite qui mod�le une case
- * @author Nosal Lo�ck
+ * Classe abstraite qui modelise une case
+ * @author Nosal Loick
  */
 public abstract class Case {
 	
 	/**
-	 * taille d'une case (carr�)
+	 * taille d'une case (carre)
 	 */
 	public static int TAILLE = 60;
 	
 	/**
-	 * Coordonn�es x de la case
+	 * Coordonnees x de la case
 	 */
 	protected int posX;
 	/**
-	 * Coordonn�es y de la case
+	 * Coordonnees y de la case
 	 */
 	protected int posY;
 	/*
@@ -66,14 +66,14 @@ public abstract class Case {
 	 */
 	public abstract boolean peutTraverser();
 	
-		/**
-		* renvoit un int en fonction du type de case
-		* renvoit 0 : case vide
-		* renvoit 1 : mur
-		* renvoit 2 : sortie du labyrinthe
-		* @return int en fonction du type de case
-		*/
-		public abstract int typeCase();
+	/**
+	* renvoit un int en fonction du type de case
+	* renvoit 0 : case vide
+	* renvoit 1 : mur
+	* renvoit 2 : sortie du labyrinthe
+	* @return int en fonction du type de case
+	*/
+	public abstract int typeCase();
 	
 
 	

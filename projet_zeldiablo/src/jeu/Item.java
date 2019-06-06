@@ -90,7 +90,6 @@ public abstract class Item {
 	
 	/**
 	 * creer un monstre a partir d'un ID
-	 *
 	 * @param id id du monstre a creer
 	 * @return le monstre correspondant a l'ID
 	 */
@@ -107,6 +106,10 @@ public abstract class Item {
 		}
 	}
 
+	/**
+	 * renvoit l'id de la case
+	 * @return id 
+	 */
 	public int getId() {
 		return id;
 	}

@@ -1,15 +1,31 @@
 package jeu;
 
 /**
- * Classe qui modélise un monstre
+ * Classe qui modelise un monstre
  * @author Alexandre Sousa
  *
  */
 public abstract class Monstre extends Entite {
+
+	/**
+	 * id du monstre unique
+	 */
 	protected int id;
+	/**
+	 * degat du monstre
+	 */
 	protected int degat;
+	/**
+	 * portee du monstre
+	 */
 	protected int portee;
+	/**
+	 * pv maximum du monstre
+	 */
 	protected int pvMax;
+	/**
+	 * la cible du monstre
+	 */
 	protected Aventurier cible;
 
 	/**
@@ -37,9 +53,14 @@ public abstract class Monstre extends Entite {
 		this.vitesse = 3;
 	}
 	
+	/**
+	 * gere le comportement du monstre (deplacement/attaque)
+	 */
 	public abstract void comportement();
 
-
+	/**
+	 *permet d'attaquer la cible
+	 */
 	public void attaquer() {
 		int distance = (int) Math.sqrt(Math.pow(cible.getX() - x, 2) + Math.pow(cible.getY() - y, 2));
 		//Math.abs(distance);

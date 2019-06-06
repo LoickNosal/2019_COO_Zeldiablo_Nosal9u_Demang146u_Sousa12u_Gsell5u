@@ -10,12 +10,19 @@ import java.io.IOException;
 import java.net.URLDecoder;
 
 public class Menu extends JPanel {
-
+	
+	/**
+	 * le jeu du menu
+	 */
     private JeuEvolution jeu;
 
-    public Menu(JeuEvolution jaj){
+    /**
+     * constructeur du menu
+     * @param jaj jeu du menu
+     */
+    public Menu(JeuEvolution jeu){
         super();
-        this.jeu = jaj;
+        this.jeu = jeu;
         setPreferredSize(new Dimension(1200,1200));
         setBackground(Color.WHITE);
         setLayout(null);
@@ -46,12 +53,17 @@ public class Menu extends JPanel {
         add(j);
 
     }
-
+    /**
+     * permet de faire disparaitre le menu
+     */
     public void disparaitre()
     {
         setVisible(false);
     }
-
+    /**
+     * permet de faire apparaitre le menu
+     * @return
+     */
     public boolean visible()
     {
         return isVisible();
@@ -70,7 +82,11 @@ public class Menu extends JPanel {
 
         g.drawImage(menu, 0,0,this);
     }
-
+    
+    /**
+     * ajoute le jeu au menu
+     * @param j permet d'ajouter le jeu
+     */
     public void ajouterJeu(JeuEvolution j)
     {
         this.jeu = j;

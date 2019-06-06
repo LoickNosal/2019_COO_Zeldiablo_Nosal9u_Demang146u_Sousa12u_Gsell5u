@@ -1,7 +1,7 @@
 package jeu;
 /**
  * @author Nosal Loick
- * Classe qui mod2lise un mur
+ * Classe qui modelise un mur
  */
 public class Mur extends Case {
 	
