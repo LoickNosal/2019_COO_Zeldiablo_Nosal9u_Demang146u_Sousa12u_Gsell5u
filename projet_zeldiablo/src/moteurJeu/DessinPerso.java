@@ -215,9 +215,7 @@ public class DessinPerso implements DessinJeu{
 			g.setColor(new Color(0,0,0,120));
 			g.fill(new Rectangle(0,0,900,900));
 			g.setColor(Color.WHITE);
-			g.drawString("GAME OVER", 150, 350);
-			g.setFont(new Font(null, Font.PLAIN, 45));
-			g.drawString("Appuyez sur Echap pour revenir au menu",20,500);
+			g.drawString("GAME OVER", 150, 450);
 		}
 		
 	}
