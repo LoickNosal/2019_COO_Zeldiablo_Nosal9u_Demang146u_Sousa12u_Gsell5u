@@ -250,6 +250,7 @@ public class JeuEvolution implements Jeu {
 			compteurWin++;
 		if(compteurWin>300){
 			compteurWin=0;
+			this.aGagner=false;
 			this.fini = true;
 		}
 	}
