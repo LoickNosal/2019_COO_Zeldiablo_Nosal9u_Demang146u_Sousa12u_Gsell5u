@@ -26,6 +26,7 @@ public class Boss extends Monstre {
 		deplacementEnCours = ' ';
 		pasParCase = Case.TAILLE / vitesse;
 		compteurPas = 0;
+		this.vitesse = 4;
 	}
 
 	public void comportement() {
@@ -267,5 +268,7 @@ public class Boss extends Monstre {
         return posApres;
     }
 
-
+    public char getDeplacementEnCours() {
+        return deplacementEnCours;
+    }
 }
