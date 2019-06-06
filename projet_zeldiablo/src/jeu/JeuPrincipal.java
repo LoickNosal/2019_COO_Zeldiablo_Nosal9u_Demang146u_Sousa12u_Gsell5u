@@ -38,7 +38,7 @@ public class JeuPrincipal {
      * construit le modele du jeu
      */
     public JeuPrincipal() {
-        this.level = 5;
+        this.level = 1;
         aventurier = new Aventurier(50, 100, 100, "Aventurier");
         jeuEvolution = new JeuEvolution(aventurier, this);
         chargerLVL(level);

@@ -6,7 +6,7 @@ package jeu;
  *
  */
 public class MonstreSuivi extends Monstre{
-	
+
 	/**
 	 * pour savoir quand le monstre se deplace d'une case entiere
 	 */
@@ -17,24 +17,27 @@ public class MonstreSuivi extends Monstre{
 	private char direction = 'd';
 
 	/**
-	 * constructeur du monstre Suivi
-	 * @param pPv
-	 * @param px
-	 * @param py
-	 * @param pDegat
-	 * @param pPortee
-	 * @param pNom
+	 * Constructeur
+	 * @param pPv pv du monstre
+	 * @param px abscisse du monstre
+	 * @param py ordonnée du mostre
+	 * @param pDegat dégat du monstre
+	 * @param pPortee portée du monstre
+	 * @param pNom nom du monstre
 	 */
 	public MonstreSuivi(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pDegat, pPortee, pNom);
 		this.id = 3;
 	}
-	
+
 	/**
-	 * le comportement du monstre suivi (esseye de se rapprocher du personnage"
+	 * determine les déplacement du monstres la position du personnage
+	 * le monstre peut se bloquer dans les murs et attaque l'aventurier en cible s'il
+	 * est a portée
 	 */
+	@Override
 	public void comportement() {
-		
+
     	if(compteur_pas == 0) {
     		Labyrinthe lab = this.getLab();
         	int pxc = cible.getX()/ Case.TAILLE;
@@ -45,20 +48,20 @@ public class MonstreSuivi extends Monstre{
         	int futurePosX = px;
         	int futurePosY = py;
         	int futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
-        	
+
         	futurePosX += 1;
         	futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
         	if(futureDistance >= distance) { // TEST EST
         		futurePosX -= 1;
-        		futurePosY += 1; 
+        		futurePosY += 1;
         		futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
             	if(futureDistance >= distance) { // TEST SUD
             		futurePosY -= 1;
-            		futurePosX -= 1; 
+            		futurePosX -= 1;
             		futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
                 	if(futureDistance >= distance ) { // TEST OUEST
                 		futurePosX += 1;
-                		futurePosY -= 1; 
+                		futurePosY -= 1;
                 		futureDistance = (int) distanceEntite(pxc, pyc, futurePosX, futurePosY);
                     	if(futureDistance >= distance) { // TEST NORD
                     		futurePosY += 1;
@@ -79,7 +82,7 @@ public class MonstreSuivi extends Monstre{
         			direction = 'E';
         	}
     	}
-    	
+
     	seDeplacer(direction);
     	compteur_pas += 1;
     	if(compteur_pas == Case.TAILLE/vitesse) {
@@ -87,5 +90,5 @@ public class MonstreSuivi extends Monstre{
     	}
     	attaquer();
 	}
-	
+
 }

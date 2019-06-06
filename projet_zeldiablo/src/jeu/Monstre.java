@@ -29,13 +29,13 @@ public abstract class Monstre extends Entite {
 	protected Aventurier cible;
 
 	/**
-	 * Constructeur qui modélise un monstre
-	 * @param pPv
-	 * @param px
-	 * @param py
-	 * @param pDegat
-	 * @param pPortee
-	 * @param pNom
+	 * Constructeur qui crée un monstre
+	 * @param pPv pv du monstre
+	 * @param px abscisse du monstre
+	 * @param py ordonnée du mostre
+	 * @param pDegat dégat du monstre
+	 * @param pPortee portée du monstre
+	 * @param pNom nom du monstre
 	 */
 	public Monstre(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pNom);
@@ -52,7 +52,7 @@ public abstract class Monstre extends Entite {
 		this.pvMax = pPv;
 		this.vitesse = 3;
 	}
-	
+
 	/**
 	 * gere le comportement du monstre (deplacement/attaque)
 	 */
@@ -63,10 +63,11 @@ public abstract class Monstre extends Entite {
 	 */
 	public void attaquer() {
 		int distance = (int) Math.sqrt(Math.pow(cible.getX() - x, 2) + Math.pow(cible.getY() - y, 2));
-		//Math.abs(distance);
 		if(distance <= portee) {
 			cible.subirDegat(degat);
+			return true;
 		}
+		return false;
 	}
 
 	/**
@@ -110,7 +111,7 @@ public abstract class Monstre extends Entite {
 	public int getId() {
 		return id;
 	}
-	
+
 	public int getDegat() {
 		return degat;
 	}
@@ -122,11 +123,11 @@ public abstract class Monstre extends Entite {
 	public int getPvMax() {
     	return this.pvMax;
     }
-	
+
 	public Aventurier getCible() {
 		return cible;
 	}
-	
+
 	public void setCible(Aventurier av) {
 		cible = av;
 	}

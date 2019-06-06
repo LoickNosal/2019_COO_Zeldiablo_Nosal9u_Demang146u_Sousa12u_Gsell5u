@@ -27,6 +27,10 @@ public class Boss extends Monstre {
 	 * 
 	 */
 	protected int compteurPas, pasParCase;
+	/** direction pour le sprite, true=droite */
+	protected boolean direction;
+    /** attaque pour le sprite, true=attaque en cours */
+	protected boolean attaque;
 
 	public Boss(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pDegat, pPortee, pNom);
@@ -35,6 +39,7 @@ public class Boss extends Monstre {
 		cibleY = py / Case.TAILLE;
 		suiteDeDeplacement = new ArrayDeque<>();
 		deplacementEnCours = ' ';
+		direction = true;
 		pasParCase = Case.TAILLE / vitesse;
 		compteurPas = 0;
 		this.vitesse = 6;
@@ -62,11 +67,15 @@ public class Boss extends Monstre {
                 deplacementEnCours = suiteDeDeplacement.pollFirst();
                 compteurPas = pasParCase;
                 //System.out.println("#" + deplacementEnCours);
+                if (deplacementEnCours == 'E')
+                    direction = true;
+                else if (deplacementEnCours == 'O')
+                    direction = false;
             }
 
         }
 
-    	attaquer();
+		attaque = attaquer();
 	}
 
 
@@ -279,5 +288,11 @@ public class Boss extends Monstre {
         return posApres;
     }
 
+    public boolean getDirection() {
+        return direction;
+    }
 
+    public boolean getAttaque() {
+        return attaque;
+    }
 }
