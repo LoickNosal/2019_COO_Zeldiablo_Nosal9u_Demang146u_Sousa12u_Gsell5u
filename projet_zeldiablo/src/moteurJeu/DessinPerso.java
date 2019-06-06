@@ -30,6 +30,7 @@ public class DessinPerso implements DessinJeu{
 	private Image caseMineDesac;
 	private Image amulette;
 	private Image potionForce;
+	private Image bravo;
 
 	private Image[] perso_droite;
 	private Image[] perso_gauche;
@@ -95,6 +96,8 @@ public class DessinPerso implements DessinJeu{
 			initialiserReaper();
 			//potionforce
 			potionForce = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("potionForce.png").getPath(), "UTF-8")));
+			//gagner
+			bravo = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("bravo.gif").getPath(), "UTF-8")));
 		}catch (Exception e){
 			System.out.println("Probleme avec l'image");
 			e.printStackTrace();
@@ -196,7 +199,17 @@ public class DessinPerso implements DessinJeu{
 		{
 			g.drawImage(mort, jeuEvolution.getAventurier().getX()-20, jeuEvolution.getAventurier().getY()-50, 45,60,null);
 		}
+
 		this.gestionVie(g);
+
+		if(jeuEvolution.aGagner()){
+			g.setFont(new Font(null, Font.PLAIN, 100));
+			g.setColor(new Color(0,0,0,120));
+			g.fill(new Rectangle(0,0,900,900));
+			g.setColor(Color.YELLOW);
+			g.drawImage(bravo, 0,0,null);
+
+		}
 		g.dispose();
 	}
 	
