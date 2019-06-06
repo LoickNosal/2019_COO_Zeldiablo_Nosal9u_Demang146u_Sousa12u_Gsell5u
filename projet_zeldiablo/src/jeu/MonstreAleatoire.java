@@ -21,8 +21,9 @@ public class MonstreAleatoire extends Monstre {
 
 
 	/**
-	 * fait bouger le monstre dans sa direction aleatoire,
+	 * fait bouger le monstre dans sa direction aleatoirement,
 	 * change de direction si il touche un osbtacle ou si le timer est fini
+	 * et attaque l'aventurier en cible s'il est a portée
 	 */
 	@Override
 	public void comportement() {
