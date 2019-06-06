@@ -163,7 +163,7 @@ public class JeuEvolution implements Jeu {
 		int px = this.aventurier.getX();
 		int py = this.aventurier.getY();
 		
-		if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 2) {
+		if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 2 && this.monstres.isEmpty()) {
 				jeuPrincipal.chargerLVLSuivant();
 		}else if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 3) {
 				this.aventurier.subirDegat(10);
