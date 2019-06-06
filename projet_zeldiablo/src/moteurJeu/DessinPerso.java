@@ -312,6 +312,7 @@ public class DessinPerso implements DessinJeu{
 
 		this.gestionVie(g);
 
+		//quand le joueur gagne la partie
 		if(jeuEvolution.aGagner()){
 			g.setFont(new Font(null, Font.PLAIN, 100));
 			g.setColor(new Color(0,0,0,120));
@@ -320,6 +321,13 @@ public class DessinPerso implements DessinJeu{
 			g.drawImage(bravo, 0,0,null);
 
 		}
+		
+		
+		//affichage de l'etage du labyrinthe
+		g.setFont(new Font(null, Font.BOLD, 40)); 
+		g.setColor(Color.black);
+		String texte = this.jeuEvolution.titreLVL;
+		g.drawString(texte, (380-texte.length()*4), 50);
 		g.dispose();
 	}
 	
