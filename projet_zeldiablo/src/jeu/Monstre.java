@@ -61,7 +61,7 @@ public abstract class Monstre extends Entite {
 	/**
 	 *permet d'attaquer la cible
 	 */
-	public void attaquer() {
+	public boolean attaquer() {
 		int distance = (int) Math.sqrt(Math.pow(cible.getX() - x, 2) + Math.pow(cible.getY() - y, 2));
 		if(distance <= portee) {
 			cible.subirDegat(degat);
