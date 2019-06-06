@@ -28,6 +28,7 @@ public class DessinPerso implements DessinJeu{
 	private Image caseMine;
 	private Image caseMineDesac;
 	private Image amulette;
+	private Image potionForce;
 
 	private Image[] perso_droite;
 	private Image[] perso_gauche;
@@ -81,6 +82,7 @@ public class DessinPerso implements DessinJeu{
 			//potion
 			potion = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("potionVie.png").getPath(), "UTF-8")));
 			amulette = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("amulette.png").getPath(), "UTF-8")));
+			potionForce = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("potionForce.png").getPath(), "UTF-8")));
 		}catch (Exception e){
 			System.out.println("Probleme avec l'image");
 			e.printStackTrace();
@@ -149,7 +151,11 @@ public class DessinPerso implements DessinJeu{
 		for (Item i:jeuEvolution.getItems()) {
 			switch(i.getId()){
 				case 0 : g.drawImage(potion, i.getPosX()* Case.TAILLE+5, i.getPosY()*Case.TAILLE+5, 50,50,null);
+					break;
 				case 1 : g.drawImage(amulette, i.getPosX()* Case.TAILLE+10, i.getPosY()*Case.TAILLE+10, 30,30,null);
+					break;
+				case 2 : g.drawImage(potionForce, i.getPosX()* Case.TAILLE+5, i.getPosY()*Case.TAILLE+5, 50,50,null);
+					break;
 			}
 		}
 
