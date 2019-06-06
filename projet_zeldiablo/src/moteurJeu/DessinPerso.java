@@ -16,33 +16,110 @@ import java.net.URLDecoder;
  */
 public class DessinPerso implements DessinJeu{
 
+	/**
+	 * Permet l'affichage fluide de l'animation du personnage
+	 */
 	private int compteur;
+	/**
+	 * Permet l'affichage fluide de l'animation du boss
+	 */
 	private int compteurBoss;
+	/**
+	 * Permet au Boss d'avoir une animation d'attaque
+	 */
 	private boolean modeAttaqueBoss;
+	/**
+	 * Permet d'avoir une variable pour le saut du personnage, pour la distance du saut;
+	 */
 	private int saut;
+	/**
+	 * Rattachement à JeuEvolution pour faire evoluer les images avec le jeu
+	 */
 	private JeuEvolution jeuEvolution;
-
+	/**
+	 * Image du mur
+	 */
 	private Image mur;
+	/**
+	 * Image de la porte
+	 */
 	private Image porte;
+	/**
+	 * Image de la case vide
+	 */
 	private Image casevide;
+	/**
+	 * Image de la case piege
+	 */
 	private Image casePiege;
+	/**
+	 * Image du squelette su personnage
+	 */
 	private Image mort;
+	/**
+	 * Image de la potion de vie
+	 */
 	private Image potion;
+	/**
+	 * Image de la case mine
+	 */
 	private Image caseMine;
+	/**
+	 * Image de la case mine desactivée
+	 */
 	private Image caseMineDesac;
+	/**
+	 * Image de l'amulette
+	 */
 	private Image amulette;
+	/**
+	 * Image de la potion de force
+	 */
 	private Image potionForce;
+	/**
+	 * Image du message Bravo
+	 */
 	private Image bravo;
 
+	/**
+	 * Tableau des sprites du perso qui marche vers la droite
+	 */
 	private Image[] perso_droite;
+	/**
+	 * Tableau des sprites du perso qui marche vers la gacuhe
+	 */
 	private Image[] perso_gauche;
+	/**
+	 * Tableau des sprites du slime vert
+	 */
 	private Image[] slime_vert;
+	/**
+	 * Tableau des sprites du slime rouge
+	 */
 	private Image[] slime_rouge;
+	/**
+	 * Tableau des sprites du slime violet
+	 */
 	private Image[] slime_violet;
+	/**
+	 * Tableau des sprites de l'epee
+	 */
 	private Image[] epee;
+	/**
+	 * Tableau des sprites du reaper qui attaque à droite
+	 */
 	private Image[] grim_a_d;
+	/**
+	 * Tableau des sprites du reaper qui attaque à gauche
+	 */
 	private Image[] grim_a_g;
+	/**
+	 * Tableau des sprites du reaper qui bouge pas en direction de la droite
+	 */
 	private Image[] grim_i_d;
+	/**
+	 * Tableau des sprites du reaper qui bouge pas en direction de la gauche
+	 */
 	private Image[] grim_i_g;
 
 	public static int TAILLE_CASE = Case.TAILLE;
