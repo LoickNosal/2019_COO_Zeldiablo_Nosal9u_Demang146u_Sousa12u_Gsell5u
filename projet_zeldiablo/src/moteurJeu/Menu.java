@@ -34,8 +34,10 @@ public class Menu extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 disparaitre();
-                jeu.restart();
-                jeu.getAventurier().revivre();
+                if(jeu !=null) {
+                    jeu.restart();
+                    jeu.getAventurier().revivre();
+                }
             }
         });
 
