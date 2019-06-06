@@ -109,8 +109,10 @@ abstract public class Entite{
     }
 
     /**
-     * permet de detecter si l'entité entre en collision avec un obstacle
-     * @return true si le joueur peut traverser
+     * permet de savoir si une entite peut se deplacer sur les ces coordonnées
+     * @param posX coordonnée x a tester en pixel
+     * @param posY coordonnée y a tester en pixel
+     * @return true si le joueur peut avancer
      */
     public boolean peutAvancer(int posX, int posY) {
 		boolean res = false;
@@ -124,34 +126,35 @@ abstract public class Entite{
     /**
      * Fonction seDeplacer : on met les char des points cardinaux pour choisir la position dans laquelle l'Entite va avancer
      * @param cardinaux Les points cardinaux
+     * @return vrai si le replacement a reussi
      */
-    public void seDeplacer(char cardinaux) {
+    public boolean seDeplacer(char cardinaux) {
     	int futureposX = 0;
     	int futureposY = 0;
-    	
+
     	switch(cardinaux)
         {
             case 'N': 
-            futureposY = this.y-10; 
+            futureposY = this.y-vitesse;
             futureposX = this.x;
             break;
             
             case 'E': 
-            futureposX = this.x+10;
+            futureposX = this.x+vitesse;
             futureposY = this.y;
             break;
             
             case 'S': 
-            futureposY = this.y+10;
+            futureposY = this.y+vitesse;
             futureposX = this.x;
             break;
             
             case 'O': 
-            futureposX = this.x-10;
+            futureposX = this.x-vitesse;
             futureposY = this.y;
             break;
         }
-    	
+
     	if (peutAvancer(futureposX,futureposY) == true) {
     		switch(cardinaux)
             {
@@ -160,7 +163,9 @@ abstract public class Entite{
                 case 'S': this.y+=vitesse; break;
                 case 'O': this.x-=vitesse; break;
             }
+            return true;
 		}
+    	return false;
     }
     
     /**

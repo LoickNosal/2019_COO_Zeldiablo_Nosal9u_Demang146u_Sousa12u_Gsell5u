@@ -9,6 +9,7 @@ public class Labyrinthe {
     private final int TAILLE_MIN = 5;
     private final int TAILLE_MAX = 15;
     private Case[][] cases;
+    private int[][] empreinte;
 
 
     /**
@@ -60,7 +61,7 @@ public class Labyrinthe {
                 }
             }
         }
-
+        genereEmpreinte();
     }
 
 
@@ -81,21 +82,16 @@ public class Labyrinthe {
     /**
      * indique si les positions x, y sont sur un obstacle du labyrinthe
      *
-     * @param x abscisse de la case
-     * @param y ordonnée de la case
+     * @param posX coordonnée x a tester en pixel
+     * @param posY coordonnée y a tester en pixel
      * @return vrai si la case est sur un obstacle
      */
-    public boolean estSurUnObstacle(int x, int y) {
-        for (int j = 0; j < this.getHauteur(); j++) {
-            for (int i = 0; i < this.getLargeur(); i++) {
-                if (cases[i][j].estDedans(x, y) && !cases[i][j].peutTraverser()) {
-                    return true;
-                }
-            }
-        }
-        return false;
+    public boolean estSurUnObstacle(int posX, int posY) {
+        int x = posX / Case.TAILLE;
+        int y = posY / Case.TAILLE;
+        return !cases[x][y].peutTraverser();
     }
-    
+
     public void activerPiege(int x, int y) {
     	if (x< 0) {
 			x = 0;
@@ -119,12 +115,12 @@ public class Labyrinthe {
 
     }
 
-   
-   public int typeCase(int x,int y) {
-	    if (x < 0 || x >= getLargeur() || y < 0 || y >= getHauteur())
-	        return -1;
-	     return cases[x][y].typeCase();
-	}
+
+    public int typeCase(int x, int y) {
+        if (x < 0 || x >= getLargeur() || y < 0 || y >= getHauteur())
+            return -1;
+        return cases[x][y].typeCase();
+    }
 
     public String toString() {
         String res = "";
@@ -196,6 +192,37 @@ public class Labyrinthe {
                 }
             }
         }
+    }
+
+
+    /**
+     * calcule une version simplifier du labyrinthe ou les cases sont numero,
+     * -1: case vide, -2: mur
+     * Utiliser pour l'algorithme de Lee
+     */
+    private void genereEmpreinte() {
+        empreinte = new int[getLargeur()][getHauteur()];
+        for (int j = 0; j < getHauteur(); j++) {
+            for (int i = 0; i < getLargeur(); i++) {
+                if (cases[i][j].peutTraverser())
+                    empreinte[i][j] = -1;
+                else
+                    empreinte[i][j] = -2;
+            }
+        }
+    }
+
+
+    /**
+     * retourne un clone de l'empreinte du labyrinthe
+     * @return clone de l'empreinte
+     */
+    public int[][] getEmpreinte() {
+        int[][] clone = new int[getLargeur()][];
+        for (int i = 0; i < clone.length; i++) {
+            clone[i] = empreinte[i].clone();
+        }
+        return clone;
     }
 
 }

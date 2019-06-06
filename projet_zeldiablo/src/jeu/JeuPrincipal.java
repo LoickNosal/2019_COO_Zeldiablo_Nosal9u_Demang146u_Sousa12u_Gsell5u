@@ -146,7 +146,7 @@ public class JeuPrincipal {
                 int posX = ((Long) ((JSONArray) jsonM.get("pos")).get(0)).intValue();
                 int posY = ((Long) ((JSONArray) jsonM.get("pos")).get(1)).intValue();
                 posX = posX * Case.TAILLE + Case.TAILLE / 2;
-                posY = posY * Case.TAILLE + Case.TAILLE / 2;
+                posY = (int) (posY * Case.TAILLE + Case.TAILLE * 0.7);
                 Monstre m = Monstre.creerMonstreParID(id, posX, posY);
                 m.setLabyrinthe(labyrinthe);
                 m.setCible(aventurier);

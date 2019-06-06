@@ -6,22 +6,22 @@ import moteurJeu.DessinPerso;
 import org.junit.Test;
 
 /*
- * Classe abstraite qui modèle une case
- * @author Nosal Loïck
+ * Classe abstraite qui modï¿½le une case
+ * @author Nosal Loï¿½ck
  */
 public abstract class Case {
 	
 	/**
-	 * taille d'une case (carré)
+	 * taille d'une case (carrï¿½)
 	 */
 	public static int TAILLE = 60;
 	
 	/**
-	 * Coordonnées x de la case
+	 * Coordonnï¿½es x de la case
 	 */
 	protected int posX;
 	/**
-	 * Coordonnées y de la case
+	 * Coordonnï¿½es y de la case
 	 */
 	protected int posY;
 	/*
@@ -37,7 +37,7 @@ public abstract class Case {
 		return posY;
 	}
 	/**
-	 * indique si x, y appartient à la case
+	 * indique si x, y appartient ï¿½ la case
 	 * @param x coordonnee x a tester
 	 * @param y coordonnee y a tester
 	 * @return boolean qui indique si x,y est dans la case

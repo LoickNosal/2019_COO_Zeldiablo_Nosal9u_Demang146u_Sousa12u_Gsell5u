@@ -5,36 +5,52 @@ package jeu;
  * @author Alexandre Sousa
  *
  */
-public class MonstreAleatoire extends Monstre{
+public class MonstreAleatoire extends Monstre {
+
+	/** direction choisie aleatoirement */
+	protected char deplacement;
+	/** timer pour changer de direction */
+	protected int timer;
 
 	public MonstreAleatoire(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pDegat, pPortee, pNom);
 		id = 2;
+		deplacement = randomDir();
+		timer = (int) (Math.random() * 100);
 	}
 
 
+	/**
+	 * fait bouger le monstre dans sa direction aleatoire,
+	 * change de direction si il touche un osbtacle ou si le timer est fini
+	 */
 	@Override
 	public void comportement() {
-		int aleatoire = (int)(Math.random() * ((3) + 1));
-    	char deplacement = 'd';
-    	
-    	switch(aleatoire) {
-    	case 0:
-    		deplacement = 'N';
-    		break;
-    	case 1:
-    		deplacement = 'E';
-    		break;
-    	case 2:
-    		deplacement = 'S';
-    		break;
-    	case 3:
-    		deplacement = 'O';
-    		break;
-    	}
-    	
-    	seDeplacer(deplacement);
+		timer--;
+    	boolean bouger = seDeplacer(deplacement);
+    	if (!bouger || timer <= 0) {
+			deplacement = randomDir();
+			timer = (int) (Math.random() * 100);
+		}
 		attaquer();
+	}
+
+	/**
+	 * choisi une direction aleatoirement
+	 * @return un point cardinal
+	 */
+	protected char randomDir() {
+		switch ((int) (Math.random() * 4)) {
+			case 0:
+				return 'N';
+			case 1:
+				return 'E';
+			case 2:
+				return 'S';
+			case 3:
+			default:
+				return 'O';
+		}
 	}
 
 }

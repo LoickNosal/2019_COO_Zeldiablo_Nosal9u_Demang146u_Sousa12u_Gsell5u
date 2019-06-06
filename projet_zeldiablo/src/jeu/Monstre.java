@@ -42,11 +42,49 @@ public abstract class Monstre extends Entite {
 
 	public void attaquer() {
 		int distance = (int) Math.sqrt(Math.pow(cible.getX() - x, 2) + Math.pow(cible.getY() - y, 2));
-		Math.abs(distance);
+		//Math.abs(distance);
 		if(distance <= portee) {
 			cible.subirDegat(degat);
 		}
 	}
+
+	/**
+	 * Override pour contraindre le deplacement des monstres et faire en sort qu'il ne se colle pas les murs
+	 * @param cardinaux les points cardinaux
+	 * @return vrai si le deplacement a reussi
+	 */
+	@Override
+	public boolean seDeplacer(char cardinaux) {
+		boolean bouger = false;
+		switch(cardinaux) {
+			case 'N':
+				if (peutAvancer(x, (int) (y - vitesse - Case.TAILLE * 0.4))) {
+					y -= vitesse;
+					bouger = true;
+				}
+				break;
+			case 'E':
+				if (peutAvancer((int) (x + vitesse + Case.TAILLE * 0.4), y)) {
+					x += vitesse;
+					bouger = true;
+				}
+				break;
+			case 'S':
+				if (peutAvancer(x, y + vitesse)) {
+					y += vitesse;
+					bouger = true;
+				}
+				break;
+			case 'O':
+				if (peutAvancer((int) (x - vitesse - Case.TAILLE * 0.4), y)) {
+					x -= vitesse;
+					bouger = true;
+				}
+				break;
+		}
+		return bouger;
+	}
+
 
 	public int getId() {
 		return id;
