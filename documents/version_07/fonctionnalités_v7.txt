@@ -1,0 +1,26 @@
+﻿TODO:
+ - menu Echap
+ - passage niveau suivant qui si tout les monstres sont mort
+ - amulette pour fin du jeu
+ - level design
+ - tests
+ - diagramme
+ - debugage / reformatage / javadoc
+
+
+Fonctionnalites
+
+- Fonctionnalite 1 :
+	- responsable : demang146u
+
+- Fonctionnalite 2 : 
+	- responsable : nosal9u
+
+- Fonctionnalite 3 : 
+	- responsable : sousa12u
+
+- Fonctionnalite 4 :
+	- responsable : gsell5u
+
+
+Realisation :
