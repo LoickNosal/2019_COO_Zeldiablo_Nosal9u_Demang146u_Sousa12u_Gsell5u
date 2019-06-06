@@ -1,13 +1,11 @@
 package jeu;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
+import java.util.*;
 
 /**
  * Classe qui modelise un monstre se dirigeant vers l'aventurier
- * @author Louis Demange
  *
+ * @author Louis Demange
  */
 public class Boss extends MonstreSuivi {
 	
@@ -15,8 +13,6 @@ public class Boss extends MonstreSuivi {
 	private int cibleX, cibleY;
 	/** liste de deplacement pour atteindre la cible */
 	private Deque<Character> suiteDeDeplacement;
-    /**  */
-	private int pasParCase;
 	/** direction pour le sprite, true=droite */
 	private boolean direction;
     /** attaque pour le sprite, true=attaque en cours */
@@ -29,52 +25,44 @@ public class Boss extends MonstreSuivi {
 		cibleY = py / Case.TAILLE;
 		suiteDeDeplacement = new ArrayDeque<>();
 		deplacementEnCours = ' ';
-		direction = true;
-		pasParCase = Case.TAILLE / vitesse;
+		direction = false;
 		compteurPas = 0;
 		this.vitesse = 6;
 		this.degat = 8;
 	}
 
 	public void comportement() {
-
-
         // realise le deplacement en cours
 		if (compteurPas > 0) {
             seDeplacer(deplacementEnCours);
             compteurPas--;
-        // sinon prepare le prochain deplacement
+
+        // sinon charge le prochain deplacement
 		} else {
-
-            //System.out.println("This: " + x % Case.TAILLE + " " + y % Case.TAILLE);
-
+		    // recalcul le chemin si la cible a bouge
             boolean cibleBouger = calculPosCible();
-            if (cibleBouger) {
-                //System.out.println("Cible: " + cibleX + " " + cibleY);
+            if (cibleBouger)
                 calculerChemin();
-            }
 
             if (suiteDeDeplacement.size() > 0) {
                 deplacementEnCours = suiteDeDeplacement.pollFirst();
-                compteurPas = pasParCase;
-                //System.out.println("#" + deplacementEnCours);
+                compteurPas = Case.TAILLE / vitesse;
+                // pour le sprite
                 if (deplacementEnCours == 'E')
                     direction = true;
                 else if (deplacementEnCours == 'O')
                     direction = false;
             }
-
         }
-
 		attaque = attaquer();
 	}
 
 
     /**
-     * calcul la position de la cible sur la grille et dit si elle a bougé
+     * calcul la position de la cible sur la grille et indique si elle a bougé
      * @return vrai si la cible a bougé
      */
-    protected boolean calculPosCible() {
+    private boolean calculPosCible() {
 	    boolean bouger = false;
         if (cible.getX() / Case.TAILLE != cibleX) {
             cibleX = cible.getX() / Case.TAILLE;
@@ -89,32 +77,12 @@ public class Boss extends MonstreSuivi {
 
 
     /**
-     * calcul le chemin pour rejoindre la cible,
-     * @return liste de deplacement pour atteindre la cible
+     * calcul le chemin pour rejoindre la cible
      */
-    protected void calculerChemin() {
-        //System.out.println("Cible a bouger, recalculer chemin");
+    private void calculerChemin() {
         suiteDeDeplacement.clear();
-        /*int i = x;
-        int j = y;
-        for (int n = 0; n < 8; n++) { // recalcul une suite de 8 deplacement possible depuis la position actuel
-            char d = deplacementPossible(i, j).get((int) (Math.random() * deplacementPossible(i, j).size()));
-            suiteDeDeplacement.add(d);
-            int[] ij = getPosApres(i, j, d);
-            i = ij[0];
-            j = ij[1];
-        }*/
-
         int[][] empreinte = lab.getEmpreinte();
-        /*for (int j = 0; j < empreinte[0].length; j++) {
-            for (int i = 0; i < empreinte.length; i++) {
-                System.out.print(empreinte[i][j]);
-            }
-            System.out.println();
-        }*/
-
         lee(empreinte, x / Case.TAILLE, y / Case.TAILLE, cibleX, cibleY);
-
     }
 
 
@@ -131,57 +99,62 @@ public class Boss extends MonstreSuivi {
         //System.out.println("Start: " + startX + " " + startY);
         //System.out.println("Cible: " + cibleX + " " + cibleY);
 
-        laby[startX][startY] = 0;
+        laby[startX][startY] = 0; // initialise la premiere distance a 0
 
-        int[] dx = {0, 1, 0, -1}; // these arrays will help you travel in the 4 directions more easily
-        int[] dy = {-1, 0, 1, 0};
+        //int[] dx = {0, 1, 0, -1}; // these arrays will help you travel in the 4 directions more easily
+        //int[] dy = {-1, 0, 1, 0};
+        ArrayList<Integer[]> dir = new ArrayList<>(); // liste de deplacements possibles
+        dir.add(new Integer[] {0,-1});
+        dir.add(new Integer[] {1, 0});
+        dir.add(new Integer[] {0, 1});
+        dir.add(new Integer[] {-1,0});
 
 
-        Deque<Integer> X = new ArrayDeque<>(); // the queues used to get the positions in the matrix
+        Deque<Integer> X = new ArrayDeque<>(); // liste de position a explorer
         Deque<Integer> Y = new ArrayDeque<>();
-        X.add(startX); //initialize the queues with the start position
+        X.add(startX); // initialise avec la position de depart
         Y.add(startY);
 
         boolean trouver = false;
-        int distance = 0;
-        int x, y, cx, cy;
-        while(!trouver && !X.isEmpty()) // while there are still positions in the queue
-        {
-            x = X.getFirst(); // set the current position
+        int x, y, vx, vy;
+        while(!trouver && !X.isEmpty()) { // stop si il n'y a plus de position a tester ou si la cible a ete atteinte
+            // initialise la position
+            x = X.getFirst();
             y = Y.getFirst();
-            for(int i = 0; i < 4; i++)
-            {
-                cx = x + dx[i]; // travel in an adiacent cell from the current position
-                cy = y + dy[i];
-                if(laby[cx][cy] == -1) // test si la position est valide
-                {
-                    X.add(cx); // ajoute la position valide
-                    Y.add(cy);
-                    laby[cx][cy] = laby[x][y] + 1; // marque comme visité
+            // melange l'ordre d'exploration des deplacements
+            Collections.shuffle(dir);
+            for(int i = 0; i < 4; i++) {
+                // initialise la position voisine
+                vx = x + dir.get(i)[0];
+                vy = y + dir.get(i)[1];
 
-                    if (cx == cibleX && cy == cibleY) { // si la cible est atteite
+                if(laby[vx][vy] == -1) { // test si la position est valide
+                    X.add(vx); // ajoute la position a la liste de positions a explorer
+                    Y.add(vy);
+                    // marque la distance sur la case
+                    laby[vx][vy] = laby[x][y] + 1;
+                    if (vx == cibleX && vy == cibleY) { // si la cible est atteite
                         trouver = true;
-                        distance = laby[cx][cy];
                         break;
                     }
                 }
-
             }
-
-            X.removeFirst(); // eliminate the first position, as you have no more use for it
+            X.removeFirst(); // supprime la position qui vient d'etre testé
             Y.removeFirst();
-
         }
-
-        //printLaby(laby);
-        //System.out.println("Lee distance: " + distance + " " + trouver);
-
-        retraceChemin(laby, cibleX, cibleY);
-
+        //printEmpreinte(laby);
+        //System.out.println("Lee distance: " + laby[cibleX][cibleY] + " " + trouver);
+        if (trouver) retraceChemin(laby, cibleX, cibleY);
     }
 
 
-    protected void retraceChemin(int[][] laby, int startX, int startY) {
+    /**
+     * retrace le plus cours chemin a partir des chemin explorer par l'algorithme de Lee
+     * @param laby empreinte avec distance calculé
+     * @param startX x de depart
+     * @param startY y de depart
+     */
+    private void retraceChemin(int[][] laby, int startX, int startY) {
         int d = laby[startX][startY];
         int x = startX;
         int y = startY;
@@ -204,14 +177,15 @@ public class Boss extends MonstreSuivi {
             }
         }
 
-        for (char c: suiteDeDeplacement) {
-            //System.out.print(c + " ");
-        }
+//        for (char c: suiteDeDeplacement) {
+//            System.out.print(c + " ");
+//        }
 
     }
 
 
-    protected void printLaby(int[][] laby) {
+    protected void printEmpreinte(int[][] laby) {
+        System.out.println();
         for (int j = 0; j < laby[0].length; j++) {
             for (int i = 0; i < laby.length; i++) {
                 int c = laby[i][j];
@@ -224,7 +198,7 @@ public class Boss extends MonstreSuivi {
                 else
                     System.out.print(" " + c);
             }
-            //System.out.println();
+            System.out.println();
         }
     }
 
