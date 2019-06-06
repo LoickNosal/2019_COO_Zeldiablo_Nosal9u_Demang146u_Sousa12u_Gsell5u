@@ -1,0 +1,374 @@
+@startuml
+title Zeldiablo
+
+class MoteurGraphique{
+    +MoteurGraphique(JeuEvolution,DessinJeu)
+    +lancerJeu(int,int):void
+}
+
+interface DessinJeu {
+    +dessiner(BuffuredImage) : void
+}
+
+
+class DessinPerso {
+    -compteur: int
+    -compteurBoss: int
+    -modeAttaqueBoss : boolean
+    -saut : int
+    -mur:  Image
+    -porte: Image
+    -casevide : Image
+    -casePiege : Image
+    -mort : Image
+    -potion : Image
+    -caseMine : Image
+    -caseMineDesac : Image
+    -amulette : Image
+    -potionForce : Image
+    -bravo : Image
+    -persoDroite : Image[]
+    -persoGauche : Image[]
+    -slime_vert: Image
+    -slime_rouge: Image
+    -slime_violet: Image
+    -epee : Image[]
+    -grim_a_d : Image[]
+    -grim_a_g : Image[]
+    -grim_i_d : Image[]
+    -grim_i_g : Image[]
+    +{static}TAILLE_CASE: int
+    +DessinPerso(JeuEvolution)
+    +dessine(BuffuredImage): void
+    +gestionVie(Graphics2D): void
+    +initialiserReaper():void
+}
+
+class InterfaceGraphique{
+    -panel : PanelDessin
+    -controleur : Controleur
+    +InterfaceGraphique(DessinJeu,int,int)
+    +getControleur():Controleur
+    +dessiner():void
+}
+
+interface Jeu {
+    +evoluer(Commande): void
+    +etreFini(): boolean
+    +setFini(boolean):void
+}
+
+
+class Menu{
+    +Menu(JeuEvolution)
+    +disparaitre():void
+    +visible : boolean
+    #paintComponent(Graphics):void
+    +ajouterJeu(JeuEvolution):void
+}
+
+
+class JeuEvolution {
+    -compteurPas : int
+    -compteurWin : int
+    -compteurAttaque : int
+    -compteurinvulnerabilite : int
+    -compteurSaut : int
+    -compteurMort : int
+    -direction: boolean
+    -fini: boolean
+    -aGagner : boolean
+    +JeuEvolution(Aventurier,JeuPrincipal)
+    +evoluer(Commande): void
+    +etreFini(): boolean
+    +setFini(boolean):void
+    +aGagner():boolean
+    +getDirection():boolean
+    +getCompteurPas():int
+    +changeNiveau(Labyrinthe,ArrayList<Monstre>,ArrayList<Item>):void
+    +getAventurier():Aventurier
+    +getLabyrinthe():Labyrinthe
+    +getMonstres():ArrayList<Monstre>
+    +getItems():ArrayList<Item>
+    +setAventurier(Aventurier): void
+    +setLabyrinthe(Labyrinthe):void
+    +setMonstres(ArrayList<Monstre>):void
+    +setItems(ArrayList<Item>):void
+    +restart():void
+    
+}
+
+abstract Item{
+    +{static} TAILLE : int
+    #posX : int
+    #posY : int
+    #ramasse : boolean
+    #id : int
+    +Item(int,int)
+    +peutRamasse(int,int):boolean
+    +getPosX():int
+    +getPosY():int
+    +getRamasse():boolean
+    +setRamasse():void
+    +{abstract}typeItem():int
+    +{static}creerItemParID(int,int,int):item
+    +getId():int
+}
+
+class PotionVie{
+    +PotionVie(int,int)
+    +typeItem():int
+    
+}
+
+class PotionForce{
+    +PotionForce(int,int)
+    +typeItem():int
+    
+}
+
+class Amulette{
+    +Amulette(int,int)
+    +typeItem():int
+    
+}
+
+
+class JeuPrincipal {
+    -level: int
+    +JeuPrincipal()
+    -chargerLVL(int) :void 
+    -chargerJSON(String): JSONObject
+    -decoderJSON(JSONObject): void
+    +restart : void
+    +chargerLVLSuivant():void
+    +{static} main(String[]):void
+    
+}
+
+
+class Aventurier {
+    -attaque : boolean
+    -saut : boolean
+    -degat : int
+    +Aventurier(int, int int, String)
+    +attaque(Monstre) : void
+    +getAttaque():boolean
+    +getSaut():boolean
+    +setSaut(boolean):void
+    +getDegat():int
+    +augmenterDegat():void
+    +resetDegat():void
+    +revivre():void
+    +seDeplacer(char): void
+}
+
+abstract Entite {
+    #pv: int
+    #x: int
+    #y: int
+    #vitesse : int
+    #nom: String
+    #vivant: boolean
+    #pvMax: int
+    #invulnerable : boolean
+    +Entite(int, int, int, String)
+    +getVivant(): boolean
+    +setLabyrinthe(Labyrinthe) : void
+    +getLab(): Labyrinthe
+    +getNom(): String
+    +getVitesse():int
+    +getPv(): int
+    +getPvMax(): int
+    +getX(): int
+    +getY(): int
+    +{abstract}peutAvancer(int,int): boolean
+    +{abstract}seDeplacer(char): void
+    +subirDegat(int): void
+    +soigner(int):void
+    +mort(): void
+    +distanceEntite(Entite): double
+    +distanceItem(Item):double
+    +setInvulnerable(boolean):void
+    +setPosition(int,int):void
+}
+
+
+class Labyrinthe {
+    -{static}TAILLE_MIN: int
+    -{static}TAILLE_MAX: int
+    -empreinte : int[][]
+    +Labyrinthe()
+    +Labyrinthe(String[])
+    +caseTraversable(int,int) : boolean
+    +estSurUnObstacle(int,int) : boolean
+    +activerPiege(int,int):void
+    +testerPiege(int,int):boolean
+    +typeCase(int, int): int
+    +toString():String
+    +getLargeur():int
+    +getHauteur():int
+    -valideModele(String[]):boolean
+    -defautLabyrinthe():void
+    -genereEmpreinte():void
+    +getEmpreinte():int[][]
+}
+
+
+abstract Monstre {
+    #id: int
+    #portee : int
+    #degat: int
+    +Monstre(int, int, int, int, int, String)
+    +{abstract}comportement():void
+    +attaquer():boolean
+    +seDeplacer(char): void
+    +getId():int
+    +getDegat():int
+    +getPortee():int
+    +getPvMax():int
+    +getCible():Aventurier
+    +setCible(Aventurier):void
+    +{static}creerMonstreParID(int,int,int):Monstre
+}
+
+class MonstreAleatoire {
+    #deplacement : char
+    #timer : int
+    +MonstreAleatoire(int, int, int, int, int, String)
+    +comportement() : void
+    +randomDir():char
+}
+
+class MonstreSuivi {
+    #compteurPas : int
+    #deplacementEnCours : char
+
+    +MonstreSuivi(int, int, int, int, int, String)
+    +comportement():void
+}
+
+class Boss {
+    -cibleX : int
+    -cibleY : int
+    -suiteDeDeplacement : Deque<Character>
+    -pasParCase : nt
+    -direction : boolean
+    -attaque : boolean
+    +Boss(int,int,int,int,int,String)
+    +comportement():void
+    #calculPosCible():boolean
+    #calculerChemin():void
+    -lee(int[][],int,int,int,int):void
+    #retraceChemin(int[][],int,int):void
+    #printLaby(int[][]):void
+    +getDirection():boolean
+    +getAttaque():boolean
+
+}
+
+class MonstreImmobile {
+    +MonstreImmobile(int, int, int, int, int String)
+    +comportement():void
+}
+
+
+
+abstract Case {
+    -{static} taille: int
+    #posX: int
+    #posY: int
+    #estPasseDessus : boolean
+    +Case()
+    +getPosX():int
+    +getPosY():int
+    +estDedans(int,int):boolean
+    +getEstPasse():boolean
+    +setEstPasse():void
+    +{abstract}peutTraverser():boolean
+    +{abstract}typeCase():int
+}
+
+class CasePiege {
+    +CasePiege(int,int)
+    +peutTraverser():boolean
+    +toString():String
+    +typeCase():int
+}
+
+class Mur {
+    +Mur(int, int)
+    +toString():String
+    +peutTraverser():boolean
+    +typeCase():int
+}
+
+class CaseVide {
+    +CaseVide(int, int)
+    +toString():String
+    +peutTraverser():boolean
+    +typeCase():int
+}
+
+class CaseMine {
+    +CaseMine(int, int)
+    +toString():String
+    +peutTraverser():boolean
+    +typeCase():int
+}
+class CaseSortie {
+    +CaseSortie(int, int)
+    +peutTraverser():boolean
+    +typeCase():int
+}
+
+MoteurGraphique  -->"0..1" DessinJeu : -dessin
+MoteurGraphique  -->"0..1" InterfaceGraphique : -gui
+MoteurGraphique  -->"0..1" Jeu : -jeuEvolution
+
+InterfaceGraphique "0..1" --> Menu : +menu
+
+DessinPerso ..|> DessinJeu
+DessinPerso --> "0..1" JeuEvolution : -JeuEvolution
+
+Menu "0..1" --> "0..1" JeuEvolution : -jeu
+
+JeuEvolution ..|> Jeu
+JeuEvolution -->"0..*" Item : -items
+JeuEvolution -->"0..1" JeuPrincipal : -jeuPrincipal
+JeuEvolution --> "0..1" Aventurier : -aventurier
+JeuEvolution -->"0..*" Monstre : -monstres
+JeuEvolution -->"0..1" Labyrinthe : -labyrinthe
+
+PotionVie --|> Item
+PotionForce --|> Item
+Amulette --|> Item
+
+
+JeuPrincipal  --> "0..0" JeuEvolution : -jeuEvolution
+JeuPrincipal  --> "0..1" Aventurier : -aventurier
+
+Entite --> "0..1" Labyrinthe : #lab
+
+Aventurier --|> Entite
+
+Monstre --|> Entite
+Monstre --> "0..1" Aventurier : #cible
+
+MonstreImmobile--|> Monstre
+MonstreAleatoire--|> Monstre
+MonstreSuivi--|> Monstre
+Boss --|> MonstreSuivi
+
+Labyrinthe "1" --> "0..*" Case : -cases
+
+
+CaseVide --|> Case
+Mur --|> Case
+CaseSortie--|> Case
+CasePiege --|>Case
+CaseMine --|>Case
+
+
+
+@enduml
