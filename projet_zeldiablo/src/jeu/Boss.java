@@ -265,5 +265,7 @@ public class Boss extends Monstre {
         return posApres;
     }
 
-
+    public char getDeplacementEnCours() {
+        return deplacementEnCours;
+    }
 }

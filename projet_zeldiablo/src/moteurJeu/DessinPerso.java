@@ -174,7 +174,20 @@ public class DessinPerso implements DessinJeu{
 			}
 		}
 
+		for (Monstre m : jeuEvolution.getMonstres()) {
+			if(m.getId()==4) {
+				char c =((Boss) m).getDeplacementEnCours();
 
+				if(c == 'E' && (c=='N' || c=='S'))
+				{
+					g.drawImage(grim_i_d[1], m.getX()* Case.TAILLE+10, m.getY()*Case.TAILLE+10, 100,100,null);
+				}
+				if(c == 'O' && (c=='N' || c=='S'))
+				{
+					g.drawImage(grim_i_g[1], m.getX()* Case.TAILLE+10, m.getY()*Case.TAILLE+10, 100,100,null);
+				}
+			}
+		}
 
 		if(jeuEvolution.getAventurier().getVivant())
 		{
