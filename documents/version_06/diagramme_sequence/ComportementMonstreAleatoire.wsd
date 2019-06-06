@@ -3,7 +3,6 @@ title Comportement de Monstre aléatoire
 participant "JeuPrincipal:Jeu" as jeu << (C,#ADD1B2) >>
 participant "monstre:Monstre" as monstre << (C,#ADD1B2) >>
 participant "aventurier:Aventurier" as aventurier << (C,#ADD1B2) >>
-participant "entite:Entite" as entite << (C,#ADD1B2) >>
 
 jeu -> monstre : evoluer()
 loop
@@ -12,10 +11,10 @@ monstre -> monstre: comportement(Aventurier)
 activate monstre
 monstre -> monstre: seDeplacer(Cardinaux)
 activate monstre
-monstre -> entite: peutAvancer(int, int)
-activate entite
-monstre <-- entite : boolean
-deactivate entite
+monstre -> monstre: peutAvancer(int, int)
+activate monstre
+monstre <-- monstre : boolean
+deactivate monstre
 monstre <-- monstre 
 deactivate monstre
 monstre -> monstre: attaquer(Aventurier)
