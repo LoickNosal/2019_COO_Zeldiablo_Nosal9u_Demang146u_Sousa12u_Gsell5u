@@ -263,22 +263,23 @@ public class DessinPerso implements DessinJeu{
 
 		for (Monstre m : jeuEvolution.getMonstres()) {
 			if(m.getId()==4) {
-
+				int posX = m.getX();
+				int posY = m.getY();
 				if(((Boss)m).getAttaque() && !this.modeAttaqueBoss){
 					this.modeAttaqueBoss = true;
 					this.compteurBoss = 0;
 				}
 				if(((Boss)m).getDirection()&&!this.modeAttaqueBoss){
-					g.drawImage(grim_i_d[compteurBoss/13], m.getX(), m.getY()-50, 100,100,null);
+					g.drawImage(grim_i_d[compteurBoss/13], posX-32, posY-80, 100,100,null);
 				}
 				if(!((Boss)m).getDirection()&&!this.modeAttaqueBoss){
-					g.drawImage(grim_i_g[compteurBoss/13], m.getX(), m.getY()-50, 100,100,null);
+					g.drawImage(grim_i_g[compteurBoss/13], posX-66, posY-80, 100,100,null);
 				}
 				if(((Boss)m).getDirection()&&this.modeAttaqueBoss){
-					g.drawImage(grim_a_d[compteurBoss/13], m.getX()-20, m.getY()-50, 150,120,null);
+					g.drawImage(grim_a_d[compteurBoss/13], posX-88, posY-96, 150,120,null);
 				}
 				if(!((Boss)m).getDirection()&&this.modeAttaqueBoss){
-					g.drawImage(grim_a_g[compteurBoss/13], m.getX()+20, m.getY()-50, 150,120,null);
+					g.drawImage(grim_a_g[compteurBoss/13], posX-88, posY-96, 150,120,null);
 				}
 
 
@@ -331,15 +332,18 @@ public class DessinPerso implements DessinJeu{
 		for (Monstre m : jeuEvolution.getMonstres()) {
 			int pvMax =  m.getPvMax();
 			int pvCourant = m.getPv();
+			int x = m.getX() - pvMax / 2;
+			int y = m.getY() - Case.TAILLE;
+			if (m.getId() == 4) y -= 25;
 			//contour
 			g.setColor(Color.black);
-			g.fillRect(m.getX()-TAILLE_CASE/3-2, m.getY()-TAILLE_CASE-2, pvMax+4, 7+4);
+			g.fillRect(x - 2, y - 2, pvMax + 4, 7 + 4);
 			//barre de vie rouge
 			g.setColor(Color.red);
-			g.fillRect(m.getX()-TAILLE_CASE/3, m.getY()-TAILLE_CASE, pvMax, 7);
+			g.fillRect(x, y, pvMax, 7);
 			//barre de vie verte
 			g.setColor(Color.green);
-			g.fillRect(m.getX()-TAILLE_CASE/3, m.getY()-TAILLE_CASE,pvCourant , 7);
+			g.fillRect(x, y, pvCourant , 7);
 		}
 		//barre du joueur
 		int pvMax = this.jeuEvolution.getAventurier().getPvMax();
