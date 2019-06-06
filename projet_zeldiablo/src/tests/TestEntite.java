@@ -1,6 +1,7 @@
 package tests;
 
 import jeu.Aventurier;
+import jeu.Case;
 import jeu.Labyrinthe;
 
 import org.junit.Test;
@@ -28,14 +29,15 @@ public class TestEntite {
     @Test
     public void testSeDeplacer() {
     	Labyrinthe lab = new Labyrinthe();
-        Aventurier a = new Aventurier(10, 100,100, "LOL");
+        Aventurier a = new Aventurier(10, 3*Case.TAILLE, 3*Case.TAILLE, "LOL");
+        a.setLabyrinthe(lab);
         a.seDeplacer('N');
         a.seDeplacer('E');
         a.seDeplacer('S');
         a.seDeplacer('O');
 
-        assertEquals("Se Deplacer (X)", 100, a.getX());
-        assertEquals("Se Deplacer (Y)", 100, a.getY());
+        assertEquals("Se Deplacer (X)", 3*Case.TAILLE, a.getX());
+        assertEquals("Se Deplacer (Y)", 3*Case.TAILLE, a.getY());
     }
     
     @Test
@@ -54,7 +56,7 @@ public class TestEntite {
        a.subirDegat(15);
        
        assertEquals("Devrait avoir 0 pv", 0, a.getPv());
-       assertEquals("Devrait être mort", true, a.getVivant());
+       assertEquals("Devrait être mort", false, a.getVivant());
     }
 
 
