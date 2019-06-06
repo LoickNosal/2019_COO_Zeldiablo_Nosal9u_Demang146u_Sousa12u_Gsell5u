@@ -42,6 +42,7 @@ abstract public class Entite{
      * Le mode invulnerable pour eviter de deceder directement
      */
     protected boolean invulnerable;
+    
     /**
      * Le constructeur de la classe Entite
      * @param p Les Points de Vie
@@ -72,7 +73,13 @@ abstract public class Entite{
         this.pvMax = p;
         this.invulnerable = false;
     }
+    
 
+    
+    /**
+     * getter
+     * @return retourne vrai si le hero est vivant
+     */
     public boolean getVivant() {
     	return vivant;
     }
@@ -110,7 +117,7 @@ abstract public class Entite{
 
     /**
      * permet de savoir si une entite peut se deplacer sur les ces coordonnées
-     *check si l'aventurier n'avance pas sur une case et EST VIVANT
+     * check si l'aventurier avance pas sur une case vide et EST VIVANT
      * @param posX coordonnée x a tester en pixel
      * @param posY coordonnée y a tester en pixel
      * @return true si le joueur peut avancer
@@ -126,6 +133,7 @@ abstract public class Entite{
     
     /**
      * Fonction seDeplacer : on met les char des points cardinaux pour choisir la position dans laquelle l'Entite va avancer
+     * selon sa vitesse
      * @param cardinaux Les points cardinaux
      * @return vrai si le replacement a reussi
      */
@@ -170,7 +178,7 @@ abstract public class Entite{
     }
     
     /**
-     * le joueur subit des degats
+     * L'entité subit des degats
      * @param pDegat degat que l'entite prend
      */
     public void subirDegat(int pDegat) {
@@ -195,7 +203,7 @@ abstract public class Entite{
     }
     
     /**
-     * indique si le l'entite est mort
+     * indique si l'entite est morte
      */
     public void mort() {
     	if(pv == 0) {
@@ -207,27 +215,54 @@ abstract public class Entite{
     	return this.pvMax;
     }
 
+    /**
+     * Calcule la distance en vol d'oiseau entre deux entités
+     * @param ent Deuxieme entité pour calculer la distance
+     * @return la distance
+     */
     public double distanceEntite(Entite ent) {
         double d = Math.sqrt(Math.pow((this.x-ent.x),2)+Math.pow((this.y-ent.y),2));
         return d;
     }
     
+    /**
+     * Calcule la distance en vol d'oiseau entre deux points
+     * @param px abscisse du premier point
+     * @param py ordonnée du premier point
+     * @param dx abscisse du deuxième point
+     * @param dy ordonnée du deuxième point
+     * @return la distance
+     */
     public double distanceEntite(int px, int py, int dx, int dy) {
 		double d = Math.sqrt(Math.pow((px - dx),2)+Math.pow((py - dy),2));
         return d;
     }
 
+    /**
+     * Calcule la distance en vol d'oiseau entre deux items
+     * @param ent Deuxieme item pour calculer la distance
+     * @return
+     */
     public double distanceItem(Item ent) {
         double d = Math.sqrt(Math.pow((this.x-ent.getPosX()),2)+Math.pow((this.y-ent.getPosY()),2));
         return d;
 
     }
 
+    /**
+     * Rend l'entité invulnérable a la méthode subirDegat
+     * @param vrai si le joueur est invulnérable
+     */
     public void setInvulnerable(boolean a)
     {
         this.invulnerable = a;
     }
 
+    /**
+     * Modifies la position de l'entité
+     * @param x nouvelle abscisse
+     * @param y nouvelle ordonnée
+     */
     public void setPositon(int x, int y) {
         this.x = x;
         this.y = y;

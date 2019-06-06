@@ -20,6 +20,10 @@
     ],
     "spawnPos": [7, 13],
     "monstres": [
+	{
+            "id": 4,
+            "pos": [7, 7]
+        }
     ],
 	"items": [
         {
