@@ -183,8 +183,8 @@ public class Boss extends Monstre {
 
         }
 
-        printLaby(laby);
-        System.out.println("Lee distance: " + distance + " " + trouver);
+        //printLaby(laby);
+        //System.out.println("Lee distance: " + distance + " " + trouver);
 
         retraceChemin(laby, cibleX, cibleY);
 
@@ -215,7 +215,7 @@ public class Boss extends Monstre {
         }
 
         for (char c: suiteDeDeplacement) {
-            System.out.print(c + " ");
+            //System.out.print(c + " ");
         }
 
     }
@@ -234,7 +234,7 @@ public class Boss extends Monstre {
                 else
                     System.out.print(" " + c);
             }
-            System.out.println();
+            //System.out.println();
         }
     }
 
