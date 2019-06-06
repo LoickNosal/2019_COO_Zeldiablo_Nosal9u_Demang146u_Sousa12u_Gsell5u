@@ -17,6 +17,10 @@ public class JeuEvolution implements Jeu {
 	 */
 	private int compteurPas;
 	/**
+	 * Permet de mettre une fenetre de felicitation
+	 */
+	private int compteurWin;
+	/**
 	 * Empeche le joueur de spammer l'attaque
 	 */
 	private int compteurAttaque;
@@ -40,6 +44,10 @@ public class JeuEvolution implements Jeu {
 	 * Permet de finir le jeu lorsqu'il passe à true
 	 */
 	private boolean fini;
+	/**
+	 * A mettre sur true pour gagner la partie
+	 */
+	private boolean aGagner;
 
 	/** aventurier */
 	private Aventurier aventurier;
@@ -128,7 +136,6 @@ public class JeuEvolution implements Jeu {
 					this.compteurMort =0;
 					aventurier.revivre();
 				}
-
 			}
 		}
 
@@ -201,7 +208,8 @@ public class JeuEvolution implements Jeu {
 					break;
 				case 1: //Amulette
 					i.setRamasse();
-					this.setFini(true);
+					this.aGagner = true;
+					aventurier.revivre();
 					break;
 				case 2: //Potion de Force
 					 if (this.aventurier.getDegat() <= 30 && i.getRamasse() != true) { //si le perso n'a pas sa force max
@@ -236,6 +244,14 @@ public class JeuEvolution implements Jeu {
 			aventurier.setInvulnerable(false);
 			aventurier.setSaut(false);
 		}
+
+		//GAGNER
+		if(this.aGagner)
+			compteurWin++;
+		if(compteurWin>300){
+			compteurWin=0;
+			this.fini = true;
+		}
 	}
 
 	@Override
@@ -245,6 +261,10 @@ public class JeuEvolution implements Jeu {
 
 	public void setFini(boolean a) {
 		this.fini = a;
+	}
+
+	public boolean aGagner() {
+		return aGagner;
 	}
 
 	public boolean getDirection() {
