@@ -14,6 +14,8 @@ public class Boss extends Monstre {
 	protected Deque<Character> suiteDeDeplacement;
 	protected char deplacementEnCours;
 	protected int compteurPas, pasParCase;
+	/** direction pour le sprite, true=droite */
+	protected boolean direction;
 
 	public Boss(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pDegat, pPortee, pNom);
