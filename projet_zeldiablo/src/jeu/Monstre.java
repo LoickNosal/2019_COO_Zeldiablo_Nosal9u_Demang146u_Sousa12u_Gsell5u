@@ -133,13 +133,13 @@ public abstract class Monstre extends Entite {
 	public static Monstre creerMonstreParID(int id, int posX, int posY) {
 		switch (id) {
 			case 1:
-				return new MonstreImmobile(50, posX,posY, 10, 50, "m1");
+				return new MonstreImmobile(50, posX,posY, 10, 50, "Alexandre");
 			case 2:
-				return new MonstreAleatoire(50, posX, posY, 5, 50, "m2");
+				return new MonstreAleatoire(50, posX, posY, 5, 50, "Paul");
 			case 3:
-				return new MonstreSuivi(50, posX, posY, 5, 50, "m3");
+				return new MonstreSuivi(50, posX, posY, 5, 50, "Loick");
             case 4:
-                return new Boss(100, posX, posY, 5, 50, "Boss");
+                return new Boss(100, posX, posY, 5, 50, "Louis");
 			default:
 				return null;
 		}

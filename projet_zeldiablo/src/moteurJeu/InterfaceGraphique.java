@@ -60,6 +60,7 @@ public class InterfaceGraphique  {
 		Controleur controlleurGraph=new Controleur();
 		this.controleur=controlleurGraph;
 		principal.addKeyListener(controlleurGraph);
+		principal.addMouseListener(controlleurGraph);
 		//recuperation du focus
 		f.pack();
 		f.getContentPane().setFocusable(true);

@@ -1,14 +1,14 @@
 package moteurJeu;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import javax.swing.*;
+import java.awt.event.*;
 
 /**
  * classe qui represente un controleur en lien avec un KeyListener
  *
  * @author vthomas
  */
-public class Controleur implements KeyListener {
+public class Controleur extends MouseAdapter implements KeyListener {
 
     /**
      * commande en cours
@@ -124,6 +124,19 @@ public class Controleur implements KeyListener {
      */
     public void keyTyped(KeyEvent e) {
 
+    }
+
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        if (SwingUtilities.isLeftMouseButton(e))
+            this.commandeEnCours.attaque = true;
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        if (SwingUtilities.isLeftMouseButton(e))
+            this.commandeEnCours.attaque = false;
     }
 
 }
