@@ -9,28 +9,18 @@ import java.util.Deque;
  * @author Demange Louis
  *
  */
-public class Boss extends Monstre {
+public class Boss extends MonstreSuivi {
 	
-	/**
-	 * indique la position x et y  de la cible
-	 */
-	protected int cibleX, cibleY;
-	/**
-	 * 
-	 */
-	protected Deque<Character> suiteDeDeplacement;
-	/**
-	 * caractere du deplacement
-	 */
-	protected char deplacementEnCours;
-	/**
-	 * 
-	 */
-	protected int compteurPas, pasParCase;
+	/** indique la position x et y  de la cible */
+	private int cibleX, cibleY;
+	/** liste de deplacement pour atteindre la cible */
+	private Deque<Character> suiteDeDeplacement;
+    /**  */
+	private int pasParCase;
 	/** direction pour le sprite, true=droite */
-	protected boolean direction;
+	private boolean direction;
     /** attaque pour le sprite, true=attaque en cours */
-	protected boolean attaque;
+	private boolean attaque;
 
 	public Boss(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pDegat, pPortee, pNom);

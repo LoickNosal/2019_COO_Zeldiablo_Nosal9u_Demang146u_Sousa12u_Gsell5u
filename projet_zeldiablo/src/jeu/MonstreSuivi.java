@@ -5,16 +5,12 @@ package jeu;
  * @author Alexandre Sousa
  *
  */
-public class MonstreSuivi extends Monstre{
+public class MonstreSuivi extends Monstre {
 
-	/**
-	 * pour savoir quand le monstre se deplace d'une case entiere
-	 */
-	private int compteur_pas = 0;
-	/**
-	 * direction du monstre
-	 */
-	private char direction = 'd';
+	/** fait en sort que le monstre de deplace de case en case */
+	protected int compteurPas = 0;
+	/** caractere du deplacement en cours */
+	protected char deplacementEnCours = ' ';
 
 	/**
 	 * Constructeur
@@ -38,7 +34,7 @@ public class MonstreSuivi extends Monstre{
 	@Override
 	public void comportement() {
 
-    	if(compteur_pas == 0) {
+    	if(compteurPas == 0) {
     		Labyrinthe lab = this.getLab();
         	int pxc = cible.getX()/ Case.TAILLE;
         	int pyc = cible.getY()/ Case.TAILLE;
@@ -67,26 +63,26 @@ public class MonstreSuivi extends Monstre{
                     		futurePosY += 1;
                     	}
                     	else if(lab.caseTraversable(futurePosX, futurePosY)) {
-                    		direction = 'N';
+                    		deplacementEnCours = 'N';
                     	}
                 	}
                 	else if(lab.caseTraversable(futurePosX, futurePosY)) {
-                		direction = 'O';
+                		deplacementEnCours = 'O';
                 	}
             	}
             	else if(lab.caseTraversable(futurePosX, futurePosY)) {
-            		direction = 'S';
+            		deplacementEnCours = 'S';
             	}
         	}
         	else if(lab.caseTraversable(futurePosX, futurePosY)) {
-        			direction = 'E';
+        			deplacementEnCours = 'E';
         	}
     	}
 
-    	seDeplacer(direction);
-    	compteur_pas += 1;
-    	if(compteur_pas == Case.TAILLE/vitesse) {
-    		compteur_pas = 0;
+    	seDeplacer(deplacementEnCours);
+    	compteurPas += 1;
+    	if(compteurPas == Case.TAILLE/vitesse) {
+    		compteurPas = 0;
     	}
     	attaquer();
 	}
