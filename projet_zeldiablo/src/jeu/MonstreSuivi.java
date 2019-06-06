@@ -9,11 +9,26 @@ public class MonstreSuivi extends Monstre{
 	private int compteur_pas = 0;
 	private char direction = 'd';
 
+	/**
+	 * Constructeur
+	 * @param pPv pv du monstre
+	 * @param px abscisse du monstre
+	 * @param py ordonnée du mostre
+	 * @param pDegat dégat du monstre
+	 * @param pPortee portée du monstre
+	 * @param pNom nom du monstre
+	 */
 	public MonstreSuivi(int pPv, int px, int py, int pDegat, int pPortee, String pNom) {
 		super(pPv, px, py, pDegat, pPortee, pNom);
 		this.id = 3;
 	}
 
+	/**
+	 * determine les déplacement du monstres la position du personnage
+	 * le monstre peut se bloquer dans les murs et attaque l'aventurier en cible s'il
+	 * est a portée
+	 */
+	@Override
 	public void comportement() {
 		
     	if(compteur_pas == 0) {
