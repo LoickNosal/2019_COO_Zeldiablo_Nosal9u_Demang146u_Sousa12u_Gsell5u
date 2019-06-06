@@ -28,6 +28,7 @@ public class Menu extends JPanel {
         setLayout(null);
 
         JButton j = new JButton("JOUER");
+        j.setFont(new Font(null, Font.PLAIN, 30));
         j.setBounds(0,700,450,200);
         j.setBackground(Color.gray);
         j.addActionListener(new ActionListener() {
@@ -41,6 +42,7 @@ public class Menu extends JPanel {
         });
 
         JButton q = new JButton("QUITTER");
+        q.setFont(new Font(null, Font.PLAIN, 30));
         q.setBounds(450,700,450,200);
         q.setBackground(Color.gray);
         q.addActionListener(new ActionListener() {
