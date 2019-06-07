@@ -5,50 +5,50 @@
         "X X X X X X X X X X X X X X X",
         "X - - - - - X - X - - - - - X",
         "X - X X X - X - X - X X X - X",
-        "X - X - m - X - X - - - X - X",
+        "X - X - - - X - X - - - X - X",
         "X - X X X - X - X - X X X - X",
-        "X - - - - - - - - - - - - - X",
-        "X X X X X - X t X - X X X X X",
-        "X - - - - - X p X - - - - - X",
-        "X X X X X - X - X - X X X X X",
+        "X - - - - - - - - m - - - - X",
+        "X X X X X - X m X - X X X X X",
+        "X - - - t - X p X - - - - - X",
+        "X X X X X - X m X - X X X X X",
         "X - - - - - - - - - - - - - X",
         "X - X X X - X - X - X X X - X",
-        "X - X - - - X - X - m - X - X",
+        "X - X - - - X - X - - - X - X",
         "X - X X X - X - X - X X X - X",
         "X - - - - - X - X - - - - - X",
         "X X X X X X X X X X X X X X X"
     ],
-    "spawnPos": [1, 1],
+    "spawnPos": [7, 1],
     "monstres": [
+        {
+            "id": 2,
+            "pos": [3, 3]
+        },
         {
             "id": 2,
             "pos": [11, 3]
         },
         {
-            "id": 2,
+            "id": 3,
             "pos": [3, 11]
         },
         {
             "id": 3,
             "pos": [11, 11]
-        },
-        {
-            "id": 3,
-            "pos": [1, 10]
         }
     ],
 	"items": [
         {
             "id": 0,
-            "pos": [1, 7]
+            "pos": [13, 7]
         },
         {
             "id": 0,
-            "pos": [7, 10]
+            "pos": [1, 13]
         },
         {
             "id": 2,
-            "pos": [11, 11]
+            "pos": [1, 7]
         }
     ]
 }

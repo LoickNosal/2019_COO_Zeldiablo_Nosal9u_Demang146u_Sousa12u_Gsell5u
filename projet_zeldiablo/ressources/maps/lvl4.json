@@ -3,48 +3,56 @@
     "niveau": 4,
     "labyrinthe": [
         "X X X X X X X X X X X X X X X",
-        "X - X - X - t - - - X - X - X",
+        "X - X - - - - - - - - - X - X",
         "X - X - X - X - X - X - X - X",
-        "X - X - X - X - X - X - X - X",
-        "X - X t X X X - X X X t X - X",
-        "X - - - - - - - - - - - - - X",
+        "X - X - X - X m X - X - X - X",
+        "X - X - X X X t X X X - X - X",
+        "X - - - - X - - - X - - - - X",
         "X X X X - X X X X X - X X X X",
-        "X - - - - - t - - - - - - - X",
+        "X - - - - - - - - - - - - - X",
         "X X X X X X X - X X X X X X X",
         "X - - - - - - - - - - - - - X",
-        "X - X t X X X - X X X t X - X",
+        "X - X - X X X - X X X - X - X",
         "X - X - X - X - X p X - X - X",
         "X - X - X - X - X - X - X - X",
-        "X - X - X - t - t - X - X - X",
+        "X - X - X m - - t - X - X - X",
         "X X X X X X X X X X X X X X X"
     ],
-    "spawnPos": [3, 3],
+    "spawnPos": [1, 1],
     "monstres": [
         {
             "id": 2,
-            "pos": [11, 3]
+            "pos": [1, 13]
+        },
+        {
+            "id": 2,
+            "pos": [3, 1]
         },
         {
             "id": 3,
-            "pos": [3, 11]
+            "pos": [9, 3]
         },
         {
             "id": 3,
-            "pos": [11, 11]
+            "pos": [11, 13]
         }
     ],
 	"items": [
         {
             "id": 0,
-            "pos": [3, 1]
+            "pos": [13, 13]
         },
         {
             "id": 0,
-            "pos": [7, 10]
+            "pos": [6, 5]
         },
         {
             "id": 2,
-            "pos": [13, 3]
+            "pos": [8, 5]
+        },
+        {
+            "id": 2,
+            "pos": [5, 11]
         }
     ]
 }

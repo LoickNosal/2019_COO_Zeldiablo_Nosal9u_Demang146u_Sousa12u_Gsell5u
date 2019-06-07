@@ -3,19 +3,19 @@
     "niveau": 1,
     "labyrinthe": [
         "X X X X X X X X X X X X X X X",
-        "X - - - - - m - - - - t - - X",
-        "X - X - X - X - X X X - X - X",
-        "X - - - X - - - - - - - - - X",
-        "X - X t X - X - X - X - X - X",
-        "X - - - - - - - - t X - - - X",
-        "X - X - X - X t X - X - X - X",
-        "X - - - - - - p - - - - - - X",
-        "X - X - X X X t X - X - X - X",
-        "X - t - - - - - - - - - - - X",
-        "X - X - X - X - X m X - X - X",
-        "X - - - - - X - - - X - - - X",
-        "X - X - X - X - X - X - X t X",
-        "X - - t - - - - - - - - - - X",
+        "X - - - - - - - - - - - - - X",
+        "X - X - X - X - X - X - X - X",
+        "X - - - - - - - - - - - - - X",
+        "X - X - X - X m X - X - X - X",
+        "X - - - - t - - - t - - - - X",
+        "X - X - X - X - X - X - X - X",
+        "X - - - m - - p - - m - - - X",
+        "X - X - X - X - X - X - X - X",
+        "X - - - - t - - - t - - - - X",
+        "X - X - X - X m X - X - X - X",
+        "X - - - - - - - - - - - - - X",
+        "X - X - X - X - X - X - X - X",
+        "X - - - - - - - - - - - - - X",
         "X X X X X X X X X X X X X X X"
     ],
     "spawnPos": [3, 3],
@@ -36,7 +36,7 @@
         },
         {
             "id": 0,
-            "pos": [11, 8]
+            "pos": [7, 12]
         }
     ]
 }
