@@ -27,7 +27,7 @@ public class Boss extends MonstreSuivi {
 		deplacementEnCours = ' ';
 		direction = false;
 		compteurPas = 0;
-		this.vitesse = 6;
+		this.vitesse = 5;
 		this.degat = 8;
 	}
 
