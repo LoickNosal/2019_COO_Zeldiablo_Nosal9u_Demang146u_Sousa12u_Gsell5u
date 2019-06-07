@@ -142,42 +142,42 @@ public class DessinPerso implements DessinJeu{
 		try{
 				
 			//slimes
-			slime_rouge[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sa1.gif").getPath(), "UTF-8")));
-			slime_rouge[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sa2.gif").getPath(), "UTF-8")));
-			slime_vert[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("s1.gif").getPath(), "UTF-8")));
-			slime_vert[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("s2.gif").getPath(), "UTF-8")));
-			slime_violet[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sf1.gif").getPath(), "UTF-8")));
-			slime_violet[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sf2.gif").getPath(), "UTF-8")));
+            slime_rouge[0] = ImageIO.read(getClass().getResourceAsStream("/sa1.gif"));
+			slime_rouge[1] = ImageIO.read(getClass().getResourceAsStream("/sa2.gif"));
+			slime_vert[0] = ImageIO.read(getClass().getResourceAsStream("/s1.gif"));
+			slime_vert[1] = ImageIO.read(getClass().getResourceAsStream("/s2.gif"));
+			slime_violet[0] = ImageIO.read(getClass().getResourceAsStream("/sf1.gif"));
+			slime_violet[1] = ImageIO.read(getClass().getResourceAsStream("/sf2.gif"));
 			
 			//personnage
-			perso_droite[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d1.gif").getPath(), "UTF-8")));
-			perso_droite[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d2.gif").getPath(), "UTF-8")));
-			perso_droite[2] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d3.gif").getPath(), "UTF-8")));
-			perso_droite[3] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/d4.gif").getPath(), "UTF-8")));
-			perso_gauche[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/g1.gif").getPath(), "UTF-8")));
-			perso_gauche[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/g2.gif").getPath(), "UTF-8")));
-			perso_gauche[2] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/g3.gif").getPath(), "UTF-8")));
-			perso_gauche[3] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/g4.gif").getPath(), "UTF-8")));
-			mort = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("spriteperso/mort.png").getPath(), "UTF-8")));
+			perso_droite[0] = ImageIO.read(getClass().getResourceAsStream("/spriteperso/d1.gif"));
+			perso_droite[1] = ImageIO.read(getClass().getResourceAsStream("/spriteperso/d2.gif"));
+			perso_droite[2] = ImageIO.read(getClass().getResourceAsStream("/spriteperso/d3.gif"));
+			perso_droite[3] = ImageIO.read(getClass().getResourceAsStream("/spriteperso/d4.gif"));
+			perso_gauche[0] = ImageIO.read(getClass().getResourceAsStream("/spriteperso/g1.gif"));
+			perso_gauche[1] = ImageIO.read(getClass().getResourceAsStream("/spriteperso/g2.gif"));
+			perso_gauche[2] = ImageIO.read(getClass().getResourceAsStream("/spriteperso/g3.gif"));
+			perso_gauche[3] = ImageIO.read(getClass().getResourceAsStream("/spriteperso/g4.gif"));
+			mort = ImageIO.read(getClass().getResourceAsStream("/spriteperso/mort.png"));
 			//cases
-			mur = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("wall.png").getPath(), "UTF-8")));
-			porte = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("porte.png").getPath(), "UTF-8")));
-			casevide = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("sol.png").getPath(), "UTF-8")));
-			casePiege = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("piege.png").getPath(), "UTF-8")));
-			caseMine = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("mine.png").getPath(), "UTF-8")));
-			caseMineDesac = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("mineDesac.png").getPath(), "UTF-8")));
+			mur = ImageIO.read(getClass().getResourceAsStream("/wall.png"));
+			porte = ImageIO.read(getClass().getResourceAsStream("/porte.png"));
+			casevide = ImageIO.read(getClass().getResourceAsStream("/sol.png"));
+			casePiege = ImageIO.read(getClass().getResourceAsStream("/piege.png"));
+			caseMine = ImageIO.read(getClass().getResourceAsStream("/mine.png"));
+			caseMineDesac = ImageIO.read(getClass().getResourceAsStream("/mineDesac.png"));
 			//epee
-			epee[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("epeed.png").getPath(), "UTF-8")));
-			epee[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("epeeg.png").getPath(), "UTF-8")));
+			epee[0] = ImageIO.read(getClass().getResourceAsStream("/epeed.png"));
+			epee[1] = ImageIO.read(getClass().getResourceAsStream("/epeeg.png"));
 			//potion
-			potion = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("potionVie.png").getPath(), "UTF-8")));
-			amulette = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("amulette.png").getPath(), "UTF-8")));
+			potion = ImageIO.read(getClass().getResourceAsStream("/potionVie.png"));
+			amulette = ImageIO.read(getClass().getResourceAsStream("/amulette.png"));
 			//reaper
 			initialiserReaper();
 			//potionforce
-			potionForce = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("potionForce.png").getPath(), "UTF-8")));
+			potionForce = ImageIO.read(getClass().getResourceAsStream("/potionForce.png"));
 			//gagner
-			bravo = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("bravo.gif").getPath(), "UTF-8")));
+			bravo = ImageIO.read(getClass().getResourceAsStream("/bravo.gif"));
 		}catch (Exception e){
 			System.out.println("Probleme avec l'image");
 			e.printStackTrace();
@@ -393,65 +393,65 @@ public class DessinPerso implements DessinJeu{
 	public void initialiserReaper()
 	{
 		try {
-			grim_i_d[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_d/frame_00_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_d[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_d/frame_01_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_d[2] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_d/frame_02_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_d[3] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_d/frame_03_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_d[4] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_d/frame_04_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_d[5] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_d/frame_05_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_d[6] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_d/frame_06_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_d[7] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_d/frame_07_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_d[8] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_d/frame_08_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_d[9] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_d/frame_09_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_d[10] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_d/frame_10_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_d[11] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_d/frame_11_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_d[12] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_d/frame_12_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_d[12] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_d/frame_13_delay-0.08s.gif").getPath(), "UTF-8")));
+			grim_i_d[0] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_d/frame_00_delay-0.08s.gif"));
+			grim_i_d[1] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_d/frame_01_delay-0.08s.gif"));
+			grim_i_d[2] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_d/frame_02_delay-0.08s.gif"));
+			grim_i_d[3] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_d/frame_03_delay-0.08s.gif"));
+			grim_i_d[4] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_d/frame_04_delay-0.08s.gif"));
+			grim_i_d[5] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_d/frame_05_delay-0.08s.gif"));
+			grim_i_d[6] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_d/frame_06_delay-0.08s.gif"));
+			grim_i_d[7] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_d/frame_07_delay-0.08s.gif"));
+			grim_i_d[8] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_d/frame_08_delay-0.08s.gif"));
+			grim_i_d[9] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_d/frame_09_delay-0.08s.gif"));
+			grim_i_d[10] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_d/frame_10_delay-0.08s.gif"));
+			grim_i_d[11] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_d/frame_11_delay-0.08s.gif"));
+			grim_i_d[12] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_d/frame_12_delay-0.08s.gif"));
+			grim_i_d[12] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_d/frame_13_delay-0.08s.gif"));
 
-			grim_i_g[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_g/frame_00_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_g[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_g/frame_01_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_g[2] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_g/frame_02_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_g[3] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_g/frame_03_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_g[4] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_g/frame_04_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_g[5] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_g/frame_05_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_g[6] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_g/frame_06_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_g[7] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_g/frame_07_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_g[8] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_g/frame_08_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_g[9] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_g/frame_09_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_g[10] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_g/frame_10_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_g[11] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_g/frame_11_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_g[12] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_g/frame_12_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_i_g[12] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/idle_g/frame_13_delay-0.08s.gif").getPath(), "UTF-8")));
+			grim_i_g[0] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_g/frame_00_delay-0.08s.gif"));
+			grim_i_g[1] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_g/frame_01_delay-0.08s.gif"));
+			grim_i_g[2] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_g/frame_02_delay-0.08s.gif"));
+			grim_i_g[3] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_g/frame_03_delay-0.08s.gif"));
+			grim_i_g[4] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_g/frame_04_delay-0.08s.gif"));
+			grim_i_g[5] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_g/frame_05_delay-0.08s.gif"));
+			grim_i_g[6] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_g/frame_06_delay-0.08s.gif"));
+			grim_i_g[7] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_g/frame_07_delay-0.08s.gif"));
+			grim_i_g[8] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_g/frame_08_delay-0.08s.gif"));
+			grim_i_g[9] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_g/frame_09_delay-0.08s.gif"));
+			grim_i_g[10] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_g/frame_10_delay-0.08s.gif"));
+			grim_i_g[11] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_g/frame_11_delay-0.08s.gif"));
+			grim_i_g[12] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_g/frame_12_delay-0.08s.gif"));
+			grim_i_g[12] = ImageIO.read(getClass().getResourceAsStream("/reaper/idle_g/frame_13_delay-0.08s.gif"));
 
-			grim_a_g[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_g/frame_00_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_g[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_g/frame_01_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_g[2] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_g/frame_02_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_g[3] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_g/frame_03_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_g[4] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_g/frame_04_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_g[5] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_g/frame_05_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_g[6] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_g/frame_06_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_g[7] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_g/frame_07_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_g[8] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_g/frame_08_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_g[9] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_g/frame_09_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_g[10] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_g/frame_10_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_g[11] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_g/frame_11_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_g[12] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_g/frame_12_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_g[12] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_g/frame_13_delay-0.08s.gif").getPath(), "UTF-8")));
+			grim_a_g[0] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_g/frame_00_delay-0.08s.gif"));
+			grim_a_g[1] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_g/frame_01_delay-0.08s.gif"));
+			grim_a_g[2] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_g/frame_02_delay-0.08s.gif"));
+			grim_a_g[3] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_g/frame_03_delay-0.08s.gif"));
+			grim_a_g[4] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_g/frame_04_delay-0.08s.gif"));
+			grim_a_g[5] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_g/frame_05_delay-0.08s.gif"));
+			grim_a_g[6] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_g/frame_06_delay-0.08s.gif"));
+			grim_a_g[7] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_g/frame_07_delay-0.08s.gif"));
+			grim_a_g[8] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_g/frame_08_delay-0.08s.gif"));
+			grim_a_g[9] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_g/frame_09_delay-0.08s.gif"));
+			grim_a_g[10] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_g/frame_10_delay-0.08s.gif"));
+			grim_a_g[11] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_g/frame_11_delay-0.08s.gif"));
+			grim_a_g[12] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_g/frame_12_delay-0.08s.gif"));
+			grim_a_g[12] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_g/frame_13_delay-0.08s.gif"));
 
-			grim_a_d[0] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_d/frame_00_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_d[1] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_d/frame_01_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_d[2] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_d/frame_02_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_d[3] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_d/frame_03_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_d[4] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_d/frame_04_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_d[5] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_d/frame_05_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_d[6] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_d/frame_06_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_d[7] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_d/frame_07_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_d[8] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_d/frame_08_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_d[9] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_d/frame_09_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_d[10] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_d/frame_10_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_d[11] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_d/frame_11_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_d[12] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_d/frame_12_delay-0.08s.gif").getPath(), "UTF-8")));
-			grim_a_d[12] = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("reaper/attack_d/frame_13_delay-0.08s.gif").getPath(), "UTF-8")));
+			grim_a_d[0] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_d/frame_00_delay-0.08s.gif"));
+			grim_a_d[1] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_d/frame_01_delay-0.08s.gif"));
+			grim_a_d[2] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_d/frame_02_delay-0.08s.gif"));
+			grim_a_d[3] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_d/frame_03_delay-0.08s.gif"));
+			grim_a_d[4] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_d/frame_04_delay-0.08s.gif"));
+			grim_a_d[5] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_d/frame_05_delay-0.08s.gif"));
+			grim_a_d[6] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_d/frame_06_delay-0.08s.gif"));
+			grim_a_d[7] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_d/frame_07_delay-0.08s.gif"));
+			grim_a_d[8] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_d/frame_08_delay-0.08s.gif"));
+			grim_a_d[9] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_d/frame_09_delay-0.08s.gif"));
+			grim_a_d[10] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_d/frame_10_delay-0.08s.gif"));
+			grim_a_d[11] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_d/frame_11_delay-0.08s.gif"));
+			grim_a_d[12] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_d/frame_12_delay-0.08s.gif"));
+			grim_a_d[12] = ImageIO.read(getClass().getResourceAsStream("/reaper/attack_d/frame_13_delay-0.08s.gif"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

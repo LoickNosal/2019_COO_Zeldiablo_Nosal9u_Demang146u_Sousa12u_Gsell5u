@@ -7,8 +7,7 @@ import moteurJeu.DessinPerso;
 import moteurJeu.JeuEvolution;
 import moteurJeu.MoteurGraphique;
 
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 
@@ -58,7 +57,7 @@ public class JeuPrincipal {
      */
     public void chargerLVL(int lvl) {
         try {
-            JSONObject json = chargerJSON("maps/lvl" + lvl +".json");
+            JSONObject json = chargerJSON("/maps/lvl" + lvl +".json");
             decoderJSON(json);
         } catch (ParseException e) {
             System.out.printf("fichier \"lvl%d.json\" corrompu", lvl);
@@ -79,9 +78,9 @@ public class JeuPrincipal {
      */
     private JSONObject chargerJSON(String fichier) throws IOException, ParseException, NullPointerException {
         JSONParser parser = new JSONParser();
-        String path = URLDecoder.decode((getClass().getClassLoader().getResource(fichier)).getPath(), "UTF-8");
-        Object obj = parser.parse(new FileReader(path));
-        return (JSONObject) obj;
+        InputStream in = getClass().getResourceAsStream(fichier);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        return (JSONObject) parser.parse(reader);
     }
 
 

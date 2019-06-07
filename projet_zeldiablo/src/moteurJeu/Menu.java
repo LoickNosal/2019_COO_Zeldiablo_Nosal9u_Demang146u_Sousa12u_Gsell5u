@@ -5,8 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URLDecoder;
 
 public class Menu extends JPanel {
@@ -78,7 +77,7 @@ public class Menu extends JPanel {
 
         Image menu = null;
         try {
-            menu = ImageIO.read(new File(URLDecoder.decode(getClass().getClassLoader().getResource("menu.png").getPath(), "UTF-8")));
+            menu = ImageIO.read(getClass().getResourceAsStream("/menu.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
