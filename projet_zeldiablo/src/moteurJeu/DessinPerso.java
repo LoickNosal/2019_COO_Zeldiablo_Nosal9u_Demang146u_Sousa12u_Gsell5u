@@ -317,7 +317,7 @@ public class DessinPerso implements DessinJeu{
 		
 		//affichage de l'etage du labyrinthe
 		g.setFont(new Font(null, Font.BOLD, 40)); 
-		g.setColor(Color.black);
+		g.setColor(Color.BLACK);
 		String texte = this.jeuEvolution.titreLVL;
 		//permet de centrer le texte
 		this.centrerTexte(g, texte, 900,60, g.getFont());
