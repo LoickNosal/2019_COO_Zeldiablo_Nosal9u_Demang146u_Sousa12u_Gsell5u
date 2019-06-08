@@ -68,6 +68,7 @@ public class Controleur extends MouseAdapter implements KeyListener {
                 this.commandeARetourner.bas = true;
                 break;
             case 'f':
+            case 'k':
                 this.commandeEnCours.attaque = true;
                 this.commandeARetourner.attaque = true;
                 break;
@@ -107,6 +108,7 @@ public class Controleur extends MouseAdapter implements KeyListener {
                 this.commandeEnCours.saut = false;
                 break;
             case 'f':
+            case 'k':
                 this.commandeEnCours.attaque = false;
                 break;
         }
