@@ -76,7 +76,8 @@ public class JeuEvolution implements Jeu {
 		this.direction = true;
 		this.fini = false;
 		this.titreLVL = "";
-		this.items=new ArrayList<Item>();
+		this.monstres = new ArrayList<>();
+		this.items = new ArrayList<>();
 	}
 
 	@Override
@@ -167,19 +168,20 @@ public class JeuEvolution implements Jeu {
 		//affiche les pv du joueur
 		//System.out.println(this.personnage.getPv());
 		//si le joueur entre dans la porte
+
+		// position de l'aventurier sur la grille du labyrinthe
+		int px = this.aventurier.getX() / Case.TAILLE;
+		int py = this.aventurier.getY() / Case.TAILLE;
 		
-		int px = this.aventurier.getX();
-		int py = this.aventurier.getY();
-		
-		if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 2 && this.monstres.isEmpty()) {
+		if(labyrinthe.isPorte(px, py) && monstres.isEmpty()) {
 				jeuPrincipal.chargerLVLSuivant();
-		}else if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 3) {
+		}else if(this.aventurier.getLab().typeCase(px,py) == 3) {
 				this.aventurier.subirDegat(10);
-				this.aventurier.getLab().activerPiege(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE);
-		}else if(this.aventurier.getLab().typeCase(px/DessinPerso.TAILLE_CASE,py/DessinPerso.TAILLE_CASE) == 4) {
-			if (this.aventurier.getLab().testerPiege(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE) == false) {
+				this.aventurier.getLab().activerPiege(px, py);
+		}else if(this.aventurier.getLab().typeCase(px,py) == 4) {
+			if (this.aventurier.getLab().testerPiege(px, py) == false) {
 				this.aventurier.subirDegat(25);
-				this.aventurier.getLab().activerPiege(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE);
+				this.aventurier.getLab().activerPiege(px, py);
 			}
 			
 			
@@ -197,7 +199,7 @@ public class JeuEvolution implements Jeu {
 
 		//ITEMS
 		for (Item i : this.items) {
-			if (i.peutRamasse(px/DessinPerso.TAILLE_CASE, py/DessinPerso.TAILLE_CASE)) {
+			if (i.peutRamasse(px, py)) {
 				
 				switch (i.typeItem()) {
 				case 0://Potion de vie

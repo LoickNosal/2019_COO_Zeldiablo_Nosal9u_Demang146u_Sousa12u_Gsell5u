@@ -24,8 +24,6 @@ public class CaseSortie extends Case {
 		this.posY = y;
 	}
 
-
-
 	@Override
 	public boolean peutTraverser() {
 		return true;
@@ -40,4 +38,8 @@ public class CaseSortie extends Case {
 		return "p";
 	}
 
+	@Override
+	public boolean sortie() {
+		return true;
+	}
 }

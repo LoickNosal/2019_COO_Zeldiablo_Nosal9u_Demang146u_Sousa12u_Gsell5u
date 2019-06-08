@@ -72,8 +72,9 @@ public abstract class Case {
 	* @return int en fonction du type de case
 	*/
 	public abstract int typeCase();
-	
 
-	
+	public boolean sortie() {
+		return false;
+	}
 
 }

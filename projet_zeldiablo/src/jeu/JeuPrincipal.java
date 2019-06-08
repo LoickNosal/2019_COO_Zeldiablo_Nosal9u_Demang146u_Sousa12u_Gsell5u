@@ -32,9 +32,9 @@ public class JeuPrincipal {
      * construit le modele du jeu
      */
     public JeuPrincipal() {
-        //restart();
         aventurier = new Aventurier(50, 100, 100, "Aventurier");
         jeuEvolution = new JeuEvolution(aventurier, this);
+        jeuEvolution.restart();
         DessinPerso dp = new DessinPerso(jeuEvolution);
 
         // classe qui lance le moteur de jeu generique
@@ -65,6 +65,7 @@ public class JeuPrincipal {
             System.out.printf("Chargement du fichier \"lvl%d.json\" impossible", lvl);
         } catch (NullPointerException e) {
             System.out.printf("fichier \"lvl%d.json\" introuvable\n", lvl);
+            e.printStackTrace();
         }
     }
 

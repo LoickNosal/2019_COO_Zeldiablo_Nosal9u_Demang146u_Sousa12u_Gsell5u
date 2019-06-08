@@ -127,13 +127,17 @@ public class Labyrinthe {
 
     }
 
+    public boolean isPorte(int x, int y) {
+        return cases[x][y].sortie();
+    }
+
     /**
      * renvoit le type de la case (vide,mur,piege,mine)
      * @param x pos x 
      * @param y pos y 
      * @return type de la case
      */
-    public int typeCase(int x, int y) {
+    public int typeCase(int x, int y) { // DOIT EST SUPPRIME
         if (x < 0 || x >= getLargeur() || y < 0 || y >= getHauteur())
             return -1;
         return cases[x][y].typeCase();
