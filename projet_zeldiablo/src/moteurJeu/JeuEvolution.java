@@ -131,7 +131,7 @@ public class JeuEvolution implements Jeu {
 		if(commandeUser.echap)
 		{
 			aventurier.subirDegat(100);
-			if(this.aventurier.getVivant() ==false){
+			if(this.aventurier.estMort()){
 				this.compteurMort++;
 				if(compteurMort>300){
 					setFini(true);
@@ -174,18 +174,17 @@ public class JeuEvolution implements Jeu {
 		int py = this.aventurier.getY() / Case.TAILLE;
 		
 		if(labyrinthe.isPorte(px, py) && monstres.isEmpty()) {
-				jeuPrincipal.chargerLVLSuivant();
-		}else if(this.aventurier.getLab().typeCase(px,py) == 3) {
-				this.aventurier.subirDegat(10);
-				this.aventurier.getLab().activerPiege(px, py);
-		}else if(this.aventurier.getLab().typeCase(px,py) == 4) {
-			if (this.aventurier.getLab().testerPiege(px, py) == false) {
-				this.aventurier.subirDegat(25);
-				this.aventurier.getLab().activerPiege(px, py);
+			jeuPrincipal.chargerLVLSuivant();
+		} else if (labyrinthe.typeCase(px, py) == 3) {
+			aventurier.subirDegat(10);
+			aventurier.getLab().activerPiege(px, py);
+		} else if (labyrinthe.typeCase(px, py) == 4) {
+			if (labyrinthe.testerPiege(px, py) == false) {
+				aventurier.subirDegat(25);
+				aventurier.getLab().activerPiege(px, py);
 			}
-			
-			
 		}
+
 		if(this.aventurier.getVivant() ==false){
 			this.compteurMort++;
 			if(compteurMort>300){

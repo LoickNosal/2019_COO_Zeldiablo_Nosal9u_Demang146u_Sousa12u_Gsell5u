@@ -83,6 +83,10 @@ abstract public class Entite{
     public boolean getVivant() {
     	return vivant;
     }
+
+    public boolean estMort() {
+        return !vivant;
+    }
     
     public void setLabyrinthe(Labyrinthe l) {
     	if (l != null) {
@@ -251,7 +255,7 @@ abstract public class Entite{
 
     /**
      * Rend l'entitee invulnerable a la methode subirDegat
-     * @param vrai si le joueur est invulnerable
+     * @param a si le joueur est invulnerable
      */
     public void setInvulnerable(boolean a)
     {

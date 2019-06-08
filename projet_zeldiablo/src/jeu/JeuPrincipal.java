@@ -121,9 +121,11 @@ public class JeuPrincipal {
                 posX = posX * Case.TAILLE + Case.TAILLE / 2;
                 posY = (int) (posY * Case.TAILLE + Case.TAILLE * 0.7);
                 Monstre m = Monstre.creerMonstreParID(id, posX, posY);
-                m.setLabyrinthe(labyrinthe);
-                m.setCible(aventurier);
-                monstres.add(m);
+                if (m != null) {
+                    m.setLabyrinthe(labyrinthe);
+                    m.setCible(aventurier);
+                    monstres.add(m);
+                }
             }
         }
 
@@ -138,7 +140,9 @@ public class JeuPrincipal {
                 int posX = ((Long) ((JSONArray) jsonI.get("pos")).get(0)).intValue();
                 int posY = ((Long) ((JSONArray) jsonI.get("pos")).get(1)).intValue();
                 Item i = Item.creerItemParID(id, posX, posY);
-                items.add(i);
+                if (i != null) {
+                    items.add(i);
+                }
             }
         }
 
